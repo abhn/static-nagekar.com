@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>html &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/html/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Wed, 03 Jul 2019 22:00:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>html &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>HTML For Semantics, CSS For Visual</title>
+		<link>https://nagekar.com/2019/07/html-for-semantics-css-for-visual.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 03 Jul 2019 22:00:00 +0000</pubDate>
+				<category><![CDATA[css]]></category>
+		<category><![CDATA[html]]></category>
+		<category><![CDATA[web]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2019/07/03/html-for-semantics-css-for-visual/</guid>
+
+					<description><![CDATA[The best way to learn is to teach, they say. I totally agree, and that&#8217;s one reason I have so many articles on my blog explaining random topics. Part of the goal was always to understand the topic better myself. I got reminded of it while I was preparing for a workshop on introduction to [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  The best way to learn is to teach, they say. I totally agree, and that&#8217;s one reason I have so many articles on my blog explaining random topics. Part of the goal was always to understand the topic better myself.
+</p>
+<p>
+  I got reminded of it while I was <a href="/2019/06/webdev-workshop.html">preparing for a workshop</a> on <em>introduction to web technologies</em> for my fellow Berliners who wish to get into tech. Then something interesting happened. I found the root of a problem that I was struggling with for some time at work. I will jot down some notes of this entire experience, and try to tell you about the lessons learned.
+</p>
+<h3>Our Styleguide</h3>
+<p>
+  We maintain a frontend styleguide (think: company-specific UI library). We have many HTML elements and <a href="/2015/10/CSS-Crash-Course.html">CSS classes</a> that make our text, buttons and cards look the way we want them to look across the webapps. There&#8217;s a little issue. Most textual styles are defined on HTML elements. So to get a large heading styled with our predefined font-size, font-family, color and a bunch of other styles, one would just use <code>h1</code> (notice: no class needed).
+</p>
+<p>
+  This worked for us until now, and wherever a big heading was required, we would just throw in an <code>h1</code>. Similarly for paragraphs, lists and other textual elements. This made a lot of sense in the past as accessibility or SEO weren&#8217;t a concern. But things changed.
+</p>
+<h3>Multiple h1s</h3>
+<p>
+  It all started when our contracted SEO agency told us that we had two h1s on a page. We looked at the page, and it made total sense. There were two &#8216;headings&#8217; of super large size, and our styleguide&#8217;s h1 made total sense from a purely visual perspective. But the second heading was just a title in large font. It had no semantic significance. Now, our product&#8217;s main title and some random text have the same precedence on the page.
+</p>
+<p>
+  This is bad for SEO, no doubt, but this is also bad for screen readers and all mini browsers (like Apple Watch and the like) which rely on the HTML to convey semantic information, and not visual.
+</p>
+<h3>Thinking and problem solving</h3>
+<p>
+  I went to our designers and had a discussion. I could just hack and overwrite the styles, but that wasn&#8217;t the point. I asked what could be done. We could change the design, create a new class the resembles heading-1s and then use that on a span and so on. But we couldn&#8217;t think of why we&#8217;ve met with this problem. Maybe we&#8217;re missing something, something obvious, we thought.
+</p>
+<h3>Conference on web basics</h3>
+<p>
+  I attended a developer conference a couple of weeks ago. There we had the good fortune of listening to <a href="https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie">Hakun Lie</a> and <a href="https://www.brucelawson.co.uk/">Bruce Lawson</a>. What struck me, apart from how much they cared about web standards and saving the web from the bloat hell that we&#8217;re hurtling towards, is how much one can accomplish just by sticking to web standards. One of the examples used was of the Apple Watch, and the website in question was developed much before anyone imagined a browser on your wrist. If one just uses semantic HTML, one can be sure that their website would work on any device, whether in existence or yet to arrive. And just like that, millions of well-designed websites started to work on the special Apple Watch browser.
+</p>
+<p>
+  This is important to note because there are usually multiple ways of doing something on the web. More often than not, there are a couple of right and many wrong ways. Part of our job as web developers is to ensure that our website isn&#8217;t just pretty visually but also correct semantically and structurally. This is to futureproof our creation.
+</p>
+<h3>The workshop</h3>
+<p>
+  I was preparing for this workshop and thinking of various ways I could introduce web development to complete beginners. I referred to some nice articles and tried to understand the meaning of HTML and CSS myself. I tried to understand why reset.css and normalize.css are used, even though I&#8217;ve been using them for years. I came up with interesting analogies to explain the basic pillars of the web and as a result, improved my understanding of these constructs.
+</p>
+<h3>Lightbulb moment</h3>
+<p>
+  After the workshop, when I went back to my codebase, I could see the problem staring right back at me. We had styled the HTML elements, and not created separate classes that we could then attach to our elements. This is the result of forgetting the basics and doing something the wrong way because it saves you from writing <code>class=""</code> for every HTML element, which to be fair, doesn&#8217;t seem that bad when you don&#8217;t differentiate between HTML and CSS and use a combination of the two to get the design right.
+</p>
+<h3>Conclusion</h3>
+<p>
+  There are a couple of conclusions for me from this article. One is to learn and follow web standards. Semantic HTML is not at all hard, just some 120 tags in total. Then, understand what a markup language means, and how the semantics of a document is different from how it looks or works. Learn the rules of <a href="/2018/11/lets-talk-about-css.html">CSS selectors</a> and how cascading works. Learn that HTML and CSS are declarative, and use them as much as possible. Only where it makes sense, introduce Javascript. In general, keep abstractions to a minimum.
+</p>
+<p>
+  Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>CSS Crash Course</title>
+		<link>https://nagekar.com/2015/10/css-crash-course.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 08 Oct 2015 22:00:00 +0000</pubDate>
+				<category><![CDATA[css]]></category>
+		<category><![CDATA[html]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/10/08/css-crash-course/</guid>
+
+					<description><![CDATA[I have a friend, who happens to be a good C and assembly programmer, but simply hates anything related to web, then be it HTML, CSS or anything way too much abstracted for that matter. Since it was compulsory for us to make our own web application project for college, he struggled to learn it [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>I have a friend, who happens to be a good C and assembly programmer, but simply hates anything related to web, then be it HTML, CSS or anything way too much abstracted for that matter. Since it was compulsory for us to make our own web application project for college, he struggled to learn it (CSS and HTML) from here and there, cursing it at the same time. Hence this little guide, for all those of you who hate it, but still want to get your work done.</p>
+<h3>A thing or two about CSS</h3>
+<p>CSS isn&#8217;t a markup language. It is a styling language, and hence, it won&#8217;t really work if you have no document in the first place. Creating a document simply means adding some data to HTML tags in a web page. Here onwards, document would mean the HTML page that we are working on. Let us create one as an example.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Testing<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Awesome Site<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>A little heading<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p&gt;</span>A paragraph containing some text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>Some information<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p&gt;</span>More text...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>This is a very basic example that would display something like the following. You can guess what each tag stands for here, if not, &#8216;h&#8217; tag stands for heading, &#8216;h1&#8217; being the largest to &#8216;h6&#8217; being the smallest. &#8216;p&#8217; stands for paragraph, and there are many <a href="https://www.w3schools.com/html/" target="_blank" rel="noopener">such tags</a>, which are used as and when required.</p>
+<p><iframe src="/assets/css_files/test1.html" width="100%" height="auto"></iframe></p>
+<p>Now it is time to style our document. I will place all the CSS styling in a <code>&lt;style&gt;</code> tag, which I will be placing into the <code>&lt;head&gt;</code> of the document. Now you must know that I could do the exact same thing by using an external CSS file and linking it, or by styling individual elements using inline CSS. We will see what those are later. I think the main heading should be red, the subordinate headings should be green and the paragraphs should be orange. I also think the background should be a little off white. Let&#8217;s see how that translates into CSS.</p>
+<figure class="highlight">
+<pre><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#eee</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nt">h3</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">orange</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>Now that we have styled our page, let&#8217;s take another look at it.</p>
+<p>
+<iframe src="/assets/css_files/test2.html" width="100%" height="auto"></iframe></p>
+<p>Looks like it works, although it is looking ugly. Anyways, what we have used here is the <i>element selector</i> of CSS which, not surprisingly, selects the elements matching the tag name and applies the properties defined for it.</p>
+<h3>ID and Class selectors</h3>
+<p>Now, there may be times when you have multiple elements with same tag names but you want to apply CSS properties to only specific element(s). That is where the &#8216;id&#8217; and the &#8216;class&#8217; selector comes in. Note that however, the class here does now refer to anything from your object oriented programming books. It only gives those elements with that class a particular grouping. You can use any one of &#8216;id&#8217; and &#8216;class&#8217; as per your liking for now, but conventionally, we use &#8216;id&#8217; for uniquely identifying elements and &#8216;class&#8217; for grouping similar elements. Technically, there is an additional difference of precedence here, with the &#8216;id&#8217; having more precedence than &#8216;class&#8217;. My personal rule is that, for custom CSS use &#8216;id&#8217;, since frameworks like Bootstrap (which we will check out later on) usually use &#8216;class&#8217;.</p>
+<p>Now we shall rewrite the document adding an id attribute to each tag name.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"logo"</span><span class="nt">&gt;</span>Awesome Site<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"heading"</span><span class="nt">&gt;</span>A little heading<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"content"</span><span class="nt">&gt;</span>A paragraph containing some text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"other-heading"</span><span class="nt">&gt;</span>Some information<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"other-content"</span><span class="nt">&gt;</span>More text...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre>
+</figure>
+<p>and we shall change the CSS accordingly</p>
+<figure class="highlight">
+<pre><code class="language-css" data-lang="css"><span class="nf">#logo</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#heading</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#other-heading</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">olive</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#content</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">orange</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#other-content</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">purple</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>The resulting page looks something like this, with each of the individual elements appearing in different color.</p>
+<p><iframe src="/assets/css_files/test3.html" width="100%" height="auto"></iframe></p>
+<p>Note that we could have well written &#8216;class&#8217; instead of &#8216;id&#8217; in our document, but then instead of <code>#logo</code> it would have been <code>.logo</code>, which is the class selector. Having learnt two selectors, we can now combine them to get the desired result. For example, <code>h3#heading { color: blue; }</code> would turn <span style="color: blue;">blue</span> all the h3 tags that have a <i><b>id=&#8221;heading&#8221;</b></i> attribute declared. Similarly, <code>h3.heading { color: blue; }</code> would result in the same thing to all the h3 tags with <i><b>class=&#8221;heading&#8221;</b></i>.</p>
+<h3>Group selectors</h3>
+<p>Group selectors are used to apply properties to multiple elements at once. Multiple elements are separated by commas.</p>
+<figure class="highlight">
+<pre><code class="language-css" data-lang="css"><span class="nf">#logo</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#heading</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#other-heading</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">olive</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#content</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">orange</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#other-content</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">purple</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="c">/* Selecting all three tag names at once. */</span>
+<span class="nt">h1</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">yellow</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>Which will look like</p>
+<p><iframe loading="lazy" src="/assets/css_files/test4.html" width="100%" height="auto"></iframe></p>
+<h3>Descendant selectors</h3>
+<p>Sometimes, CSS properties needs to be applied only to tags within a specific tag or id. In such situations, the descendant selector comes in handy.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Testing<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="nt">ul</span> <span class="nt">em</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.25em</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Look what I've <span class="nt">&lt;em&gt;</span>got for ya!<span class="nt">&lt;/em&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;</span>item 1<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>item 2<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>item 3<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;em&gt;</span>this looks abnormal<span class="nt">&lt;/em&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>item 5<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>And this will render</p>
+<p><iframe loading="lazy" src="/assets/css_files/test5.html" width="100%" height="auto"></iframe></p>
+<p>Look how the <em>emphasis</em> at the top is normal but the one in the &#8216;ul&#8217; is enlarged. There is another similar selector called the child selector. It works similar to descendant selector but demands the child to be DIRECT descendant of the parent. For example, <code>p > a { color: green; }</code> will cause only the anchors directly children to any paragraph to look <span style="color: green;">green</span>. These are the various selectors that you would see and probably use when dealing with web applications. Simple enough, aren&#8217;t they?</p>
+<h3>&lt;div&gt; and &lt;span&gt;</h3>
+<p>Although div and span are html tags, any modern web application that you will write will heavily make use of these to group sections of the web page together. You might be familiar with the layouts of most websites these days, with a header on top, one or two column in the center with content and other options, and a footer at the bottom. Even on my blog, you&#8217;ll notice these three things. How are they made, and how to make them look so distinct that on the first glance, your visitors know what their purpose is. The answer lies in making proper divs and adding appropriate CSS to it. Div is a block element, which means that it is used to style multiple elements at once. Span, on the other hand, is inline, that is, it is used to style little chunks of content.</p>
+<p>I will write the 4 sections of a website I mentioned earlier, using divs. Read the code and you would understand what is happening.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Testing<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="o">*</span> <span class="p">{</span>
+      <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p"&gt;;</span> 
+    <span class="p">}</span>
+    <span class="nf">#header</span> <span class="p">{</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p"&gt;;</span>
+      <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+    <span class="nf">#container</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p"&gt;;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+    <span class="nf">#body</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">75%</span><span class="p"&gt;;</span>
+      <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p"&gt;;</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="n">grey</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+    <span class="nf">#side</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">25%</span><span class="p"&gt;;</span>
+      <span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p"&gt;;</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="no">blue</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+    <span class="nf">#footer</span> <span class="p">{</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="no">green</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"header"</span><span class="nt">&gt;&lt;h3&gt;</span>Header Text<span class="nt">&lt;/h3&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"body"</span><span class="nt">&gt;&lt;p&gt;</span>Content goes here<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"side"</span><span class="nt">&gt;&lt;p&gt;</span>Sidebar<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span><span class="nt">&gt;&lt;p&gt;</span>Copyrights<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>This sure looks beautiful, doesn&#8217;t it?</p>
+<p><iframe loading="lazy" src="/assets/css_files/test6.html" width="100%" height="auto"></iframe></p>
+<p>This completes the CSS syntax part. I did mention that you can write all your CSS in a file.css and include them in your document head with <code>&lt;link href="/assets/style.css" rel="stylesheet"&gt;</code> so that it is easier to maintain the code. There is yet another way to add CSS, which makes use of @import syntax. It is better avoided for the <a href="https://stackoverflow.com/questions/10036977/best-way-to-include-css-why-use-import" target="_blank" rel="noopener">linked reasons</a>.</p>
+<p>Now that you are well equipped with the necessary things to learn some actual and practical CSS, you must be really excited to read from w3schools. It is a great site to begin, and since it comes on top each time you search for anything related to CSS (or web programming, for that matter), you may use it as your sole reference guide. Nothing bad, but keep in mind that after leaving your nutshell, you should <a href="https://www.w3fools.com/" target="_blank" rel="noopener">avoid that site</a>, and start using some reputed docs instead, like the ones from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener">Mozilla</a>.</p>
+<h3>CSS Frameworks</h3>
+<p>To speed up the development process, you might want to check out some libraries out there that would ease your life. One of the best is <a href="https://getbootstrap.com/">Bootstrap</a>. It would enable you to do rapid development, with minimal typing. Bootstrap comes with jQuery, a Javascript library which also helps a lot dealing with web application stuff you are about to deal with. There is not much point reading the official docs if you only want to get the work done. Instead, I would suggest you to Google out things, pick up code on the way, keep going. That is exactly how I used to do stuff back then, when I hated to write CSS and HTML. Bad advice, but gets the job done most of the times.</p>
+<h3>Outro</h3>
+<p>CSS is amazing. Web is amazing. Today is a time when you either have to love the web, or keep fighting a losing battle convincing yourself that you don&#8217;t need it. Either way, knowing a thing or two about how the web pages that you spend more than half of your time on, are styled, is always a plus. As always, for anything, the comment box is always there. Corrections, please. Liked the article? Suggest it to your friends! Thank you for reading.</p>
+<p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Creating Custom Blogger Template From Scratch</title>
+		<link>https://nagekar.com/2015/06/creating-custom-blogger-template-from.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 14 Jun 2015 22:00:00 +0000</pubDate>
+				<category><![CDATA[html]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/06/14/creating-custom-blogger-template-from/</guid>
+
+					<description><![CDATA[Although when I started with it, I hardly knew anything about a blogger template, but it turned out, designing a blogger template is easier than designing a HTML template. Just a few basic concepts and you are good to go. Firstly, before digging into the template code, we will look at the grammar needed to [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Although when I started with it, I hardly knew anything about a blogger template, but it turned out, designing a blogger template is easier than designing a HTML template. Just a few basic concepts and you are good to go.
+</p>
+<p>
+  Firstly, before digging into the template code, we will look at the grammar needed to code our thing. This simple article assumes you can read basic HTML, CSS and XML. Nothing above the basic level, plain simple stuff. If not, whenever you do not understand something, make sure you search that term or tag on <a href="https://w3schools.com/" target="_blank">w3schools</a> to understand it. Yes, that&#8217;s all you really need, trust me.
+</p>
+<h3>Planning the layout</h3>
+<p>
+  First of all, how do you want your blog to look like when it&#8217;s done. Just a basic idea would do. You must know what you are working for. Here is what I made. It is the way most simple blogs look like. Two column layout, a header on top and a footer at bottom.
+</p>
+<p><center></p>
+<style type="text/css">.tg  {border-collapse:collapse;border-spacing:0;border-color:#999;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;} .tg .tg-vpsr{font-size:26px;text-align:center} .tg .tg-szh5{font-size:26px} .tg .tg-n27c{font-size:26px;background-color:#bbdaff;color:#343434;text-align:center} </style>
+<table class="tg">
+<tbody>
+<tr>
+<th class="tg-vpsr" colspan="2">Header</th>
+</tr>
+<tr>
+<td class="tg-szh5">Blog Posts                        </td>
+<td class="tg-szh5">Sidebar</td>
+</tr>
+<tr>
+<td class="tg-n27c" colspan="2">Footer</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>
+  Not the most interesting table, yeah I know. HTML tables, not really my thing. But this is what our end result should look like, structurally.</p>
+<h3>Basic Structure </h3>
+<p>
+  These few lines make up a basic web page. You will see that this is quite similar to what we&#8217;re doing.
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>And this is how a basic blogger template looks like.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">b:version=</span><span class="s">'2'</span> <span class="na">class=</span><span class="s">'v2'</span> <span class="na">expr:dir=</span><span class="s">'data:blog.languageDirection'</span> <span class="na">xmlns=</span><span class="s">'https://www.w3.org/1999/xhtml'</span> <span class="na">xmlns:b=</span><span class="s">'https://www.google.com/2005/gml/b'</span> <span class="na">xmlns:data=</span><span class="s">'https://www.google.com/2005/gml/data'</span> <span class="na">xmlns:expr=</span><span class="s">'https://www.google.com/2005/gml/expr'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;&lt;data:blog.pageTitle/&gt;&lt;/title&gt;</span>
+    <span class="nt">&lt;b:skin&gt;</span><span class="cp">&lt;![CDATA[ /* CSS here */ ]]&gt;</span><span class="nt">&lt;/b:skin&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+
+  <span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- Blog elements here --&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>
+  Pretty neat, isn&#8217;t it? Now, the elements of a blogger blog.  Blogger is built upon XHTML, and uses the same for retrieving and displaying data from the database. A basic block of a blogger template is called a section. So all of these are sections.
+</p>
+<p><center></p>
+<style type="text/css">.tg  {border-collapse:collapse;border-spacing:0;border-color:#999;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;} .tg .tg-vpsr{font-size:26px;text-align:center} .tg .tg-szh5{font-size:26px} .tg .tg-n27c{font-size:26px;background-color:#bbdaff;color:#343434;text-align:center} </style>
+<table class="tg">
+<tbody>
+<tr>
+<th class="tg-vpsr" colspan="2">Header</th>
+</tr>
+<tr>
+<td class="tg-szh5">Blog Posts                        </td>
+<td class="tg-szh5">Sidebar</td>
+</tr>
+<tr>
+<td class="tg-n27c" colspan="2">Footer</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>
+  And you have to define each <i>section</i> before you add &#8216;<i>widgets</i>&#8216; to them. A basic section block looks like this.
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;b:section</span> <span class="na">id=</span><span class="s">' '</span> <span class="na">class=</span><span class="s">' '</span> <span class="na">maxwidgets=</span><span class="s">' '</span> <span class="na">showaddelement=</span><span class="s">' '</span><span class="nt">&gt;&lt;/b:section&gt;</span></code></pre>
+</figure>
+<p>
+  where <i>id</i> is any unique identifier (for CSS and JS later) and <i>class</i> value is used to tell blogger where do we plan to place this section. <i>Maxelements</i> is the maximum number of &#8216;widgets&#8217; we can add to this section. Generally, it is useful to limit the number of widgets in header and footer to one. <i>Showaddelement </i>is that &#8216;Add gadget&#8217; link you see in the layout window. It takes boolean value &#8216;true&#8217; or &#8216;false&#8217;.    Now there are &#8216;<i>widgets</i>&#8216; that go into these sections. Every separate component that you see on your blog is a widget. The &#8216;blog posts&#8217; is one widget, &#8216;blog archive&#8217; is another, and so on. These widgets can be directly added from the graphical layout tab in the control panel of your blog, but it doesn&#8217;t hurt to know how to add them manually, does it?
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;b:widget</span> <span class="na">id=</span><span class="s">"HTML2"</span> <span class="na">locked=</span><span class="s">"false"</span> <span class="na">title=</span><span class="s">"Some Title"</span> <span class="na">type=</span><span class="s">"HTML"</span> <span class="nt">/&gt;</span></code></pre>
+</figure>
+<p>Similarly here,</p>
+<ul>
+<li><b>id</b> &#8211; is just an unique ID</li>
+<li><b>locked</b> &#8211; can the widget be moved around, in the layout tab? (yes or no)</li>
+<li><b>title</b> &#8211; The title that will be displayed on top of the widget</li>
+<li><b>type</b> &#8211; One of the many basic types that blogger supports (html, blog, feed, header etc)</li>
+</ul>
+<p>
+  For example, your &#8216;blog posts&#8217; widget will be something like this
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;b:widget</span> <span class="na">id=</span><span class="s">'blog1'</span> <span class="na">locked=</span><span class="s">'true'</span> <span class="na">title=</span><span class="s">''</span> <span class="na">type=</span><span class="s">'Blog'</span> <span class="nt">/&gt;</span></code></pre>
+</figure>
+<p>
+  That&#8217;s it. Add it to the template and blogger will fill it with auto-generated code you need not care about. This was all for the basics. Let&#8217;s start with some code now. I am using <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>&nbsp; to save myself from writing unnecessary CSS. First thing you do here is enclose the entire body in either <i>container</i> or <i>container-fluid</i> div.</p>
+<ul>
+<li><b>container</b> &#8211; for fixed width layout</li>
+<li><b>container-fluid</b> &#8211; for dynamic body width</li>
+</ul>
+<p>
+  I personally prefer fixed. This is the code so far. I added container class to the &lt;b:skin&gt; which we can (and will) customize later.
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">b:version=</span><span class="s">'2'</span> <span class="na">class=</span><span class="s">'v2'</span> <span class="na">expr:dir=</span><span class="s">'data:blog.languageDirection'</span> <span class="na">xmlns=</span><span class="s">'https://www.w3.org/1999/xhtml'</span> <span class="na">xmlns:b=</span><span class="s">'https://www.google.com/2005/gml/b'</span> <span class="na">xmlns:data=</span><span class="s">'https://www.google.com/2005/gml/data'</span> <span class="na">xmlns:expr=</span><span class="s">'https://www.google.com/2005/gml/expr'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;&lt;data:blog.pageTitle/&gt;&lt;/title&gt;</span>
+    <span class="nt">&lt;b:skin&gt;</span><span class="cp">&lt;![CDATA[ .container { }  ]]&gt;</span><span class="nt">&lt;/b:skin&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'container'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>
+  Now add the divs for header, post area, right sidebar and footer and corresponding CSS classes. Code trimmed for brivity.
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;&lt;data:blog.pageTitle/&gt;&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'</span> <span class="na">rel=</span><span class="s">'stylesheet'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;b:skin&gt;</span><span class="cp">&lt;![CDATA[
+    #container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    #main-wrapper {
+      width: 710px;
+      float: left;
+    }
+    #sidebar-wrapper {
+      width: 250px;
+      float: right;
+    }
+    #footer-widgets {
+      padding: 0px 0px 5px 0px;
+    }
+  ]]&gt;</span><span class="nt">&lt;/b:skin&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'container'</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!-- Header --&gt;</span>
+   <span class="nt">&lt;b:section</span> <span class="na">class=</span><span class="s">'header'</span> <span class="na">id=</span><span class="s">'header'</span> <span class="na">maxwidgets=</span><span class="s">'1'</span> <span class="na">showaddelement=</span><span class="s">'yes'</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;b:widget</span> <span class="na">id=</span><span class="s">'Header1'</span> <span class="na">locked=</span><span class="s">'true'</span> <span class="na">title=</span><span class="s">'Blog title'</span> <span class="na">type=</span><span class="s">'Header'</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;/b:section&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'main-wrapper'</span><span class="nt">&gt;</span>
+     <span class="c">&lt;!-- Blog posts area --&gt;</span>
+     <span class="nt">&lt;b:section</span> <span class="na">class=</span><span class="s">'main'</span> <span class="na">id=</span><span class="s">'main'</span> <span class="na">maxwidgets=</span><span class="s">''</span> <span class="na">showaddelements=</span><span class="s">'yes'</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;b:widget</span> <span class="na">id=</span><span class="s">'Blog1'</span> <span class="na">locked=</span><span class="s">'false'</span> <span class="na">title=</span><span class="s">'Blog Posts'</span> <span class="na">type=</span><span class="s">'Blog'</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;/b:section&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'sidebar-wrapper'</span><span class="nt">&gt;</span>
+     <span class="c">&lt;!-- Right sidebar --&gt;</span>
+     <span class="nt">&lt;b:section</span> <span class="na">class=</span><span class="s">'sidebar'</span> <span class="na">id=</span><span class="s">'sidebar'</span> <span class="na">maxwidgets=</span><span class="s">''</span> <span class="na">showaddelements=</span><span class="s">'yes'</span><span class="nt">&gt;</span>
+       <span class="c">&lt;!-- Widgets can be added from layout page --&gt;</span>
+     <span class="nt">&lt;/b:section&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">'footer-widgets'</span><span class="nt">&gt;</span>
+     <span class="c">&lt;!-- Footer --&gt;</span>
+     <span class="nt">&lt;b:section</span> <span class="na">class=</span><span class="s">'footer'</span> <span class="na">id=</span><span class="s">'footer'</span> <span class="na">maxwidgets=</span><span class="s">''</span> <span class="na">showaddelements=</span><span class="s">'yes'</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;b:widget</span> <span class="na">id=</span><span class="s">'Attribution1'</span> <span class="na">locked=</span><span class="s">'false'</span> <span class="na">title=</span><span class="s">''</span> <span class="na">type=</span><span class="s">'Attribution'</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;/b:section&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre>
+</figure>
+<p>The above code should look like this on any blogger blog.</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/Screenshot-Friday05June2015-073A453A18IST.png"  /></p>
+<p>
+  The mobile site, I must say, would look horrible. Extra efforts are needed to make the template responsive. Since we already have Bootstrap, that is not a big deal either. I must conclude this post now, and for mobile friendly site, I may write an article soon.    Also, there is no SEO in this template. You must add relevant <i>&lt;meta&gt;</i> tags to make your blog more search engine friendly. You can always override CSS rules of bootstrap by writing your own in the <i>&lt;b:skin&gt;</i> section.
+</p>
+<p>Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Creating an autocomplete field &#124; Setting up the backend &#124; Part 1</title>
+		<link>https://nagekar.com/2014/12/creating-autocomplete-field-with-ajax.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Fri, 19 Dec 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[html]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[jquery]]></category>
+		<category><![CDATA[json]]></category>
+		<category><![CDATA[mysql]]></category>
+		<category><![CDATA[php]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/12/19/creating-autocomplete-field-with-ajax/</guid>
+
+					<description><![CDATA[Hello folks, so my exams are over and its time to roll. LOL pretty excited here. I am creating this series of two articles in which we will download all the pincodes (or zipcodes), add them to a MySQL database, write an API in PHP to retrieve the data in JSON, and finally we will [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;" trbidi="on">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<div style="text-align: left;">Hello folks, so my exams are over and its time to roll. LOL pretty excited here. I am creating this series of two articles in which we will download all the pincodes (or zipcodes), add them to a MySQL database, write an API in PHP to retrieve the data in JSON, and finally we will write our form, in which, when we enter a pincode, we automatically get the &#8216;taluka&#8217;, &#8216;district&#8217; and &#8216;state&#8217; fields filled. So lets begin.</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;">(and if you are from outside India, a &#8216;<i>taluka</i>&#8216; is a small region, like a city)</div>
+<div style="text-align: left;"></div>
+<h4 style="text-align: left;">Step 1 &#8211; Getting the Pincode list</h4>
+<div style="text-align: left;">This was my biggest concern. Where do I get a list of all the pincodes in India. I could write a script and iterate through all the possible pincodes from 100000 to 999999, but, of course, there had to be a better way (and by the way, I would have got banned by the site if I sent around a million requests in a short period of time).</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;">Fortunately, after some googling, I found a list here, at <a href="https://data.gov.in/">data.gov.in</a>, to directly download the list, click <a href="https://data.gov.in/resources/all-india-pincode-directory/download"><b>here</b></a>. The data is in .csv format, which is essentially a text document with some proper ordering (LOL).</div>
+<div style="text-align: left;"></div>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.nagekar.com/wp-content/uploads/2020/12/pincodes.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img loading="lazy" decoding="async" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/pincodes.png" height="264" width="640" /></a></div>
+<div style="text-align: left;"></div>
+<h4 style="text-align: left;">Step 2 &#8211; Setting up MySQL database</h4>
+<div style="text-align: left;">We will now add the values to a database with will serve as our source to retrieve data in the form. I am selecting MySQL because, well, that is the only SQL I currently know (wink!). I assume you know the basics of how to create a database, and even if you don&#8217;t, you can do it easily by using the&nbsp; <a href="https://sourceforge.net/projects/phpmyadmin/">phpmyadmin</a>. It is graphical, and will get the work done.</p>
+<p>The columns available for inserting data are:<br />officename,pincode,officeType,Deliverystatus,divisionname,regionname,circlename,Taluk,Districtname,statename </div>
+<div style="text-align: left;">I will be using only &#8216;pincode&#8217;, &#8216;Taluk&#8217;, &#8216;Districtname&#8217;, &#8216;Statename&#8217; here to avoid any unnecessary cluttering.</p>
+</div>
+<div style="text-align: left;">Create a database: <i>&#8216;turnouts&#8217;</i></div>
+<div style="text-align: left;">Create a table: <i>&#8216;pincode&#8217;</i></div>
+<div style="text-align: left;">Create 4 columns: <i>&#8216;pincode&#8217;, &#8216;taluka&#8217;, &#8216;district&#8217;, &#8216;state&#8217; </i></div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;">Needless to say, these are just names and you can have what you want, but just don&#8217;t go insane over them. This is how it should look, or similar.</div>
+<div style="text-align: left;"></div>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.nagekar.com/wp-content/uploads/2020/12/mysql.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img loading="lazy" decoding="async" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/mysql.png" height="275" width="640" /></a></div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;">Having done that, move to step 3.</div>
+<div style="text-align: left;"></div>
+<h4 style="text-align: left;">Step 3 &#8211; Writing the PHP script to enumerate database</h4>
+<div style="text-align: left;">So now we need to fill those database fields with data. If you take a look, the .csv file that we downloaded has around 152,000 lines. We can insert them manually, but that would take two and a half month, so we are better off writing a script. Language is on you. Python would work, but I preferred PHP, no good reason, I just choose it.</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;">Basically we read a line in the file, select the data that we are concerned about, generate a MySQL query dynamically in a loop, and execute the query. Then move to the next line till<i> feof </i>or end of file.</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;">Here is the php code.</div>
+</div>
+<pre class="brush: php">&lt;?php<br />	$file = fopen("pincodes.csv", "r") or die("Open file");<br />	$server = "localhost";<br />	$username = "root";<br />	$password = "password";<br />	$db = "turnouts";<br />	$conn = mysql_connect($server, $username, $password);<br />	mysql_select_db("turnouts") or die();<br />	if(!$conn) {<br />		die("Connection failed: " . mysqli_connect_error());<br />	}<br />	while(!feof($file)) {<br />		$line = fgets($file);<br />		$words = explode(",", $line);<br />		$pincode = $words[1];<br />		$taluka = $words[7];<br />		$district = $words[8];<br />		$state = $words[9];<br />		$sql = "INSERT INTO pincode (pincode, taluka, district, state) VALUES ('$pincode', '$taluka', '$district', '$state')";<br />		mysql_query($sql, $conn);<br />		mysql_error($conn);<br />	}<br />	fclose($file);<br />	mysql_close($conn);<br />?&gt;<br /></pre>
+<p>This code will take some time to execute. On my low end box, it took 90 minutes approx. After having executed, you should have a database with some real data. Here&#8217;s the row count, a whooping 154,797.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.nagekar.com/wp-content/uploads/2020/12/count.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img loading="lazy" decoding="async" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/count.png" height="230" width="640" /></a></div>
+<p>Now that we have our database setup, we are all set to write the front end. To make it easy to follow, I will write it in the second part of this series.</p>
+<p>Edit: <a href="https://www.nagekar.com/2014/12/autocomplete-field-setting-up-frontend.html" target="_blank">Here is the Part 2 </a>Enjoy!</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Creating an autocomplete field &#124; Setting up frontend &#124; Part 2</title>
+		<link>https://nagekar.com/2014/12/autocomplete-field-setting-up-frontend.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Fri, 19 Dec 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[html]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[jquery]]></category>
+		<category><![CDATA[json]]></category>
+		<category><![CDATA[mysql]]></category>
+		<category><![CDATA[php]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/12/19/autocomplete-field-setting-up-frontend/</guid>
+
+					<description><![CDATA[In the first part of this article, we had set up the backend MySQL database. Now we can write the code necessary to get information from the server and convert it to a format we can parse, JSON in my case here. So lets begin. Step 4 &#8211; Writing script to get data from MySQL [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;" trbidi="on">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<div dir="ltr" style="text-align: left;" trbidi="on">In the <a href="https://www.nagekar.com/2014/12/creating-autocomplete-field-with-ajax.html">first part of this article</a>, we had set up the backend MySQL database. Now we can write the code necessary to get information from the server and convert it to a format we can parse, JSON in my case here. So lets begin.</p>
+<h4 style="text-align: left;">Step 4 &#8211; Writing script to get data from MySQL database</h4>
+<div style="text-align: left;">As always, we can write it in any language we are comfortable with. PHP happens to be mine. The script is straight forward, accept the pincode via a GET request, &#8216;pincode&#8217; parameter. Query the database for its existence, add it to an array and using <a href="https://php.net/manual/en/function.json-encode.php" target="_blank">json_encode()</a> function in PHP, display the output. If value does not exist, it will return null, and it is not our concern here about what happens after that, as it will be taken care by the application using this API.</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;"><i>Code: retrieve.php</i></div>
+</div>
+<pre class="brush: php">&lt;?php<br /> $pincode = $_GET['pincode'];<br /> $conn = mysql_connect("localhost", "root", "password");<br /> mysql_select_db("turnouts") or die();<br /> <br /> $pincode = (string)mysql_real_escape_string($pincode);<br /> <br /> $sql = "SELECT taluka, district, state FROM pincode WHERE pincode = '$pincode'";<br /> $data = mysql_query($sql);<br /> if(!$data) {<br />  die(mysql_error());<br /> }<br /> $row = mysql_fetch_row($data);<br /> $taluka = $row[0];<br /> $district = $row[1];<br /> $state = $row[2];<br /> $state = str_replace("\r\n", "", $state);<br /> $taluka = strtolower($taluka);<br /> $district = strtolower($district);<br /> $state = strtolower($state);<br /> header('Content-type: application/json');<br /> $array = array('taluka'=&gt;$taluka, 'district'=&gt;$district, 'state'=&gt;$state);<br /> echo json_encode($array);<br />?&gt;&nbsp; </pre>
+</div>
+<p>The URL will follow the pattern, /retrieve.php?pincode=000000 and return data. As an example, the following image,</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.nagekar.com/wp-content/uploads/2020/12/json.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img loading="lazy" decoding="async" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/json.png" height="172" width="400" /></a></div>
+<p>If you have come successfully to this step, then bingo! We now have a working API.</p>
+<h4 style="text-align: left;">Step 5 &#8211; Writing an AJAX form using jQuery</h4>
+<div style="text-align: left;">&nbsp;We will now write a simple form with 4 fields in HTML. Include jQuery in that page, and then write the script at the bottom which will query our API asynchronously.</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;">Code: pincodes.html</div>
+</div>
+<pre class="brush: jscript">&lt;html&gt;<br />&lt;head&gt;<br /> &lt;title&gt;Pincodes&lt;/title&gt;<br /> &lt;script src="js/jquery-1.10.2.min.js"&gt;&lt;/script&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br />&lt;div id="form"&gt;<br /> &lt;label for="pincode"&gt;Pincode:&lt;/label&gt;<br /> &lt;input type="text" name="pincode" id="pincode" required /&gt;&lt;br /&gt;<br /><br /> &lt;label for="taluka"&gt;Taluka:&lt;/label&gt;<br /> &lt;input type="text" name="taluka" id="taluka" /&gt;&lt;br /&gt;<br /> &lt;label for="district"&gt;District: &lt;/label&gt;<br /> &lt;input type="text" name="district" id="district"&gt;&lt;br /&gt;<br /> &lt;label for="state"&gt;State:&lt;/label&gt;<br /> &lt;input type="text" name="state" id="state"&gt;&lt;br /&gt;<br />&lt;/div&gt;<br />&lt;script&gt;<br />$(document).ready(function() {<br /> $('#pincode').keyup(function(e) {<br />  var pincode = $(this).val();<br />  <br />  if(pincode.length == 6 &amp;&amp; $.isNumeric(pincode)) {<br />   var req = 'retrive.php?pincode=' + pincode;<br />   $.getJSON(req, null, function(data) {</pre>
+<pre class="brush: jscript">                 <br />    $('#taluka').val(data.taluka);<br />    $('#district').val(data.district);<br />    $('#state').val(data.state);<br />   });<br />  };<br /> });<br /&gt;});<br />&lt;/script&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;<br /></pre>
+<p>Some explanation goes here.<br />The <i>.keyup()</i> event fires when a key is pressed in that field. We could have use <i>onFocus()</i> or <i>onBlur()</i> in javascript but that only fires when a field is focused or blurred, so this is much better. Since we have pincodes of length 6 digits here in India, to prevent script from querying for the first five digits, we have added a <i>if(pincode.length == 6) </i>to our code.</p>
+<p>As I said, the even fires as soon as one enters the 6th digit and populates the remaining three fields with the data it retrieves. </p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.nagekar.com/wp-content/uploads/2020/12/form-1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img loading="lazy" decoding="async" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/form-1.png" height="212" width="400" /></a></div>
+<p>It is hard to show it in a still image, but having just entered the pin, rest of the fields get populated.</p>
+<h4 style="text-align: left;">Finally</h4>
+<div style="text-align: left;">So this was it. I hope you enjoyed it. Any corrections or suggesting, mail them to me or just comment down below. Thank you for reading.</div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

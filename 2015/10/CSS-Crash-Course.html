@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../index.html?feed=rss2" />
+  <link rel="alternate" type="application/atom+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../index.html?feed=atom" />
+
+	<title>CSS Crash Course &#8211; Abhishek Nagekar</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<script>
+window.koko_analytics = {"url":"https:\/\/nagekar.com\/koko-analytics-collect.php","site_url":"https:\/\/nagekar.com","post_id":1139,"path":"\/2015\/10\/CSS-Crash-Course.html","method":"none","use_cookie":false};
+</script>
+<link rel="alternate" type="application/rss+xml" title="Abhishek Nagekar &raquo; Feed" href="../../index.html?feed=rss2" />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='elementary-style-css' href='../../wp-content/themes/s/style.css?ver=1.0.0' media='all' />
+<link rel="https://api.w.org/" href="../../wp-json/index.html" /><link rel="alternate" title="JSON" type="application/json" href="../../wp-json/wp/v2/posts/1139" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nagekar.com/xmlrpc.php?rsd" />
+
+<link rel="canonical" href="../../index.html?p=1139" />
+<link rel='shortlink' href='../../index.html?p=1139' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="../../wp-json/oembed/1.0/embed?url=https:%252F%252Fnagekar.com%252F2015%252F10%252Fcss-crash-course.html" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="../../wp-json/oembed/1.0/embed?url=https:%252F%252Fnagekar.com%252F2015%252F10%252Fcss-crash-course.html&amp;format=xml" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-270x270.png" />
+		<style id="wp-custom-css">
+			
+.quotes-ol-container {
+	display: flex;
+  flex-direction: column-reverse;
+}
+
+.quotes-ol-container li {
+	flex: 0 0 auto;
+}		</style>
+		</head>
+
+<body class="wp-singular post-template-default single single-post postid-1139 single-format-standard wp-theme-s">
+<div class="container">
+	<nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="../../index.html" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../index.html?feed=rss2">RSS</a>,
+      <a href="../../index.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <hr class="stylish"/>
+
+<div class="_progress-wrapper">
+  <div id="_progress"></div>
+</div>
+
+<header>
+	<h1>CSS Crash Course</h1>
+	<header class="title-tags">
+		<time>8 October, 2015. It was a Thursday</time>
+		<div class="tags-container">
+			Posted under <span>
+										<a class="tags" href="../../tags#css">css</a>
+										<a class="tags" href="../../tags#html">html</a>
+							</span>
+			&nbsp;
+		</div>
+	</header>
+</header>
+
+<hr class="stylish" />
+
+<main role="main">
+
+	
+		<article>
+			<section class="content">
+				<p>I have a friend, who happens to be a good C and assembly programmer, but simply hates anything related to web, then be it HTML, CSS or anything way too much abstracted for that matter. Since it was compulsory for us to make our own web application project for college, he struggled to learn it (CSS and HTML) from here and there, cursing it at the same time. Hence this little guide, for all those of you who hate it, but still want to get your work done.</p>
+<h3>A thing or two about CSS</h3>
+<p>CSS isn&#8217;t a markup language. It is a styling language, and hence, it won&#8217;t really work if you have no document in the first place. Creating a document simply means adding some data to HTML tags in a web page. Here onwards, document would mean the HTML page that we are working on. Let us create one as an example.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Testing<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Awesome Site<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>A little heading<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p&gt;</span>A paragraph containing some text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>Some information<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p&gt;</span>More text...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>This is a very basic example that would display something like the following. You can guess what each tag stands for here, if not, &#8216;h&#8217; tag stands for heading, &#8216;h1&#8217; being the largest to &#8216;h6&#8217; being the smallest. &#8216;p&#8217; stands for paragraph, and there are many <a href="https://www.w3schools.com/html/" target="_blank" rel="noopener">such tags</a>, which are used as and when required.</p>
+<p><iframe src="https://nagekar.com/assets/css_files/test1.html" width="100%" height="auto"></iframe></p>
+<p>Now it is time to style our document. I will place all the CSS styling in a <code>&lt;style&gt;</code> tag, which I will be placing into the <code>&lt;head&gt;</code> of the document. Now you must know that I could do the exact same thing by using an external CSS file and linking it, or by styling individual elements using inline CSS. We will see what those are later. I think the main heading should be red, the subordinate headings should be green and the paragraphs should be orange. I also think the background should be a little off white. Let&#8217;s see how that translates into CSS.</p>
+<figure class="highlight">
+<pre><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#eee</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nt">h3</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">orange</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>Now that we have styled our page, let&#8217;s take another look at it.</p>
+<p>
+<iframe src="https://nagekar.com/assets/css_files/test2.html" width="100%" height="auto"></iframe></p>
+<p>Looks like it works, although it is looking ugly. Anyways, what we have used here is the <i>element selector</i> of CSS which, not surprisingly, selects the elements matching the tag name and applies the properties defined for it.</p>
+<h3>ID and Class selectors</h3>
+<p>Now, there may be times when you have multiple elements with same tag names but you want to apply CSS properties to only specific element(s). That is where the &#8216;id&#8217; and the &#8216;class&#8217; selector comes in. Note that however, the class here does now refer to anything from your object oriented programming books. It only gives those elements with that class a particular grouping. You can use any one of &#8216;id&#8217; and &#8216;class&#8217; as per your liking for now, but conventionally, we use &#8216;id&#8217; for uniquely identifying elements and &#8216;class&#8217; for grouping similar elements. Technically, there is an additional difference of precedence here, with the &#8216;id&#8217; having more precedence than &#8216;class&#8217;. My personal rule is that, for custom CSS use &#8216;id&#8217;, since frameworks like Bootstrap (which we will check out later on) usually use &#8216;class&#8217;.</p>
+<p>Now we shall rewrite the document adding an id attribute to each tag name.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"logo"</span><span class="nt">&gt;</span>Awesome Site<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"heading"</span><span class="nt">&gt;</span>A little heading<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"content"</span><span class="nt">&gt;</span>A paragraph containing some text<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"other-heading"</span><span class="nt">&gt;</span>Some information<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"other-content"</span><span class="nt">&gt;</span>More text...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre>
+</figure>
+<p>and we shall change the CSS accordingly</p>
+<figure class="highlight">
+<pre><code class="language-css" data-lang="css"><span class="nf">#logo</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#heading</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#other-heading</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">olive</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#content</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">orange</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#other-content</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">purple</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>The resulting page looks something like this, with each of the individual elements appearing in different color.</p>
+<p><iframe src="https://nagekar.com/assets/css_files/test3.html" width="100%" height="auto"></iframe></p>
+<p>Note that we could have well written &#8216;class&#8217; instead of &#8216;id&#8217; in our document, but then instead of <code>#logo</code> it would have been <code>.logo</code>, which is the class selector. Having learnt two selectors, we can now combine them to get the desired result. For example, <code>h3#heading { color: blue; }</code> would turn <span style="color: blue;">blue</span> all the h3 tags that have a <i><b>id=&#8221;heading&#8221;</b></i> attribute declared. Similarly, <code>h3.heading { color: blue; }</code> would result in the same thing to all the h3 tags with <i><b>class=&#8221;heading&#8221;</b></i>.</p>
+<h3>Group selectors</h3>
+<p>Group selectors are used to apply properties to multiple elements at once. Multiple elements are separated by commas.</p>
+<figure class="highlight">
+<pre><code class="language-css" data-lang="css"><span class="nf">#logo</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#heading</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#other-heading</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">olive</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#content</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">orange</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nf">#other-content</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">purple</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="c">/* Selecting all three tag names at once. */</span>
+<span class="nt">h1</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">yellow</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>Which will look like</p>
+<p><iframe loading="lazy" src="https://nagekar.com/assets/css_files/test4.html" width="100%" height="auto"></iframe></p>
+<h3>Descendant selectors</h3>
+<p>Sometimes, CSS properties needs to be applied only to tags within a specific tag or id. In such situations, the descendant selector comes in handy.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Testing<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="nt">ul</span> <span class="nt">em</span> <span class="p">{</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.25em</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Look what I've <span class="nt">&lt;em&gt;</span>got for ya!<span class="nt">&lt;/em&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;</span>item 1<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>item 2<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>item 3<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;em&gt;</span>this looks abnormal<span class="nt">&lt;/em&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>item 5<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>And this will render</p>
+<p><iframe loading="lazy" src="https://nagekar.com/assets/css_files/test5.html" width="100%" height="auto"></iframe></p>
+<p>Look how the <em>emphasis</em> at the top is normal but the one in the &#8216;ul&#8217; is enlarged. There is another similar selector called the child selector. It works similar to descendant selector but demands the child to be DIRECT descendant of the parent. For example, <code>p > a { color: green; }</code> will cause only the anchors directly children to any paragraph to look <span style="color: green;">green</span>. These are the various selectors that you would see and probably use when dealing with web applications. Simple enough, aren&#8217;t they?</p>
+<h3>&lt;div&gt; and &lt;span&gt;</h3>
+<p>Although div and span are html tags, any modern web application that you will write will heavily make use of these to group sections of the web page together. You might be familiar with the layouts of most websites these days, with a header on top, one or two column in the center with content and other options, and a footer at the bottom. Even on my blog, you&#8217;ll notice these three things. How are they made, and how to make them look so distinct that on the first glance, your visitors know what their purpose is. The answer lies in making proper divs and adding appropriate CSS to it. Div is a block element, which means that it is used to style multiple elements at once. Span, on the other hand, is inline, that is, it is used to style little chunks of content.</p>
+<p>I will write the 4 sections of a website I mentioned earlier, using divs. Read the code and you would understand what is happening.</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Testing<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;style&gt;</span>
+    <span class="o">*</span> <span class="p">{</span>
+      <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p"&gt;;</span> 
+    <span class="p">}</span>
+    <span class="nf">#header</span> <span class="p">{</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p"&gt;;</span>
+      <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+    <span class="nf">#container</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p"&gt;;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+    <span class="nf">#body</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">75%</span><span class="p"&gt;;</span>
+      <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p"&gt;;</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="n">grey</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+    <span class="nf">#side</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="m">25%</span><span class="p"&gt;;</span>
+      <span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p"&gt;;</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="no">blue</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+    <span class="nf">#footer</span> <span class="p">{</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="no">green</span><span class="p"&gt;;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"header"</span><span class="nt">&gt;&lt;h3&gt;</span>Header Text<span class="nt">&lt;/h3&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"body"</span><span class="nt">&gt;&lt;p&gt;</span>Content goes here<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"side"</span><span class="nt">&gt;&lt;p&gt;</span>Sidebar<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span><span class="nt">&gt;&lt;p&gt;</span>Copyrights<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</figure>
+<p>This sure looks beautiful, doesn&#8217;t it?</p>
+<p><iframe loading="lazy" src="https://nagekar.com/assets/css_files/test6.html" width="100%" height="auto"></iframe></p>
+<p>This completes the CSS syntax part. I did mention that you can write all your CSS in a file.css and include them in your document head with <code>&lt;link href="/assets/style.css" rel="stylesheet"&gt;</code> so that it is easier to maintain the code. There is yet another way to add CSS, which makes use of @import syntax. It is better avoided for the <a href="https://stackoverflow.com/questions/10036977/best-way-to-include-css-why-use-import" target="_blank" rel="noopener">linked reasons</a>.</p>
+<p>Now that you are well equipped with the necessary things to learn some actual and practical CSS, you must be really excited to read from w3schools. It is a great site to begin, and since it comes on top each time you search for anything related to CSS (or web programming, for that matter), you may use it as your sole reference guide. Nothing bad, but keep in mind that after leaving your nutshell, you should <a href="https://www.w3fools.com/" target="_blank" rel="noopener">avoid that site</a>, and start using some reputed docs instead, like the ones from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener">Mozilla</a>.</p>
+<h3>CSS Frameworks</h3>
+<p>To speed up the development process, you might want to check out some libraries out there that would ease your life. One of the best is <a href="https://getbootstrap.com/">Bootstrap</a>. It would enable you to do rapid development, with minimal typing. Bootstrap comes with jQuery, a Javascript library which also helps a lot dealing with web application stuff you are about to deal with. There is not much point reading the official docs if you only want to get the work done. Instead, I would suggest you to Google out things, pick up code on the way, keep going. That is exactly how I used to do stuff back then, when I hated to write CSS and HTML. Bad advice, but gets the job done most of the times.</p>
+<h3>Outro</h3>
+<p>CSS is amazing. Web is amazing. Today is a time when you either have to love the web, or keep fighting a losing battle convincing yourself that you don&#8217;t need it. Either way, knowing a thing or two about how the web pages that you spend more than half of your time on, are styled, is always a plus. As always, for anything, the comment box is always there. Corrections, please. Liked the article? Suggest it to your friends! Thank you for reading.</p>
+<p>
+			</section>
+
+			<hr class="stylish"/>
+
+			<aside class="featured-posts">
+  <h3>Unrelated</h3>
+  <ul>
+    <li><a href="../../index.html?p=1263">The Best Time Of Your Life Is Right Now</a></li>
+    <li><a href="https://nagekar.com/2019/01/mumbai-to-berlin.html">Mumbai To Berlin</a></li>
+    <li><a href="https://nagekar.com/2018/03/hum-devs-kab-banenge.html">Hum Developers Kab Banenge?</a></li>
+    <li><a href="https://nagekar.com/2016/11/a-visit-to-the-taj-mahal.html">A Visit To The Taj Mahal</a></li>
+    <li><a href="https://nagekar.com/2019/05/be-easy-on-yourself.html">Be Easy On Yourself</a></li>
+  </ul>
+</aside>
+
+			<hr class="stylish"/>
+
+			<section class="pagination">
+				
+					<a class="prev" href="https://nagekar.com/2015/09/birthday-week.html">&laquo; Birthday Week</a>
+
+					
+					<a class="next" href="https://nagekar.com/2015/11/passport-office.html"> Passport Office &raquo;</a>
+
+								</section>
+
+		</article>
+
+	
+</main><!-- #main -->
+
+
+</div>
+
+<footer>
+  <hr class="stylish"/>
+  <nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="../../index.html" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../index.html?feed=rss2">RSS</a>,
+      <a href="../../index.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <div>
+    Theme: <a href="https://github.com/abhn/Elementary">Elementary</a>
+    <br/>
+    <a>Abhishek Nagekar</a> &copy; 2025  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/s\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+<!-- Koko Analytics v2.0.19 - https://www.kokoanalytics.com/ -->
+<script>
+!function(){var e=window,r="koko_analytics";function t(t){t.m=e[r].use_cookie?"c":e[r].method[0],navigator.sendBeacon(e[r].url,new URLSearchParams(t))}e[r].request=t,e[r].trackPageview=function(){if("prerender"!=document.visibilityState&&!/bot|crawl|spider|seo|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)){var i=0==document.referrer.indexOf(e[r].site_url)?"":document.referrer;t({pa:e[r].path,po:e[r].post_id,r:i})}},e.addEventListener("load",function(){e[r].trackPageview()})}();
+</script>
+
+<script src="../../wp-content/themes/s/build/index.js?ver=1.0.0" id="elementary-script-js"></script>
+
+</body>
+</html>

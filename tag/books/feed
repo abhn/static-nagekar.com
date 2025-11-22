@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>books &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/books/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Mon, 09 Mar 2020 23:00:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>books &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Clean Code &#8211; Quotes</title>
+		<link>https://nagekar.com/2020/03/clean-code-quotes.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 09 Mar 2020 23:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2020/03/09/clean-code-quotes/</guid>
+
+					<description><![CDATA[Listing down some interesting quotes I read in Clean Code by Robert Martin. To quote him, reading these things would only serve as a feel good exercise without the actual meat of his methods. Nevertheless, I felt they&#8217;re too good to not make it to my blog. Enjoy! Nonsense! We will never be rid of [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>Listing down some interesting quotes I read in Clean Code by Robert Martin. To quote him, reading these things would only serve as a feel good exercise without the actual meat of his methods. Nevertheless, I felt they&#8217;re too good to not make it to my blog. Enjoy!</p>
+<blockquote><p>
+  Nonsense! We will never be rid of code, because code represents the details of the requirements. At some level those details cannot be ignored or abstracted; they have to be specified. And specifying requirements in such detail that a machine can execute them is programming. Such a specification is code.
+</p></blockquote>
+<p></p>
+<blockquote><p>
+  Of course you have been impeded by bad code. So then—why did you write it? Were you trying to go fast? Were you in a rush? Probably so. Perhaps you felt that you didn’t have time to do a good job; that your boss would be angry with you if you took the time to clean up your code. Perhaps you were just tired of working on this program and wanted it to be over. Or maybe you looked at the backlog of other stuff that you had promised to get done and realized that you needed to slam this module together so you could move on to the next. We’ve all done it.
+</p></blockquote>
+<p></p>
+<blockquote><p>
+  They may defend the schedule and requirements with passion; but that’s their job. It’s your job to defend the code with equal passion. To drive this point home, what if you were a doctor and had a patient who demanded that you stop all the silly hand-washing in preparation for surgery because it was taking too much time?2 Clearly the patient is the boss; and yet the doctor should absolutely refuse to comply. Why? Because the doctor knows more than the patient about the risks of disease and infection. It would be unprofessional (never mind criminal) for the doctor to comply with the patient. So too it is unprofessional for programmers to bend to the will of managers who don’t understand the risks of making messes. The Primal Conundrum Programmers face a conundrum of basic values.
+</p></blockquote>
+<p></p>
+<blockquote><p>
+  Clean code always looks like it was written by someone who cares. There is nothing obvious that you can do to make it better. All of those things were thought about by the code’s author, and if you try to imagine improvements, you’re led back to where you are, sitting in appreciation of the code someone left for you—code left by someone who cares deeply about the craft.
+</p></blockquote>
+<p>Will update from time to time&#8230;</p>
+<p>Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Quotes &#8211; Brief History Of Nearly Everything</title>
+		<link>https://nagekar.com/2019/11/brief-history-of-nearly-everything.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 20 Nov 2019 23:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2019/11/20/brief-history-of-nearly-everything/</guid>
+
+					<description><![CDATA[Listing down some interesting quotes from the book &#8216;A brief history of nearly everything&#8217; by Bill Bryson. Although the creation of a universe might be very unlikely, Tryon emphasized that no one has counted the failed attempts. He makes an analogy with a very large clothing store: &#8220;If there is a large stock of clothing, [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Listing down some interesting quotes from the book &#8216;A brief history of nearly everything&#8217; by Bill Bryson.
+</p>
+<ul>
+<li>Although the creation of a universe might be very unlikely, Tryon emphasized that no one has counted the failed attempts.</li>
+<li>He makes an analogy with a very large clothing store: &#8220;If there is a large stock of clothing, you&#8217;re not surprised to find a suit that fits.&#8221;</li>
+<li>&#8220;Huge parts of the world are still unexplored&#8221; &#8220;In terms of trilobites?&#8221; &#8220;No, in terms of everything&#8221;</li>
+<li>Oh fuck, not another phylum</li>
+<li>It is very easy to overlook this thought that life just is. As humans we are inclined to feel that life must have a point. We have plans and aspirations and desires. We want to take constant advantage of all the intoxicating existence we&#8217;ve been endowed with. But what&#8217;s life to a lichen? Yet its impulse to exist, to be, is every bit as strong as ours &#8212; arguably stronger. If I were told that I had to spend decades being a furry growth on a rock in the woods, I believe I would lose the will to go on. Lichens don&#8217;t. Like virtually all living things, they will suffer any hardship, endure any insult, for a moment&#8217;s additional existence. Life, in short, just wants to be. But &#8212; and here&#8217;s an interesting point &#8212; for the most part it doesn&#8217;t want to be much.</li>
+<li>To a first approximation, as David Raup likes to say, all species are extinct.</li>
+<li>&#8230;but you could have all Bdelloid Rotifer experts in the world to dinner and not have to borrow plates from the neighbors.</li>
+<li>&#8220;And I suppose that&#8217;s why you value someone who spends forty-two years studying a single species of plants, even if it doesn&#8217;t produce anything terribly new?&#8221; &#8220;Precisely&#8221;</li>
+<li>From an evolutionary point of view, sex is really just a reward mechanism to encourage us to pass on our genetic material.</li>
+<li>It cannot be said too often: All life is one. That is, and I suspect will forever prove to be, the most profound true statement there is.</li>
+</ul>
+<p>
+  Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>The Pragmatic Programmer Notable Quotes</title>
+		<link>https://nagekar.com/2018/10/the-pragmatic-programmer-quotes.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 15 Oct 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/10/15/the-pragmatic-programmer-quotes/</guid>
+
+					<description><![CDATA[I completed reading &#8216;The Pragmatic Programmer&#8217;, probably one of the most recommended pieces of literature on software engineering. I&#8217;ll try to put down some of the quotes and my interpretation of them in the following paragraphs. I&#8217;ll be coming back to this from time to time. Hope they help you in your next software project. [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  I completed reading &#8216;The Pragmatic Programmer&#8217;, probably one of the most recommended pieces of literature on software engineering. I&#8217;ll try to put down some of the quotes and my interpretation of them in the following paragraphs. I&#8217;ll be coming back to this from time to time. Hope they help you in your next software project.
+</p>
+<h3>The Cat Ate My Source Code</h3>
+<blockquote><p>
+  The greatest of all weaknesses is the fear of appearing weak.
+</p></blockquote>
+<p>
+  Take responsibility for the code that you write and the decisions that you make, and when things go south, present options to recover from the mess instead of pointing fingers.
+</p>
+<h3>Software Entropy</h3>
+<blockquote><p>
+  When disorder increases in software, programmers call it &#8220;software rot.&#8221;
+</p></blockquote>
+<p>
+  Active efforts have to be made to keep the disorder low and go against the nature&#8217;s law (of ever-increasing entropy) to keep away from software rot.
+</p>
+<blockquote><p>
+  Don&#8217;t Live with Broken Windows
+</p></blockquote>
+<p>
+  Once there is a broken window in a building, there will be more broken windows. This is the <a href="https://en.wikipedia.org/wiki/Broken_windows_theory">broken windows theory</a>. Similarly, once a piece of sloppy code enters a codebase, it will attract more sloppiness. Don&#8217;t be the one to introduce a broken window into your codebase and fix existing ones as soon as feasible.
+</p>
+<h3>Stone Soup and Boiled Frogs</h3>
+<blockquote><p>
+  The frog just doesn&#8217;t notice the change. Don&#8217;t be like the frog. Keep an eye on the big picture. Constantly review what&#8217;s happening around you, not just what you personally are doing.
+</p></blockquote>
+<p>
+  If you throw a frog into boiling water, it will jump out at your face. But if you put the frog in cold water and boil it, it won&#8217;t notice and get cooked to death. Good software projects die just like that, slowly, without anyone noticing.
+</p>
+<h3>Good-Enough Software</h3>
+<blockquote><p>
+  But artists will tell you that all the hard work is ruined if you don&#8217;t know when to stop. If you add layer upon layer, detail over detail, the painting becomes lost in the paint. Don&#8217;t spoil a perfectly good program by overembellishment and over-refinement.
+</p></blockquote>
+<p>
+  Know when to stop refining a piece of software. Make tradeoffs if they improve the overall quality of your software.
+</p>
+<h3>Your Knowledge Portfolio</h3>
+<ul>
+<li>Serious investors invest regularly—as a habit. </li>
+<li>Diversification is the key to long-term success. </li>
+<li>Smart investors balance their portfolios between conservative and high-risk, high-reward investments. </li>
+<li>Investors try to buy low and sell high for maximum return. </li>
+<li>Portfolios should be reviewed and rebalanced periodically. </li>
+</ul>
+<p>
+  Think about your knowledge portfolio as investors think about their investment portfolio.
+</p>
+<h3>Communicate!</h3>
+<blockquote><p>
+  It&#8217;s not just what you&#8217;ve got, but also how you package it. Having the best ideas, the finest code, or the most pragmatic thinking is ultimately sterile unless you can communicate with other people. A good idea is an orphan without effective communication.
+</p></blockquote>
+<p>
+  Learn to communicate with different kinds of people, technical and non-technical alike.
+</p>
+<h3>The Evils of Duplication</h3>
+<blockquote><p>
+  DRY (Don&#8217;t Repeat Yourself) principle: EVERY PIECE OF KNOWLEDGE MUST HAVE A SINGLE, UNAMBIGUOUS, AUTHORITATIVE REPRESENTATION WITHIN A SYSTEM.
+</p></blockquote>
+<p>
+  Documents are no exception. Don&#8217;t duplicate business logic in code AND documentation. There should be one true source of knowledge (model) and the others should simply be views of that source.
+</p>
+<h3>Orthogonality</h3>
+<blockquote><p>
+  In computing, the term has come to signify a kind of independence or decoupling. Two or more things are orthogonal if changes in one do not affect any of the others.
+</p></blockquote>
+<p>
+  The code you write has to be as decoupled from the rest of the project as possible. It makes bugs easier to find. There should never be overlapping functionality or duplicate code (also a violation of the DRY principle).
+</p>
+<h3>The Basic Tools</h3>
+<blockquote><p>
+  Every craftsman starts his or her journey with a basic set of good-quality tools.
+</p></blockquote>
+<p>
+  Selecting a good set of tools can greatly improve your productivity and skills.
+</p>
+<h3>Source Code Control</h3>
+<blockquote><p>
+  Always Use Source Code Control
+</p></blockquote>
+<p>
+  Even on single person projects that&#8217;s never going to see the light of the sun.
+</p>
+<h3>Debugging</h3>
+<blockquote><p>
+  Embrace the fact that debugging is just problem solving, and attack it as such.
+</p></blockquote>
+<blockquote><p>
+  The best way to start fixing a bug is to make it reproducible. After all, if you can&#8217;t reproduce it, how will you know if it is ever fixed?
+</p></blockquote>
+<blockquote><p>
+  &#8220;select&#8221; Isn&#8217;t Broken
+</p></blockquote>
+<p>
+  If you encounter a bug, always be suspicious of your own code. No, the compiler isn&#8217;t broken and nor is the CPU. It is your code, fix it.
+</p>
+<h3>Pragmatic Paranoia</h3>
+<blockquote><p>
+  You Can&#8217;t Write Perfect Software
+</p></blockquote>
+<blockquote><p>
+  But Pragmatic Programmers take this a step further. They don&#8217;t trust themselves, either.
+</p></blockquote>
+<blockquote><p>
+  When everybody actually is out to get you, paranoia is just good thinking.
+</p></blockquote>
+<p>
+  We overestimate our capabilities often. Most people think they&#8217;re the best drivers out there. Pragmatic programmers understand that everyone, including themselves, make mistakes, and hence keep an eye out for bugs before they creep in.
+</p>
+<h3>Dead Programs Tell No Lies</h3>
+<blockquote><p>
+  When your code discovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it as soon as possible. A dead program normally does a lot less damage than a crippled one.
+</p></blockquote>
+<h3>Assertive Programming</h3>
+<blockquote><p>
+  If It Can&#8217;t Happen, Use Assertions to Ensure That It Won&#8217;t
+</p></blockquote>
+<blockquote><p>
+  Turning off assertions when you deliver a program to production is like crossing a high wire without a net because you once made it across in practice. There&#8217;s dramatic value, but it&#8217;s hard to get life insurance.
+</p></blockquote>
+<p>
+  Always use assertions to make sure things are working well, even in situations when you&#8217;re sure or things are &#8216;obviously simple&#8217;. Detect early and abort.
+</p>
+<h3>When to Use Exceptions</h3>
+<blockquote><p>
+  &#8220;Will this code still run if I remove all the exception handlers?&#8221; If the answer is &#8220;no,&#8221; then maybe exceptions are being used in nonexceptional circumstances.
+</p></blockquote>
+<p>
+  Don&#8217;t use exception for normal code flow control. Exceptions need to be reserved for &#8216;exceptional&#8217; situations.
+</p>
+<h3>Decoupling and the Law of Demeter</h3>
+<blockquote><p>
+    Organize your code into cells (modules) and limit the interaction between them. If one module then gets compromised and has to be replaced, the other modules should be able to carry on.
+</p></blockquote>
+<h3>Metaprogramming</h3>
+<blockquote><p>Configure, Don&#8217;t Integrate</p></blockquote>
+<blockquote><p>Our goal is to think declaratively (specifying what is to be done, not how) and create highly dynamic and adaptable programs.</p></blockquote>
+<blockquote><p>Program for the general case, and put the specifics somewhere else—outside the compiled code base.</p></blockquote>
+<blockquote><p>Put Abstractions in Code, Details in Metadata</p></blockquote>
+<blockquote><p>Because business policy and rules are more likely to change than any other aspect of the project, it makes sense to maintain them in a very flexible format.</p></blockquote>
+<h3>It&#8217;s Just a View</h3>
+<blockquote><p>The view is an interpretation of the model (perhaps a subset)—it doesn&#8217;t need to be graphical.</p></blockquote>
+<blockquote><p>The controller is more of a coordination mechanism, and doesn&#8217;t have to be related to any sort of input device.</p></blockquote>
+<p>
+  Understand what a view really is. Everything revolves around the models, and views are just different ways in which you can represent those models.
+</p>
+<h3>While You Are Coding</h3>
+<blockquote><p>However, good, safe drivers are constantly reviewing the situation, checking for potential problems, and putting themselves into good positions in case the unexpected happens. The same is true of coding—it may be largely routine, but keeping your wits about you could well prevent a disaster.</p></blockquote>
+<h3>Programming by Coincidence</h3>
+<blockquote><p>Fred doesn&#8217;t know why the code is failing because he didn&#8217;t know why it worked in the first place. </p></blockquote>
+<blockquote><p>If you don&#8217;t have fundamentals or infrastructure correct, brilliant bells and whistles will be irrelevant. </p></blockquote>
+<p>
+  Program consciously. Write code thinking of it as an autonomous task once you have the business requirements and architecture clear is a mistake. There has to be equal involvement during programming.
+</p>
+<h3>Refactoring</h3>
+<blockquote><p>
+  Rather than construction, software is more like gardening—it is more organic than concrete. You plant many things in a garden according to an initial plan and conditions. Some thrive, others are destined to end up as compost. You may move plantings relative to each other to take advantage of the interplay of light and shadow, wind and rain. Overgrown plants get split or pruned, and colors that clash may get moved to more aesthetically pleasing locations. You pull weeds, and you fertilize plantings that are in need of some extra help. You constantly monitor the health of the garden, and make adjustments (to the soil, the plants, the layout) as needed.
+</p></blockquote>
+<blockquote><p>
+  If it hurts now, but is going to hurt even more later, you might as well get it over with.
+</p></blockquote>
+<h3>Code That&#8217;s Easy to Test</h3>
+<blockquote><p>
+  All software you write will be tested—if not by you and your team, then by the eventual users—so you might as well plan on testing
+</p></blockquote>
+<h3>The Requirements Pit</h3>
+<blockquote><p>Don&#8217;t Gather Requirements—Dig for Them</p></blockquote>
+<blockquote><p>Work with a User to Think Like a User</p></blockquote>
+<blockquote><p>The key to managing growth of requirements is to point out each new feature&#8217;s impact on the schedule to the project sponsors.</p></blockquote>
+<h3>Ubiquitous Automation</h3>
+<blockquote><p>Civilization advances by extending the number of important operations we can perform without thinking.</p></blockquote>
+<p>
+  Automate as much as you can.
+</p>
+<h3>Ruthless Testing</h3>
+<blockquote><p>
+  Most developers hate testing. They tend to test gently, subconsciously knowing where the code will break and avoiding the weak spots. Pragmatic Programmers are different. We are driven to find our bugs now, so we don&#8217;t have to endure the shame of others finding our bugs later.
+</p></blockquote>
+<blockquote><p>
+  Test State Coverage, Not Code Coverage
+</p></blockquote>
+<h3>It&#8217;s All Writing</h3>
+<blockquote><p>
+  One of the most important pieces of information that should appear in the source file is the author&#8217;s name—not necessarily who edited the file last, but the owner.
+</p></blockquote>
+<h3>Pride and Prejudice</h3>
+<blockquote><p>
+  We want to see pride of ownership. &#8220;I wrote this, and I stand behind my work.&#8221; Your signature should come to be recognized as an indicator of quality. People should see your name on a piece of code and expect it to be solid, well written, tested, and documented. A really professional job. Written by a real professional. A Pragmatic Programmer.
+</p></blockquote>
+<p>
+  Take pride in your work. Don&#8217;t just assume it will be a small cog in the big wheel and use that as an excuse to write sloppy code.
+</p>
+<h3>In Closing</h3>
+<p>
+  That&#8217;s all. There&#8217;s a lot more in the book, the stories and the experiences. I highly recommend you give it a try if your day job involves writing computer code. Thanks for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Book Review &#8211; Sapiens By Yuval Noah Harari</title>
+		<link>https://nagekar.com/2018/04/book-review-sapiens-yuval-harari.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 07 Apr 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/04/07/book-review-sapiens-yuval-harari/</guid>
+
+					<description><![CDATA[The motivation for reading this book came during the Jagriti Yatra when I was recommended this book, not once or twice, but thrice during the 15 days by three independent people. I&#8217;d only heard about this book before that. So on returning, I made it a point to buy a paperback and read this book [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    The motivation for reading this book came during the <a href="/2018/01/jagriti-yatra.html">Jagriti Yatra</a> when I was recommended this book, not once or twice, but thrice during the 15 days by three independent people. I&#8217;d only heard about this book before that. So on returning, I made it a point to buy a paperback and read this book and see for myself what all the fuss it about. I wasn&#8217;t disappointed!
+</p>
+<p>
+    As the name suggests, the book is about us, humans (unless you&#8217;re a cat, in which case it is about your beloved owner). The author starts off by giving a description of what our species was like a hundred thousand years ago. From there, he describes the major events or changes, in his opinion, that shaped the world as we see it today. The book is divided into four major parts, namely; Cognitive revolution, Agricultural revolution, unification of humankind and Scientific revolution. Each part focuses on a change in the way of life of humans that carved the way things moved forward, until this very day. The main idea is that humans have learnt how to collaborate in large numbers by believing in a common &#8216;myth&#8217;, a concept that the author nicely explains with the example of Peugeot Company.
+</p>
+<p>
+    The book is really well written for a wide range of audience. If you have the slightest interest in historical events, pick this book up. If you have ever awed at the accomplishments of humans, telescopes in space, footsteps on Moon and on Everest top and deep down in the Mariana trench, give this book a shot. Love biology, or psychology or just reading about cultures? This book is for you. In short, the content is so widespread that it leaves you wondering how much must the author had researched to write this book.
+</p>
+<p>
+    One thing that you must consciously realize is that, if you leave out the first part, the next three contain huge amounts of opinions of the author. Initially, I made this small mistake of reading this book as a fact book, which my manager accurately pointed out, this book isn&#8217;t. This book is a novel (even the author mentions it), and not a history book, and as such, while most things are accurate, the inferences are author&#8217;s own and so are many other things. But that&#8217;s okay. You cannot possible fit in the entire human history in 450 odd pages, and hence there will be some subjectivity and biases (even history, for that matter, is biased based on who is recording the events), but on the whole, if you&#8217;re a person with an open mind, you&#8217;ll really appreciate the writing.
+</p>
+<p>
+    And there&#8217;s a lot to learn from even the author&#8217;s inferences. The entire book is like you taking a step away and zooming out on life. Why are things the way they are? Author tries to give you a reasonable perspective, based on historical evidence.
+</p>
+<p>
+    And it really widens your own thought horizon. Knowing about the lives of our ancestors, the hunters and foragers in the plains of Africa, then the farmers and all the dynasts and dictators, the wars and the discoveries, you inevitably question yourself, your priorities and the fundamental questions of life itself. It is as if, you knew many of these things only intuitively, but the author takes it a step further and explains them by joining the dots and drawing conclusions. Reading it from the author&#8217;s POV, understanding the ideas of liberalism and how it is very different from what Buddhism teaches, ideas of communism, of capitalism and the various religions that we identify ourselves with, is a good experience.
+</p>
+<p>I&#8217;d highly recommend this book. An experience that you shouldn&#8217;t miss.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Book Review &#8211; The Mythical Man Month &#8211; Fred Brooks</title>
+		<link>https://nagekar.com/2018/03/book-review-the-mythical-man-month.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 27 Mar 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/03/27/book-review-the-mythical-man-month/</guid>
+
+					<description><![CDATA[Probably one of the highest recommended books in the software world, this isn&#8217;t your typical tutorial/guide/reference book on programming or software engineering. Rather, this book is a series of ideas, more or less independent, on large software projects. I&#8217;ll have to admit that you should get some actual software development/management time under your belt before [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    Probably one of the <a href="https://blog.codinghorror.com/recommended-reading-for-developers/">highest</a> <a href="https://www.goodreads.com/list/show/12811.Top_Ten_Most_Influential_Programming_Books_of_All_Times">recommended</a> <a href="https://stackoverflow.com/questions/1711/what-is-the-single-most-influential-book-every-programmer-should-read">books</a> in the software world, this isn&#8217;t your typical tutorial/guide/reference book on programming or software engineering. Rather, this book is a series of ideas, more or less independent, on large software projects.
+</p>
+<p>
+    I&#8217;ll have to admit that you should get some actual software development/management time under your belt before picking up this book, otherwise it is very difficult to make the right connections, which is very important given this is a book full of essays from the 70s software development era. Details might have gone outdated, and many other things won&#8217;t really work in today&#8217;s fast paced startups who live by the fail fast mantra. Nevertheless, the human aspect of software is very accurately depicted in the text. Why software projects are difficult to manage? Why does adding man power to an already late project only makes it &#8216;later&#8217;? Why is communication important? These are some of the interesting questions that the author addresses in the text with his opinions and experiences.
+</p>
+<p>
+    I won&#8217;t go into the content of the book, as I would never be able to do justice to it. If you&#8217;re looking for a short summary, refer the <a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">Wikipedia page</a> for the book. Highly recommended if you&#8217;re a software developer and would like to read one of the rare kind of books in our field, a book on the human aspect of software engineering.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Book Review &#8211; Into Thin Air &#8211; Jon Krakauer</title>
+		<link>https://nagekar.com/2018/02/book-review-into-think-air-jon-krakauer.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Fri, 02 Feb 2018 23:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/02/02/book-review-into-think-air-jon-krakauer/</guid>
+
+					<description><![CDATA[While I&#8217;m not into mountaineering, trekking or hiking in general (obviously), having a cousin who&#8217;s deep into climbing and also having stood at the foot of Himalayas last year and stared high into the sky at Mt. Trishul, a 20,000+ ft peak which was the first ever 7000&#8217;er to be ascended by humans, I&#8217;ve always [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    While I&#8217;m not into mountaineering, trekking or hiking in general (obviously), having a cousin who&#8217;s deep into climbing and also having stood at the foot of Himalayas <a href="/2017/02/trip-to-bramhatal-uttarakhand.html">last year</a> and stared high into the sky at Mt. Trishul, a 20,000+ ft peak which was the first ever 7000&#8217;er to be ascended by humans, I&#8217;ve always had an eye for mountaineering. By that, I don&#8217;t mean the actual thing, but that I spend time on the web reading and watching documentaries about mountaineers.
+</p>
+<p>
+    So Abhishek suggested me a book called Eiger Dreams, but via that I found another book titled Into Thin Air by the same author and gave it a try, partly because I&#8217;d watched the documentary about this 1996 Everest disaster on TV, and wanted to see how different reading it is from watching it on TV.
+</p>
+<p>
+    The book is written excellently. On the expedition, the author was a journalist for the &#8216;Outside&#8217; magazine preparing a story while this mishap unfolded. Naturally, the events are very well documented, from random conversations with people during the journey to his thoughts in a hypoxic state 26,000 ft high (The author does a great job at contrasting his thoughts then versus now which gives the reader an idea about not just the physical exhaustion, but the mental turmoil and hence poor decision making capabilities at high altitudes). At times you feel like you&#8217;re travelling alongside Jon, experiencing his highs and lows.
+</p>
+<p>
+    Right from getting an offer to document the Everest base camp, negotiating with the magazine for full summit expedition sponsorship, illustrating the characters involved in the story one by one, camp experiences, going for summit, facing a storm, going through a very difficult two day phase at camp four before taking the route down the mountain, the causalities and the emotions that the author puts down, you will literally have a hard time putting this book down.
+</p>
+<p>
+    While the story writing is as good as I can imagine, the accounts from the disaster are still covered with controversies. What exactly happened on 10<sup>th</sup> of May, 1996? Probably no one will ever know for sure, but irrespective of what happened and who was at fault, if anyone, for the loss of eight lives, this book gives you a perspective on how mountaineers think. I constantly felt that their brains are wired differently. They see the risk of life much differently that we non-mountaineers do, perhaps that is why decide to go up there, where the risk is as real as it can get.
+</p>
+<p>
+    Just after those unfortunate couple of days around 10<sup>th</sup> and 11<sup>th</sup>, when the world lost couple of the best mountaineers in history along with others to the fury of <i>Sagarmatha</i>, more people attempted the summit, in spite of knowing about the deaths that took place about a week ago. Four more people lost their lives that season, and that mountain is as popular as it ever was even today.<br />
+    <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/Mount_Everest_as_seen_from_Drukair2_PLW_edit-scaled.jpg"/><br />
+    <i>https://www.nagekar.com/wp-content/uploads/2020/12/Mount_Everest_as_seen_from_Drukair2_PLW_edit-scaled.jpg</i>
+</p>
+<p>
+    Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Book Review &#8211; Applied Cryptography Part I And II &#8211; Bruce Schneier</title>
+		<link>https://nagekar.com/2017/11/book-review-applied-cryptography-cryptography-engineering.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 19 Nov 2017 23:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<category><![CDATA[cryptography]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/11/19/book-review-applied-cryptography-cryptography-engineering/</guid>
+
+					<description><![CDATA[This book has been, without a doubt, crucial in aiding my understanding of cryptosystems and why things are the way they are, and how do these cryptic crypto algorithms even work. If you are interested in learning how to develop software that are &#8216;correct&#8217; and secure, then this is a great book to understand what [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    This book has been, without a doubt, crucial in aiding my understanding of cryptosystems and why things are the way they are, and how do these cryptic crypto algorithms even work. If you are interested in learning how to develop software that are &#8216;correct&#8217; and secure, then this is a great book to understand what are the primitives of information security, what algorithms already exist and which ones to use in what scenario.
+</p>
+<p>
+    So the motivation to pursue a thorough understanding of cryptography and to gain the ability and knowledge required to make a secure cryptosystem came sometime after college ended, when I and Kunal were working on a terminal chat application that would support end-to-end encryption. At that time, I hardly knew what I had gotten myself into (which is similar to a lot of things in my life), as the application development part seemed very simple. We got done with the application part, terminal app and the backend, and then came the encryption part, and that is when the knowledge about existing techniques and understanding of basic crypto primitives fell short. And that is when I started reading about cryptography and stumbled upon this book.
+</p>
+<p>
+    Although they seemed daunting at first, both the books are very accommodating for a wide range of audience, right from someone like me who barely knew what a block cipher is, to the more experienced folks who might understand all of the mathematics given in the book in the first go. While not very complex (school grade algebra with addition, multiplication, modulus and xor operations), it takes a little effort (read: re-reading a topic 3 times, sometimes more) to actually get what&#8217;s happening, why an operation is being performed, for example.
+</p>
+<p>
+    While reading the first book, remember that it was written when I was literally a year old, in 1996. Hence, although the engineering principles and general recommendation is still valid, you need to keep in mind that the algorithms recommended in that book are not valid (as attacks are found for many of them and DES has officially retired), and that is corrected in the second edition of the book. In any case, studying the DES algorithm in detail should be a delight for any crypto nerd, regardless of its practical value.
+</p>
+<p>
+    The second version is more up to date, and for some reason I was more comfortable reading it than the first one. It might be because I knew a little more while reading the second edition, which can be a good tip: If you&#8217;re serious about understanding cryptography from an engineering standpoint, skim over the first book and make a note of everything that you find useful and interesting, and do a more detailed study of the second edition of the book.
+</p>
+<p>
+    What I found nice about the books is, they really are <i>&#8216;applied&#8217;</i> books. It isn&#8217;t all mathematics and algorithms, but the actual merger of these algorithms into real world systems. In the real world, cryptography and cryptosystems don&#8217;t exist in isolation, but play a small role in the larger scheme of things. Breaking a cryptosystem is usually reserved for the more resourceful adversary, and while these (well established and peer reviewed) cryptographic primitives rarely fail, when they do, it is catastrophic. The computational infeasibility makes the theoretical aspect of cryptography very secure. Problems appear when they are implemented, and that is where the bugs start to show up. Then there is the software development methodology which usually prioritises deadlines and features above security. There is a section dedicated to explaining what &#8216;trust&#8217; is, how it forms such an important aspect of information security and secure software development. Overall, the book is quite interesting to read, and the content is without a doubt top quality, which is what one expects from Schneier.
+</p>
+<p>
+    In closing, I&#8217;d recommend this book if you are into security and wouldn&#8217;t mind knowing the details of some of the fundamental algorithms that make the digital revolution possible. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Book Review &#8211; Responsive Web Design By Ethan Marcotte</title>
+		<link>https://nagekar.com/2017/11/book-review-responsive-web-design-ethan-marcotte.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 18 Nov 2017 23:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/11/18/book-review-responsive-web-design-ethan-marcotte/</guid>
+
+					<description><![CDATA[It has been a while since my last book review post here. Not that I stopped reading, but I kinda stopped reading non-tech things lately, and hence, there were no new posts. But today, it hit me that I can (and should, given this is a personal diary) write about pretty much anything that I [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    It has been a while since my last book review post here. Not that I stopped reading, but I kinda stopped reading non-tech things lately, and hence, there were no new posts. But today, it hit me that I can (and should, given this is a personal diary) write about pretty much anything that I read and find interesting. So here it is, a book by Ethan Marcotte, which I first read about a year and a half ago and then re-read it before a month or so. Responsive web design wasn&#8217;t (and still isn&#8217;t) my piece of cake. Heck, web <i>design</i> was something totally alien to me in the first place.
+</p>
+<p>
+    The happy realization that being able to set up websites (read: wordpress/joomla blogs on a nix server) doesn&#8217;t make one a web developer, much less a designer, came about two years ago, when Dhananjay, a college senior of mine, was contacted by one of his contacts who was looking for a frontend developer. The task was supposed to take <i>a couple of hours</i> at max. Knowing that I did things around the web, Dhananjay outsourced that opportunity to me.
+</p>
+<p>
+    That was one incident that still gives me chills, <a href="https://www.nagekar.com/2015/12/The-October-Dance-With-Cool-Indians.html">and I wrote a bit on that earlier</a>. Not only because I realized how horrible I was with frontend and design, but also because I didn&#8217;t have the slightest clue about deadlines, how to and how much to work, and how to deal with things that are out of my control. It was a design heavy page, and I had a depth first approach of dealing with things. The end result was that a few pieces took up 80% of my 5 days of work (<i>easily</i> worked for over 70 hours), and the end result was nothing short of a design disaster. That one incident has taught me a lot, especially about how real work happens.
+</p>
+<p>
+    I guess it was then when I had read Ethan&#8217;s book for the first time. I believe it wasn&#8217;t as much for learning as it was to put on some burnol on my bruised ego. But nevertheless, even then the book had given me much insights about what web designing actually is, and why it isn&#8217;t very different from what I had been doing all along, it just requires thinking in a different mindset.
+</p>
+<p>
+    Fast forward to June this year, I interviewed at a couple of places for the role of a web developer. I was expecting a role on the backend, maybe a nodejs or python based job, but instead, I got a job as a ReactJS engineer. Yeah, a frontend engineer. As difficult as it was for me to digest it, I had to accept the fact that I will be dealing with a lot of CSS now. I had to up my design game, or it was game over, and I seriously didn&#8217;t want to screw as bad as I did two year ago. My friend Kunal was kind enough to lend me his Head First HTML &amp; CSS book which I am currently reading. But apart from the raw knowledge, it was the mindset that I required immediately, the mindset of a frontend developer, and for that, I picked up Responsive Web Design once again.
+</p>
+<h3>Shall we start with the review, Plis?</h3>
+<p>
+    Sure. The author starts by talking about architecture, responsive architecture in particular, about artists and their canvases. Responsive architecture is all around us, from window panes that allow variable amounts of light depending upon the time of the day, to modern home equipments. The author then talks about the usual restrictions in print media, and how web designers are fighting hard to recreate those restrictions on our browsers. We do not have to do that. The canvas of a web designer is inherently responsive. It isn&#8217;t a flaw, it is a freedom.
+</p>
+<p>
+    The author makes sure that reading this book won&#8217;t feel like the usual wall-of-text-hitting-your-face-with-technical-jargon experience. The book feels like a spiritual exercise, as if web designing is an art waiting to be discovered by an engineer who always saw it like a soul dead practice of giving random attributes to random elements and praying to the Gods of DOM that it looks just decent enough to pass the QA. I was really immersed into the book as I was reading it, and hoping that it lasts forever, which it obviously didn&#8217;t. The book is not long, and is divided into three sections; <i>The responsive grid</i>, <i>Responsive images</i> and <i>Media queries</i>. After reading this book, you&#8217;ll look at hardcoded &#8216;px&#8217; values as if they were taboo in your (code) culture. The author shows how simple calculations can turn all the zombie pixel measurements into the more lively &#8217;em&#8217;s and &#8216;rem&#8217;s, which are, of course, responsive.
+</p>
+<p>
+    A good article that the author strongly recommends is a blog post that was written some 17 years ago from now, but still is as relevant today as it was then. The post is called <a href="https://alistapart.com/article/dao">A Dao of Web Design</a>, and it falls into the must-reads category for me. To give you a taste of the article, read the following quote.</p>
+<blockquote><p>
+        The control which designers know in the print medium, and often desire in the web medium, is simply a function of the limitation of the printed page. We should embrace the fact that the web doesn’t have the same constraints, and design for this flexibility. But first, we must “accept the ebb and flow of things.“
+    </p></blockquote>
+<p>
+    Beautiful, isn&#8217;t it? Suddenly, web design isn&#8217;t something that you do when you&#8217;ve done everything you could do to avoid it in the first place. True, writing CSS by hand is time consuming, working and supporting multiple browsers and display sizes is stressful to say the least, and most of the time, you&#8217;re better off using a ready-made solution like Bootstrap or Semantic, but once in a while, it is good to think about web as your canvas and think of yourself as an artist trying to fill in beautiful colors into the canvas. Now whenever I think about the different ways in which my web application is supposed to look on different screens, I remind myself that it isn&#8217;t a &#8216;restriction&#8217; that the app needs to look <i>that</i> way on <i>that</i> screen. Rather, it is a freedom that the app can look the way it needs to look in order to be the most comfortable version of itself for that particular reader. Ever seen a person struggling with folding a newspaper on a busy bus stop, or a cautious women carrying a large piece of art in her arms, making sure she doesn&#8217;t bend it, yes, that is exactly what a restriction, a limitation looks like. Thankfully, our dearest web doesn&#8217;t have that one. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Book Review &#8211; Deep Work By Cal Newport</title>
+		<link>https://nagekar.com/2017/07/book-review-deep-work-cal-newport.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 09 Jul 2017 22:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/07/09/book-review-deep-work-cal-newport/</guid>
+
+					<description><![CDATA[I watched this video on Youtube that had a list of 10 books that every student should read. The first one, Deep Work by Cal Newport, was of particular interest to me, and I decided to read it. The reason? I&#8217;m a distraction junkie. Introduction On the highest possible level, the book is divided into [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	I watched <a href="https://www.youtube.com/watch?v=SwY3A92s-xg">this video on Youtube</a> that had a list of 10 books that every student should read. The first one, <b>Deep Work by Cal Newport</b>, was of particular interest to me, and I decided to read it. The reason? I&#8217;m a distraction junkie.
+</p>
+<h3>Introduction</h3>
+<p>
+	On the highest possible level, the book is divided into two parts. The first part is where the author tries to convince us that deep work is valuable, that it results in a greater degree of productivity, that many successful people who create value embrace a state of hyper-focused concentration towards the work they&#8217;re doing. The book illustrates how an obligation by employers (especially in knowledge work) to respond to emails quickly, be active on social media websites and to work in a common work space full of noise, interruptions and shallow tasks (like frequent meetings) has resulted in a generation of knowledge workers who have accepted distractions as a way to life.
+</p>
+<p>
+	The second part assumes that we&#8217;ve accepted that the <i>deep life is a good life, a life well lived</i> and gives us a set of guidelines that we can follow to get the most out of our work hours. The reason for this part is quite clear. If I was asked to switch off my email for 3 days straight, or if an employee decides that he/she will not participate in their team&#8217;s daily meetings, that will have adverse effects on our careers. Best case, people will be upset with your delayed responses to their messages, worst case, you lose your job. Now how does one strike a balance between the two parts of their work life, the immediate part (shallow work) and the important part (deep work), without sacrificing a hand and a leg in exchange.
+</p>
+<p>
+	Following are a few key takeaways for me from the book. I&#8217;ll try to summarize each point in a line or two. The quotes are from the book itself.
+</p>
+<h3>Need for Deep Work</h3>
+<p>
+	The author mentions the three groups of people who will thrive in the current economy, where most of the jobs are getting replaced by computer code.</p>
+<ul>
+<li>those who can work with intelligent machines</li>
+<li>those who are the best at what they do</li>
+<li>those with the capital to invest</li>
+</ul>
+<p>	Now unless you belong to the last category, you&#8217;ll need to produce high quality work at an elite level. A lot of people can write computer code. But the few who create something of value with code that the masses then use is elite work. Deep work isn&#8217;t for those who wish to live an ordinary life. You can be a good engineer who does what the job expects from you and never need deep work. Deep work comes in when you want to push the abilities of your concentration muscle to its limits and produce high value in your profession.
+</p>
+<p>
+	Now depending on how we look at it, due to the social media / distraction media outburst, the number of knowledge workers who can work deeply has reduced significantly. It opens up a whole new opportunity for people who still have the ability (or can train themselves) to do deep work. And deep work is still valuable. Look at all the various artists, painters, musicians and other creative workers. It is common to see deep work in their profession because of it&#8217;s immediate effects. Deep work gives these people a sense of meaning in their work. But in case of knowledge workers, Internet (and the associated distractions) is an inevitable part of their lives, and that is why deep work is becoming increasingly rare here.
+</p>
+<blockquote><p>
+	I have been a happy man ever since January 1, 1990, when I no longer had an email address. I’d used email since about 1975, and it seems to me that 15 years of email is plenty for one lifetime. Email is a wonderful thing for people whose role in life is to be on top of things. But not for me; my role is to be on the bottom of things. What I do takes long hours of studying and uninterruptible concentration. &#8211; Donald Knuth
+</p></blockquote>
+<h3>Embrace Boredom</h3>
+<blockquote><p>
+	Idleness is not just a vacation, an indulgence or a vice; it is as indispensable to the brain as vitamin D is to the body, and deprived of it we suffer a mental affliction as disfiguring as rickets… it is, paradoxically, necessary to getting any work done.
+</p></blockquote>
+<p>
+	My personal problem right here. When I get 10 minutes of free time, I look into my phone. I have tonnes of applications that then keep me engaged (&#8220;updated&#8221;). I have content aggregators like Reddit which make sure I&#8217;m never short of content that can quench my thirst for distractions. And this is while I actively realize that the stuff I&#8217;m reading isn&#8217;t of much value to my future. To use an analogy, it is like having street side &#8220;Chinese&#8221; food. You know it isn&#8217;t good for your health, but you end up giving in to the temptations. Now, the obvious demerit to this is an adverse effect to your health. But what about the effect it has on your will power. Giving in to temptations and desires weakens your &#8220;mental muscle&#8221; for will power. It becomes harder and harder to resist the temptation when you keep giving in over and over again. The only way to train this muscle is to actively resist the temptation for distractions.
+</p>
+<p>
+	And apart from this, giving in to easy distractions keep your mind busy and dries it off its ability to work on value generating problems. It does not let quality thoughts come into your mind for subconscious processing, and as a result, you slowly but steadily lose the power to focus and do deep work altogether.
+</p>
+<h3>(Quit) Social Media</h3>
+<p>
+	The author talks about all the adverse effects social media has on our productivity. Having a &#8220;presence&#8221; on websites like Facebook and Twitter, posting regular updates to keep your &#8220;audience&#8221; engaged and thus boosting whatever business you&#8217;re in, is not only a very misinformed thought, but also something that has become quite common in the information age. Here the author makes some great counterpoints on why, even if social networking has some benefits to it for some people, most people are better off spending the same time on work that can earn them the respect and reputation that can outweigh any benefits of a social media presence in the first place. Not to mention, this can save you the thoughts about &#8220;what your friends might be doing in their life right now?&#8221; when you&#8217;re working on something important.
+</p>
+<h3>Miscellaneous and Conclusion</h3>
+<p>
+	The author talks about (surprisingly) detailed ways to get back your time from shallow activities. From talking to your boss explicitly about the ratio of your shallow to deep work, to answering an email such that it does not generate follow-ups that will take more of your time, to simply filtering what emails to actually answer. These are some real life tips that can be embraced by many knowledge workers.
+</p>
+<p>
+	I think this was one of the best self help books that I&#8217;ve read (I&#8217;ve not read a lot of them, to be honest), just as useful as &#8220;How to win friends and influence people&#8221; was for building relationships. The author&#8217;s use of simple language, of logical arguments (that most of us think about, but never question or go a step further into researching), examples of strategies, real world case studies and how to practically apply them into our &#8220;busy&#8221; schedules are some of the reasons that make reading this book truly worthwhile. I would highly recommend it to all those who feel &#8220;busy&#8221; all day, but don&#8217;t get a lot done. Who feel the need to check emails, messengers, social networks every 30 minutes to not miss out on the important stuff. Who want to overcome their addiction to shallow irrelevant &#8220;news articles&#8221; and memes. I&#8217;ll leave you with this&#8230;
+</p>
+<blockquote><p>
+	Ironically, jobs are actually easier to enjoy than free time, because like flow activities they have built-in goals, feedback rules, and challenges, all of which encourage one to become involved in one’s work, to concentrate and lose oneself in it. Free time, on the other hand, is unstructured, and requires much greater effort to be shaped into something that can be enjoyed.
+</p></blockquote>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Book Review &#8211; Siddhartha By Hermann Hesse</title>
+		<link>https://nagekar.com/2017/06/book-review-siddhartha-hermann-hesse.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 06 Jun 2017 22:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/06/06/book-review-siddhartha-hermann-hesse/</guid>
+
+					<description><![CDATA[A little late with May&#8217;s book review, but here it is. This month&#8217;s book was a little unconventional (for me), and the first of its kind that I&#8217;ve read. The book is called Siddhartha and it describes the spiritual quest of a young Brahmin boy named Siddhartha and his friend Govinda. If you&#8217;re planning to [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	A little late with May&#8217;s book review, but here it is. This month&#8217;s book was a little unconventional (for me), and the first of its kind that I&#8217;ve read. The book is called Siddhartha and it describes the spiritual quest of a young Brahmin boy named Siddhartha and his friend Govinda.
+</p>
+<p><b><br />
+	If you&#8217;re planning to read the novel to the fullest, stop reading here and pick that book up. The next section is my summary, for personal documentation purposes, and not recommended to the reader as it would spoil the flow for you.<br />
+</b></p>
+<p>
+	The book starts with Siddhartha and Govinda leaving their homes and families to seek the knowledge of Self, living their lives as &#8216;Samanas&#8217; and embracing asceticism. Both friends separate when Govinda wishes to join Buddha and his disciples as a monk, while Siddhartha differs and believes that true wisdom, unlike knowledge, cannot be communicated by one person to another. Thus, Siddhartha parts ways, crosses a river with the help of a Ferryman and reaches the town, where the author describes his life with &#8216;Kamala&#8217; as an ordinary person, amidst wealth, pleasures of life and &#8216;Sansara&#8217;. He soon realizes that this is not what he would wanted, and leaves it all only to end by the side of the same river he had crossed earlier, on the verge of committing suicide.
+</p>
+<p>
+	But then, just as he wakes up from an enlightening dream, he meets his friend Govinda again, who is surprised to find Siddhartha in rich cloths and nice shoes. Siddhartha decides to approach the ferryman and work with him for he wanted to learn from the river. He lives a modest life with the ferryman, who is a good friend and an excellent listener. Later he meets Kamala again, this time with &#8216;Little Siddhartha&#8217;, his son. Kamala, who&#8217;s bitten by a poisonous snake, dies in the Vasudeva&#8217;s (ferryman&#8217;s) hut. Siddhartha has a tough time with his son, who finally leaves him and runs away in the town, the same way Siddhartha had run away from his father when he was young. Siddhartha realizes the cycle in life, the river communicates extensively with him the wisdom that he had been seeking. Finally he is at peace. He tells everything to Govinda, who after realizing his friend has attained what he had always looked for, decides to leave Siddhartha and disappears in the forest.
+</p>
+<p>
+	Years pass by and Siddhartha turns old. He meets Govinda one day, and they exchange their past stories. Govinda, who turned into a Buddha follower, is still searching, and Siddhartha tells him that Govinda would never find what he&#8217;s looking for as long as he&#8217;s searching for it with a goal in his mind, as opposed to finding that thing with an open mind. Govinda has a hard time understanding Siddhartha&#8217;s mind. He is asked by Siddhartha to kiss his forehead. Govinda, on doing so, learns what he was seeking all along. He then tearfully bows to Siddhartha, and leaves. Here the novel ends.
+</p>
+<p>
+	This was the first spiritual novel that I&#8217;ve read, and it had a lot of thought provoking text in it. The author does poetry in his way and it is a delight to read the chapters, visualizing the parts and &#8216;seeing&#8217; everything through Siddhartha&#8217;s eyes. If you are, like me, not much into fiction, give this book a try. The emotions it generates, the quest, the simplicity in the stories yet the depth in the message is simply amazing. Totally recommended.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

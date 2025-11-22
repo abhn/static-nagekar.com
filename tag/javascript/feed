@@ -1,0 +1,1215 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>javascript &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/javascript/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Sun, 11 Oct 2020 22:00:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>javascript &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>DIY Web Analytics</title>
+		<link>https://nagekar.com/2020/10/diy-web-analytics.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 11 Oct 2020 22:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[web]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2020/10/11/diy-web-analytics/</guid>
+
+					<description><![CDATA[I&#8217;ve long established that adding heavy duty analytics and tracking scripts to my blog pages isn&#8217;t the right thing to do. Personally, it is also a bit liberating to not know which article of mine is getting a lot of traffic and which isn&#8217;t, because then I&#8217;m not biased by what the internet is searching [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  I&#8217;ve long established that adding heavy duty analytics and tracking scripts to my blog pages isn&#8217;t the right thing to do. Personally, it is also a bit liberating to not know which article of mine is getting a lot of traffic and which isn&#8217;t, because then I&#8217;m not biased by what the internet is searching for and can write about pretty much anything that I feel like writing about. <q>10 programming languages you should learn in 2020</q> has exactly the same weight as <q>Let me tell you a funny story from last night</q>, so which one do think I&#8217;d write about?
+</p>
+<p>
+  The analytics and tracking world has come a long way and is viewed very negatively in the light of recent internet incidents. But it started off very simple and had a very simple and non-malicious idea at its core: Getting to know your user better so that you can serve them better.
+</p>
+<p>
+  That thought made me search for a simple analytics solution that I could run on my blog for a couple of weeks and get enough insights to make informed decisions regarding the frontend design changes while not compromising on the privacy of the visitors. If I&#8217;m completely honest, I was also just curious to know these things with no agenda behind it.
+</p>
+<p>
+  I looked into <a href="https://simpleanalytics.com/">Simple Analytics</a>, a nice solution that does exactly what I needed (perhaps a bit more than that), but a little expensive for me at USD 19 a month. There are also self hosted analytics solutions like <a href="https://plausible.io/">Plausible</a>, but that was too much work for realizing this simple thought. So I decided to put something together quickly and the following is what I ended up implementing.
+</p>
+<h3>Client side JavaScript</h3>
+<p>
+  On the client side, I needed to get the data that interested me. It was details like the browsers used by my visitors, platform, width of their screens etc. More technically, the user agent, platform, screen width, referrer and the current page&#8217;s url (although I don&#8217;t plan on using it for this article. Spoiler: One of my lowest effort articles is pulling more than half of all pageviews which is a bit saddening).
+</p>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre>
+</td>
+<td class="code">
+<pre><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="dl">'</span><span class="s1">doNotTrack</span><span class="dl">'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="p">(</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">doNotTrack</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">analytics</span> <span class="o">=</span> <span class="p"&gt;{};</span>
+
+  <span class="nx">analytics</span><span class="p">[</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p"&gt;;</span>
+  <span class="nx">analytics</span><span class="p">[</span><span class="dl">"</span><span class="s2">userAgent</span><span class="dl">"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p"&gt;;</span>
+  <span class="nx">analytics</span><span class="p">[</span><span class="dl">"</span><span class="s2">width</span><span class="dl">"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span><span class="p"&gt;;</span>
+  <span class="nx">analytics</span><span class="p">[</span><span class="dl">"</span><span class="s2">referrer</span><span class="dl">"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">referrer</span><span class="p"&gt;;</span>
+  <span class="nx">analytics</span><span class="p">[</span><span class="dl">"</span><span class="s2">platform</span><span class="dl">"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">platform</span><span class="p"&gt;;</span>
+
+  <span class="nb">navigator</span><span class="p">.</span><span class="nx">sendBeacon</span><span class="p">(</span><span class="nx">ANALYTICS_ENDPOINT</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">analytics</span><span class="p"&gt;));</span>
+<span class="p">}</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  There&#8217;s not much happening here. Just checking if the user prefers to not be tracked, else get the desired data and POST it to our analytics endpoint using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">navigator.sendBeacon</a> API.
+</p>
+<h3>Server</h3>
+<p>
+  We need to implement the endpoint that&#8217;s listening for the POST requests from our client browsers. I decided to go with Firebase&#8217;s functions for handling the request and Firebase&#8217;s realtime database to store the data.
+</p>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">functions</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">firebase-functions</span><span class="dl">'</span><span class="p"&gt;);</span>
+<span class="kd">const</span> <span class="nx">admin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">firebase-admin</span><span class="dl">'</span><span class="p"&gt;);</span>
+
+<span class="nx">admin</span><span class="p">.</span><span class="nx">initializeApp</span><span class="p"&gt;();</span>
+
+<span class="kd">const</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cors</span><span class="dl">'</span><span class="p">)({</span>
+  <span class="na">origin</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p"&gt;});</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="nx">functions</span><span class="p">.</span><span class="nx">https</span><span class="p">.</span><span class="nx">onRequest</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">method</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">snapshot</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">admin</span><span class="p">.</span><span class="nx">database</span><span class="p">().</span><span class="nx">ref</span><span class="p">(</span><span class="dl">'</span><span class="s1">/hit</span><span class="dl">'</span><span class="p">).</span><span class="nx">push</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p"&gt;));</span>
+    <span class="k">return</span> <span class="nx">cors</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">success</span><span class="dl">'</span> <span class="p"&gt;});</span>
+    <span class="p"&gt;});</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">have a good day!</span><span class="dl">'</span> <span class="p"&gt;});</span>
+  <span class="p">}</span>
+<span class="p"&gt;});</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  Now this is super bad code for a variety of reasons, but it worked for my temporary needs. I deployed this, waited for a couple of weeks and had some data to answer some basic questions about my blog&#8217;s visitors.
+</p>
+<h3>Parsing data</h3>
+<p>
+  So at this point I had let this code run long enough to have accumulated couple of hundred entries. It was time to analyze. Firebase allows you to easily export the database in JSON format. Using some basic Python-fu, I created lists of each dimension and passed these lists to Python&#8217;s builtin <code>collections.Counter</code> (which is perfect since I&#8217;m only interested in aggregated stats), and then take the top 5 most frequent items using the <code>.most_common</code> method. Finally, we plot bar charts for these top 5 values across each dimension using Matplotlib to visualize the results.
+</p>
+<figure class="highlight">
+<pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre>
+</td>
+<td class="code">
+<pre><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">user_agents</span> <span class="kn">import</span> <span class="n">parse</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">analytics_data</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_chart_from_ctr</span><span class="p">(</span><span class="n">ctr</span><span class="p">):</span>
+    <span class="n">most_common</span> <span class="o">=</span> <span class="n">ctr</span><span class="p">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">most_common</span><span class="p">],</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">most_common</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">driver</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'export.json'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">hit</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">'hit'</span><span class="p">]</span>
+        <span class="n">entries</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">hit</span><span class="p">:</span>
+            <span class="n">entries</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">hit</span><span class="p">[</span><span class="n">item</span><span class="p">])</span>
+
+        <span class="n">analytics_data</span><span class="p">[</span><span class="s">'height'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">:</span>
+            <span class="n">analytics_data</span><span class="p">[</span><span class="s">'width'</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">'width'</span><span class="p">])</span>
+            <span class="n">analytics_data</span><span class="p">[</span><span class="s">'href'</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">'href'</span><span class="p">])</span>
+            <span class="n">analytics_data</span><span class="p">[</span><span class="s">'platform'</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">'platform'</span><span class="p">])</span>
+            <span class="n">analytics_data</span><span class="p">[</span><span class="s">'referrer'</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">'referrer'</span><span class="p">])</span>
+            <span class="n">analytics_data</span><span class="p">[</span><span class="s">'userAgent'</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">'userAgent'</span><span class="p">])</span>
+
+    <span class="n">browser_family</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="n">analytics_data</span><span class="p">[</span><span class="s">'userAgent'</span><span class="p">]:</span>
+        <span class="n">user_agent</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">agent</span><span class="p">)</span>
+        <span class="n">browser_family</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_agent</span><span class="p">.</span><span class="n">browser</span><span class="p">.</span><span class="n">family</span><span class="p">)</span>
+
+    <span class="n">ctr_browser_family</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">browser_family</span><span class="p">)</span>
+    <span class="n">plot_chart_from_ctr</span><span class="p">(</span><span class="n">ctr_browser_family</span><span class="p">)</span>
+
+    <span class="n">ctr_platform</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">analytics_data</span><span class="p">[</span><span class="s">'platform'</span><span class="p">])</span>
+    <span class="n">plot_chart_from_ctr</span><span class="p">(</span><span class="n">ctr_platform</span><span class="p">)</span>
+
+    <span class="n">ctr_referrer</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">analytics_data</span><span class="p">[</span><span class="s">'referrer'</span><span class="p">])</span>
+    <span class="n">plot_chart_from_ctr</span><span class="p">(</span><span class="n">ctr_referrer</span><span class="p">)</span>
+
+    <span class="n">ctr_width</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">analytics_data</span><span class="p">[</span><span class="s">'width'</span><span class="p">])</span>
+    <span class="n">plot_chart_from_ctr</span><span class="p">(</span><span class="n">ctr_width</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">driver</span><span class="p">()</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<h3>The questions</h3>
+<h4>What are the most common browsers?</h4>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/analytics-browser.png"/><figcaption>I would&#8217;ve guessed this to be the case for browsers, but not in Chrome&#8217;s favour to this extent 🙁</figcaption></figure>
+<h4>What are the most common platforms?</h4>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/analytics-platform.png"/><figcaption>Win32 is still the majority platform among my visitors and there&#8217;s some Apple action going on. There&#8217;s also a healthy chunk of Linux X86_64 visitors. The armv7l and armv8l may contain Android devices but hard to tell.</figcaption></figure>
+<h4>What are the most common referrers?</h4>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/analytics-referrer.png"/><figcaption>Unsurprisingly, most of the traffic comes through Google.</figcaption></figure>
+<h4>What are the most common screen widths?</h4>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/analytics-width.png"/><figcaption>There&#8217;s a healthy mix of screen resolutions with the most frequent being 360px.</figcaption></figure>
+<h3>In closing</h3>
+<p>
+  So that&#8217;s it for this little article. I&#8217;m happy with the outcome given how little effort went into this whole assignment. I hope you enjoyed reading it. As always, write me an email in case you have any comments!
+</p>
+<p>
+  Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Looping Over Stuff In Javascript</title>
+		<link>https://nagekar.com/2019/12/looping-over-stuff-in-javascript.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 30 Dec 2019 23:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2019/12/30/looping-over-stuff-in-javascript/</guid>
+
+					<description><![CDATA[Occasionally, I get stuck wondering what I should use to iterate over a list/collection of items in Javascript. There seem to be a hundred ways of achieving it. To tackle that and have a handy little reference, I&#8217;m writing this guide touching all the common ways of iterating that I use and the kind of [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Occasionally, I get stuck wondering what I should use to iterate over a list/collection of items in Javascript. There seem to be a hundred ways of achieving it. To tackle that and have a handy little reference, I&#8217;m writing this guide touching all the common ways of iterating that I use and the kind of data they are a good fit for.
+</p>
+<h3>for</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ball</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cat</span><span class="dl">'</span><span class="p"&gt;];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p"&gt;;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p"&gt;;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p"&gt;]);</span>
+<span class="p">}</span>
+<span class="c1">// Output:</span>
+<span class="c1">// apple</span>
+<span class="c1">// ball</span>
+<span class="c1">// cat</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  The <i>regular</i> for loop (with a loop variable that iterates from some number to some other number with user supplied increments) is the most common form of for loop. I try to use as little of this one as possible as there&#8217;s usually a better suited loop available for the job. But if nothing else fits, know that the &#8216;regular for&#8217; has your back.
+</p>
+<h3>for..in</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">firstName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">lastName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Doe</span><span class="dl">'</span>
+<span class="p">}</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">const</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">prop</span><span class="p"&gt;);</span>
+<span class="p"&gt;};</span>
+<span class="c1">// Output:</span>
+<span class="c1">// firstName</span>
+<span class="c1">// lastName</span>
+
+<span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p"&gt;];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">const</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">prop</span><span class="p"&gt;);</span>
+<span class="p"&gt;};</span>
+<span class="c1">// Output:</span>
+<span class="c1">// 0</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  for..in loop can be used to iterate over properties of an object. Supplying an array to for..in will give the index in the loop variable. In either case, doing a obj[prop] or arr[prop] should enable looping over the object&#8217;s key values or array items.
+</p>
+<h3>for..of</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p"&gt;];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">const</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">prop</span><span class="p"&gt;);</span>
+<span class="p"&gt;};</span>
+<span class="c1">// Output:</span>
+<span class="c1">// 3</span>
+<span class="c1">// 2</span>
+<span class="c1">// 1</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  for..of loop is useful for linearly looping over iterables like strings and arrays from the first to last item. I often mistake the for..in loop for this, but adding a new loop was how ES6 prevented breaking all the legacy code that depended on for..in to give array indices and not array items.
+</p>
+<h3>Array.prototype.forEach</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">World</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Alice</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p"&gt;];</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">word</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello</span><span class="dl">'</span><span class="p">,</span> <span class="nx">word</span><span class="p"&gt;);</span>
+<span class="p"&gt;});</span>
+<span class="c1">// Output:</span>
+<span class="c1">// Hello World</span>
+<span class="c1">// Hello Alice</span>
+<span class="c1">// Hello Bob</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  Array.prototype.forEach will accept a callback function (say <code>(item [, index, array]) => {}</code>) and call it with each item in that array. An optional second argument will carry the current item&#8217;s index. Optional third argument passes the reference of the original array if you wish to operate on it inside the callback.
+</p>
+<p>
+  <strong>Note</strong> that Array.prototype.forEach simply means that you can invoke this method directly on an array, like <code>[3, 2, 1].forEach(...)</code>
+</p>
+<h3>Array.prototype.map</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p"&gt;];</span>
+<span class="kd">const</span> <span class="nx">arr10x</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">item</span> <span class="o">*</span> <span class="mi">10</span><span class="p"&gt;;</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr10x</span><span class="p"&gt;);</span>
+<span class="c1">// Output:</span>
+<span class="c1">// [100, 200, 300]</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  Map maps over the items in the array, calls a callback with each item and returns a new array created from the values returned from callback functions.
+</p>
+<h3>Array.prototype.filter</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p"&gt;];</span>
+<span class="kd">const</span> <span class="nx">onlyEvens</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">item</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p"&gt;;</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">onlyEvens</span><span class="p"&gt;);</span>
+<span class="c1">// Output:</span>
+<span class="c1">// [2, 4, 6, 7]</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  Filter calls a callback function with each item in the array and returns a new array with only the elements for which the callback returns true. In general, the callback function implements the logic to determine if a given element should be present in the resultant filtered array (returns truthy if it should).
+</p>
+<h3>Array.prototype.reduce</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p"&gt;];</span>
+<span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">accumulator</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">accumulator</span> <span class="o">+</span> <span class="nx">item</span><span class="p"&gt;;</span>
+<span class="p">},</span> <span class="mi">0</span><span class="p"&gt;);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p"&gt;);</span>
+<span class="c1">// Output:</span>
+<span class="c1">// 21</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  It took my a long time to get used to Array.prototype.reduce, most likely because I don&#8217;t use it often. But it shows up quite often when you&#8217;re working on functional code, or functional programming languages like Haskell.
+</p>
+<p>
+  The Array.prototype.reduce method takes two arguments, a reducer function (of the signature <code>(accumulator, curr) => return newAccumulator</code>) and an initial accumulator value. In the first iteration, the accumulator takes the initial value. In the next iterator, the return value of the previous iteration becomes the new accumulator value. After the last iteration, the accumulator value is returned from the Array.prototype.reduce method.
+</p>
+<h3>Object.keys() and Object.values()</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">:</span> <span class="mi">2</span><span class="p"&gt;};</span>
+<span class="kd">const</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p"&gt;);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">keys</span><span class="p"&gt;);</span>
+<span class="c1">// Output:</span>
+<span class="c1">// ['a', 'b']</span>
+
+<span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p"&gt;);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">values</span><span class="p"&gt;);</span>
+<span class="c1">// Output:</span>
+<span class="c1">// [1, 2]</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  Object.keys() and Object.values() take in an object and return an array of all the keys and values of that object in an array respectively which can then be used with the looping methods discussed above.
+</p>
+<h3>Object.entries()</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">:</span> <span class="mi">2</span><span class="p"&gt;};</span>
+<span class="kd">const</span> <span class="nx">entries</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">obj</span><span class="p"&gt;);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">entries</span><span class="p"&gt;);</span>
+<span class="c1">// Output:</span>
+<span class="c1">// [ ['a', 1], ['b', 2] ]</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  Object.entries takes in an object and returns a multidimensional array with each item a pair of key-value pair from the object.
+</p>
+<h3>while and do..while</h3>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre>
+</td>
+<td class="code">
+<pre><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p"&gt;];</span>
+<span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p"&gt;;</span>
+<span class="k">while</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">index</span><span class="p"&gt;]);</span>
+<span class="p">}</span>
+<span class="c1">// Output:</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+<span class="c1">// 3</span>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p></code></figure>
+<p>
+  while and do..while are the other classics apart from the good &#8216;ol for loop. I don&#8217;t use while and do..while loops for iteration. They&#8217;re generally useful when you&#8217;re repeating a task without knowing in advance the number of times you&#8217;ll be repeating (for..in and for..of do that) or you&#8217;d want to only run the loop until a specific condition holds true (for can do that).
+</p>
+<p>
+  An interesting use case where while loops shine is when we need to iterate indefinitely (until the given condition is true), which isn&#8217;t really iteration and hence I have put this section at the end, just as good to stuff.
+</p>
+<h3>In closing</h3>
+<p>
+  That&#8217;s it. I hope that simplifies iteration for you a bit. It certainly did for me. Did I miss any way of looping over iterables? Do let me know! I hope you learned something from this article. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Javascript &#8211; The Good Parts</title>
+		<link>https://nagekar.com/2019/01/javascript-the-good-parts.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 31 Jan 2019 23:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2019/01/31/javascript-the-good-parts/</guid>
+
+					<description><![CDATA[This isn&#8217;t going to be a shameless ripoff of Douglas Crockford&#8217;s work in the book Javascript &#8211; The Good Parts, which used to be a highly recommended book in the Javascript community before ES6 took off. Rather, I&#8217;m going to write what are, according to me, the good parts of the Javascript programming language. I&#8217;m [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    This isn&#8217;t going to be a shameless ripoff of Douglas Crockford&#8217;s work in the book <i>Javascript &#8211; The Good Parts</i>, which used to be a highly recommended book in the Javascript community before ES6 took off. Rather, I&#8217;m going to write what are, according to me, the good parts of the Javascript programming language. I&#8217;m not keen on making this sound like an endorsement or otherwise. I am more interested in exploring the reasons that make Javascript such a popular language even if not the most loved. Why is it that the language you find at most programming bootcamps is Javascript? In this little post, let&#8217;s try to reason that.
+</p>
+<p>
+    The motivation for writing this post came from my company, which is launching a new course that will teach people with no programming experience full stack web development. The course will teach a student all they need to know to write a complete web application, in Javascript. That made me wonder, why teach (just) Javascript? Why not Python, or Ruby, or something even fancier? Following are some of my ideas.
+</p>
+<h3>Because ease of learning</h3>
+<p>
+    Javascript is a high level language, and the learning curve is somewhat flat until you get to the last 20% or so of the language. You don&#8217;t need to know a lot of computer science and computer organization to pick something like Javascript or Python. On the contrary, the typical first languages that are taught in colleges (in India), C and C++, require you to understand memory, stacks and heaps, platform that you write code for and so on.
+</p>
+<p>
+    Also, given the event driven nature of the web, Javascript makes a lot of sense when you&#8217;re interacting with user actions (Javascript supports <a href="
+    /2016/04/event-driven-programming.html">event-driven style of programming</a>). It is easy to express intentions in Javascript, and given that it has been around for some time now, most problems that you&#8217;d face are already solved somewhere by someone.
+</p>
+<h3>Because community and support</h3>
+<p>
+    Javascript has a huge user base, and I&#8217;m not talking about the end users. I&#8217;m talking about developers. Many people I know started their careers in software technology with Javascript. There&#8217;s good reason for that. One that there&#8217;s no shortage of resources on learning Javascript, debugging, utility libraries, UI libraries, testing and frontend frameworks. It is easy for people to pick something up and stay motivated when they have their questions answered easily with google searches, and they find people with whom they can relate the learning process.
+</p>
+<h3>Because jobs</h3>
+<p>
+    It is easy to find jobs that require Javascript, which is something that definitely matters if you&#8217;re learning how to write code for getting employed (which many of us are). The salary might not be as high as for some other languages and frameworks, but it would in general be high enough. Also, it is always possible, and much easier, to move in between different tech roles than getting into one in the first place.
+</p>
+<h3>Because frontend and backend</h3>
+<p>
+    If you&#8217;ve been programming for some time now, picking a new language isn&#8217;t at all difficult, and that&#8217;s part of what is expected of us programmers. But for someone who&#8217;s just starting out, being able to program an entire application in a single language is a huge plus, as compared to spending a lot more time learning their second language for backend specifically. You can always learn a new language later on specifically for backend or anything else, once you are a decent Javascript developer.
+</p>
+<h3>Because JSON</h3>
+<p>
+    JSON, or Javascript Object Notation, is a format for representing data as key value pairs in a text document (Douglas Crockford, mentioned earlier, is the creator of JSON). As the name suggests, it is the same format that you&#8217;d use to represent an Object in Javascript. While JSON is not exclusive to Javascript (since it is a file format), it is well integrated into the Javascript-verse and accepted as the <i>de-facto</i> format of data exchange.
+</p>
+<p>
+    To make things simpler, many NoSQL databases use the same key-value representation which means all of your data, from the database, to backend and eventually the frontend, is in one format. It makes things easy to understand. It shouldn&#8217;t then be surprising that many of the bootcamps choose such a NoSQL database to go along with their full stack development course.
+</p>
+<h3>Because time-to-productive</h3>
+<p>
+    If you&#8217;ve written code in Java or C++, you know that it takes an awful lot of time to go from a complete programming novice to someone whose software <i>might</i> be useful to others. Compare that with Javascript (or Python). You can start learning it today, and within a week, you&#8217;ll have your very own sign up forms and what not. In a couple of months, you&#8217;ll be pushing out code of the quality you find in production at most startups (if you&#8217;re not sure whether to be happy or sad at that line, be neither. You&#8217;ll discover one way or the other).
+</p>
+<h3>Because it works (..for now)</h3>
+<p>
+    And because we do not have an alternative. Javascript is <i>installed</i> universally. You don&#8217;t have to ship it with your app. I think that&#8217;s a huge point in its favour, and enough reason to learn some Javascript even if one doesn&#8217;t plan on writing a lot of it. It is the language of the application layer of the internet. It is far from elegant. But remember this
+</p>
+<blockquote><p>
+    There are only two kinds of languages: the ones people complain about and the ones nobody uses. &#8211; Bjarne Stroustrup
+</p></blockquote>
+<p>
+    That quote is particularly appealing to me, and not just because I had a mini-crush on Stroustrup ever since I missed his talk back in 2015.
+</p>
+<h3>In closing</h3>
+<p>
+    Javascript can be a very good language to start with. It makes all the more sense if you&#8217;re learning to get employed as a developer. I must say that the ecosystem is not the best at this point. There are new libraries and frameworks popping up and fading out every other day, and there are way too many <i>best practices</i> for anything to be seen as a standard. But if you do get started with Javascript, spend some time later in your career figuring out how computers and the internet work. Javascript isn&#8217;t going to force you to, but it comes in handy.
+</p>
+<p>
+    If you liked this post, check out <a href="/2018/08/tips-javascript-development.html" title="17 tips after a year in Javascript development">17 tips after a year in Javascript development</a> for exactly what the link title says. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>17 Tips After A Year In Javascript Development</title>
+		<link>https://nagekar.com/2018/08/tips-javascript-development.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 20 Aug 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/08/20/tips-javascript-development/</guid>
+
+					<description><![CDATA[Long time no see, Javascript. Where had you been, my old friend? Well, not really. I have been writing Javascript more than ever since my last post about the language on this blog, some 26 months ago. As some of you already know, writing Javascript has become my day job and it is honestly one [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  <i>Long time no see, Javascript. Where had you been, my old friend?</i>
+</p>
+<p>
+  Well, not really. I have been writing Javascript more than ever since my <a href="/2016/04/websockets.html">last post about the language</a> on this blog, some 26 months ago. As some of you already know, writing Javascript has become my day job and it is honestly one of the better things that could&#8217;ve happened to me. I&#8217;ve learned a lot of the nitty-gritties of the language and surrounding environments (and the web) and gained invaluable insights about software development in general.
+</p>
+<p>
+	In this post, I aim to cover some of things I wish I knew as a Javascript newbie (no offense to anyone. I&#8217;m a newbie myself in most ways). These aren&#8217;t supposed to be comprehensive or even correct, for that matter. No particular order is followed. These are just things I feel I could&#8217;ve helped myself with while learning the language and building some initial projects and wish to share with you guys here.
+</p>
+<p>
+  It will be most helpful if you&#8217;re just finishing learning the core language and want to find out what exists in the world of web development. Feel free to contradict and correct me.
+</p>
+<h3>1. All Theory And No Practice</h3>
+<p>
+	Get over with that college student attitude of reading chapter upon chapter of dull text and not writing a single line of code. And by code, I don&#8217;t mean the example code snippets. Go out there on Github and Reddit and search for beginner problems statements. Creating a simple TODO list or displaying the top posts on Reddit frontpage via their API doesn&#8217;t require any deep knowledge.
+</p>
+<p>
+	The essential skill to learn here is to be able to use a search engine, find relevant documentation, getting passive help from online communities (See <a href="https://stackoverflow.com/questions/tagged/javascript">stackoverflow</a> or Reddit; r/javascript, r/webdev, r/frontend are good places to start looking). You cannot learn cycling by just reading about cycling. You learn cycling by riding a bicycle, by talking to your friends about the dangerous stunt you pulled off, by going offroad on the weekends, by watching the pros ride and then trying those things. That&#8217;s what makes it fun. Don&#8217;t make it a job. More often than not, you&#8217;ll suck at the end of it.
+</p>
+<h3>2. Build Tools</h3>
+<p>
+	I made the mistake of assuming I knew everything about the language once I finished my guidebook. The reality was far from it. Language is just one little part of the puzzle of mastering any programming stack. There are many support tools that I didn&#8217;t care to explore back then. For example, there&#8217;s something called as a build tool.
+</p>
+<p>
+	In an organizational setting, you don&#8217;t start a project by creating an <code>index.html</code> and then linking it with your <code>main.js</code>. Instead, you make use of build tools (See Webpack or Grunt) to compile your code into a form understood by new and old browsers alike, bundle all of your code together and make it production ready. A basic understanding of build tools will go a long way and come in handy when making your next hobby project shine.
+</p>
+<h3>3. Modularization</h3>
+<p>
+	Modularization, in simple English, means separating parts of your code that work similarly. Just like we sleep in our bedroom, bath in our bathroom and cook food in the kitchen, code the does similar things should be separated into different files and functions/classes. <code>fetch()</code> API calls in one file, little utility functions/hacks in another, DOM manipulation functions in another and event listeners separately. This is one of the many ways of doing it. See what works best for you. Remember that your frustration level two weeks later while finding a bug in your code is inversely proportional to the number of files and functions you separated your source code in.
+</p>
+<p>
+  The importance of modularization strikes only when you feel the pain in your back scrolling up and down and sideways finding a particular section of a function responsible for something. You&#8217;ll have to take a leap of faith here to learn this lesson the easy way.
+</p>
+<h3>4. Consistency</h3>
+<p>
+	You don&#8217;t have to be collaborating with other humans to follow this. Just pick up a code style and stick to it religiously (see <a href="https://github.com/airbnb/javascript">Airbnb&#8217;s Javascript style guideline</a> for a starting point). You&#8217;d hate yourself if you open your code editor and find things like <code>varNames</code> and <code>var_names</code> mixed all over the place. This is not limited to just syntax or micro stuff. On a broader level, follow the same style for everything. If you return a Promise from an API service function, then stick to that style. Don&#8217;t interchangeably return promises and data, for example. And don&#8217;t mix imperative, object-oriented and functional coding styles randomly. Make conscious calls on what is right for the situation, and document appropriately.
+</p>
+<p>
+	The less you think about the language semantics, the more you can think about the problem you&#8217;re trying to solve. And consistency will definitely reduce a lot of the unnecessary load of deciphering your own code.
+</p>
+<h3>5. Documentation</h3>
+<p>
+  Another task deserted of any love in the realms of software engineering. No one likes to document code, take it from me. But the difference between a rookie and a master is knowing when and why something must be done irrespective of his affection towards the job. Write comments, doc strings. Decorate your projects with nice READMEs and fancy &#8220;build passing&#8221; and &#8220;codecov&#8221; badges. No, you&#8217;re not doing it for others. You&#8217;re doing for yourself because you know it is right. You want to know your thought process two months later when you read the code to make some changes. It is like an <i>&#8220;enable time machine access to this point in time?&#8221;</i> button in your code, which you reply with a &#8220;deny&#8221; if you decide to not document your code.
+</p>
+<h3>6. Think, Think, Think And Then Write Code</h3>
+<p>
+	This is one of my personal favorites. I&#8217;ll start coding 0.006 seconds  (number might be slightly inaccurate) after hearing the problem statement. Don&#8217;t do this mistake. Don&#8217;t fall for your heart saying it has understood it all. Your heart is wrong. Think about the problem. Confirm that you have understood the requirements correctly. Formalize the requirements in your mind, or better yet, in a Github issue or something. Come up with a naive approach to do it. See if you can optimize the code, think about space-time tradeoffs, think if you can use something like a hashmap etc. You&#8217;ll be surprised how many better solutions you&#8217;ll come up with after thinking about it for 10 minutes as opposed to jumping right into the code.
+</p>
+<h3>7. Tracking Your Project&#8217;s Progress &amp; Version Control</h3>
+<p>
+	Use git, Github (or any other Git hosting). Use issues to write down what you plan to do for the next iteration. Use PR (pull request) feature to <i>fix</i> that issue. Write down if there were any caveats in the comments below the PR requests. Yes, do it even if you&#8217;re the only person working on the project. It might seem unnecessary and tedious, but once you get the hang of it, your time will be much better utilized and progress much better tracked.
+</p>
+<h3>8. Automate Your Deployment</h3>
+<p>
+	I remember my workflow before starting work. Keep committing to the master branch and testing things out locally. And when things look decent enough, spin up a digital ocean droplet, clone the repository and start the development server there. That was my &#8216;deployment&#8217;. If any changes need to be done, commit to master and push from local. Pull them on the server and restart development server.
+</p>
+<p>
+	Now that I know better, I not only make separate branches for each feature, I set up auto deployment on Heroku on particular branches (mostly master and staging/development). It&#8217;s a one-click affair (assuming you followed the build tools part) and takes away a lot of hassles (and is free as well). Knowing the right tools can make a huge difference, as you just saw.
+</p>
+<h3>9. Unit Tests</h3>
+<p>
+	If you&#8217;ve ever worked on a non-trivial project (say around a thousand lines of code), you will recognize the tragedy when you modify your code while adding a new feature and accidentally break a lot of the old code which you realize later when things start going south at which point a lot of git-fu is required to get back to a safe point and not lose any newer work. Let me tell you something. It is all avoidable with simple unit and integration tests. Think of tests as employing a bunch of robots to look over your old code and point out when you&#8217;re about to break your own (or someone else&#8217;s) code.
+</p>
+<p>
+	It is very hard to convince yourself to write tests even after knowing the pluses, let alone without knowing them. But again, you&#8217;ll have to take a leap of faith here. Or you can wait until someday while casually refactoring some code you mess something up which you realize only after three days with hours of debugging which could&#8217;ve been avoided by writing a simple test.
+</p>
+<h3>10. Use ES6</h3>
+<p>
+	This might be a no-brainer to most of you, but I still find people writing older Javascript syntax even though they know and understand the newer spec. With modern build tools and polyfills, most of the times not writing the latest spec syntax is just laziness. If you find yourself writing things the old way, force yourself to use the newer ways. They are there for a reason.
+</p>
+<p>
+  Let&#8217;s be honest guys, Javascript is not the most <a href="https://www.destroyallsoftware.com/talks/wat">elegant language</a>. The older versions are riddled with bugs in the spec itself (see function scoping of <b>var</b>, the <b>this</b> keyword, double equals (==) comparison and automatic type coercion). The newer versions of the language are an attempt at fixing things and we should respect that, even if that means going out of your way to follow the newer semantics.
+</p>
+<h3>12. Understand What JS Is And What It Isn&#8217;t</h3>
+<p>
+	Javascript, the core language, is actually a subset of the things we&#8217;re used to of using in our everyday development on the frontend. The core language is relatively small and simple, but add DOM APIs to it, and suddenly it becomes something slightly bigger and a bit more complex. Javascript is single threaded but DOM APIs like fetch (or xhr) and setTimeout are asynchronous because of the <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">browser&#8217;s magic</a>. Learn to consciously differentiate between them as that will come in handy. As a general rule, DOM is very slow as compared to the Javascript language engine.
+</p>
+<h3>13. You Probably Don&#8217;t Need That Framework</h3>
+<p>
+	This has been repeated enough that I could&#8217;ve skipped it, but I&#8217;ll still put it out here. If you find yourself importing Lodash or Underscore for simple things like mapping, iterating over objects, filtering objects and things like that, consider looking for equivalent core Javascript alternatives. The latest ECMA spec adds a lot of helpful data structures and utility functions that make writing functional code very easy and pleasant.
+</p>
+<p>
+  Similarly, if you are planning to use ReactJS or Vue just because everyone seems to be talking about it, don&#8217;t. Go read up their introduction and documentation and judge if your project fits the use case that particular framework is build for and the problem it is trying to solve. For learning purposes, you can consider using the frameworks for trivial apps, but for anything else, make decisions on a strictly use case basis.
+</p>
+<h3>14. Learn Basics Of CSS</h3>
+<p>
+	While the popular opinion still says that CSS is a pain in the back to master, I&#8217;d suggest learning almost 60-80% of it with maybe 20% of the efforts. No need to remember which browser supports what niche attribute. Just the important very-handy-in-real-life parts like flexbox, grids, box model, margins, paddings, positioning related, display related, floating related and so on. You will cover a lot with just these, and they come in super handy for personal projects. (Again) trust me.
+</p>
+<h3>15. Explore Web Workers/Service Workers</h3>
+<p>
+	What if I tell you, you can hijack API requests from your webapp and service them without making a roundtrip to the server? You&#8217;ll say, if the request is serviceable on the frontend itself, why bother making an API call in the first place, and I make a poker face to that. Jokes aside, service workers enable you to handle network connectivity drops and provide a much smoother experience. You can save the data that a client wanted to send the server in the browser while offline and then replay those requests again when network connectivity is recovered.
+</p>
+<p>
+	Web workers allow your code to delegate work to another processing thread. This can be any type of work that you would want to unload off the main thread like heavy calculations etc.
+</p>
+<h3>16. Explore Browser-Side Databases</h3>
+<p>
+	There&#8217;s localstorage, there&#8217;s cache, there&#8217;s indexDB. This is apart from the cookies and session headers. Basically, there is no shortage of storage options on the client side. Try and use these to cache and store data that need not be sent to the server, or maybe cache in case of uncertain network availability. With service workers and Cache, you can fine tune what gets cached and the behavior when a cache is hit or miss. You can even set up caching strategies with plain Javascript code logic.
+</p>
+<p>
+	There are wrappers such as PouchDB that can sync with the server side CouchDB and provide nice real-time syncing capabilities. Speaking of real-time, you might also want to check out <a href="https://firebase.google.com/">Firebase by Google</a>. I used to use it in the past and it was very easy to set up and work with.
+</p>
+<h3>17. Explore Progressive Web Apps</h3>
+<p>
+	Now you can make your website work offline too. Ever seen that &#8220;Add to homescreen&#8221; button on certain websites? When you add those websites to your homescreen, you can then open them like regular Android apps and if they&#8217;re built that way, even use them offline (further reading: <a href="https://developers.google.com/web/progressive-web-apps/">developers.google.com/web/progressive-web-apps</a>).
+</p>
+<h3>In Closing</h3>
+<p>
+	I hope this article was useful. If you&#8217;re a beginner with web engineering and have just finished learning the Javascript language, you might want to explore some of the above points in detail. I&#8217;m sure you&#8217;ll have fun building your next awesome project using these guidelines.
+</p>
+<p>
+	Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Book Review &#8211; Responsive Web Design By Ethan Marcotte</title>
+		<link>https://nagekar.com/2017/11/book-review-responsive-web-design-ethan-marcotte.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 18 Nov 2017 23:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/11/18/book-review-responsive-web-design-ethan-marcotte/</guid>
+
+					<description><![CDATA[It has been a while since my last book review post here. Not that I stopped reading, but I kinda stopped reading non-tech things lately, and hence, there were no new posts. But today, it hit me that I can (and should, given this is a personal diary) write about pretty much anything that I [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    It has been a while since my last book review post here. Not that I stopped reading, but I kinda stopped reading non-tech things lately, and hence, there were no new posts. But today, it hit me that I can (and should, given this is a personal diary) write about pretty much anything that I read and find interesting. So here it is, a book by Ethan Marcotte, which I first read about a year and a half ago and then re-read it before a month or so. Responsive web design wasn&#8217;t (and still isn&#8217;t) my piece of cake. Heck, web <i>design</i> was something totally alien to me in the first place.
+</p>
+<p>
+    The happy realization that being able to set up websites (read: wordpress/joomla blogs on a nix server) doesn&#8217;t make one a web developer, much less a designer, came about two years ago, when Dhananjay, a college senior of mine, was contacted by one of his contacts who was looking for a frontend developer. The task was supposed to take <i>a couple of hours</i> at max. Knowing that I did things around the web, Dhananjay outsourced that opportunity to me.
+</p>
+<p>
+    That was one incident that still gives me chills, <a href="https://www.nagekar.com/2015/12/The-October-Dance-With-Cool-Indians.html">and I wrote a bit on that earlier</a>. Not only because I realized how horrible I was with frontend and design, but also because I didn&#8217;t have the slightest clue about deadlines, how to and how much to work, and how to deal with things that are out of my control. It was a design heavy page, and I had a depth first approach of dealing with things. The end result was that a few pieces took up 80% of my 5 days of work (<i>easily</i> worked for over 70 hours), and the end result was nothing short of a design disaster. That one incident has taught me a lot, especially about how real work happens.
+</p>
+<p>
+    I guess it was then when I had read Ethan&#8217;s book for the first time. I believe it wasn&#8217;t as much for learning as it was to put on some burnol on my bruised ego. But nevertheless, even then the book had given me much insights about what web designing actually is, and why it isn&#8217;t very different from what I had been doing all along, it just requires thinking in a different mindset.
+</p>
+<p>
+    Fast forward to June this year, I interviewed at a couple of places for the role of a web developer. I was expecting a role on the backend, maybe a nodejs or python based job, but instead, I got a job as a ReactJS engineer. Yeah, a frontend engineer. As difficult as it was for me to digest it, I had to accept the fact that I will be dealing with a lot of CSS now. I had to up my design game, or it was game over, and I seriously didn&#8217;t want to screw as bad as I did two year ago. My friend Kunal was kind enough to lend me his Head First HTML &amp; CSS book which I am currently reading. But apart from the raw knowledge, it was the mindset that I required immediately, the mindset of a frontend developer, and for that, I picked up Responsive Web Design once again.
+</p>
+<h3>Shall we start with the review, Plis?</h3>
+<p>
+    Sure. The author starts by talking about architecture, responsive architecture in particular, about artists and their canvases. Responsive architecture is all around us, from window panes that allow variable amounts of light depending upon the time of the day, to modern home equipments. The author then talks about the usual restrictions in print media, and how web designers are fighting hard to recreate those restrictions on our browsers. We do not have to do that. The canvas of a web designer is inherently responsive. It isn&#8217;t a flaw, it is a freedom.
+</p>
+<p>
+    The author makes sure that reading this book won&#8217;t feel like the usual wall-of-text-hitting-your-face-with-technical-jargon experience. The book feels like a spiritual exercise, as if web designing is an art waiting to be discovered by an engineer who always saw it like a soul dead practice of giving random attributes to random elements and praying to the Gods of DOM that it looks just decent enough to pass the QA. I was really immersed into the book as I was reading it, and hoping that it lasts forever, which it obviously didn&#8217;t. The book is not long, and is divided into three sections; <i>The responsive grid</i>, <i>Responsive images</i> and <i>Media queries</i>. After reading this book, you&#8217;ll look at hardcoded &#8216;px&#8217; values as if they were taboo in your (code) culture. The author shows how simple calculations can turn all the zombie pixel measurements into the more lively &#8217;em&#8217;s and &#8216;rem&#8217;s, which are, of course, responsive.
+</p>
+<p>
+    A good article that the author strongly recommends is a blog post that was written some 17 years ago from now, but still is as relevant today as it was then. The post is called <a href="https://alistapart.com/article/dao">A Dao of Web Design</a>, and it falls into the must-reads category for me. To give you a taste of the article, read the following quote.</p>
+<blockquote><p>
+        The control which designers know in the print medium, and often desire in the web medium, is simply a function of the limitation of the printed page. We should embrace the fact that the web doesn’t have the same constraints, and design for this flexibility. But first, we must “accept the ebb and flow of things.“
+    </p></blockquote>
+<p>
+    Beautiful, isn&#8217;t it? Suddenly, web design isn&#8217;t something that you do when you&#8217;ve done everything you could do to avoid it in the first place. True, writing CSS by hand is time consuming, working and supporting multiple browsers and display sizes is stressful to say the least, and most of the time, you&#8217;re better off using a ready-made solution like Bootstrap or Semantic, but once in a while, it is good to think about web as your canvas and think of yourself as an artist trying to fill in beautiful colors into the canvas. Now whenever I think about the different ways in which my web application is supposed to look on different screens, I remind myself that it isn&#8217;t a &#8216;restriction&#8217; that the app needs to look <i>that</i> way on <i>that</i> screen. Rather, it is a freedom that the app can look the way it needs to look in order to be the most comfortable version of itself for that particular reader. Ever seen a person struggling with folding a newspaper on a busy bus stop, or a cautious women carrying a large piece of art in her arms, making sure she doesn&#8217;t bend it, yes, that is exactly what a restriction, a limitation looks like. Thankfully, our dearest web doesn&#8217;t have that one. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>WebSockets</title>
+		<link>https://nagekar.com/2016/04/websockets.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 14 Apr 2016 22:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/04/14/websockets/</guid>
+
+					<description><![CDATA[If you&#8217;re like me, then you must have gone nuts on hearing about WebSockets for the first time. We now have a totally independent protocol that will not terminate connection after a request-response cycle, which means all hacks to keep a persistent connection from the browser (long polling, I&#8217;m looking at you) would now be [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	If you&#8217;re like me, then you must have gone nuts on hearing about <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSockets</a> for the first time. We now have a totally independent protocol that will not terminate connection after a request-response cycle, which means all hacks to keep a persistent connection from the browser (long polling, I&#8217;m looking at you) would now be part of the history. Welcome to the world of WebSockets.
+</p>
+<p>
+	Let&#8217;s start with the Wikipedian and Mozillian definition of WebSockets, to get some initial traction.
+</p>
+<h6>Wikipedia says that..</h6>
+<blockquote><p>
+	WebSocket is a protocol providing full-duplex communication channels over a single TCP connection. The WebSocket protocol was standardized by the IETF as RFC 6455 in 2011, and the WebSocket API in Web IDL is being standardized by the W3C.
+</p></blockquote>
+<h6>Mozilla Developer Network says that..</h6>
+<blockquote><p>
+	WebSockets is an advanced technology that makes it possible to open an interactive communication session between the user&#8217;s browser and a server. With this API, you can send messages to a server and receive event-driven responses without having to poll the server for a reply.
+</p></blockquote>
+<p>
+	To begin with, let us all make sure we have websocket support by clicking <button id="hasBtn" onclick="hasSocket();">here</button>. Assuming you do, let&#8217;s begin. Web browsers provide us with the <code>WebSocket</code> class. To create a websocket, we simply need to </p>
+<pre>let ws = new WebSocket('ws://server.com/endpoint');</pre>
+<p>This gives us a <i>websocket</i> object which supports methods like send() and close() and event listeners like onmessage and onerror.
+</p>
+<p>
+	Creating a nodejs instance running a websocket server is easy with modules. I did try to do it natively, but it went too tedious. Finally I settled for <code>ws</code> module from npm. The server side code looks trival.
+</p>
+<p><script src="https://gist.github.com/abhn/d94830c3901b48ebdeb8375b37d0ee60.js"></script></p>
+<p>
+	On the browser, things are even simpler.
+</p>
+<figure class="highlight">
+<pre><code class="language-javascript" data-lang="javascript"><span class="c1">// call the object constructor</span>
+<span class="kd">var</span> <span class="nx">ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="dl">'</span><span class="s1">ws://nagekar-ws.herokuapp.com/</span><span class="dl">'</span><span class="p"&gt;);</span>
+<span class="c1">// attach a message listener</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p"&gt;);</span>
+<span class="p">}</span>
+<span class="c1">// send some message</span>
+<span class="nx">ws</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello server!</span><span class="dl">'</span><span class="p"&gt;);</span></code></pre>
+</figure>
+<p>
+	Once we call the constructor, an HTTP GET request is generated to initiate the transaction. You&#8217;ll find that these headers are sent by your browser.
+</p>
+<pre>
+
+GET / HTTP/1.1
+Host: nagekar-ws.herokuapp.com
+Connection:Upgrade
+Pragma:no-cache
+Sec-WebSocket-Extensions:permessage-deflate; client_max_window_bits
+Sec-WebSocket-Key:ut0NjBQxxBnmtUStHfMUDw==
+Sec-WebSocket-Version:13
+Upgrade:websocket
+User-Agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.108 Safari/537.36
+</pre>
+<p>
+	The ones to notice are the URL, which begins with ws:// protocol. <a href="https://stackoverflow.com/questions/23674199/why-is-there-no-same-origin-policy-for-websockets-why-can-i-connect-to-ws-loc#comment36372038_23674863">Cross domain requests</a> are allowed. This initial step requires the use of HTTP(S) or web, hence the name &#8216;web&#8217; sockets. The <i>&#8216;Connection:Upgrade&#8217;</i> and <i>&#8216;Upgrade:websocket&#8217;</i> and what requests the server to change this connection to a socket one. The <i>Sec-WebSocket-Key</i> header is what client sends to the server. The server crafts another key with this and returns it back in the response header. A response header looks like this.
+</p>
+<pre>
+HTTP/1.1 101 Switching Protocols
+Connection:Upgrade
+Sec-Websocket-Accept:7CAJHdL7QMG4ceqd0M1O8SDbM2Q=
+Sec-Websocket-Extensions:permessage-deflate
+Upgrade:websocket
+Via:1.1 vegur
+</pre>
+<p>
+	On receiving the <i>Sec-Websocket-Accept</i> header, the handshake is completed, and now the client and server are connected via persistent sockets, ready to perform both way message delivery.
+</p>
+<p>
+	Click &#8216;Connect&#8217; button to initiate WebSocket handshake. The server will respond with a timestamp every 2500 milliseconds. Also, the server will echo back everything to send at it. The close button will call the WebSocket.close() method which will terminate the connection.</p>
+<h4>Message Box</h4>
+<div id="list" style="height:100px;overflow-y:scroll;border:1px solid">
+<ul id="msglist">
+</ul></div>
+<p>    <center><br />
+	    <button id="connect">Connect</button><br />
+	    <input type="text" id="inp" /><br />
+		<button id="send">Send</button><br />
+		<button id="close">Close</button><br />
+	</center>
+</p>
+<p>
+	Pretty interesting, isn&#8217;t it. Things get even more interesting when you use a readymade library built on top of WebSockets, such as <a href="https://socket.io">Socket.io</a>. It supports all browsers (through fallback to XHR/polling), has better looking APIs, is easy to use and allows you to broadcast without having to worry much about raw connections. If you&#8217;re going to use these WebSockets in production, there&#8217;s no reason not to use Socket.io. Using native websockets is not recommended if you&#8217;re planning to support some legacy browsers. Even Mozilla terms it as an &#8216;experimental technology&#8217;. Check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#Browser_compatibility">compatibility table</a> for more information.
+</p>
+<p>
+	I hope this post was informative. I did learn a lot while researching on this topic, and I&#8217;m glad I did. As always, thank you for reading. Please drop a comment in case of feedback or correction.
+</p>
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script><br />
+<script type="text/javascript">
+	function hasSocket() {
+		if(window.WebSocket) {
+			document.getElementById('hasBtn').innerHTML = 'Supported';
+			document.getElementById('hasBtn').disabled = true;
+		} else {
+			document.getElementById('hasBtn').innerHTML = 'Not supported';
+			document.getElementById('hasBtn').disabled = true;
+		}
+	}
+	var ws;
+	$('#connect').click(function() {
+		ws = new WebSocket('wss://nagekar-ws.herokuapp.com/');
+		ws.onmessage = function(msg) {
+			$('#msglist').append('</p>
+<li style="color: green">' + msg.data + '</li>
+<p>').focus();
+			$('#list').scrollTop($('ul li').last().position().top + $('ul li').last().height());
+		};
+	});
+	$('#send').click(function() {
+		var msg = $('#inp').val();
+		$('#msglist').append('</p>
+<li style="color: blue">Message to server: ' + msg + '</li>
+<p>').focus();
+		$('#list').scrollTop($('ul li').last().position().top + $('ul li').last().height());
+		ws.send(msg);
+	});
+	$('#close').click(function() {
+		ws.close();
+		$('#msglist').append('</p>
+<li style="color: red">' + 'Connection Closed' + '</li>
+<p>').focus();
+		$('#list').scrollTop($('ul li').last().position().top + $('ul li').last().height());
+	})
+</script></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Event Driven Programming</title>
+		<link>https://nagekar.com/2016/04/event-driven-programming.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 11 Apr 2016 22:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/04/11/event-driven-programming/</guid>
+
+					<description><![CDATA[I remember starting to learn Javascript. It was all a nightmare. Functions used to execute out of order and seemed very random. There was chaos all around, and I was usually left wondering, &#8216;what is the order of execution here?&#8217;. Of course, that question never got answered, because that wasn&#8217;t the right question. The right [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	I remember starting to learn Javascript. It was all a nightmare. Functions used to execute out of order and seemed very random. There was chaos all around, and I was usually left wondering, &#8216;what is the order of execution here?&#8217;. Of course, that question never got answered, because that wasn&#8217;t the right question. The right question would&#8217;ve been, what drives these functions in this code.
+</p>
+<p>
+	Fortunately, I asked it at an early stage. The things that make Javascript tick are called <b><i>events</i></b>. Without these, your browser window is just a dead canvas. Not just the browser, but other Javascript environments as well, work because of events. And when you understand it, events and event driven programming are probably the most intuitive form of developing applications. Events are not difficult to visualize, once you start to relate them to the real world events.
+</p>
+<p>
+	Suppose you&#8217;re alone at your home. You&#8217;ll need to make sure you open the door in case someone arrives. There are two ways of doing it. First way is to periodically keep checking if someone is outside the door, say every 5 minutes. In the best case, someone will arrive the moment you open the door, but in the worst case, a visitor has to wait for about 5 minutes before you make your next visit. This is just ridiculous. It is inefficient (visitors have to wait for you) and waste of time (when you check but no one has arrived). Who does this? Well, most procedural languages work this way. And it works, for their use cases. But when you&#8217;re dealing with real life scenarios, like checking doors or handling HTML form responses in browsers, where the time of completion of an action or arrival of a visitor is unknown, a better approach has to be used, especially when time, muscle and browser resources are so scarce. Here comes event driven programming.
+</p>
+<p>
+	Suppose, you&#8217;re alone again, in the same house. But this time, you decide to make use of events. You install a doorbell. Now, whenever someone arrives and rings the bell, you know you have to go open the door. That&#8217;s simple. That&#8217;s event driven. It doesn&#8217;t matter if the next visitor comes after a minute or after an hour. You&#8217;ll open the door instantaneously, without waste of your own time. And the fact that most homes have doorbells and this is our natural workflow when dealing with similar situations, is the proof of how intuitive this programming paradigm is.
+</p>
+<p>
+	Okay, that was cool, so far. But I know that I have to listen to a doorbell and then on hearing it, walk to the door to open it. How do I make the machine do that. The answer is callbacks. If you are not quite sure what they are or how they work, do check out my other article on <a href="https://www.nagekar.com/2016/02/callbacks-eventloop-in-javascript-explained.html">how callbacks and event loop work</a>. So essentially, we attach a &#8216;callback&#8217; to an event. The callback, as the name suggests, calls back when the event occurs, and lets us control the aftereffect. Such a callback is also called an event listener, which infact is what you attach to the <code>element.addEventListener('event', callback);</code> when working in the DOM. In Nodejs environment, you get a custom EventEmitter class that you can use to emit and listen to events. If you haven&#8217;t heard of it, <a href="socket.io">socket.io</a> is all about custom events and the data transfer between the client and the server. It makes use of <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">websockets</a> along with XHRs. If you are into creating sockets and data interexchange between remote hosts like I am, socket.io is for you.
+</p>
+<p><script src="https://gist.github.com/abhn/d5eb252e620ee157d4ab1cc49811221a.js"></script></p>
+<p>
+	Finally, I hope to have given you some insights of event driven programming with Javascript. Not a lot of code, but that is something you&#8217;ll find everywhere. I always like to emphasis on the concepts rather than implementation. It makes for a better implementation.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Going Full Stack On Mobile</title>
+		<link>https://nagekar.com/2016/03/going-full-stack-on-mobile.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 02 Mar 2016 23:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/03/02/going-full-stack-on-mobile/</guid>
+
+					<description><![CDATA[I have been a part of numerous web projects, and after these many applications using multiple languages and frameworks, when my friend Kunal suggested that we should develop an Android application that would make use of a backend and stuff like that, I couldn&#8217;t help but desperately show my excitement. I told my friends, family [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	I have been a part of numerous web projects, and after these many applications using multiple languages and frameworks, when my friend Kunal suggested that we should develop an Android application that would make use of a backend and stuff like that, I couldn&#8217;t help but desperately show my excitement. I told my friends, family and even seniors about the thing I am working on. After all, it was my first time going full stack mobile.
+</p>
+<p>
+	For clarifying things, I am still doing the backend. It is my little team that has gone full stack. On mobile. The application, called the <b><i>moodShare</i></b> will enable a user to do few simple tasks like registering, logging in, adding friends, sharing statuses, reading statuses and stuff like that. Each task is made possible with a simple API that is made without much thought to future scaling. I know, that is really bad from my side. But then, I was too desperate to get an application up and running that I neglected a lot of issues that arose when we were developing.
+</p>
+<p>
+	The application&#8217;s backend was Mongo, Express and Node. We deployed it to Modulus.io but then this happened and we had to shift it to Heroku.
+</p>
+<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+<div style="padding:8px;">
+<div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:48.2886904762% 0; text-align:center; width:100%;">
+<div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div>
+</div>
+<p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BCifT2gGkAT/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Too poor to get a proper server&#8230; Crashing in 3..2..1 #javascript #nodejs</a></p>
+<p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by Abhishek Nagekar (@abhisheknagekar) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2016-03-04T17:06:48+00:00">Mar 4, 2016 at 9:06am PST</time></p>
+</div>
+</blockquote>
+<p>
+	And this was when we had around 4 live users. The code quality was poor, very poor. Trust me when I say it. 4 users were hitting the database around 7 times a second.
+</p>
+<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+<div style="padding:8px;">
+<div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;">
+<div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div>
+</div>
+<p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BCiVuS2GkNI/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Beautiful sight of requests hitting the API server #javascript #nodejs</a></p>
+<p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A video posted by Abhishek Nagekar (@abhisheknagekar) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2016-03-04T15:43:02+00:00">Mar 4, 2016 at 7:43am PST</time></p>
+</div>
+</blockquote>
+<p>
+	Then there were many other issues as well. For example, if you added a friend who had 400 status updates in his or her name before you added, your phone would notify you, well, 400 times. Literally. That was awful. Push notification was implemented in a way you write an infinite for loop to check if something has changed.
+</p>
+<p>
+	But hey, this was our first time. We did enjoy each and every second of the development (around 4 days), the bugs just as much. We did learn a lot from it. Before this project, messaging queue was just a name, Google Cloud Messaging was just another service that I knew nothing about, three or four HTTP status codes that I knew. The satisfaction of knowing more about these was worth it all. Lastly, we did not abandon the project. Our alpha version was pretty stiff and unusable. Hopefully, with better APIs, better hosting and material design on the frontend, we plan to rock with the beta version. Stay tuned.
+</p>
+<h4>Screenshots</h4>
+<style type="text/css">
+	#inline {
+		display: inline-block;
+		text-align: center;
+	}
+</style>
+<div id="inline">
+	<a href="https://www.nagekar.com/assets/images/moodshare/moodshare1.png"><img decoding="async" src="https://www.nagekar.com/assets/images/moodshare/moodshare1.png" width="180px" height="320px" style="display: inline"/></a><br />
+	<a href="https://www.nagekar.com/assets/images/moodshare/moodshare2.png"><img decoding="async" src="https://www.nagekar.com/assets/images/moodshare/moodshare2.png" width="180px" height="320px" style="display: inline"/></a><br />
+	<a href="https://www.nagekar.com/assets/images/moodshare/moodshare3.png"><img decoding="async" src="https://www.nagekar.com/assets/images/moodshare/moodshare3.png" width="180px" height="320px" style="display: inline"/></a>
+</div>
+<h4>Links</h4>
+<ul>
+<li><a href="https://www.dropbox.com/s/1dqalax3rg9xhfo/moodshare.apk?dl=0">The initail release of moodShare</a></li>
+<li><a href="https://github.com/abhn/mood-share">Backend code on Github</a></li>
+<li><a href="https://moodshare.herokuapp.com">Live API on Heroku</a></li>
+</ul>
+<p><script async defer src="//platform.instagram.com/en_US/embeds.js"></script></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Callbacks And Event Loop Explained</title>
+		<link>https://nagekar.com/2016/02/callbacks-eventloop-in-javascript-explained.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 10 Feb 2016 23:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/02/10/callbacks-eventloop-in-javascript-explained/</guid>
+
+					<description><![CDATA[Callbacks are the things that make writing Javascript fun. If you think you are better off writing Javascript the way you wrote C and Java, then you are not really feeling the essence of this beautiful language. I found it rather hard to get used to this style of programming, called affectionately as the non-blocking [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	Callbacks are the things that make writing Javascript fun. If you think you are better off writing Javascript the way you wrote C and Java, then you are not really feeling the essence of this beautiful language. I found it rather hard to get used to this style of programming, called affectionately as the non-blocking style. What is this difficult sounding technique, and how can you make use of it to write better code is what we&#8217;re going to see in this little essay.
+</p>
+<p>
+	Starting with the most basic explanation of what a callback is. Suppose I have two functions A and B. Although I can execute both of them myself, what I can do is execute A and ask A to execute B for me. Yes, that is all there is to the callbacks thing. I have two functions, I execute one and then ask it to execute the other one for me. Simple.
+</p>
+<p>
+	But, you might ask, why I would ever want to do such a thing. Well, think about it this way. Computer processing is way, way faster than any I/O in question, especially when the I/O is on the other side of the network (or globe, for that matter) which is usual in the case of most web applications. Now, if you write code such that it queries a remote (or local) database and uses those results to carry on further processing, it results in a bottleneck. The processor executes instructions in the order of nanoseconds. An I/O request to the disk or network takes a few milliseconds at best, or a million times more time than what a processor needs to do a single atomic task. So essentially writing code that waits for results from I/O is simply wastage of the precious CPU cycles that could&#8217;ve been put to better use in the meantime.
+</p>
+<p>
+	A callback is also of great use when you want to make a function, say A, do things according to the context by supplying a specialized function B at the runtime. For example,
+</p>
+<p><script src="https://gist.github.com/abhn/22fa7b521b4013c30bdd.js"></script></p>
+<p>
+	So let&#8217;s get into some (pseudo) code. We will first see what it is like to write code without callbacks and blocking IO and then examine some issues. Then we will write the same code using callbacks and non-blocking IO and see if we have rectified (or at least mitigated) those issues.
+</p>
+<p><script src="https://gist.github.com/abhn/6b032655b0924b0ed301.js"></script></p>
+<p>
+	Now this code is blocked when the Javascript engine is waiting for the Mongodb query to execute and return. It may take a few milliseconds, and only after that does the control of the program moves to the next lines. If the database hangs up for any reason, then the response will never reach the end user, regardless of whether the login credentials were correct or not (or let the user know something went wrong). It may also happen that the Javascript engine continues the execution with &#8216;undefined&#8217; returned, resulting in falsy block being executed each time. Having addressed these problems, let us now write the asynchronous version of the same (pseudo) code.
+</p>
+<p><script src="https://gist.github.com/abhn/c1f4527a33f92a304d7e.js"></script></p>
+<p>
+	The callback function in a way keeps waiting for the response from the database in the background white the flow of program is not interrupted. As soon as the reply comes, the code in the callback function is executed. That sounds neat. Wait a second. Didn&#8217;t we all learn that Javascript is single threaded and does a single job at a time and what not? Then how is the callback supposed to listen when the browser is already executing the code below it?
+</p>
+<p>
+	To understand that, you&#8217;ll have to stop believing every thing you write in Javascript is Javascript. Yes, I mean it. Javascript is single threaded, but there is much more to Javascript than just a single <b>call stack</b>. Ok first, what is a call stack. Whenever a javascript file is executed, the engine creates a context for the code to run. This is the global execution context. It sits at the bottom of the call stack. Whenever a new function is invoked (or &#8216;called&#8217;), a new execution context is pushed on top of the stack. After the execution completes, the execution context is popped off the stack. After the last line of code is interpreted, the global context is popped off the stack.
+</p>
+<p>
+	Well and good. But what about that setTimeout function that you set for the next 10 seconds? And our own mongodb query. Where did those go? The setTimeout is actually a webAPI provided to us, the Javascript developers, by the browser. Similarly, our mongodb query command was not a Javascript thingy, but a C++ API from the Nodejs bag of goodies. These events are handled by their respective environment, and when they finish execution, they enter what is called the <b>callback queue</b>. There, they wait until the call stack is completely empty. Once the call stack in empty (all Javascript code is done running), the <b>event loop</b> kicks in, pushes the callback functions waiting in the call back queue on top of the stack, one by one. A great way to visualize what the above paragraph just said is to try it out yourself at <a href="https://latentflip.com/loupe" target="_blank" rel="noopener">loupe by Philip Roberts</a>. He&#8217;s an amazing guy and you should totally check out his talks.
+</p>
+<p>
+	So that was it for this little article. Hope to have helped you. Keep digging.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>AJAX Loading</title>
+		<link>https://nagekar.com/2016/02/ajax-loading.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 04 Feb 2016 23:00:00 +0000</pubDate>
+				<category><![CDATA[javascript]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/02/04/ajax-loading/</guid>
+
+					<description><![CDATA[Edit: The section below this has some major issues, that I only found out after pushing into github. Read edit section. I always admired the sites which did not reload upon clicking links here and there, but simple gave me whatever I requested for, with grace. Sites like Facebook, Twitter and Youtube extensively use it, [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    <i>Edit: The section below this has some major issues, that I only found out after pushing into github. Read edit section.</i>
+</p>
+<p>
+	I always admired the sites which did not reload upon clicking links here and there, but simple gave me whatever I requested for, with grace. Sites like Facebook, Twitter and Youtube extensively use it, and the application hardly reloads after the initial reload. Here&#8217;s my attempt on making something similar.
+</p>
+<p>
+	Firstly, I downloaded a free HTML template from <a href="https://www.onlinecasinos.im/" target="_blank" rel="noopener">Online Casinos</a>. The links had to be edited. The pattern I used was to replace, for example, any (internal) link pointing to <code>example.html</code> to <code>#/example.html</code>. What it did was 1.) prevent the page from reloading, and 2.) putting the requested location to some place from where I can extract it with Javascript.
+</p>
+<p>
+	Next, grab that location of the hash. The Javascript&#8217;s built in method <code>window.location.hash</code> provides the page&#8217;s current hash. We drop the first char from the returned hash as it is the hash (#) character itself. The hash value is essentially the location to be navigated to, hence, we use some string manipulation to craft a new URL from it, and make an AJAX request to fetch the contents of the page requested, and insert it into the div specified through Javascript.
+</p>
+<p>
+	For example, suppose we are on about.html page. Now if I click &#8216;contact&#8217; link, the link would change to /about.html#/contact.html, the hash value would be grabbed by the window.location.hash method, a GET request is fired to get that location with a XMLHttpRequest object, the response is inserted with innerHTML method on the div, and using the <code>window.history.pushState()</code> method, we update the URL to /contact.html, to ease sharing. All this, in the blink of an eye. Cool.
+</p>
+<p>
+	I could do it in two different ways. One was to just place the text in those files and inserting them into the template. The drawback of this was that if a user directly visits that page, he/she would just see plain text. For example, <a href="https://www.nagekar.com/assets/ajaxreload/">check this link out</a>. The Javascript code for that was,
+</p>
+<p><script src="https://gist.github.com/abhn/e53b6d308f3620e7b9a2.js"></script></p>
+<p>
+	The separate callback function for getHash was necessary because onclick() event fires before the hash is changed, and it would result in the script grabbing the previous hash. As already mentioned, the navigation is smooth if one visits index.html and then other links, but try getting the about.html page first. All you&#8217;ll see are a few lines of text.
+</p>
+<p>
+	A sloppy solution to the above problem was to replicate the entire index page with varying content for each of the page, and then replace entire DOM on anchor click. You can imagine this is not at all smart, and would destroy the point of this site. Not to mention the extra bandwidth to reload the same resources on every request. <a href="https://www.nagekar.com/assets/ajaxreload2/">Here is the implementation</a> for this method.
+</p>
+<p>
+	What would be the smarter way? Perhaps, making sure the first page to load always downloads the entire html every time, and subsequent requests to be made to download the changed content. I will be implementing this solution shortly. Drop in your ideas too, and share if you enjoyed reading this.
+</p>
+<h2>Edit</h3>
+<p>
+    So, the above code seemed to work on my localhost, but there were some serious (cross origins and some logical ones) issues with it, so much that I considered to learn relative and absolute links all over again. Anyways, I also happened to redesign my blog during this time (redesign in the sense changing the template), and I am working to implement AJAX loading on all links here on my blog. So far, all links on the home page seemed to work as expected (AJAXified). I am using the document.write() method, so judge me on that. You can check them out <a href="https://www.nagekar.com/">here</a>. The code snippet is following.
+</p>
+<p><script src="https://gist.github.com/abhn/330dcb193dd25e46607d.js"></script></p>
+<p>
+    What do you think about it? It feels a little buggy at times, and sadly, Internet Explorer isn&#8217;t supported yet. But for most of it, chrome and firefox are working like a charm. Hope to get all links covered under this thing, which would be nice. Sadly though, the browser tab shows loading for all the third party resources on the page which kill the purpose of this thing. Anyways, feel free to correct or improve this in the comments below.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

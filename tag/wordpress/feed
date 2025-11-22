@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>wordpress &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/wordpress/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Mon, 18 Apr 2022 20:15:03 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>wordpress &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>WordPress Security Checklist: How To Secure Your WordPress Website</title>
+		<link>https://nagekar.com/2022/04/wordpress-security-checklist.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 18 Apr 2022 14:40:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[security]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1387</guid>
+
+					<description><![CDATA[WordPress has been powering my blog since the start of last year. In fact, migrating my Jekyll template to WordPress was one of the highlights of my new year 2021 and I&#8217;m very happy that I did, although I didn&#8217;t publish as much as I had hoped for. Fortunately, I&#8217;ve learned a lot more about [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>WordPress has been powering my blog <a href="https://www.nagekar.com/2021/01/life-goes-full-circle-blog-back-to-wordpress.html">since the start of last year</a>. In fact, migrating my Jekyll template to WordPress was one of the highlights of my new year 2021 and I&#8217;m very happy that I did, although I didn&#8217;t publish as much as I had hoped for. Fortunately, I&#8217;ve learned a lot more about WordPress over the course of a year than when I started. In this short primer, I hope to go into a bit more depth on how to securely run a self hosted WordPress website.</p>
+
+
+
+<h2 class="wp-block-heading">Prerequisites</h2>
+
+
+
+<p>Before we get started, there are a few things that we need to make sure we have to</p>
+
+
+
+<ul class="wp-block-list"><li>Self hosted WordPress installation with SSH access</li><li>Administrator account to set up plugins</li></ul>
+
+
+
+<h2 class="wp-block-heading">Table of contents</h2>
+
+
+
+<ol class="wp-block-list"><li><a href="#plugins" data-type="internal" data-id="#plugins">Keep plugins to the minimum and up to date</a></li><li><a href="#file-permissions">Fix file permissions</a></li><li><a href="http://tfa">Two-Factor Authentication</a></li><li><a href="#failed-logins">Set up auto banning of failed logins</a></li><li><a href="#regular-backups">Enable regular backups</a></li><li><a href="http://xml-rpc">Disable XML-RPC</a></li><li><a href="#file-editing">Disable file editing in WordPress admin</a></li><li><a href="#waf">Use a Web Application Firewall</a></li><li><a href="http://general-security">Don&#8217;t forget the usual web security measures</a></li></ol>
+
+
+
+<h2 class="wp-block-heading" id="plugins">1. Keep plugins to the minimum and up to date</h2>
+
+
+
+<p>I wish I could just sticky something like this on top of most of my articles, but most people trying to attack our websites don&#8217;t have the time or resources to develop and use 0days. They use existing exploits out in the wild and some of these exploits can be months old, if not more. WordPress core and plugin authors can only do so much more than promptly releasing patches for security vulnerabilities that they find.</p>
+
+
+
+<p>So then it is up to us as site admins to make sure we patch as soon as is feasible. Having worked on many large codebases, I know automatic updating isn&#8217;t always possible or even desirable, but having an eye on the changelog can definitely help not get compromised.</p>
+
+
+
+<p>I&#8217;d also recommend a web security helper plugin that sends alert emails when it detects outdated plugins / themes / core.</p>
+
+
+
+<h2 class="wp-block-heading" id="file-permissions">2. Fix file permissions</h2>
+
+
+
+<p>During development, many files and directories permissions are way too open to make it easy to set up the website and all plugins. In production, however, the permissions can be dialed down a notch to prevent anyone with any access on the server to take over the whole website.</p>
+
+
+
+<p>Similarly, attackers typically upload shell code using the uploads functionality, and if code execution is disabled in the directory, we make it harder for this attack to succeed.</p>
+
+
+
+<p>A detailed guide on setting file permissions can be found on official WordPress documentation: <a href="https://wordpress.org/support/article/changing-file-permissions/">https://wordpress.org/support/article/changing-file-permissions/</a></p>
+
+
+
+<h2 class="wp-block-heading" id="tfa">3. Two-Factor Authentication</h2>
+
+
+
+<p>Administrator accounts have many powers on a WordPress website, and a compromised administrator account can lead to uploading of <a href="https://en.wikipedia.org/wiki/Shellcode">PHP shell code</a> leading to command execution and server compromise.</p>
+
+
+
+<p>To make sure admin accounts are extra secure, enforce 2FA on all administrator accounts. This can be done by any <a href="https://wordpress.org/plugins/search/2fa/">2FA or login security plugin</a> on the WordPress plugin store.</p>
+
+
+
+<h2 class="wp-block-heading" id="failed-logins">4. Set up auto banning of failed logins</h2>
+
+
+
+<p>Since WordPress doesn&#8217;t ship with any builtin way of auto-banning failed login attempts, we have to rely on plugins like WordFence. WordFence will need to be configured with options to block login attempts after a certain number of failed attempts.</p>
+
+
+
+<figure class="wp-block-image"><img fetchpriority="high" decoding="async" width="1024" height="362" src="https://www.nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08-1024x362.png" alt="" class="wp-image-1519" srcset="https://nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08-1024x362.png 1024w, https://nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08-300x106.png 300w, https://nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08-768x272.png 768w, https://nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08.png 1450w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>WordFence can also help you disable execution in upload directories, block IP addresses making malicious requests and much more.</p>
+
+
+
+<h2 class="wp-block-heading" id="regular-backups">5. Enable regular backups</h2>
+
+
+
+<p>While we can take preventive measures against mishaps, we can never be sure. Hence it is imperative that the website is backed up regularly. Backing up can be done at multiple places. The database can be backed up separately from the static assets and files. There are many plugins, like WPVivid, that help you fine tune what gets backed up and where it gets stored. It is always nice if you can afford an external backup location, like AWS S3.</p>
+
+
+
+<p>The hosting provider might also have ways of backing up the website. For example, AWS Lightsail has daily instance snapshots which backs up the entire disk.</p>
+
+
+
+<h2 class="wp-block-heading" id="xml-rpc">6. Disable XML-RPC</h2>
+
+
+
+<p>If you don&#8217;t use plugins that rely on XML-RPC or using the WordPress mobile app, it is wise to disable XML-RPC which removes another widely used attack surface by attackers. Many plugins allow the disabling of XML-RPC, including the aforementioned WordFence.</p>
+
+
+
+<h2 class="wp-block-heading" id="file-editing">7. Disable file editing in WordPress admin</h2>
+
+
+
+<p>Disable editing of files from WordPress admin as that&#8217;s almost never a good idea, especially if you can achieve the same using more secure methods like SSH. To disable file editor, simply add </p>
+
+
+
+<p><code>define( 'DISALLOW_FILE_EDIT', true );</code></p>
+
+
+
+<p>to your <code>wp-config.php</code> file.</p>
+
+
+
+<h2 class="wp-block-heading" id="waf">8. Use a Web Application Firewall</h2>
+
+
+
+<p>A firewall plugin like <a href="https://sucuri.net/">Sucuri</a> or <a href="https://www.wordfence.com">WordFence</a> can identify attack signatures and block malicious requests. Many also include IP address block lists that prevent known malicious IP addresses from reaching your WordPress website.</p>
+
+
+
+<p>For more control, there&#8217;s <a href="https://github.com/SpiderLabs/ModSecurity">ModSecurity</a>. ModSecurity needs to be installed alongside the web server and it can detect and block known attack signatures for not just WordPress but just about any popular web framework. It does require a deeper technical know how to setup and maintain ModSecurity, and a plugin might work be a better approach for most people.</p>
+
+
+
+<h2 class="wp-block-heading" id="general-security">9. Don&#8217;t forget the usual web security measures</h2>
+
+
+
+<p>A WordPress website is, at the end of it all, a website. While there are WordPress specific ways of hardening a WordPress installation, there is also a whole plethora of best practices that apply to every website, including the WordPress ones. </p>
+
+
+
+<ol class="wp-block-list"><li><strong>Use HTTPS</strong> &#8211; SSL/TLS certificates are free, and usually come by default with many hosting providers and CDNs. Don&#8217;t forget to turn it on and enforce it in strict mode.</li><li> <strong>Use appropriate security headers </strong>&#8211; Headers tell the browser how to handle your website&#8217;s content. Many client side attacks can be mitigated by using the right set of headers. A detailed list of useful headers can be found on OWASP&#8217;s website: <a href="https://owasp.org/www-project-secure-headers" target="_blank" rel="noreferrer noopener">https://owasp.org/www-project-secure-headers</a></li><li><strong>Use CAPTCHA on login page</strong> &#8211; to prevent bot submissions and more sophisticated bruteforce attacks, enforce a CAPTCHA like reCaptcha on login page. WordFence supports this out of the box (needs an API key from Google). </li><li><strong>Handle user input with care when using a custom theme</strong> &#8211; when using a custom theme that accepts user input in the form of query parameters to show filtered content, the regular best practices around user generated input has to be followed. Embedding user input in output can lead to Cross Site Scripting, while passing it straight to the database can lead to SQL Injection.</li></ol>
+
+
+
+<h2 class="wp-block-heading">In conclusion</h2>
+
+
+
+<p>I hope that was useful. If you have any questions around WordPress or suggestions to improve this article, feel free to reach out to me via email. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Guide To A Sane WordPress Workflow</title>
+		<link>https://nagekar.com/2021/04/guide-to-a-sane-wordpress-workflow.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 01 Apr 2021 07:00:32 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1294</guid>
+
+					<description><![CDATA[Like most things in life, WordPress isn&#8217;t perfect. But for a publishing platform, it is quite up there with the best in the business. For writing, I haven&#8217;t had any complaints so far, but when it came to customization or workflows around maintaining a theme, I was a little lost. To me it somehow felt [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>Like most things in life, WordPress isn&#8217;t perfect. But for a publishing platform, it is quite up there with the best in the business. For writing, I haven&#8217;t had any complaints so far, but when it came to customization or workflows around maintaining a theme, I was a little lost.</p>
+<p>To me it somehow felt very liberating and restricting at the same time. Liberating, because of the ecosystem; themes, plugins, hosting platforms, tons of helpful resources and support. Restricting, if and when you want to build a custom theme and don&#8217;t speak much PHP, general added complexity compared to a static site generator, having to deal with hosting providers, updates and added maintenance work.</p>
+<p>But depending on the requirements, WordPress might actually make a lot of sense as a publishing platform (well, of course. <a href="https://wordpress.org/about/features/">It powers 40% of the web</a>). My blog used to be hosted on Github Pages with Jekyll as the site generator until I made the <a href="https://www.nagekar.com/2021/01/life-goes-full-circle-blog-back-to-wordpress.html">switch to WordPress</a> a couple of months ago. What I did struggle with was finding a setup that offered a smooth workflow around managing a custom theme with self hosted WordPress instance.</p>
+<p>This article is an attempt at fixing that and aggregating some useful tips. I&#8217;ll try to cover the following:</p>
+<ul>
+<li>A <strong>self hosted WordPress</strong> website that&#8217;s affordable yet stable</li>
+<li><strong>Continuous deployment pipeline</strong> for custom themes</li>
+<li><strong>Backups</strong> that are reliable</li>
+<li><strong>CDN</strong> and <strong>caching</strong></li>
+<li><strong>Securing the website</strong></li>
+</ul>
+<p>Let&#8217;s get started.</p>
+<h2>Platform setup</h2>
+<p>I decided to go with <a href="https://aws.amazon.com/lightsail/projects/wordpress/">AWS Lightsail one click WordPress install</a>. You&#8217;ll find more information on the <a href="https://bitnami.com/stack/wordpress">Bitnami WordPress</a> page about the stack. It is lightweight and runs perfectly fine on a 512MB RAM / 1vCPU instance. Once behind a CDN and page cache, the website can handle a fair number of visitors.</p>
+<h2>Continuous Deployment (CD) pipeline (optional: Continuous Integration)</h2>
+<p>This step assumes you have a <a href="https://github.com/abhn/Elementary-Wordpress">custom WordPress theme</a> or source code of a theme available on a GitHub repository. You only need to follow this step if you think you&#8217;ll be making frequent changes to your theme files and would like to have a pipeline for the automatic deploy of the theme (say, for example, when you commit a change to the master branch of your repository). Alternatively, you can always create a zip file of the theme and upload it manually via the WordPress admin panel if you prefer to keep things simple.</p>
+<p>Assuming you have a theme hosted on GitHub, you&#8217;ll need to make use of Travis CI to build your code (if there&#8217;s any CSS or JS that needs to be transpiled), test it (if there are any checks) and then upload the files to the AWS LightSail instance using secure copy (scp). Following are some resources to help you get started.</p>
+<ul>
+<li>Underscore &#8211; Minimal WordPress starter template: <a href="https://underscores.me/">https://underscores.me/</a></li>
+<li>Tutorial for deploying from Travis using SSH and SCP: <a href="https://oncletom.io/2016/travis-ssh-deploy/">https://oncletom.io/2016/travis-ssh-deploy/</a></li>
+<li>Elementary WordPress template <a href="https://github.com/abhn/Elementary-Wordpress/blob/master/.travis.yml">Travis file</a>, <a href="https://github.com/abhn/Elementary-Wordpress/blob/master/package.json">package.json</a> and <a href="https://github.com/abhn/Elementary-Wordpress/blob/master/scripts/deploy.sh">deploy script</a> for reference.</li>
+</ul>
+<h2>Backups</h2>
+<p>For backups, I&#8217;m using a couple of strategies but I think either one should suffice for my usecase.</p>
+<h3>AWS Lightsail snapshots</h3>
+<p>I&#8217;d recommend enabling automatic daily snapshots of your instance in AWS Lightsail. So if things go very south, you will lose 1 day&#8217;s worth of data at most. Since my blog&#8217;s content is rarely updated, this means this works near perfectly.</p>
+<h3><a href="https://wpvivid.com/"><span style="text-decoration: underline;">WPVivid WordPress plugin</span></a></h3>
+<p>WPVivid is a nice plugin that offers more precise backups, meaning you can choose to backup just your database, or files, or both. It also has cron functionality and offer 12 hourly backups (more frequent if you&#8217;re a paying customer). WPVivid allows you to transfer the backups to Google Drive, AWS S3, Dropbox among many other third party providers.</p>
+<h2>Server health monitoring and alerts</h2>
+<p>I&#8217;m using New Relic to monitor the health of the WordPress instance. It isn&#8217;t necessary as AWS Lighsail already comes with basic dashboards for monitoring CPU performance and burst usage (giving a rough idea about whether the server is sweating under load), but if you&#8217;d like to go a bit fancy with the whole monitoring thing and set up alerts for throughput, error rate etc, New Relic is quite good.</p>
+<p>New Relic really shines at showing you the external services your instance is talking to, database operations and the CPU usage share per plugin that you have installed on your WordPress website. That information can help you debug any services / plugins that are slowing down your website or doing something strange behind your back.</p>
+<p><figure id="attachment_1299" aria-describedby="caption-attachment-1299" style="width: 640px" class="wp-caption alignnone"><img decoding="async" class="wp-image-1299 size-large" src="https://www.nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44-809x1024.png" alt="AWS metrics" width="640" height="810" srcset="https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44-809x1024.png 809w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44-237x300.png 237w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44-768x972.png 768w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44.png 820w" sizes="(max-width: 640px) 100vw, 640px" /><figcaption id="caption-attachment-1299" class="wp-caption-text">Metrics in AWS Lightsail</figcaption></figure></p>
+<p><figure id="attachment_1300" aria-describedby="caption-attachment-1300" style="width: 751px" class="wp-caption alignnone"><img decoding="async" class="wp-image-1300" src="https://www.nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-1024x578.png" alt="Metrics in New Relic" width="751" height="424" srcset="https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-1024x578.png 1024w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-300x169.png 300w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-768x434.png 768w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-1536x867.png 1536w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50.png 1861w" sizes="(max-width: 751px) 100vw, 751px" /><figcaption id="caption-attachment-1300" class="wp-caption-text">Metrics in New Relic</figcaption></figure></p>
+<p>Both AWS Lightsail alerts and New Relic alerts support multiple channels, so feel free to use SMS, email, Slack or whatever your preferred way of getting alerted is.</p>
+<h2>CDN and Caching</h2>
+<p>My go-to CDN for any personal website is Cloudflare and that is what I&#8217;m using here. I didn&#8217;t have any problems with the admin interface behind the CDN and all seems to work very well. I have a page rule that overwrites cache control headers from WordPress and forces everything under <em>/wp-content/*</em> to be cached.</p>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-1313" src="https://www.nagekar.com/wp-content/uploads/2021/03/2021-03-31_23-50-300x124.png" alt="" width="500" height="207" srcset="https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_23-50-300x124.png 300w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_23-50-768x318.png 768w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_23-50.png 955w" sizes="auto, (max-width: 500px) 100vw, 500px" /></p>
+<p>For page caching, I&#8217;m using a plugin called <a href="https://wordpress.org/plugins/w3-total-cache/">WP Total Cache</a>. It was the most popular performance optimization plugin and was recommended to me. It has a &#8220;Page Cache&#8221; option which needs to be enabled and set to use disk as cache store.</p>
+<h2>Security</h2>
+<p>To secure the Lightsail instance, I&#8217;m following some basic good practices and a plugin to help me set up some blocking rules.</p>
+<ol>
+<li>Lightsail instance is as close to stock as possible making sure there are no random packages installed from my side on the instance.</li>
+<li>Disable port 80, and if you&#8217;re using a reverse proxy CDN like Cloudflare, only allow Cloudflare IPs to your origin server.<img loading="lazy" decoding="async" class="wp-image-1298 aligncenter" src="https://www.nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-36.png" alt="" width="355" height="212" srcset="https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-36.png 757w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-36-300x179.png 300w" sizes="auto, (max-width: 355px) 100vw, 355px" /></li>
+<li>As with Lightsail, WordPress installation should be close to stock with minimal plugins.</li>
+<li><a href="https://www.wordfence.com/">Wordfence WordPress plugin</a> for
+<ol>
+<li>2FA authentication</li>
+<li>Banning incorrect login attempts, or login attempts using generic usernames like admin, administrator or root.</li>
+<li>reCAPTCHA on the login page (you&#8217;ll need API keys from Google)</li>
+<li>Disable xmlrpc if you&#8217;re not planning on using apps. Enable 2FA on it, or disable login via xmlrpc.</li>
+<li>Go through all the options that Wordfence has to offer and use whatever makes sense for your use case. I found them to be quite useful and intuitive.</li>
+</ol>
+</li>
+<li>In general, keep stuff up to date.</li>
+</ol>
+<h2>Conclusion</h2>
+<p>That&#8217;s it for this article. If you have any questions or suggestions, please feel free to write to me. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Life Goes Full Circle &#8211; Blog Back To WordPress</title>
+		<link>https://nagekar.com/2021/01/life-goes-full-circle-blog-back-to-wordpress.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 19 Jan 2021 21:43:55 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1231</guid>
+
+					<description><![CDATA[Happy new year all! We&#8217;re finally out of 2020, yaay! It has been, for lack of a better word, an interesting year. Not intending on becoming Abhi News Network, I&#8217;ll spare you from having to read about the events of the past year for the thousandth time. Like many people, I realized my full nerd [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Happy new year all!</p>
+<p>We&#8217;re finally out of 2020, yaay! It has been, for lack of a better word, an interesting year. Not intending on becoming Abhi News Network, I&#8217;ll spare you from having to read about the events of the past year for the thousandth time. Like many people, I realized my full nerd potential and learned how to live indoors for weeks at a time. I also unlocked a new hobby, <a href="https://www.nagekar.com/2020/12/1500-elo-lichess.html">Chess</a>. Some other things like traveling and in-person events definitely took a backseat but can&#8217;t do much about that.</p>
+<p>This short post is about moving this blog back to WordPress. I say back, but the fact is that this website was never on WordPress. I started this blog on ghost.org back in early 2014, but had to quickly move it away from there in spite of absolutely loving Ghost (mostly because of the $5/month fees). Next up was Blogger before finally settling on GitHub Pages which, by the way, if you&#8217;re just starting out with blogging and can find your way around git on a terminal, you should give a try. Now, feeling the need for a much more elaborate CMS, I&#8217;ve migrated to WordPress running on <a href="https://aws.amazon.com/lightsail/projects/wordpress/">AWS Lightsail</a>. It does cost money, but this time I can afford it.</p>
+<p>Before this blog existed, I used to write on WordPress on an older blog. That feels like an eternity ago, which it was in internet time. I used to write about latest smartphones and compare them against each other (nothing that actually needed to be done by hand, now that I think about it; 8mp vs 5mp camera, 1gb vs 2gb ram and so on). I would walk into Samsung stores and try to make &#8216;hands-on&#8217; videos of their latest phones. I can&#8217;t imagine doing that today, mostly because of how much the smartphone industry has expanded since 2012-13. Also because it doesn&#8217;t interest me anymore. </p>
+<p>With WordPress, I hope to be able to write on the go using nothing more than just a browser. <em>&#8220;On the go&#8221;</em> might take some more time to become a normal everyday phrase again, but when that happens, I&#8217;ll be ready with my <a href="https://www.nagekar.com/2020/04/thinkpad-x230-in-2020.html">Thinkpad</a> and a backpack. To not need a text editor to write Markdown/HTML, terminal to commit and push, and to see previews without a developer server would be very liberating. I&#8217;m excited about this future.</p>
+<p>I&#8217;ll end this article with a nice picture I took today. Hope you enjoy looking at it as much as I did looking at Stitch in my house today.</p>
+<p><img decoding="async" class="alignnone wp-image-1237" src="https://www.nagekar.com/wp-content/uploads/2021/01/stitch-scaled-e1611091985641-1024x993.jpg" alt="" width="640" srcset="https://nagekar.com/wp-content/uploads/2021/01/stitch-scaled-e1611091985641-1024x993.jpg 1024w, https://nagekar.com/wp-content/uploads/2021/01/stitch-scaled-e1611091985641-300x291.jpg 300w, https://nagekar.com/wp-content/uploads/2021/01/stitch-scaled-e1611091985641-768x745.jpg 768w, https://nagekar.com/wp-content/uploads/2021/01/stitch-scaled-e1611091985641-1536x1490.jpg 1536w, https://nagekar.com/wp-content/uploads/2021/01/stitch-scaled-e1611091985641.jpg 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></p>
+<p>Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

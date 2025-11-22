@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>programming &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/programming/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Sat, 21 Mar 2020 23:00:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>programming &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>What Writing A Web Development Tutorial Taught Me</title>
+		<link>https://nagekar.com/2020/03/learnings-writing-web-dev-short-course.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 21 Mar 2020 23:00:00 +0000</pubDate>
+				<category><![CDATA[programming]]></category>
+		<category><![CDATA[web]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2020/03/21/learnings-writing-web-dev-short-course/</guid>
+
+					<description><![CDATA[I recently wrote a tutorial on getting started with web development. It was a frontend only (meaning covering only HTML, CSS and JavaScript), 5 day tutorial that covered very basic web development topics and concepts like HTML elements, CSS selectors and JavaScript language semantics. Along with learning the basics of frontend web development, the course [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  I recently wrote a tutorial on getting started with web development. It was a frontend only (meaning covering only HTML, CSS and JavaScript), 5 day tutorial that covered very basic web development topics and concepts like HTML elements, CSS selectors and JavaScript language semantics. Along with learning the basics of frontend web development, the course takers built their very first website which was a simple, one page portfolio site listing their interests and some pictures.
+</p>
+<p>
+  I&#8217;d not go into the technicalities of the course itself, as that&#8217;s off topic. What I&#8217;d like to do in the little post is list down some things I learned while I was writing the course, about writing the course and also about writing your thoughts down in general.
+</p>
+<ol>
+<li><a href="#understanding">If you&#8217;d like to test your understanding, try explaining it</a></li>
+<li><a href="#beliefs">Many <em>obviously</em> true beliefs that you hold probably aren&#8217;t true</a></li>
+<li><a href="#explaining">Explaining is an art</a></li>
+<li><a href="#editor">The role of an editor</a></li>
+<li><a href="#focus">Writing requires a lot more focus than programming</a></li>
+<li><a href="#continuous_thought">Having a continuous thought train for a multipart article is exponentially more difficult than writing a one off article</a></li>
+<li><a href="#plan">Have a plan or outline</a></li>
+<li><a href="#know_audience">Know your audience&#8217;s technnical competence</a></li>
+</ol>
+<p>
+  So, without further ado, let&#8217;s get started.
+</p>
+<h3 id="understanding">If you&#8217;d like to test your understanding, try explaining it</h3>
+<blockquote><p>
+  &#8220;The person who says he knows what he thinks but cannot express it usually does not know what he thinks.&#8221;<br />
+  — Mortimer Adler
+</p></blockquote>
+<p>
+  The above quote from this interesting blog post about <a href="https://fs.blog/2012/04/feynman-technique/">Feynman Technique on Farnam Street</a> captures the gist of this learning. We&#8217;re good at convincing ourselves that we understand something when in reality we might not. It is similar to when we speak a language natively and are confident in our knowledge, but then when a language-learner asks us a simple question, we don&#8217;t have an explanation but rather know it &#8216;intuitively&#8217;.
+</p>
+<p>
+  As an example, when I was writing the chapter on JavaScript, I was tempted to write that arrow functions have replaced the &#8216;function()&#8217; functions. I asked myself why I thought that was the case, and I didn&#8217;t have an answer. I had just &#8216;believed&#8217; that to be the case.
+</p>
+<p>
+  Upon researching, I learned the differences in their workings and their use cases, and I came out of that a bit wiser than before. That was just one instance where I wrote something, then asked myself why I thought that was the case, and learned that that was in fact not the case.
+</p>
+<p>
+  The bottom line here is, if you want to learn something well or test your understanding, try explaining it. Interestingly, that&#8217;s just me rediscovering the Feynman technique.
+</p>
+<h3 id="beliefs">Many <em>obviously</em> true beliefs that you hold probably aren&#8217;t true</h3>
+<p>
+  This is an extension of the previous point. But with a different takeaway. Since we&#8217;ve now established that many of our beliefs are wrong, it is wise to not be too confident in them and always practice humility when it comes to your knowledge, and consequently, your opinions and worldview. In other words, while it is great to put in time and energy to learn something properly and have opinions about it, it is also important to be ready to accept that you could be wrong and change.
+</p>
+<p>
+  This point is best illustrated by the &#8220;Strong Opinions, Weakly Held&#8221; philosophy, best outlined by a little paragraphy from <a href="https://bobsutton.typepad.com/my_weblog/2006/07/strong_opinions.html">this post.</a>
+</p>
+<blockquote><p>
+  A couple years ago, I was talking the Institute’s <a href="https://www.iftf.org/people/bjohansen.html">Bob Johansen</a> about wisdom, and he explained that – to deal with an uncertain future and still move forward – they advise people to have “strong opinions, which are weakly held.”  They&#8217;ve been giving this advice for years, and I understand that it was first developed by Instituite Director <a href="https://www.saffo.com/">Paul Saffo</a>. Bob explained that weak opinions are problematic because people aren’t inspired to develop the best arguments possible for them, or to put forth the energy required to test them. Bob explained that it was just as important, however, to not be too attached to what you believe because, otherwise, it undermines your ability to “see” and “hear” evidence that clashes with your opinions. This is what psychologists sometimes call the problem of “confirmation bias.”
+</p></blockquote>
+<p>
+  While you&#8217;re at it, I recommend reading <a href="https://blog.codinghorror.com/strong-opinions-weakly-held/">this article</a> by Jeff Atwood where I first read it. There&#8217;s also this nice TED talk along the same lines.
+</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/jobYTQTgeUE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<h3 id="explaining">Explaining is an art</h3>
+<p>
+  It is not easy to explain why linear-gradient works the way it does. It is hard to explain parameters of a function to someone who has never written any code, and you cannot use words like parameters, arguments or function call before explaining them. In short, writing a beginners programming course is some work (who would&#8217;ve thought?!). Now I look back at all those books, articles and tutorials that taught me the basics of everything I&#8217;ve learned and realize how great it was to have had all of that top quality learning material for free on the internet.
+</p>
+<p>
+  My personal experience is that we don&#8217;t notice when something is very well written or explained, especially with technical writing and documentation. It feels very natural and in-flow. But try to remember the last badly written article that you read. It was exhausting, you had to re-read through paragraphs to make sense of the text and you probably didn&#8217;t even finish it. That&#8217;s why, the next time you read through something and don&#8217;t notice anything wrong, take a moment to appreciate the effort that might&#8217;ve gone into making it come across the way it does.
+</p>
+<h3 id="editor">The role of an editor</h3>
+<p>
+  I learned what an editor does while writing this course. I would typically submit a day&#8217;s work as a document, fairly confident that I had done a good job only to find out the next day that the document has 200 new comments and edits. How was that even possible? I&#8217;m not a good writer, accepted, but those many edits? I would genuinely fear submitting my work for editing, just like my younger self would fear exams for all the bad grades I could get.
+</p>
+<p>
+  But in this case, the editor is really there to make the text readable, check if the sentences flow naturally and there&#8217;s no discontinuation of thoughts (and of course, spelling and grammatical shortcomings in the text). All in all, after the edit the content doesn&#8217;t look anything like the initial draft I sent for editing. If you ever get the chance to get your work reviewed by an editor, don&#8217;t miss it. You&#8217;ll learn a lot.
+</p>
+<h3 id="focus">Writing, for me, requires a lot more focus than programming</h3>
+<p>
+  I realized how much more focus writing content needed as compared to programming. I could just not do it in the office. Every 15 minutes I&#8217;d lose my train of thoughts due to some or the other distraction. I believe this could be just because I&#8217;m not used to the idea of writing content in the office, or writing professionally in general. I would end up taking work from home days to make sure I&#8217;m making progress. I had not expected this to happen, especially after having been an amaeteur blogger for a while now. But there I was, trying to think of the next sentence while repeatedly reading the paragraphs above.
+</p>
+<h3 id="continuous_thought">Having a continuous thought train for a multipart article is a lot more difficult than writing a one off article</h3>
+<p>
+  So I feel quite comfortable writing something like this very post. It is not as long, and one can write the whole thing in a couple of sittings. Then there are also not a lot of different ways of presenting here. Just text followed by headings followed by more text. That&#8217;s quite a lot easier than writing a multi-day course with each day three or four times as long as a typical blog post with many screenshots, git commits, code snippets and, of course, text. It is important to keep track of all your resources, and any mistake you find later on means all the screenshots and git commits from that point on needs to be updated, which is quite a hassle.
+</p>
+<h3 id="plan">Have a plan or outline</h3>
+<p>
+  To avoid finding technical faults / discontinuities in the text much later in the course writing, having a plan or an outline about the content is very important. Each chapter, and every topic in the chapter should be outlined before even starting with the actual writing. Ideally, even the outline should be reviewed by someone who knows about how learning works (yes, that&#8217;s an expertise), and the final outcome should be communicated well in advance. You want to avoid making the course too difficult (and have people drop out after getting stuck) and too easy (and have people drop out after getting bored).
+</p>
+<h3 id="know_audience">Know your audience&#8217;s technnical competence</h3>
+<p>
+  When you&#8217;re writing a beginner course in software development, you have to explain every bit of technicality. From creation of a file with special extension to what a git commit is. Any assumption you make regarding the ability of the user to understand the course&#8217;s substance can backfire resulting in many course takers abandoning the course mid way or flooding the communication channels with their questions. To avoid this, it is important to know the technical competence of your target audience. You cannot cater to a wide range of expertise, and no matter what you write, many people are going to be left out. But that&#8217;s okay.
+</p>
+<h3>In closing</h3>
+<p>
+  I&#8217;m glad I found this opportunity to do some professional writing. I learned some important aspects of writing, and I tried to share my experiences with you through this post. I hope you find something useful out of this. As always, thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>The Pragmatic Programmer Notable Quotes</title>
+		<link>https://nagekar.com/2018/10/the-pragmatic-programmer-quotes.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 15 Oct 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[books]]></category>
+		<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/10/15/the-pragmatic-programmer-quotes/</guid>
+
+					<description><![CDATA[I completed reading &#8216;The Pragmatic Programmer&#8217;, probably one of the most recommended pieces of literature on software engineering. I&#8217;ll try to put down some of the quotes and my interpretation of them in the following paragraphs. I&#8217;ll be coming back to this from time to time. Hope they help you in your next software project. [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  I completed reading &#8216;The Pragmatic Programmer&#8217;, probably one of the most recommended pieces of literature on software engineering. I&#8217;ll try to put down some of the quotes and my interpretation of them in the following paragraphs. I&#8217;ll be coming back to this from time to time. Hope they help you in your next software project.
+</p>
+<h3>The Cat Ate My Source Code</h3>
+<blockquote><p>
+  The greatest of all weaknesses is the fear of appearing weak.
+</p></blockquote>
+<p>
+  Take responsibility for the code that you write and the decisions that you make, and when things go south, present options to recover from the mess instead of pointing fingers.
+</p>
+<h3>Software Entropy</h3>
+<blockquote><p>
+  When disorder increases in software, programmers call it &#8220;software rot.&#8221;
+</p></blockquote>
+<p>
+  Active efforts have to be made to keep the disorder low and go against the nature&#8217;s law (of ever-increasing entropy) to keep away from software rot.
+</p>
+<blockquote><p>
+  Don&#8217;t Live with Broken Windows
+</p></blockquote>
+<p>
+  Once there is a broken window in a building, there will be more broken windows. This is the <a href="https://en.wikipedia.org/wiki/Broken_windows_theory">broken windows theory</a>. Similarly, once a piece of sloppy code enters a codebase, it will attract more sloppiness. Don&#8217;t be the one to introduce a broken window into your codebase and fix existing ones as soon as feasible.
+</p>
+<h3>Stone Soup and Boiled Frogs</h3>
+<blockquote><p>
+  The frog just doesn&#8217;t notice the change. Don&#8217;t be like the frog. Keep an eye on the big picture. Constantly review what&#8217;s happening around you, not just what you personally are doing.
+</p></blockquote>
+<p>
+  If you throw a frog into boiling water, it will jump out at your face. But if you put the frog in cold water and boil it, it won&#8217;t notice and get cooked to death. Good software projects die just like that, slowly, without anyone noticing.
+</p>
+<h3>Good-Enough Software</h3>
+<blockquote><p>
+  But artists will tell you that all the hard work is ruined if you don&#8217;t know when to stop. If you add layer upon layer, detail over detail, the painting becomes lost in the paint. Don&#8217;t spoil a perfectly good program by overembellishment and over-refinement.
+</p></blockquote>
+<p>
+  Know when to stop refining a piece of software. Make tradeoffs if they improve the overall quality of your software.
+</p>
+<h3>Your Knowledge Portfolio</h3>
+<ul>
+<li>Serious investors invest regularly—as a habit. </li>
+<li>Diversification is the key to long-term success. </li>
+<li>Smart investors balance their portfolios between conservative and high-risk, high-reward investments. </li>
+<li>Investors try to buy low and sell high for maximum return. </li>
+<li>Portfolios should be reviewed and rebalanced periodically. </li>
+</ul>
+<p>
+  Think about your knowledge portfolio as investors think about their investment portfolio.
+</p>
+<h3>Communicate!</h3>
+<blockquote><p>
+  It&#8217;s not just what you&#8217;ve got, but also how you package it. Having the best ideas, the finest code, or the most pragmatic thinking is ultimately sterile unless you can communicate with other people. A good idea is an orphan without effective communication.
+</p></blockquote>
+<p>
+  Learn to communicate with different kinds of people, technical and non-technical alike.
+</p>
+<h3>The Evils of Duplication</h3>
+<blockquote><p>
+  DRY (Don&#8217;t Repeat Yourself) principle: EVERY PIECE OF KNOWLEDGE MUST HAVE A SINGLE, UNAMBIGUOUS, AUTHORITATIVE REPRESENTATION WITHIN A SYSTEM.
+</p></blockquote>
+<p>
+  Documents are no exception. Don&#8217;t duplicate business logic in code AND documentation. There should be one true source of knowledge (model) and the others should simply be views of that source.
+</p>
+<h3>Orthogonality</h3>
+<blockquote><p>
+  In computing, the term has come to signify a kind of independence or decoupling. Two or more things are orthogonal if changes in one do not affect any of the others.
+</p></blockquote>
+<p>
+  The code you write has to be as decoupled from the rest of the project as possible. It makes bugs easier to find. There should never be overlapping functionality or duplicate code (also a violation of the DRY principle).
+</p>
+<h3>The Basic Tools</h3>
+<blockquote><p>
+  Every craftsman starts his or her journey with a basic set of good-quality tools.
+</p></blockquote>
+<p>
+  Selecting a good set of tools can greatly improve your productivity and skills.
+</p>
+<h3>Source Code Control</h3>
+<blockquote><p>
+  Always Use Source Code Control
+</p></blockquote>
+<p>
+  Even on single person projects that&#8217;s never going to see the light of the sun.
+</p>
+<h3>Debugging</h3>
+<blockquote><p>
+  Embrace the fact that debugging is just problem solving, and attack it as such.
+</p></blockquote>
+<blockquote><p>
+  The best way to start fixing a bug is to make it reproducible. After all, if you can&#8217;t reproduce it, how will you know if it is ever fixed?
+</p></blockquote>
+<blockquote><p>
+  &#8220;select&#8221; Isn&#8217;t Broken
+</p></blockquote>
+<p>
+  If you encounter a bug, always be suspicious of your own code. No, the compiler isn&#8217;t broken and nor is the CPU. It is your code, fix it.
+</p>
+<h3>Pragmatic Paranoia</h3>
+<blockquote><p>
+  You Can&#8217;t Write Perfect Software
+</p></blockquote>
+<blockquote><p>
+  But Pragmatic Programmers take this a step further. They don&#8217;t trust themselves, either.
+</p></blockquote>
+<blockquote><p>
+  When everybody actually is out to get you, paranoia is just good thinking.
+</p></blockquote>
+<p>
+  We overestimate our capabilities often. Most people think they&#8217;re the best drivers out there. Pragmatic programmers understand that everyone, including themselves, make mistakes, and hence keep an eye out for bugs before they creep in.
+</p>
+<h3>Dead Programs Tell No Lies</h3>
+<blockquote><p>
+  When your code discovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it as soon as possible. A dead program normally does a lot less damage than a crippled one.
+</p></blockquote>
+<h3>Assertive Programming</h3>
+<blockquote><p>
+  If It Can&#8217;t Happen, Use Assertions to Ensure That It Won&#8217;t
+</p></blockquote>
+<blockquote><p>
+  Turning off assertions when you deliver a program to production is like crossing a high wire without a net because you once made it across in practice. There&#8217;s dramatic value, but it&#8217;s hard to get life insurance.
+</p></blockquote>
+<p>
+  Always use assertions to make sure things are working well, even in situations when you&#8217;re sure or things are &#8216;obviously simple&#8217;. Detect early and abort.
+</p>
+<h3>When to Use Exceptions</h3>
+<blockquote><p>
+  &#8220;Will this code still run if I remove all the exception handlers?&#8221; If the answer is &#8220;no,&#8221; then maybe exceptions are being used in nonexceptional circumstances.
+</p></blockquote>
+<p>
+  Don&#8217;t use exception for normal code flow control. Exceptions need to be reserved for &#8216;exceptional&#8217; situations.
+</p>
+<h3>Decoupling and the Law of Demeter</h3>
+<blockquote><p>
+    Organize your code into cells (modules) and limit the interaction between them. If one module then gets compromised and has to be replaced, the other modules should be able to carry on.
+</p></blockquote>
+<h3>Metaprogramming</h3>
+<blockquote><p>Configure, Don&#8217;t Integrate</p></blockquote>
+<blockquote><p>Our goal is to think declaratively (specifying what is to be done, not how) and create highly dynamic and adaptable programs.</p></blockquote>
+<blockquote><p>Program for the general case, and put the specifics somewhere else—outside the compiled code base.</p></blockquote>
+<blockquote><p>Put Abstractions in Code, Details in Metadata</p></blockquote>
+<blockquote><p>Because business policy and rules are more likely to change than any other aspect of the project, it makes sense to maintain them in a very flexible format.</p></blockquote>
+<h3>It&#8217;s Just a View</h3>
+<blockquote><p>The view is an interpretation of the model (perhaps a subset)—it doesn&#8217;t need to be graphical.</p></blockquote>
+<blockquote><p>The controller is more of a coordination mechanism, and doesn&#8217;t have to be related to any sort of input device.</p></blockquote>
+<p>
+  Understand what a view really is. Everything revolves around the models, and views are just different ways in which you can represent those models.
+</p>
+<h3>While You Are Coding</h3>
+<blockquote><p>However, good, safe drivers are constantly reviewing the situation, checking for potential problems, and putting themselves into good positions in case the unexpected happens. The same is true of coding—it may be largely routine, but keeping your wits about you could well prevent a disaster.</p></blockquote>
+<h3>Programming by Coincidence</h3>
+<blockquote><p>Fred doesn&#8217;t know why the code is failing because he didn&#8217;t know why it worked in the first place. </p></blockquote>
+<blockquote><p>If you don&#8217;t have fundamentals or infrastructure correct, brilliant bells and whistles will be irrelevant. </p></blockquote>
+<p>
+  Program consciously. Write code thinking of it as an autonomous task once you have the business requirements and architecture clear is a mistake. There has to be equal involvement during programming.
+</p>
+<h3>Refactoring</h3>
+<blockquote><p>
+  Rather than construction, software is more like gardening—it is more organic than concrete. You plant many things in a garden according to an initial plan and conditions. Some thrive, others are destined to end up as compost. You may move plantings relative to each other to take advantage of the interplay of light and shadow, wind and rain. Overgrown plants get split or pruned, and colors that clash may get moved to more aesthetically pleasing locations. You pull weeds, and you fertilize plantings that are in need of some extra help. You constantly monitor the health of the garden, and make adjustments (to the soil, the plants, the layout) as needed.
+</p></blockquote>
+<blockquote><p>
+  If it hurts now, but is going to hurt even more later, you might as well get it over with.
+</p></blockquote>
+<h3>Code That&#8217;s Easy to Test</h3>
+<blockquote><p>
+  All software you write will be tested—if not by you and your team, then by the eventual users—so you might as well plan on testing
+</p></blockquote>
+<h3>The Requirements Pit</h3>
+<blockquote><p>Don&#8217;t Gather Requirements—Dig for Them</p></blockquote>
+<blockquote><p>Work with a User to Think Like a User</p></blockquote>
+<blockquote><p>The key to managing growth of requirements is to point out each new feature&#8217;s impact on the schedule to the project sponsors.</p></blockquote>
+<h3>Ubiquitous Automation</h3>
+<blockquote><p>Civilization advances by extending the number of important operations we can perform without thinking.</p></blockquote>
+<p>
+  Automate as much as you can.
+</p>
+<h3>Ruthless Testing</h3>
+<blockquote><p>
+  Most developers hate testing. They tend to test gently, subconsciously knowing where the code will break and avoiding the weak spots. Pragmatic Programmers are different. We are driven to find our bugs now, so we don&#8217;t have to endure the shame of others finding our bugs later.
+</p></blockquote>
+<blockquote><p>
+  Test State Coverage, Not Code Coverage
+</p></blockquote>
+<h3>It&#8217;s All Writing</h3>
+<blockquote><p>
+  One of the most important pieces of information that should appear in the source file is the author&#8217;s name—not necessarily who edited the file last, but the owner.
+</p></blockquote>
+<h3>Pride and Prejudice</h3>
+<blockquote><p>
+  We want to see pride of ownership. &#8220;I wrote this, and I stand behind my work.&#8221; Your signature should come to be recognized as an indicator of quality. People should see your name on a piece of code and expect it to be solid, well written, tested, and documented. A really professional job. Written by a real professional. A Pragmatic Programmer.
+</p></blockquote>
+<p>
+  Take pride in your work. Don&#8217;t just assume it will be a small cog in the big wheel and use that as an excuse to write sloppy code.
+</p>
+<h3>In Closing</h3>
+<p>
+  That&#8217;s all. There&#8217;s a lot more in the book, the stories and the experiences. I highly recommend you give it a try if your day job involves writing computer code. Thanks for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>On The Importance Of Iterations In (Product) Development</title>
+		<link>https://nagekar.com/2018/08/on-the-importance-of-iteration.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 25 Aug 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/08/25/on-the-importance-of-iteration/</guid>
+
+					<description><![CDATA[In LaughGuru, we received designs from the UI designers on Zeplin, a nice tool that bridges the gap between designers and developers. While I wouldn&#8217;t know about designers, it definitely made my life (as a developer) easy. My previous experience with frontend was with designers who gave me Photoshop PSDs and that was it. A [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  In LaughGuru, we received designs from the UI designers on <a href="https://zeplin.io/">Zeplin</a>, a nice tool that bridges the gap between designers and developers. While I wouldn&#8217;t know about designers, it definitely made my life (as a developer) easy. My previous experience with frontend was with designers who gave me Photoshop PSDs and that was it. A Photoshop noob was expected to extract layers among other things and think about mobile responsiveness and all of that. I&#8217;ll leave you here saying it didn&#8217;t end well. But I digress.
+</p>
+<p>
+  Recently, I read the all-time classic <a href="/2018/03/book-review-the-mythical-man-month.html">&#8216;The Mythical Man Month&#8217;</a>. It had an interesting line that I even wrote in my <a href="http://nagekar.com/quotes.txt">nice quotes file</a>. It goes like this: <i>&#8220;Plan to throw one away; you will, anyhow.&#8221;</i>. It says something about planning to throw away the initial iteration of any product that you&#8217;re developing, because even if you don&#8217;t, you&#8217;ll throw it regardless. While that isn&#8217;t very agile and might not apply in its entirety to most of the software development happening today (to be fair, it was initially written in 1975), it had an interesting idea about how the first version of the product needs major reforms (or rewrite) to end up as something usable and/or beautiful. You can&#8217;t avoid that. You can only prepare for that.
+</p>
+<p>
+  Coming back to why I mentioned LaughGuru because I just remembered that. The first version that we received from the designers wasn&#8217;t very impressive. It lacked colors and looked bland to my &#8216;taste&#8217;, whatever it was at that time. But my manager had something else on his mind. He seemed to focus on the data flow and UX parts of things rather than the colors, unlike me. We went ahead and implemented it anyway, but since there was no design-design, most of the focus was on functionality, routing and data flow. It became the beta of our product&#8217;s latest iteration.
+</p>
+<p>
+  Later, we received newer designs which had colors. We discussed and later implemented them. This time, I could fully focus on the designs part as functionality was already done and tested. We did decently well and a couple of iterations later the end result was nothing short of beautiful. I used to tell my manager <i>Look! it has started to look even better now</i>, and he usually replied, unimpressed and with the typical attitude of a badass that he was, <i>Yes, that&#8217;s kinda the idea</i>. Of course, separation of concerns works. I was proud, and an important lesson got reinforced within me. The first iteration is usually ugly and sometimes embarrassingly silly. But it tells nothing about the practicality or viability of the underlying idea. It tells even less about if the idea will ever be successful. So why abandon it or feel dejected if the initial iteration draws negative feedback. Instead, learn from the criticisms and stick to the larger goal of why you started it in the first place.
+</p>
+<p>
+  I was recently working on my portfolio site because, to be honest, having this blog as a site to represent me and the kind of work that I do doesn&#8217;t really work with anyone expect developers and engineers, and that isn&#8217;t a very nice (read: accessible) thing to say about a website or yourself. I wanted something fancy and shiny, so I made that. Following are some don&#8217;t dos in any software project. I tried to focus on too many at once (content, UX, UI). I tried to get everything straight in one iteration, or roughly a day. I had no plan for the development, or any vision about what the end result should look like. I had little idea about what audience I&#8217;m targeting. The end result was something I wasn&#8217;t very proud, but I still asked my friends for feedback.
+</p>
+<p>
+  While the feedback was in general useful, a friend who was particularly into UX and UIs decided to guide me a bit (I&#8217;m sure he must&#8217;ve had taken a deep breath on seeing my work). He completed a course on product design on Udacity which mentioned that UI designing is never complete. You will always find ways to improve, and at a point, you&#8217;ll have to stop yourself once the design requirements are settled. But the room for improvements is always there. Another useful lesson. We went on to make small changes in the page, and with each little change, such as making a heading bold or adding some padding below an element, the page looked better than it looked previously. Within a day or two, the page was something that I&#8217;d proudly associate with myself.
+</p>
+<p>
+  So to close this one, let&#8217;s review the lessons we learnt:</p>
+<ul>
+<li>
+      Your product&#8217;s first iteration is going to look like shit unless you decide to launch it too late. Don&#8217;t get saddened by its lack of &#8216;perfection&#8217;, for you&#8217;ll have plenty of time to do it down the line. Focus on the basics like why you started it all and what purpose it is supposed to serve.
+    </li>
+<li>
+      Separation of concerns is important. It is easy to get overwhelmed by the things to do, so have a plan and don&#8217;t put too many things on your plate at once.
+    </li>
+<li>
+      It takes time to create anything worthwhile. You cannot get something right in the first iteration itself. It is against the laws of nature. Evolution required some four billion years to create the beautiful individual that you are. Don&#8217;t rush it beyond what is possible and practical.
+    </li>
+<li>
+      In UI development, things are never done to a 100%. You try to improve as much as possible through iterations, meeting business requirements and personal standards and then going well beyond that. At a point, you call it a day and move on to the next challenge.
+    </li>
+</ul>
+<p>
+  I hope you enjoyed this little article. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Advice From An Old Programmer &#8211; Zed Shaw</title>
+		<link>https://nagekar.com/2018/06/advice-from-an-old-programmer-zed-shaw.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 10 Jun 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[programming]]></category>
+		<category><![CDATA[python]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/06/10/advice-from-an-old-programmer-zed-shaw/</guid>
+
+					<description><![CDATA[The first article on my site is about me starting with Python. That was four years ago and around that time I had read this book called &#8216;Learn Python The Hard Way&#8217;. I really, really liked it. It was amongst one of those earlier pieces of memories that I&#8217;d probably never forget for my entire [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  The first article on my site is about me <a href="https://www.nagekar.com/2014/07/starting-with-python.html">starting with Python</a>. That was four years ago and around that time I had read this book called &#8216;Learn Python The Hard Way&#8217;. I really, <i>really</i> liked it. It was amongst one of those earlier pieces of memories that I&#8217;d probably never forget for my entire life, similar to the kind of impact reading <a href="https://www.catb.org/esr/faqs/hacker-howto.html">The Hacker Manifesto</a> and <a href="https://www.catb.org/esr/faqs/hacker-howto.html">Sir Eric Raymond&#8217;s &#8216;How To Become A Hacker&#8217;</a> had on me.
+</p>
+<p>
+  I decided to give the <a href="https://learnpythonthehardway.org/python3/">Python 3 edition of Learn Python The Hard Way</a> a read. The last section of the book is titled <b>&#8216;Advice from an old programmer&#8217;</b> and in that, Zed Shaw shares with us some of his zoomed-out thoughts on programming and the career one makes out of it. Although it is very subjective and very blunt, just like the rest of the book (and I really like the rawness in his writing), for me personally it refreshed the old memories associated with the book.
+</p>
+<p>
+  I had read this exact chapter in the previous edition, but this time it made so much more sense. And not just this chapter, but in the entire book, the subtle pieces of well targeted humor and strong opinions held by the author were something of a delight to read even if you didn&#8217;t believe in the exact same thing.
+</p>
+<p>
+  I&#8217;m copy pasting the section of that book that I think I&#8217;ll come back to read re-read again and again. I think many of you will appreciate it as well.
+</p>
+<blockquote>
+<h3>Advice From An Old Programmer</h3>
+<p>
+    You’ve finished this book and have decided to continue with programming. Maybe it will be a career for you, or maybe it will be a hobby. You’ll need some advice to make sure you continue on the right path and get the most enjoyment out of your newly chosen activity.
+  </p>
+<p>
+    I’ve been programming for a very long time. So long that it’s incredibly boring to me. At the time that I wrote this book, I knew about 20 programming languages and could learn new ones in about a day to a week depending on how weird they were. Eventually, though, this just became boring and couldn’t hold my interest anymore. This doesn’t mean I think programming <i>is</i> boring, or that <i>you</i> will think it’s boring, only that <i>I</i> find it uninteresting at this point in my journey.
+  </p>
+<p>
+    What I discovered after this journey of learning is that it’s not the languages that matter but what you do<br />
+    with them. Actually, I always knew that, but I’d get distracted by the languages and forget it periodically.<br />
+    Now I never forget it, and neither should you.
+  </p>
+<p>
+    Which programming language you learn and use doesn’t matter. Do <i>not</i> get sucked into the religion<br />
+    surrounding programming languages as that will only blind you to their true purpose of being your tool<br />
+    for doing interesting things.
+  </p>
+<p>
+    Programming as an intellectual activity is the <i>only</i> art form that allows you to create interactive art. You<br />
+    can create projects that other people can play with, and you can talk to them indirectly. No other art form<br />
+    is quite this interactive. Movies flow to the audience in one direction. Paintings do not move. Code goes<br />
+    both ways.
+  </p>
+<p>
+    Programming as a profession is only moderately interesting. It can be a good job, but you could make<br />
+    about the same money and be happier running a fast food joint. You’re much better off using code as<br />
+    your secret weapon in another profession.
+  </p>
+<p>
+    People who can code in the world of technology companies are a dime a dozen and get no respect.<br />
+    People who can code in biology, medicine, government, sociology, physics, history, and mathematics<br />
+    are respected and can do amazing things to advance those disciplines.
+  </p>
+<p>
+    Of course, all of this advice is pointless. If you liked learning to write software with this book, you should try<br />
+    to use it to improve your life any way you can. Go out and explore this weird, wonderful, new intellectual<br />
+    pursuit that barely anyone in the last 50 years has been able to explore. Might as well enjoy it while you<br />
+    can.
+  </p>
+<p>
+    Finally, I’ll say that learning to create software changes you and makes you different. Not better or<br />
+    worse, just different. You may find that people treat you harshly because you can create software, maybe<br />
+    using words like “nerd.” Maybe you’ll find that because you can dissect their logic they hate arguing<br />
+    with you. You may even find that simply knowing how a computer works makes you annoying and weird<br />
+    to them.
+  </p>
+<p>
+    To this I have just one piece of advice: they can go to hell. The world needs more weird people who know<br />
+    how things work and who love to figure it all out. When they treat you like this, just remember that this is<br />
+    your journey, not theirs. Being different is not a crime, and people who tell you it is are just jealous that<br />
+    you’ve picked up a skill they never in their wildest dreams could acquire.<br />
+    You can code.
+  </p>
+<p>
+    They cannot. That is pretty damn cool.
+  </p>
+</blockquote>
+<p>
+  Beautiful, isn&#8217;t it? Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>A Programmer Or A Problem Solver?</title>
+		<link>https://nagekar.com/2017/08/a-programmer-or-problem-solver.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 10 Aug 2017 22:00:00 +0000</pubDate>
+				<category><![CDATA[life]]></category>
+		<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/08/10/a-programmer-or-problem-solver/</guid>
+
+					<description><![CDATA[Normally when we think of programming, we think of problem solving. Similarly, if someone works in the field of computers and say they love problem solving, we immediately assume that they work with some computer code. Programming is almost synonymous with problem solving, in that it involves breaking down complex looking problems into simple mini [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	Normally when we think of programming, we think of problem solving. Similarly, if someone works in the field of computers and say they love problem solving, we immediately assume that they work with some computer code. Programming is almost synonymous with problem solving, in that it involves breaking down complex looking problems into simple mini problems that can be easily taken care of. Where they might differ, in my opinion, is finding the right problems to solve.
+</p>
+<p>
+	The inspiration for this post came from a recent blog post that I read <strike>(embarrassed to admit I&#8217;m not able to find that post</strike> <a href="https://codewithoutrules.com/2017/07/10/stop-writing-software/">found it!</a>) about the mistakes developers make. One of the mistakes was confusing between the love for problem solving and programming. That was a little &#8220;ahaa!&#8221; moment for me. It gave me a moment to reflect on my own likes and interests. What is it that excites me? Is it the idea of building the next big thing? Maybe. Is it spending countless hours writing code that does what has been done a million times before, just so that you can <a href="https://coderoom.wordpress.com/2010/04/22/7-reasons-to-hate-your-code/">fall in love</a> with your code all over again? Yes, <a href="https://blog.codinghorror.com/the-best-code-is-no-code-at-all/">that&#8217;s sounds about right</a>.
+</p>
+<p>
+	I liked to call myself a problem solver, but I&#8217;m not even close to being one. I didn&#8217;t feel like there was a distinction. But there definitely is, now that I&#8217;ve met some people in my field who are &#8216;problem solvers&#8217; first. I don&#8217;t have Github projects that reflect a problem solver. What you&#8217;d rather find are spot on examples of reinventing the wheel (a dozen chat/social network networks), attempts to write the most beautiful code that I can (regardless of whether it works or not), over-engineering to say the least, projects made entirely for trying out new languages, new frameworks, new IDEs, literally. I&#8217;m somewhat embarrassed to admit that the <a href="https://github.com/abhn/SecureChat-Backend">current project</a> I&#8217;m working on is a chat backend as well.
+</p>
+<p>
+	You get the pattern. It isn&#8217;t hard to understand that I love programming. I love writing code regardless of the problem in hand. I see people building things that are changing the world, the way we live, the way we communicate, the way we travel and I appreciate them all. We need people like that. They are on the frontiers of the information age that programmers like me and many of you are riding on. It is here we start to see the difference between someone who is a programmer first and someone who is a problem solver first. I believe it is a matter of preference, experience, and the level and kind of exposure one has in the budding years in tech.
+</p>
+<p>
+	I had a couple of &#8220;tech friends&#8221; right from my junior college some 4 years ago, people with whom I could discuss programming and tech in general. Most of my collaborated projects were with these people, and we always worked on something because we enjoyed it, purely out of our &#8220;<a href="https://www.virtuouscode.com/2014/02/10/the-passion-gospel/">passion</a>&#8221; for computers. We spoke about new languages, technological advancements and people in tech in our free time. We never thought any of this would help us get a good job or any project would appear on our CVs. That is one reason why technologies and frameworks are scattered all over my blog, instead of quality projects that people actually use in one particular technology that I could&#8217;ve been good at.
+</p>
+<p>
+	So that&#8217;s what I&#8217;ve learnt recently, and wished to share here. I (or anyone) won&#8217;t know which way is the right way to go, or if there is one, and it doesn&#8217;t really matter much as long as you enjoy what you&#8217;re doing and make a decent sum of money doing it. I admire people who are passionate about <a href="https://stallman.org/">programming</a> as well as <a href="https://en.wikipedia.org/wiki/Elon_Musk">problem solving</a>, and the world would really be incomplete without either one. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Experiences With Android</title>
+		<link>https://nagekar.com/2017/05/experiences-with-android.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Fri, 19 May 2017 22:00:00 +0000</pubDate>
+				<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/05/19/experiences-with-android/</guid>
+
+					<description><![CDATA[I began learning Android this semester for my final year project. Android and Java were technologies I never thought I would learn by myself. I always felt they were overcomplicated and for me that translated to boring. I was, of course, wrong as things started to become clear. My friend Kunal really inspired me to [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	I began learning Android this semester for my <a href="https://github.com/abhn/marvel">final year project</a>. Android and Java were technologies I never thought I would learn by myself. I always felt they were overcomplicated and for me that translated to boring. I was, of course, wrong as things started to become clear.
+</p>
+<p>
+	My friend Kunal really inspired me to take on Android. He guided me with basics of Java that I covered by reading the first 12 chapters of the book &#8220;Java The Complete Reference&#8221;. After that Kunal even went ahead to give me a hands on session on the basics of Android.
+</p>
+<p>
+	Now to be honest, I can write basic Android applications, but anything above that would require extensive Googling. Partly because once I knew I won&#8217;t need to learn anymore to complete the project, I stopped. But inspite of all that, there were a few great experiences that I wanted to share here about my short journey with Java and Android.
+</p>
+<p>
+	The most amazing thing I learned was that Java is a great language to learn object oriented programming concepts. Interface, abstract class, method overloading and overriding were just words for me before diving head first into Android. I understood the meaning, and I could even write you the classic sample Animal<->Dog,Cat example to demonstrate all of those, but I never actually saw their potential application in any of my projects. Get started with Android and in a day you&#8217;ll realize what those terms actually look like in practice and suddenly it all starts to make sense.
+</p>
+<p>
+	Another thing that I noticed in the Android ecosystem is that Android is far more stable than most of the other technologies that I deal with, or have dealt with. I remember my time with Angular 2. Issues used to pop up and the only thing that showed up when you Google your problems was a Github issue created 3 days ago with 17 comments saying &#8220;Same problem here&#8221;. It was horrible, and it intensifies when you&#8217;re using it to build something professionally for a third party, and not just a random side project. Android felt much more like C++, predictable, readily available resources on Q&amp;A sites like StackOverflow, and a standardized way of doing things.
+</p>
+<p>
+	Lastly, a subjective realization. Android is a powerful tool in any developer&#8217;s toolkit. It is the midway between web and system, with the ease and straightforwardness of the web and the power and reach of system. It is fascinating to a naive code guy like me to grasp what all is possible in Android. The APIs make just about everything accessible to the developer, and I&#8217;m not even going to get started on the reach of Android. Look, imagine this. It&#8217;s like knowing how to hack Raspberry Pi with your kick-ass Python, but in this case, every damn person you know has a Pi, carries one around, and it is connected to the Internet all the time. Now that is the kind of power we&#8217;re talking about here.
+</p>
+<p>
+	In closing, if you&#8217;re like me who just does something for the sake of that momentary joy of learning something new, give Android a try. Apart from all the good stuff that I&#8217;ve mentioned above, it is just a great feeling to try something new, right? Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>_Generic in C And Generic LinkedList Implementation</title>
+		<link>https://nagekar.com/2016/05/_generic-in-c.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 02 May 2016 22:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/05/02/_generic-in-c/</guid>
+
+					<description><![CDATA[Tada! Finally a non-Javascript post for those of you who stopped visiting my blog because of my sick Js addiction. So my lost friend Aditya is back, and while talking to him, I got to read a piece of code that he wrote when we were in third semester, last year. The aim was to [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Tada! Finally a non-Javascript post for those of you who stopped visiting my blog because of my sick Js addiction. So my lost friend Aditya is back, and while talking to him, I got to read a piece of code that he wrote when we were in third semester, last year. The aim was to build a generic container to store different datatypes, in C. So yes, literally storing [21, &#8220;abhishek&#8221;, 3.142, &#8216;z&#8217;] in a single dynamically allocated linkedlist. That was pretty bold for us then.
+</p>
+<p>
+  For making that happen, he made use of the <a href="https://en.wikipedia.org/wiki/C11_(C_standard_revision)#Changes_from_C99_">_Generic</a> macro that C11 introducted for generic type selection. For those unfamiliar with it, I&#8217;ll begin with explaining the basics of the macro. For those of you interested in the linkedlist code, scroll down to the bottom of this article. You can always check out the <a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf">C11 draft [section 6.5.1.1 Generic selection pg #96]</a> (the standard costs around $60 but is essentially the same thing).
+</p>
+<p>
+	 The _Generic macro follows the format <code>_Generic(controlling-expression, association-list)</code> where <i>controlling-expression</i> is the expression whose type is to be detected, and <i>association-list</i> is the dictionary of type-expression pairs where type can be any object type and the expression can be any expression, constant or a pointer to any function, pretty much anything that can be evaluated.
+</p>
+<p>
+	To put it simply, compare it to the switch statement for type detection. For example,
+</p>
+<figure class="highlight">
+<pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">teststring</span> <span class="o">=</span> <span class="s">"my char array"</span><span class="p"&gt;;</span> <span class="c1">// target object</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">type</span> <span class="o">=</span> <span class="k">_Generic</span><span class="p">(</span>
+    <span class="n">teststring</span><span class="p">,</span>
+    <span class="nl">int:</span> <span class="s">"int"</span><span class="p">,</span>
+    <span class="kt">int</span><span class="o">*:</span> <span class="s">"int *"</span><span class="p">,</span>
+    <span class="nl">char:</span> <span class="s">"char"</span><span class="p">,</span>
+    <span class="kt">char</span><span class="o">*:</span> <span class="s">"char *"</span><span class="p">,</span>
+    <span class="nl">float:</span> <span class="s">"float"</span><span class="p">,</span>
+    <span class="nl">default:</span> <span class="s">"default"</span>
+  <span class="p"&gt;);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">type</span><span class="p"&gt;);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p></p>
+<figure class="highlight">
+<pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gcc main.c
+<span class="nv">$ </span>./a.out
+char <span class="k">*</span></code></pre>
+</figure>
+<p>
+	The _Generic macro can be wrapped around in a nice looking function call, say detect_type(). Compare this to a (pseudo) switch statement which evaluates the case that matches the switch params
+</p>
+<figure class="highlight">
+<pre><code class="language-c" data-lang="c"><span class="c1">// Pseudocode may resemble Javascript. Reader discretion advised</span>
+<span class="n">var</span> <span class="n">someobj</span> <span class="o">=</span> <span class="s">"text here"</span><span class="p"&gt;;</span> <span class="c1">// target object</span>
+<span class="n">var</span> <span class="n">type</span><span class="p"&gt;;</span> <span class="c1">// to store the typename</span>
+<span class="n">type_switch</span><span class="p">(</span><span class="n">someobj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"int"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">int</span><span class="o">*</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"int*"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">char</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"char"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">char</span><span class="o">*</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"char*"</span><span class="p"&gt;;</span>
+  <span class="nl">default:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"default"</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="n">print</span><span class="p">(</span><span class="n">type</span><span class="p">)</span></code></pre>
+</figure>
+<p>
+	So that is it. A compile time type identification in C with a simple macro. We can do pretty amazing stuff with it using pointers to functions. For example, a generic print function, that can take in any type of argument and print it. I have added cases for integers, characters and string, but others can be added just as easily.
+</p>
+<p><script src="https://gist.github.com/abhn/3887df927f2d913c03704cac3ddaa9fc.js"></script></p>
+<p>
+	That was neat, wasn&#8217;t it. Now back to Aditya. He used the same macro to create a dynamically allocated linkedlist. I am pasting the gist here so that you can read his beautiful code.<br />
+  <button id="btn">Show Code</button>
+</p>
+<div id="vector">
+<h4>File <b>linkedlist.c</b></h4>
+<p>    <script src="https://gist.github.com/abhn/0699d92bb972320e33b3cee8f81abc23.js"></script></p>
+<h4>File <b>linkedlist.h</b></h4>
+<p>    <script src="https://gist.github.com/abhn/6175447dd928d4c46bdc7f51b90c8b33.js"></script></p>
+<h4>File <b>main.c</b></h4>
+<p>    <script src="https://gist.github.com/abhn/cacf3b03483759c02e997afe13aa3373.js"></script>
+  </div>
+</p>
+<p>
+	To compile it, run <code>~$ gcc main.c linkedlist.c -o linkedlist</code> on any machine with GCC installed (I&#8217;ve tested it on version &gt;4.9). Run it with <code>~$ ./linkedlist</code> and you should see the different elements that we&#8217;ve added printed on the standard out. You may also pack the linkedlist into a statically linked library, by running.
+</p>
+<figure class="highlight">
+<pre><code class="language-bash" data-lang="bash">~<span class="nv">$ </span>gcc <span class="nt">-c</span> linkedlist.c <span class="nt">-o</span> linkedlist.o
+~<span class="nv">$ </span>ar rcs linkedlist.a linkedlist.o
+~<span class="nv">$ </span>gcc main.c linkedlist.a</code></pre>
+</figure>
+<p>
+  Interesting, isn&#8217;t it? Want to thank him, or have any comments or improvements? Drop them into the comment box. Thank you for reading.
+</p>
+<h3>External Links</h3>
+<ul>
+<li>
+    <a href="https://www.ibm.com/support/knowledgecenter/SSGH2K_13.1.0/com.ibm.xlc131.aix.doc/language_ref/genericselection.html">IBM KB article on generic selector</a>
+  </li>
+<li>
+    <a href="https://www.robertgamble.net/2012/01/c11-generic-selections.html?m=1">Robert Gamble&#8217;s blog post: c11 generic selections</a>
+  </li>
+<li>
+    <a href="https://stackoverflow.com/questions/9804371/syntax-and-sample-usage-of-generic-in-c11">Stackoverflow question: syntax and sample usage of generic in c11</a>
+  </li>
+</ul>
+<p><script>
+  document.getElementById('vector').style.display = 'none';
+  document.getElementById('btn').addEventListener('click', function showVec() {
+    document.getElementById('vector').style.display = 'block';
+  });
+</script></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Vim Cheatsheet</title>
+		<link>https://nagekar.com/2015/12/vim-cheatsheet.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 01 Dec 2015 23:00:00 +0000</pubDate>
+				<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/12/01/vim-cheatsheet/</guid>
+
+					<description><![CDATA[Started using vi, although the only reason is it being light weight [I am taking a leap of faith, hoping that it will increase my speed after some practice, as most vi gurus say]. Let me first admit it. Vi feels awful in the beginning. It is really intimidating, and I am having a hard [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>Started using vi, although the only reason is it being light weight [I am taking a leap of faith, hoping that it will increase my speed after some practice, as most vi gurus say]. Let me first admit it. Vi feels awful in the beginning. It is really intimidating, and I am having a hard time to remember the commands and stuff. Hence I started writing the commands I learn from google and stackoverflow in a file. Thought to post it here, for everyone.</p>
+<p>I will keep the list updated as I learn more and more commands and tricks. It serves me as a reference, and hopefully will do the same for some of you.</p>
+<h4>Open file</h4>
+<p><code>vim file.js</code></p>
+<h4>Swtich to insert mode</h4>
+<p><code>i</code></p>
+<h4>Switch to append mode</h4>
+<p><code>a</code></p>
+<h4>Switch to command mode</h4>
+<p><code>[ESC]</code></p>
+<h4>Save file</h4>
+<p><code>:w</code></p>
+<h4>Save and exit</h4>
+<p><code>:wq</code></p>
+<h4>Exit [if no changes were made]</h4>
+<p><code>:q</code></p>
+<h4>Exit, discarding changes</h4>
+<p><code>:q!</code></p>
+<h4>Moving through text</h4>
+<p><code>h - left</code><br />
+<code>j - down</code><br />
+<code>k - up</code><br />
+<code>l - right</code></p>
+<h4>Undo last operation</h4>
+<p><code>u</code></p>
+<h4>Copy current line</h4>
+<p><code>yy</code></p>
+<h4>Cut current line</h4>
+<p><code>dd</code></p>
+<h4>Paste last copied line</h4>
+<p><code>p</code></p>
+<h4>Select text</h4>
+<p><code>[CTRL] + v</code><br />
+<code>h,j,k,l ;for moving and selecting</code></p>
+<h4>Selecting multiple lines</h4>
+<p><code>[SHIFT] + v</code><br />
+<code>j,k ;selecting lines</code></p>
+<h4>Search through text</h4>
+<p><code>:s/pattern</code></p>
+<h4>Search and replace</h4>
+<p><code>:s/pattern/replacementString</code></p>
+<h4>Working with multiple files</h4>
+<p><code>vim file1.c file2.c file2.c</code></p>
+<h4>Next file</h4>
+<p><code>:n</code></p>
+<h4>Previous file</h4>
+<p><code>:prev</code></p>
+<h4>Go to particular file</h4>
+<p><code>:b file3.c</code></p>
+<h4>Working with multiple files [tabs]</h4>
+<p><code>vim file1.c file2.c file3.c -p</code></p>
+<h4>Move to next tab</h4>
+<p><code>gt</code></p>
+<h4>Move to previous tab</h4>
+<p><code>gT</code></p>
+<h4>List all open files [or buffers]</h4>
+<p><code>:ls</code></p>
+<h4>Commenting multiple lines</h4>
+<p><code>[CTRL] + v ;to enter visual mode</code><br />
+<code&gt;j ;move down to select required lines</code><br />
+<code&gt;i ;enter insert mode</code><br />
+<code>[ESC]</code></p>
+<h4>Uncommenting multiple lines</h4>
+<p><code>[CTRL] + v ;to enter visual mode</code><br />
+<code>jjjl ;selecting multiple rows and columns</code><br />
+<code>d</code></p>
+<h4>Auto-indenting</h4>
+<p><code>=</code></p>
+<h4>Move to the start of the file</h4>
+<p><code>gg</code></p>
+<h4>Move to the end of the file</h4>
+<p><code>G</code></p>
+<h4>Auto indent entire file</h4>
+<p><code>gg=G</code></p>
+<h4>Indenting a block [starting from a paranthesis]</h4>
+<p><code>=%</code></p>
+<h4>Indenting selected lines</h4>
+<p><code&gt;V ;visual line mode</code><br />
+<code>jj ;move down through required lines</code><br />
+<code>></code></p>
+<h4>Starting a shell</h4>
+<p><code>:shell</code></p>
+<h4>Executing bash without shell</h4>
+<p><code>:command ;eg. :pwd</code></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Love For Graphical User Interface</title>
+		<link>https://nagekar.com/2015/07/love-for-graphical-user-interface.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 02 Jul 2015 22:00:00 +0000</pubDate>
+				<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/07/02/love-for-graphical-user-interface/</guid>
+
+					<description><![CDATA[I considered myself a &#8216;programmer&#8217;. One who can make stuff happen, put it on paper, my thoughts and use it as a framework to create working stuff in the digital world. As any programmer, I learnt to write command line programs first. What are command line programs, you&#8217;d ask. Well, a Command Line Interface (CLI) [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  I considered myself a &#8216;programmer&#8217;. One who can make stuff happen, put it on paper, my thoughts and use it as a framework to create working stuff in the digital world. As any programmer, I learnt to write command line programs first. What are command line programs, you&#8217;d ask. Well, a Command Line Interface (CLI) is an interface which reacts to not visual, but textual inputs from the keyboard. You never need a mouse to work with a command line, of course, if you&#8217;re skilled with that particular type.
+</p>
+<p>
+  Command lines were the only way people worked with computers in the past. It was a time when the other name for people who worked with computers was programmers and hackers. No one else had the time or skill to learn and master the complicated systems. But like everything, it changed. Back in 1973, we had the first computer system that ran a GUI, or Graphical User Interface. As it sounds, yes everything was now controlled by pointing device, better known to us as a mouse. This was the onset of computers for the non programmers. Now, everyone could learn how to make computers do stuff with few &#8216;clicks&#8217;. We never actually looked back since.</p>
+<p>
+  But same was not true for people who program the computer. Programmers still and will always prefer the command line interface for most simple tasks. There are actually some tough reasons for this statement. Mainly, although the task to master CLI tools is not easy, once you do it, it feels much more comfortable than to use the every changing GUI. Not to mention the low resources that are required to run these utilities, and consistency over different platforms or operating systems. As an example, I can write a CLI tool in Python and C++ to run on Windows and Linux, and you won&#8217;t be able to spot the difference between the four instances. Can I do the same with GUIs? No, at least not right now.
+</p>
+<p>
+  For the above few reasons, I never gave a thought to learning GUI programming, in any language. You don&#8217;t want to do something that is of no use to you, right? Maybe.
+</p>
+<p>
+  After been coding for sometime now, I gave a thought to why some people who are not very good programmers, succeed more than people who are great programmers. It was a thing that deserved a thought. After reading several success and failure stories on Medium and Quora, I was convinced that there is no lack of skill in any field on this planet. Take anything for example, like I thought about C++. The language I am getting better at everyday, people have been learning it from the past 30 years. Who am I challenging? It struck me that mastering some form of art (yes, programming is as much an art for me as astronomy) and creating something that people use, are not necessarily same sets. Though there is a large area of intersection, you can&#8217;t be sure that just being good at something will make you successful, whatever that word means here. It was good time for me to stop thinking about how good of a shot I am at programming, and start focusing on what the world actually needs that I can provide or produce, if at all I can.
+</p>
+<p>
+  That was the time I realized, CLIs are great, but if you want everyone to use your thing, you need to give them something they will love. You need to help them in a way that they are able to use the help. How did I expect everyone to love the CLI just because I think it is cool and looks all black and white (well, that&#8217;s what I think is cool).
+</p>
+<p>
+  Not everyone is a nerd. Not everyone has to be one. The world is so diverse. It is really satisfying to see an artist painting, a drummer performing and an athlete giving his best. It is this diversity, in us, the animals and the plants as well that makes our home, the Earth. We, geeks and nerds are no different. We love making stuff that work to our command. But we, like every other human present, also has the morale duty to help others with the stuff that excites us. Just as a painter sells his paintings, not only because he wants to earn from it, but also because he wants his art to spread, so that somewhere in a living room of some house, the hosts always get asked, &#8216;where did you get this masterpiece from?&#8217;.
+</p>
+<p>
+  There is a very different joy in seeing your creation being used. It is something different than doing what you love. Yes, it really is different. It brings the best out of you, a kind of motivation. I wanted to make something like that. I wanted to write GUIs. I took up learning it about a month ago, and I am kind of comfortable with Qt.
+</p>
+<p>
+  There are a lot of frameworks for writing GUIs, as anybody using a computer today can imagine. Plus, many high level languages provide APIs to write graphical applications within the language libraries, Java for instance. Still, having done some programming in C++, I had two basic options open in front of me, <a href="https://www.wikivs.com/wiki/GTK_vs_Qt" target="_blank">GTK+ and Qt</a>. <a href="https://unix.stackexchange.com/questions/129355/what-is-difference-between-gtk-and-qt-applications" target="_blank">I choose Qt</a> after reading some <a href="https://stackoverflow.com/questions/9441127/gui-development-qt-vs-gtk" target="_blank">articles on Stackoverflow</a> from users with similar dilemma. Qt is cool, lots of possibilities and support. Code is quite portable, and an important thing, I am enjoying it, which matters a lot, right?
+</p>
+<p>
+  If you wonder where am I right now with it, I am writing a GUI wrapper for the GNU&#8217;s <a href="https://en.wikipedia.org/wiki/Dd_%28Unix%29" target="_blank">dd utility</a> which should make it simple for someone who&#8217;s just started using GNU/Linux to burn ISOs to disks, without the hassle of setting up a more than required complex tool or destroying the data trying to use dd from the command line by messing up the &#8216;if&#8217; and &#8216;of&#8217;, for example.
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/Screenshot-Friday03July2015-073A573A13IST.png" /></p>
+<p>
+  Neat, huh? Haha. I will put it up once I finish it, but the important thing is, I could do it. The best part about being a programmer is, adapting is too easy. At least when beginning. And that is mandatory, given the ever changing world of Information Technology.
+</p>
+<p>
+  I&#8217;ll conclude this long post here. If you made it till here, then a big thank you. I feel it is hard to read what I write, because I tend to write my feeling, and mostly they don&#8217;t look the same on paper. Nevertheless, do tell me what you think about this article. Liked it, hated it, anything.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>What programming isn&#8217;t</title>
+		<link>https://nagekar.com/2015/04/what-programming-isnt.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 09 Apr 2015 22:00:00 +0000</pubDate>
+				<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/04/09/what-programming-isnt/</guid>
+
+					<description><![CDATA[There were days when I used to search the web for &#8216;best programming languages&#8216; and &#8216;most popular programming languages&#8216; in my free time. I was not able to decide myself what language to learn and invest my time upon, such that it would pay me back everything I put into it. This was really a [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr">There were days when I used to search the web for &#8216;<i>best programming languages</i>&#8216; and &#8216;<i>most popular programming languages</i>&#8216; in my free time. I was not able to decide myself what language to learn and invest my time upon, such that it would pay me back everything I put into it. This was really a hard task, given the fact that I have interest in a wide range of stuff related to computers, from algorithms to designing beautiful forms with CSS.</div>
+<div dir="ltr"></div>
+<div dir="ltr">Given that I had no guidance from the people around me, since I had no one in my family from the technical field, and the college professors were not of much help either. Now that justifies my amateur-ish googling habits.</div>
+<div dir="ltr">Leaving that aside, I have lately been asked a lot of times by my fellow mates, what is the &#8216;<i>best language</i>&#8216; to start with and what are the current &#8216;<i>hot languages</i>&#8216; in the market. To start with, there is no language that is &#8216;best&#8217; in every sense. If there was, why would anyone bother creating additional languages in the first place, right? Languages are written and implemented with certain goals in mind, which it should satisfies better than what was present before creating that language, that&#8217;s the whole point about it. So stop searching for the best language and start looking for your own needs.</div>
+<div dir="ltr"></div>
+<div dir="ltr">Secondly, I don&#8217;t think anybody should care about the &#8216;hot languages&#8217; in the market, except for the tech magazines&#8217; journalists. Why? Because if you haven&#8217;t heard of it yet, then you probably don&#8217;t actually need it yet. It is much better to know a single language as a whole, than to learn 5 languages just for the sake of them being &#8216;hot&#8217;.</div>
+<div dir="ltr"></div>
+<div dir="ltr">If you are new to programming, then most probably you are taught programming using some or the other language (most probably C++ or Python). What most fail to teach is that programming is not equal to learning a language. Programming is the mindset that you develop when you are solving problem for a wide range of sub-problems by writing a common solution to all. Most of the times it means looking for a pattern in the chaos of that problem. You don&#8217;t need to know a language for finding this pattern, do you? You have to realize this thing at the earliest.</div>
+<div dir="ltr"></div>
+<div dir="ltr">Programming language that you choose is the tool you choose for the task you have in hand. Now, depending upon the task, some tool might be better than the others, and help you in doing the task quicker. You can think of an analogy here, like if you want to cut tree trunks, you can use saw blade or maybe even a kitchen knife. But the saw will get the job done much faster. However, any sane human won&#8217;t cut vegetables using a saw. The same goes for programming languages. Different tasks demand different languages, and each has its own pros and cons. But the languages won&#8217;t help a bit if you cannot figure out the problem itself in the first place.</div>
+<div dir="ltr"></div>
+<div dir="ltr">I had start to program in C, jumped to Python because &#8216;Google used it&#8217;. Then I came to PHP because I read somewhere that PHP gets you a job quickly. I started with JS and Node.js later due to their growing popularity. I did a lot of mistakes when I started it all. I wish I knew it then, that instead of wasting my time on learning the syntax of languages to do the exact same thing I did with the previous language, I could have been much better off learning some interesting algorithms that would&#8217;ve helped me in solving some tough hackathon problems.</div>
+<div dir="ltr"></div>
+<div dir="ltr">So is the knowledge of language implementations not useful? Of course, I don&#8217;t mean that. A language is very useful once you know how to use it. You don&#8217;t have to know everything from a language. Just enough to get the problem solved. Nothing more. For example, you might have probably heard of C++. If you have ever tried to learn C++, you might have realized that it is a really large language. Originally designed for low level embedded programming and as a &#8216;C with Classes&#8217;, C++ has evolved to be a language that can be used in almost every domain. The &#8216;Standard Template Library&#8217; is large enough for you to not miss anything in most of the cases, and even if you do, there is <a href="https://www.boost.org/" target="_blank" rel="noopener"><i>boost</i></a> at your rescue. So do you think you most know all of the above to call yourself a C++ programmer? No. Many great programmers who use this language use just a subset of it and they are fine with it. I personally don&#8217;t use the object oriented facilities of the language much, but it doesn&#8217;t matter as long as it does what you want it to do. So don&#8217;t aim to know an entire language unless you want to get into compiler development or it&#8217;s standardization committee. Focus on the thing you are working on, and not the language you are using.</div>
+<div dir="ltr"></div>
+<blockquote class="tr_bq">
+<div dir="ltr">Have the enthusiasm to solve problems. Take pride in building things from the scratch, all by yourself. The love for programming comes in automatically. But most important of all, learn how to program and not how to write syntax of a particular language.</div>
+</blockquote>
+<div dir="ltr"></div>
+<div dir="ltr">Thank you for reading.</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

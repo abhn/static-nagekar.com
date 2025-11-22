@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Subscribe to Abhishek Nagekar's Blog" href="index.html?feed=rss2" />
+  <link rel="alternate" type="application/atom+xml" title="Subscribe to Abhishek Nagekar's Blog" href="index.html?feed=atom" />
+
+	<title>How To &#8211; 12 Column Grid Library From Scratch &#8211; Abhishek Nagekar</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<script>
+window.koko_analytics = {"url":"https:\/\/nagekar.com\/koko-analytics-collect.php","site_url":"https:\/\/nagekar.com","post_id":1040,"path":"\/2019\/08\/how-to-12-column-grid-library-from-scratch.html","method":"none","use_cookie":false};
+</script>
+<link rel="alternate" type="application/rss+xml" title="Abhishek Nagekar &raquo; Feed" href="index.html?feed=rss2" />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='elementary-style-css' href='wp-content/themes/s/style.css?ver=1.0.0' media='all' />
+<link rel="https://api.w.org/" href="wp-json/index.html" /><link rel="alternate" title="JSON" type="application/json" href="wp-json/wp/v2/posts/1040" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nagekar.com/xmlrpc.php?rsd" />
+
+<link rel="canonical" href="index.html?p=1040" />
+<link rel='shortlink' href='index.html?p=1040' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="wp-json/oembed/1.0/embed?url=https:%252F%252Fnagekar.com%252F2019%252F08%252Fhow-to-12-column-grid-library-from-scratch.html" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="wp-json/oembed/1.0/embed?url=https:%252F%252Fnagekar.com%252F2019%252F08%252Fhow-to-12-column-grid-library-from-scratch.html&amp;format=xml" />
+<link rel="icon" href="wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-270x270.png" />
+		<style id="wp-custom-css">
+			
+.quotes-ol-container {
+	display: flex;
+  flex-direction: column-reverse;
+}
+
+.quotes-ol-container li {
+	flex: 0 0 auto;
+}		</style>
+		</head>
+
+<body class="wp-singular post-template-default single single-post postid-1040 single-format-standard wp-theme-s">
+<div class="container">
+	<nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='about'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='quotes'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='tags'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="index.html" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="index.html?feed=rss2">RSS</a>,
+      <a href="index.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <hr class="stylish"/>
+
+<div class="_progress-wrapper">
+  <div id="_progress"></div>
+</div>
+
+<header>
+	<h1>How To &#8211; 12 Column Grid Library From Scratch</h1>
+	<header class="title-tags">
+		<time>13 August, 2019. It was a Tuesday</time>
+		<div class="tags-container">
+			Posted under <span>
+										<a class="tags" href="tags#css">css</a>
+										<a class="tags" href="tags#web">web</a>
+							</span>
+			&nbsp;
+		</div>
+	</header>
+</header>
+
+<hr class="stylish" />
+
+<main role="main">
+
+	
+		<article>
+			<section class="content">
+				<p>
+  As web developers we&#8217;ve used countless UI libraries that give us an interface for creating grids. Now things have become much easier thanks to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">Grid</a> and <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">Flexbox</a> in CSS, but it is still nice to have everything arranged in nice consistent classes for production use. Recently, I set out on a mini-mission to find a grid library for our new design system. In my search, I had to go through many libraries, their features and their source code. Most of them were 90% fit for my use case, but then I&#8217;d find some flaw that&#8217;d put me off. This continued for a couple of hours, at the end of which I uttered the golden developer words <i>&#8220;I know, I&#8217;ll just implement my own grid library&#8221;</i>. The old folks here know what follows. They also know, irrespective of whether you know if this is a bad idea, the temptation to start working in an empty file without any dependencies is too real to just ignore.
+</p>
+<p>
+  Anyway, after spending some time baking my own grid library, and slowly realizing that in probably a week or so, I&#8217;ll end up with exactly the kind of code that I&#8217;d rejected earlier, given how similar everything was looking, I decided to go with something readybaked. But this little exercise of trying to make a grid library taught me a lot about how these libraries are implemented. I wish to share some of that excitement, the learnings with you in this article.
+</p>
+<p>
+  By the end of this article, I want you to have at least a basic understanding of how a grid library is written and be confident to dig into the source code in case you need to customize a library to fit your needs. Note that I&#8217;m using Flexbox. Bootstrap 3 used widths and floats, and Bootstrap 4 uses Flexbox. I believe you can also use CSS3 Grids. Use what feels natural to you.
+</p>
+<h3>What&#8217;s a grid system?</h3>
+<p>
+  A grid means what you&#8217;d expect it to mean. It is a two dimensional cellular structure, like a cupboard or a chess board, and you can put/place stuff on/in it. In the context of web development and design, grids usually just define the vertical or columnar properties. The reason is that we do not want to design for horizontal scrolling, and assume that all navigation on a page will be based on vertical scrolling. As a result, whatever the screen width is, we take that as 100% and divide it into the number of columns that we prefer.
+</p>
+<p>
+  First step is to set the number of columns that we&#8217;d like the designs to use. 12 is commonly used because with 12, we can divide the page into 1, 2, 3, 4, 6 and 12 parts (notice that those are just divisors of 12). Then we set the gutter size. Gutter is the gap between two columns. Usually we set it to 1rem which, if we haven&#8217;t modified, should be 16px.
+</p>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/grid-system-mdn.png"/><figcaption>12 column grid with gutters (taken from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Realizing_common_layouts_using_CSS_Grid_Layout">MDN CSS Grid Layout</a>)</figcaption></figure>
+<p>
+  After that, we set breakpoints. Breakpoints are points where our UI changes in response to a change in the screen size. For modern websites, we have to cater to a wide variety of browsers and screen sizes, and defining a set of screen sizes is our first step towards it. For example
+</p>
+<ul>
+<li>0-450px can be considered to be small mobiles</li>
+<li>450px-750px can be large mobiles</li>
+<li>750px-1000px can be tables</li>
+<li>1000px+ can be desktops</li>
+</ul>
+<p>
+  This is all very arbitrary, of course. we can set whatever sizes fit most of our users&#8217; device types or just copy  what Bootstrap or other popular libraries do (in general, when in doubt follow the standards).
+</p>
+<p>
+  Next is to actually implement designs that adhere to this grid system. Here we make an assumption that we have a UI hi-fi design mockup that was built using the same 12 column grid as base. For ease of implementation, we can define the CSS classes that we frequently use, which while not absolutely necessary, is helpful.
+</p>
+<h3>Basic CSS</h3>
+<p>
+  While I mentioned that it isn&#8217;t absolutely necessary to have CSS classes that help us with grids, more often than not we&#8217;ll want to have some of them. The way we do it is we write classes for all the possible widths that a div might take on the screen, right from 1/12 to 12/12 (which is essentially 100% width).
+</p>
+<figure class="highlight">
+<pre><code class="language-scss" data-lang="scss"><span class="nc">.row</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nc">.col-1</span> <span class="p">{</span>
+  <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">8</span><span class="mi">.3333333%</span><span class="p"&gt;;</span> <span class="c1">// (1/12)*100 </span>
+<span class="p">}</span>
+<span class="nc">.col-2</span> <span class="p">{</span>
+  <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">16</span><span class="mi">.666666%</span><span class="p"&gt;;</span> <span class="c1">// (2/12)*100</span>
+<span class="p">}</span>
+<span class="c1">// and so on</span></code></pre>
+</figure>
+<p>
+  In this short snippet, a <code>.row</code> would be the wrapper class for one or more <code>.col-X</code> classes.
+</p>
+<h3>Styling our HTML</h3>
+<p>
+  Consider the simple markup. This is a typical layout for a blog with a navigation section on the left, blog content in the center and a sidebar on the right with some widget.
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;main</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;aside</span>   <span class="na">id=</span><span class="s">"navigation"</span><span class="nt">&gt;&lt;/aside&gt;</span>
+  <span class="nt">&lt;article</span> <span class="na">id=</span><span class="s">"content"</span><span class="nt">&gt;&lt;/article&gt;</span>
+  <span class="nt">&lt;aside</span>   <span class="na">id=</span><span class="s">"blog-roll"</span><span class="nt">&gt;&lt;/aside&gt;</span>
+<span class="nt">&lt;/main&gt;</span> </code></pre>
+</figure>
+<p>
+  Now, if we want to split the page into three columns; left sidebar (25% or col-3 containing the &#8220;.navigation&#8221;), main content (50% or col-6 containing &#8220;.content&#8221;) and right sidebar (25% or col-3 containing &#8220;.blog-roll&#8221;), we just have need to add the relevant classes to our markup
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;main</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;aside</span>    <span class="na">id=</span><span class="s">"navigation"</span> <span class="na">class=</span><span class="s">"col-3"</span><span class="nt">&gt;&lt;/aside&gt;</span>
+  <span class="nt">&lt;article</span>  <span class="na">id=</span><span class="s">"content"</span>    <span class="na">class=</span><span class="s">"col-6"</span><span class="nt">&gt;&lt;/article&gt;</span>
+  <span class="nt">&lt;aside</span>    <span class="na">id=</span><span class="s">"blog-roll"</span>  <span class="na">class=</span><span class="s">"col-3"</span><span class="nt">&gt;&lt;/aside&gt;</span>
+<span class="nt">&lt;/main&gt;</span> </code></pre>
+</figure>
+<p>
+  It should give you a grid like the following.
+</p>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/grid-system-1.png"/><figcaption>Notice how they just stick with each other without any padding. The purple border is Firefox developer tools showing us the layout.</figcaption></figure>
+<h3>Gutters</h3>
+<p>
+  If you ignore the basic styling and borders, you&#8217;ll notice that there&#8217;s still no spacing between the columns (or gutters) here. We need spacing because otherwise we&#8217;ll have to add internal padding to all the columns and we do not want content from one column sticking to the content from another. To have some of that, we define a gutter variable and add half gutter width padding on right and left side of our columns.
+</p>
+<figure class="highlight">
+<pre><code class="language-scss" data-lang="scss"><span class="nd">:root</span> <span class="p">{</span>
+  <span class="na">--gutter-half-width</span><span class="p">:</span> <span class="mi">.5rem</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nc">.row</span> <span class="p">{</span>
+  <span class="k">&amp;</span> <span class="o">&gt;</span> <span class="o">*[</span><span class="nt">class</span><span class="o">^=</span><span class="s2">"col-"</span><span class="o">]</span> <span class="p">{</span>
+    <span class="nl">padding-left</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">gutter-half-width</span><span class="p"&gt;);</span>
+    <span class="nl">padding-right</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">gutter-half-width</span><span class="p"&gt;);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>
+  <strong>Note</strong> that <code>--gutter-half-width</code> is just a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">variable in CSS</a> that we access with the <code>var()</code> function. <code>& > *[class^="col-"]</code> selects all direct descendants of row class which have the col-* class set. <code>:root</code> selects the document root.
+</p>
+<p>
+  We don&#8217;t want gutters on the extreme left and extreme right of our grid. We compensate for that with negative margins on the .row class.
+</p>
+<figure class="highlight">
+<pre><code class="language-scss" data-lang="scss"><span class="nc">.row</span> <span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">gutter-half-width</span><span class="p">)</span> <span class="o">*</span> <span class="m">-1</span><span class="p"&gt;);</span>
+  <span class="nl">margin-right</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">gutter-half-width</span><span class="p">)</span> <span class="o">*</span> <span class="m">-1</span><span class="p"&gt;);</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>
+  If you were to re-run the CSS again, we&#8217;d have something like the following.
+</p>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/grid-system-3.png"/><figcaption>Nice and tidy</figcaption></figure>
+<h3>Mobile responsiveness</h3>
+<p>
+  At this point, our grid system is ready. Ready for one screen size, that is. Let&#8217;s see what happens if we switch to mobile view?
+</p>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/grid-system-4.png"/><figcaption>Eww!</figcaption></figure>
+<p>
+  I mean, it kind of does what we asked it to do, but if those columns were in fact two sidebars and one main content section, and this being displayed on a 320px screen, your users would be pretty irate (or worse, your website becomes popular on <a href="https://www.reddit.com/r/CrappyDesign/">r/CrappyDesign</a>). You don&#8217;t want that, don&#8217;t you?
+</p>
+<p>
+  To fix that, we&#8217;ll use the breakpoints that we had discussed about earlier. Essentially, we want to have three columns on desktops (which we&#8217;ve already made), one on tablet and one on mobile phones in a row. We start off with writing the media queries for each of our breakpoint.
+</p>
+<figure class="highlight">
+<pre><code class="language-scss" data-lang="scss"><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">449px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// classes for mobile view</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">450px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// classes for tablet view</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// classes for desktop view</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>
+  Next, we write the column CSS classes for each media query (same code, but we&#8217;ll rename them a bit so that we can tell which class is for which viewport). Notice the <code>col-[viewport-name]-[column-width]</code> format. You&#8217;ll might recognize this from libraries like Bootstrap (for example, col-md-3 or col-xs-6).
+</p>
+<figure class="highlight">
+<pre><code class="language-scss" data-lang="scss"><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">449px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-mobile-1</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">8</span><span class="mi">.3333333%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="nc">.col-mobile-2</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">16</span><span class="mi">.666666%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="c1">// col-mobile-3 to col-mobile-10</span>
+  <span class="nc">.col-mobile-11</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">91</span><span class="mi">.666666%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="nc">.col-mobile-12</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">100%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">450px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-tablet-1</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">8</span><span class="mi">.3333333%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="nc">.col-tablet-2</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">16</span><span class="mi">.666666%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="c1">// col-tablet-3 to col-tablet-12</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-desktop-1</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">8</span><span class="mi">.3333333%</span><span class="p"&gt;;</span> 
+  <span class="p">}</span>
+  <span class="nc">.col-desktop-2</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">16</span><span class="mi">.666666%</span><span class="p"&gt;;</span> 
+  <span class="p">}</span>
+  <span class="c1">// col-desktop-3 to col-desktop-12</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>
+  Now, we can edit our HTML to use these new classes. For each viewport, we add a class which tells the browser how wide it needs to be on that viewport. For example, our <code>article</code> section is 50% in width (or 6 out of 12 columns) on desktop, while 100% on tablet and mobile (or 12 out of 12 columns).
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;main</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;aside</span>   <span class="na">class=</span><span class="s">"col-desktop-3
+                  col-tablet-12
+                  col-mobile-12"</span> <span class="na">id=</span><span class="s">"navigation"</span><span class="nt">&gt;&lt;/aside&gt;</span>
+  <span class="nt">&lt;article</span> <span class="na">class=</span><span class="s">"col-desktop-6
+                  col-tablet-12
+                  col-mobile-12"</span> <span class="na">id=</span><span class="s">"content"</span><span class="nt">&gt;&lt;/article&gt;</span>
+  <span class="nt">&lt;aside</span>   <span class="na">class=</span><span class="s">"col-desktop-3
+                  col-tablet-12
+                  col-mobile-12"</span> <span class="na">id=</span><span class="s">"blog-roll"</span><span class="nt">&gt;&lt;/aside&gt;</span>
+<span class="nt">&lt;/main&gt;</span> </code></pre>
+</figure>
+<p>
+  This will ensure our columns are 100% width on tablet and mobile screens. And because our classes are inside of media queries that only fire at the viewport width breakpoints, only the relevant class gets applied. As you can imagine, one can really fine tune how things look by selecting a higher number of breakpoints and designing for a more consistent UI across the spectrum of screen sizes.
+</p>
+<h3>Bonus &#8211; Hiding sections</h3>
+<p>
+  Let&#8217;s say we decide that the <code>blog-roll</code> section isn&#8217;t super important on mobile screens, and should be removed. This is a common usecase; hiding specific blocks on specific viewports. And there&#8217;s a very easy way of doing this right in the grid system.
+</p>
+<p>
+  The little trick is to add hidden classes, just like our column classes, to our viewport media queries.
+</p>
+<figure class="highlight">
+<pre><code class="language-scss" data-lang="scss"><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">449px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-mobile-hidden</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">450px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-tablet-hidden</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">768px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-desktop-hidden</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p>
+  Now, to hide the <code>blog-roll</code> on mobile phones, we just add the hidden class to its classlist.
+</p>
+<figure class="highlight">
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;main</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">"col-desktop-3
+                col-tablet-12
+                col-mobile-hidden"</span> <span class="na">id=</span><span class="s">"blog-roll"</span><span class="nt">&gt;&lt;/aside&gt;</span>
+<span class="nt">&lt;/main&gt;</span> </code></pre>
+</figure>
+<h3>Code</h3>
+<p>
+  I&#8217;ve posted truncated snippets above. The whole thing would look something like the following.
+</p>
+<figure class="highlight">
+<pre><code class="language-scss" data-lang="scss">  
+<span class="nd">:root</span> <span class="p">{</span>
+  <span class="na">--gutter-half-width</span><span class="p">:</span> <span class="mi">.5rem</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="nc">.row</span> <span class="p">{</span>
+  <span class="k">&amp;</span> <span class="o">&gt;</span> <span class="o">*[</span><span class="nt">class</span><span class="o">^=</span><span class="s2">"col-"</span><span class="o">]</span> <span class="p">{</span>
+    <span class="nl">padding-left</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">gutter-half-width</span><span class="p"&gt;);</span>
+    <span class="nl">padding-right</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">gutter-half-width</span><span class="p"&gt;);</span>
+  <span class="p">}</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">gutter-half-width</span><span class="p">)</span> <span class="o">*</span> <span class="m">-1</span><span class="p"&gt;);</span>
+  <span class="nl">margin-right</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">gutter-half-width</span><span class="p">)</span> <span class="o">*</span> <span class="m">-1</span><span class="p"&gt;);</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">449px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-mobile-1</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">8</span><span class="mi">.3333333%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+  <span class="nc">.col-mobile-12</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">100%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="nc">.col-mobile-hidden</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">450px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-tablet-1</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">8</span><span class="mi">.3333333%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+  <span class="nc">.col-tablet-12</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">100%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="nc">.col-tablet-hidden</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">450px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nc">.col-desktop-1</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">8</span><span class="mi">.3333333%</span><span class="p"&gt;;</span> 
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+  <span class="nc">.col-desktop-12</span> <span class="p">{</span>
+    <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">100%</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+  <span class="nc">.col-desktop-hidden</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p"&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</figure>
+<h3>Possible extensions</h3>
+<p>
+  The flexbox standard defines various ways of arranging things inside the container both along the flex-direction axis (called the main axis) and the cross axis (the axis perpendicular to the main axis). If we were to extend this, we could define helper classes like <code>.col-reverse</code> (flex-direction: reverse) or <code>.col-spread-out</code> (justify-content: space-between) using these properties depending on our use cases.
+</p>
+<h3>In closing</h3>
+<p>
+  The flexbox standard is pretty elaborate, and extremely <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout">well documented</a>. There are also good libraries build around Flexbox that provide what we just build, and much more than that, out of the box. In production, one should try to stick to libraries and not reinvent the wheel.
+</p>
+<p>
+  Having said that, it is also important to understand the libraries that we use. Now we know what actually happens when we use that familiar <code>col-md-6</code> class from Bootstrap, and if need be, we won&#8217;t shy away from editing the source code to make the library fit our needs!
+</p>
+<p>
+  Thank you for reading!</p>
+			</section>
+
+			<hr class="stylish"/>
+
+			<aside class="featured-posts">
+  <h3>Unrelated</h3>
+  <ul>
+    <li><a href="index.html?p=1263">The Best Time Of Your Life Is Right Now</a></li>
+    <li><a href="https://nagekar.com/2019/01/mumbai-to-berlin.html">Mumbai To Berlin</a></li>
+    <li><a href="https://nagekar.com/2018/03/hum-devs-kab-banenge.html">Hum Developers Kab Banenge?</a></li>
+    <li><a href="https://nagekar.com/2016/11/a-visit-to-the-taj-mahal.html">A Visit To The Taj Mahal</a></li>
+    <li><a href="https://nagekar.com/2019/05/be-easy-on-yourself.html">Be Easy On Yourself</a></li>
+  </ul>
+</aside>
+
+			<hr class="stylish"/>
+
+			<section class="pagination">
+				
+					<a class="prev" href="index.html?p=1041">&laquo; The Indian &#8216;No?&#8217;</a>
+
+					
+					<a class="next" href="index.html?p=1039"> Cheat Sheet To Good Experiences &raquo;</a>
+
+								</section>
+
+		</article>
+
+	
+</main><!-- #main -->
+
+
+</div>
+
+<footer>
+  <hr class="stylish"/>
+  <nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='about'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='quotes'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='tags'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="index.html" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="index.html?feed=rss2">RSS</a>,
+      <a href="index.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <div>
+    Theme: <a href="https://github.com/abhn/Elementary">Elementary</a>
+    <br/>
+    <a>Abhishek Nagekar</a> &copy; 2025  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/s\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+<!-- Koko Analytics v2.0.19 - https://www.kokoanalytics.com/ -->
+<script>
+!function(){var e=window,r="koko_analytics";function t(t){t.m=e[r].use_cookie?"c":e[r].method[0],navigator.sendBeacon(e[r].url,new URLSearchParams(t))}e[r].request=t,e[r].trackPageview=function(){if("prerender"!=document.visibilityState&&!/bot|crawl|spider|seo|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)){var i=0==document.referrer.indexOf(e[r].site_url)?"":document.referrer;t({pa:e[r].path,po:e[r].post_id,r:i})}},e.addEventListener("load",function(){e[r].trackPageview()})}();
+</script>
+
+<script src="wp-content/themes/s/build/index.js?ver=1.0.0" id="elementary-script-js"></script>
+
+</body>
+</html>

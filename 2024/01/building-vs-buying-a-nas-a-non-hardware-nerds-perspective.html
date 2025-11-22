@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../index.html?feed=rss2" />
+  <link rel="alternate" type="application/atom+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../index.html?feed=atom" />
+
+	<title>Building vs Buying a NAS &#8211; A non-hardware nerd&#8217;s perspective &#8211; Abhishek Nagekar</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<script>
+window.koko_analytics = {"url":"https:\/\/nagekar.com\/koko-analytics-collect.php","site_url":"https:\/\/nagekar.com","post_id":2088,"path":"\/2024\/01\/building-vs-buying-a-nas-a-non-hardware-nerds-perspective.html","method":"none","use_cookie":false};
+</script>
+<link rel="alternate" type="application/rss+xml" title="Abhishek Nagekar &raquo; Feed" href="../../index.html?feed=rss2" />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='elementary-style-css' href='../../wp-content/themes/s/style.css?ver=1.0.0' media='all' />
+<link rel="https://api.w.org/" href="../../wp-json/index.html" /><link rel="alternate" title="JSON" type="application/json" href="https://nagekar.com/wp-json/wp/v2/posts/2088" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nagekar.com/xmlrpc.php?rsd" />
+
+<link rel="canonical" href="building-vs-buying-a-nas-a-non-hardware-nerds-perspective.html" />
+<link rel='shortlink' href='https://nagekar.com/?p=2088' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://nagekar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnagekar.com%2F2024%2F01%2Fbuilding-vs-buying-a-nas-a-non-hardware-nerds-perspective.html" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://nagekar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnagekar.com%2F2024%2F01%2Fbuilding-vs-buying-a-nas-a-non-hardware-nerds-perspective.html&#038;format=xml" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-270x270.png" />
+		<style id="wp-custom-css">
+			
+.quotes-ol-container {
+	display: flex;
+  flex-direction: column-reverse;
+}
+
+.quotes-ol-container li {
+	flex: 0 0 auto;
+}		</style>
+		</head>
+
+<body class="wp-singular post-template-default single single-post postid-2088 single-format-standard wp-theme-s">
+<div class="container">
+	<nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="../../index.html" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../index.html?feed=rss2">RSS</a>,
+      <a href="../../index.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <hr class="stylish"/>
+
+<div class="_progress-wrapper">
+  <div id="_progress"></div>
+</div>
+
+<header>
+	<h1>Building vs Buying a NAS &#8211; A non-hardware nerd&#8217;s perspective</h1>
+	<header class="title-tags">
+		<time>14 January, 2024. It was a Sunday</time>
+		<div class="tags-container">
+			Posted under <span>
+										<a class="tags" href="../../tags#diy">diy</a>
+										<a class="tags" href="../../tags#electronics">electronics</a>
+										<a class="tags" href="../../tags#home-server">home-server</a>
+										<a class="tags" href="../../tags#pc-build">pc-build</a>
+										<a class="tags" href="../../tags#synology">synology</a>
+							</span>
+			&nbsp;
+		</div>
+	</header>
+</header>
+
+<hr class="stylish" />
+
+<main role="main">
+
+	
+		<article>
+			<section class="content">
+				
+<p>After years of contemplating on making or buying myself a NAS, I finally decided to bite and got a Synology DS223j two-bay NAS as a present for myself for Christmas along with two refurbished 16TB Seagate Exos hard drives. </p>
+
+
+
+<h2 class="wp-block-heading">Rewinding a bit</h2>
+
+
+
+<p>For most of my life, the only &#8220;backup&#8221; I had was a 500gb hard disk that came preinstalled in the <a href="https://nagekar.com/2015/11/fujitsu-lifebook-a514-review.html">Fujitsu A514</a>, my first laptop. I had also bought a 120gb solid-state disk at the time and immediately replaced the hard disk with it. The hard disk went into an enclosure and I used it to back up any important data as my laptop went through frequent cycles of OS reinstalls during my distro-hopping era.</p>
+
+
+
+<p>Any time I&#8217;d want to back up my photos, it would become a folder on the hard disk and then cleared from phone storage as phones came with much smaller storage back then. I remember having 16gb internal storage on my Galaxy Note and thinking I&#8217;d never fill it up no matter how many pictures I take.</p>
+
+
+
+<p>I used Gmail and the 15gb storage the free account comes with was enough for email and the occasional document sharing via Google Drive. Life was good.</p>
+
+
+
+<p>At some point I hooked this 500gb drive to my <a href="https://nagekar.com/2016/01/how-to-private-local-cloud-using-raspberrypi.html">Raspberry Pi running Nextcloud</a> and even had my very first &#8220;NAS&#8221; setup.</p>
+
+
+
+<p>In 2018, I had some INR 300 of Google Play credits that I used to get some of the apps that I wanted to support and use pro versions of, like Nova launcher, Tasker etc. Along with those, I got the 100gb Google storage plan (at INR 130 a month) and started backing up photos to Google Drive. It was an okay cost as I was already working by then and had some money to spare for subscriptions. </p>
+
+
+
+<p>Since then, I had kept that subscription and even upgraded it to 200gb after <a href="https://nagekar.com/2019/01/mumbai-to-berlin.html">moving to Berlin</a>. </p>
+
+
+
+<h2 class="wp-block-heading">Problem statement</h2>
+
+
+
+<p>The problem I set out to solve was to get rid of some of the cloud storage subscription fees I&#8217;m paying each month. I was paying duplicate fees for cloud between two Google accounts (and an iCloud account), so the plan would help get rid of two of the three subscriptions resulting in some 50 euros saved each year while providing me to actually follow the 3-2-1 backup strategy for some important data that I wouldn&#8217;t want to lose. </p>
+
+
+
+<h2 class="wp-block-heading">Requirements</h2>
+
+
+
+<p>Late last December I got a bit obsessed with watching computer build videos. It was fun to learn something new, and to be honest it also was entertaining. From the videos, I learned some important considerations that I&#8217;ll have to think for myself before spending my first Euro on this new project.</p>
+
+
+
+<ol class="wp-block-list">
+<li>Number of drive bays: While a NAS can just be a single drive attached to the network, generally they also offer redundancy (using RAID configurations) for NAS with two or more drive bays. I knew I&#8217;d want a RAID 1 so I&#8217;d need at least two drives.</li>
+
+
+
+<li>Idle power consumption: Power is expensive in Germany and I&#8217;d want to stay away from any old hardware that&#8217;s cheap to buy but very expensive to run. The last thing I&#8217;d want to do is invest in a NAS that I&#8217;m going to not keep running all the time.</li>
+
+
+
+<li>NAS application / operating system: Ideally, I&#8217;d like some bells and whistles like automatic backups to make my life a little easier and not having to do that manually. The popular NAS applications come with add-ons that allow more specific usecases. <a href="https://www.truenas.com/apps/">TrueNAS</a>, <a href="https://www.synology.com/de-de/dsm/packages">Synology</a> and others have public pages where one can see if the application they&#8217;d need is available on the platform they&#8217;re choosing for the NAS. </li>
+
+
+
+<li>Gigabit access speeds: I wanted to NAS to be accessible at the same speeds as the rest of my home network, which is currently at a Gigabit. Fortunately, that seems like the minimum one gets in 2023.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Non-requirements</h2>
+
+
+
+<p>I also learned about what other people prioritize in their NAS, but it didn&#8217;t resonate with me. More specifically, I couldn&#8217;t justify the price overhead that acquiring those features needed. Namely,</p>
+
+
+
+<ol class="wp-block-list">
+<li>SSD Cache: While there are many strategies to use an SSD for read and write caching, it primarily makes read/write operations feel faster for some use cases. I thought this was over-optimizing for my modest use case.</li>
+
+
+
+<li>CPU / RAM to run containers / VMs: I also found that folks like to run Docker containers / VMs on their NAS and need more powerful CPU and added RAM. This hadn&#8217;t even crossed my mind, and as such, I stayed true to the &#8220;if I didn&#8217;t know it exists, I probably don&#8217;t need it yet&#8221; principle. </li>
+
+
+
+<li>Multi-gigabit or multiple LAN ports: Folks opt for 2.5 or even 10gig LAN ports on their NAS for faster transfer speeds. Now while I&#8217;d looove to have transfer rates more than 120 MB/s, I&#8217;d need to upgrade my entire home network to multi-gigabit LAN and WLAN, and that&#8217;s expensive. That also would mean having a beefier CPU to handle the transfers which would increase the cost of NAS hardware itself.</li>
+
+
+
+<li>Four or more drive bays: This was the one I was most unsure about; Most if not everyone one reddit suggested to get at least a 4 bay NAS and then just using a couple of the bays until the requirement arises. It sounds reasonable, but I have a feeling that the requirement for 4 bays would never arise and 16TB in RAID-1 is going to be enough for a very long time.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Building vs buying</h2>
+
+
+
+<p>The nerd in me wanted to really go down the route of buying all the parts and assembling everything myself. The videos I had watched made me confident enough that I could pull it off. Building a PC is fun, and truth be told, I&#8217;ve never actually built one for myself.</p>
+
+
+
+<p>Having said that, I also recognized that I&#8217;m mixing two things together; my requirement for a secure and reliable NAS for my critical data and my desire to build a PC that I can experiment on. I&#8217;ve lost important data in the past and I didn&#8217;t want to risk it. Especially not after having just watched a bunch of videos and never actually having built a decent PC myself. </p>
+
+
+
+<p>I decided to pick up a Synology 2 bay NAS DS223j with 1gb RAM and a relatively weak but does-the-job quad-core Realtek CPU. The cost of the NAS was 180 euros. To do with it, I got a couple of refurbished <a href="https://www.seagate.com/files/www-content/datasheets/pdfs/exos-x16-DS2011-1-1904US-en_US.pdf">16TB Seagate Exos</a> drives, each of which was 180 euros, for a total cost of 540 euros. </p>
+
+
+
+<p>My rationale behind going down this path was as follows:</p>
+
+
+
+<ol class="wp-block-list">
+<li>I don&#8217;t trust my PC building and setting up skills enough to offload all of my data to the built-NAS and then cancel a couple of cloud subscriptions.</li>
+
+
+
+<li>At 4-5 watts of idle (hibernation) and 16 watts of under-load power consumption, it is comparable to a relatively efficient Mini PC.</li>
+
+
+
+<li>Hardware isn&#8217;t cheap in Germany, and actually saving money on hardware would require sourcing parts off Aliexpress which takes time and is often less than reliable.</li>
+
+
+
+<li>Building a PC and setting up the necessary software takes time. I could use this time on another project (home server blog post coming soon :D). </li>
+
+
+
+<li>Synology&#8217;s DSM (their proprietary operating system) comes out of the box with remote access via QuickConnect. </li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Tradeoffs I&#8217;ve ((sub)consciously) made</h2>
+
+
+
+<p>I feel like I&#8217;ve given up on some of my preferences when going down the Synology NAS route. And while some of these are conscious, there are some that will only show up once enough time has passed. In any case, I&#8217;m still documenting some of them here.</p>
+
+
+
+<ol class="wp-block-list">
+<li>Open source and free software: Synology DSM only runs on Synology hardware, at least officially. It means I&#8217;m stuck to using Synology software for as long as I&#8217;m using this hardware.</li>
+
+
+
+<li>Synology tax: Like I mentioned, using these off the shelf NAS&#8217;s requires paying the software and marketing budget of the companies in addition to the cost of the actual hardware. That&#8217;s fair, of course. Just something to be aware of.</li>
+
+
+
+<li>NAS hardware: I&#8217;m sure my &#8220;16TB ought to be enough for me&#8221; might not age very well. I also faced some situations where the NAS really slowed down and made me realize that it is running a very under-powered CPU after all. Again, tradeoffs.</li>
+
+
+
+<li>Noise: Seagate Exos drives aren&#8217;t the most silent hard drives. My wooden floor made it much worse and I ended up putting the NAS on a softer raised surface to absorb some of the vibrations. I believe this problem would&#8217;ve not completely vanished had I chose to get non-enterprise drives like the Seagate IronWolf, but it would&#8217;ve been better.</li>
+
+
+
+<li>Electricity costs: While my Synology NAS is efficient, and consumes single digit Watt power most of the times idling, it will still add 30-40 euros of additional power consumption to my yearly electricity bills (at 10w average power consumption 24x7x365 and 40 cents per kWh). </li>
+
+
+
+<li>Breakeven cost: From a purely utility perspective, it will take some years of not using Google Drive and iCloud before the cost of investing in a personal NAS is broken even. This is especially true if I do not fill up the 16TB that I have and then have regular need to access those files. This isn&#8217;t factoring in the added electricity cost, nor can I effectively compare the reliability of Google Drive to a NAS set up at home. Overall, for most people without the need to store TBs of data, Cloud is a very logical option.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">In closing</h2>
+
+
+
+<p>I hope that was informative in some way. I am looking forward to seeing how my investment turns out and if the list of tradeoffs grows further. I&#8217;ll leave you with some pictures of the NAS.</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="2560" height="1920" src="../../wp-content/uploads/2024/01/IMG_6806-scaled.jpg" alt="" class="wp-image-2097" style="width:840px;height:auto" srcset="../../wp-content/uploads/2024/01/IMG_6806-scaled.jpg 2560w, ../../wp-content/uploads/2024/01/IMG_6806-300x225.jpg 300w, ../../wp-content/uploads/2024/01/IMG_6806-250x188.jpg 250w, ../../wp-content/uploads/2024/01/IMG_6806-768x576.jpg 768w, ../../wp-content/uploads/2024/01/IMG_6806-1536x1152.jpg 1536w, ../../wp-content/uploads/2024/01/IMG_6806-2048x1536.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /><figcaption class="wp-element-caption">Fresh out of the box with its accessories</figcaption></figure>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="2560" height="1440" src="../../wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-scaled.jpg" alt="" class="wp-image-2098" style="width:840px;height:auto" srcset="../../wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-scaled.jpg 2560w, ../../wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-300x169.jpg 300w, ../../wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-250x141.jpg 250w, ../../wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-768x432.jpg 768w, ../../wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-1536x864.jpg 1536w, ../../wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-2048x1152.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /><figcaption class="wp-element-caption">Initial setup in my &#8220;Lack rack&#8221;. It has since been replaced but wait for an update on that.</figcaption></figure>
+
+
+
+<p>Thank you for reading!</p>
+			</section>
+
+			<hr class="stylish"/>
+
+			<aside class="featured-posts">
+  <h3>Unrelated</h3>
+  <ul>
+    <li><a href="../../index.html?p=1263">The Best Time Of Your Life Is Right Now</a></li>
+    <li><a href="https://nagekar.com/2019/01/mumbai-to-berlin.html">Mumbai To Berlin</a></li>
+    <li><a href="https://nagekar.com/2018/03/hum-devs-kab-banenge.html">Hum Developers Kab Banenge?</a></li>
+    <li><a href="https://nagekar.com/2016/11/a-visit-to-the-taj-mahal.html">A Visit To The Taj Mahal</a></li>
+    <li><a href="https://nagekar.com/2019/05/be-easy-on-yourself.html">Be Easy On Yourself</a></li>
+  </ul>
+</aside>
+
+			<hr class="stylish"/>
+
+			<section class="pagination">
+				
+					<a class="prev" href="im-a-five-year-old-berliner-today.html">&laquo; I&#8217;m A Five Year Old Berliner Today</a>
+
+					
+					<a class="next" href="../03/i-made-it-to-firefox-aboutcredits-page.html"> I made it to Firefox about:credits page! &raquo;</a>
+
+								</section>
+
+		</article>
+
+	
+</main><!-- #main -->
+
+
+</div>
+
+<footer>
+  <hr class="stylish"/>
+  <nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="../../index.html" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../index.html?feed=rss2">RSS</a>,
+      <a href="../../index.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <div>
+    Theme: <a href="https://github.com/abhn/Elementary">Elementary</a>
+    <br/>
+    <a>Abhishek Nagekar</a> &copy; 2025  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/s\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+<!-- Koko Analytics v2.0.19 - https://www.kokoanalytics.com/ -->
+<script>
+!function(){var e=window,r="koko_analytics";function t(t){t.m=e[r].use_cookie?"c":e[r].method[0],navigator.sendBeacon(e[r].url,new URLSearchParams(t))}e[r].request=t,e[r].trackPageview=function(){if("prerender"!=document.visibilityState&&!/bot|crawl|spider|seo|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)){var i=0==document.referrer.indexOf(e[r].site_url)?"":document.referrer;t({pa:e[r].path,po:e[r].post_id,r:i})}},e.addEventListener("load",function(){e[r].trackPageview()})}();
+</script>
+
+<script src="../../wp-content/themes/s/build/index.js?ver=1.0.0" id="elementary-script-js"></script>
+
+</body>
+</html>
