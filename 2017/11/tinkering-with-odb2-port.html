@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en-US">
+
+<!-- Mirrored from nagekar.com/2017/11/tinkering-with-odb2-port.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 10:27:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../indexd784.html?feed=rss2" />
+  <link rel="alternate" type="application/atom+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../index6e0a.html?feed=atom" />
+
+	<title>Tinkering With OBD-II Port &#8211; Abhishek Nagekar</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<script>
+window.koko_analytics = {"url":"https:\/\/nagekar.com\/koko-analytics-collect.php","site_url":"https:\/\/nagekar.com","post_id":1097,"path":"\/2017\/11\/tinkering-with-odb2-port.html","method":"none","use_cookie":false};
+</script>
+<link rel="alternate" type="application/rss+xml" title="Abhishek Nagekar &raquo; Feed" href="../../feed" />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='elementary-style-css' href='../../wp-content/themes/s/style8a54.css?ver=1.0.0' media='all' />
+<link rel="https://api.w.org/" href="../../wp-json/index.html" /><link rel="alternate" title="JSON" type="application/json" href="../../wp-json/wp/v2/posts/1097.json" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.html?rsd" />
+
+<link rel="canonical" href="tinkering-with-odb2-port.html" />
+<link rel='shortlink' href='../../index21fb.html?p=1097' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="../../wp-json/oembed/1.0/embede69d.json?url=https%3A%2F%2Fnagekar.com%2F2017%2F11%2Ftinkering-with-odb2-port.html" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="../../wp-json/oembed/1.0/embedfac7?url=https%3A%2F%2Fnagekar.com%2F2017%2F11%2Ftinkering-with-odb2-port.html&amp;format=xml" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-270x270.png" />
+		<style id="wp-custom-css">
+			
+.quotes-ol-container {
+	display: flex;
+  flex-direction: column-reverse;
+}
+
+.quotes-ol-container li {
+	flex: 0 0 auto;
+}		</style>
+		</head>
+
+<body class="wp-singular post-template-default single single-post postid-1097 single-format-standard wp-theme-s">
+<div class="container">
+	<nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about.html'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes.html'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags.html'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="https://nagekar.com/" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../indexd784.html?feed=rss2">RSS</a>,
+      <a href="../../index6e0a.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <hr class="stylish"/>
+
+<div class="_progress-wrapper">
+  <div id="_progress"></div>
+</div>
+
+<header>
+	<h1>Tinkering With OBD-II Port</h1>
+	<header class="title-tags">
+		<time>6 November, 2017. It was a Monday</time>
+		<div class="tags-container">
+			Posted under <span>
+										<a class="tags" href="../../tags.html#diy">diy</a>
+										<a class="tags" href="../../tags.html#electronics">electronics</a>
+							</span>
+			&nbsp;
+		</div>
+	</header>
+</header>
+
+<hr class="stylish" />
+
+<main role="main">
+
+	
+		<article>
+			<section class="content">
+				<p>
+	I&#8217;ve been seeing people hook up their computers to their cars from quite some time. It is a common sight if you watch any motorsport event on television, where technicians are seen working on their laptops that is connected via a cable to the car or bike. I found it quite fascinating. <i>&#8220;What interesting tweaks must they be making to that machine with that computer!&#8221;</i> I thought. The idea of tweaking a machine to improve it&#8217;s characteristics wasn&#8217;t new to me. Overclocking is nothing new. But obviously, since I saw all those professionals do it, I assumed there was no way for such an interface to exist on our everyday road vehicles.
+</p>
+<p>
+	And I was wrong. I discovered that, by law, it was necessary for all cars to have a diagnostics port, called the On-Board Diagnostics port. The latest revision for that port is v2 or <a href="https://en.wikipedia.org/wiki/On-board_diagnostics#OBD-II">OBD-II</a>, and all cars manufactured after 1996 should have one. Also, sometimes, the automotive Youtubers I followed showed <a href="https://youtu.be/Srnlrs1-dN0?t=227">various stats</a> on the screens such a the engine rpm, throttle position, boost pressure etc. So that implied there exists a way to extract those stats out of the vehicle&#8217;s <a href="https://en.wikipedia.org/wiki/Engine_control_unit">ECU</a>. Interesting. A quick Google search for &#8220;odb scanners&#8221; revealed that they&#8217;re not very expensive either (with cheap clones available for as low as INR 300, USD 5 or <a href="https://www.ebay.com/itm/Bluetooth-Mini-ELM327-OBD2-II-Auto-Car-OBD2-Diagnostic-Interface-Scanner-Tool/332333712008?hash=item4d60a20288:m:mOtAb_xAzblz2wSDE8bRn_Q">even lower</a>). After researching a bit, I learned that there was loads of data that came out of that little adapter, and that great Android applications (like Torque and DashCommand) exist which spit out the data into beautiful dials and graphs (like the ones on the <a href="https://st.motortrend.com/uploads/sites/5/2013/05/2014-Nissan-GT-R-Track-Edition-gauges.jpg">Nissan GTR</a> &hearts;) I was awestruck. What more can a nerd ask for!
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/elm327.jpg"/></p>
+<p>
+	All this happened a couple of months ago. I knew I needed to get one of those. I waited a couple of months and finally ordered it earlier this month. The first challenge was to find the OBD port. Unlike some other cars, Zacky&#8217;s OBD port was hidden behind the fuse box cover, the adapter had to go inside there. I managed to access the port without opening the fuse box and problem solved! Plugged in the adapter, paired with with my phone and it started sending data. That was one of the best feelings ever!
+</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/YPkad5i2y2E" frameborder="0" allowfullscreen></iframe></p>
+<p>
+	Some of the data it sent that I found particularly interesting to read was</p>
+<ol>
+<li>Boost pressure from the turbocharger</li>
+<li>Engine RPM</li>
+<li>Coolant temperature</li>
+<li>Engine load</li>
+<li>Error codes and provision to reset them</li>
+<li>Horse power, torque, acceleration and other such &#8220;calculated&#8221; data by combining sensor data with phone&#8217;s sensors like GPS and accelerometer and known parameters (like vehicle weight, engine displacement etc)</li>
+<li>and loads of other cool stuff</li>
+</ol>
+<p>	Note that the available sensor list varies from manufacturer to manufacturer, so keep that in mind. But even with the most basic, the experience is fun. It&#8217;s like opening task manager on your computer for the first time. <i>Wow, so I can actually run this h4ck3r stuff, right?</i>
+</p>
+<h3>Interesting Learnings</h3>
+<p>
+	<b>&#8211; Negative boost pressure</b> When you start the car and drive it normally, you&#8217;ll notice that the boost pressure gauge will read negative (technically, not pressure but vacuum). Only when driving hard (shifting late, for example), will you notice the boost pressure rising. I thought it was some erroneous data from the sensor so I <a href="https://www.google.co.in/search?q=boost+gauge+negative">read up a bit</a>. Turns out, at high rpm, the turbo forces the air fuel mixture into the cylinders. But what happens when the turbo is running too slow for compressing air? It simply works as a naturally aspirated engine and sucks in air during the <a href="https://en.wikipedia.org/wiki/Four-stroke_engine">intake stroke</a>. THAT sucking part explains the vacuum. Cool!
+</p>
+<p>
+	<b>&#8211; Driving modes</b> So Zacky featured this thing called driving modes. Putting her on &#8220;Sports&#8221; made the throttle more responsive but reduced fuel economy while putting her in &#8220;Eco&#8221; did the exact opposite. Now I could&#8217;ve told you that this isn&#8217;t just marketing and if you test it out, you can even feel a noticeable difference, but that was all I knew. Now, after driving for a while with the boost pressure gauge in front, I made this little observation. When in normal drive mode, the turbo does not spool over 4-6psi boost. But as soon as I go &#8216;sport&#8217;, the turbo goes well over 10psi, even 12 if the sensor is to be believed, which is pretty fantastic.
+</p>
+<p>
+	&#8211; A better understanding of the relationship between torque and horsepower, and what each number actually implies. Yes, power is work done per unit time, but what exactly does that feel like. Why do diesels have same horsepower figures even after having loads of torque. It gets really clear once you see the torque, the rpm and the (thus calculated) horsepower figures side-by-side.
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/1412427d1441794044-race-dynamics-dyno-database-stock-cars-tata-zest.png"/></p>
+<p>
+	&#8211; <b>Torque curve</b> So there&#8217;s this thing called a torque curve of an engine, which is just a curve with torque on one axis and RPM on the other. For an IC engine, the torque is not linear (as with electric motors), but a curve with a peak at some specific RPM (or RPM range, which is why a torque (or horsepower) figure is always accompanied by a RPM range), and tapering off at both the ends. To get the maximum acceleration, you have to keep this curve in mind when changing gears.
+</p>
+<h3>Now show me some kode!</h3>
+<p>
+	Yeah, right. So while I was on all of that, I thought, why not study the protocol itself and try writing a little script to pull the raw data from the sensors out, just for fun. Right, but how? This thing is running on Bluetooth, and how do you sniff that. Is there something like Wireshark for bluetooth? Googling &#8220;Wireshark for bluetooth&#8221; reveals that Wireshark is the &#8220;Wireshark for bluetooth&#8221;. Damn!
+</p>
+<p>
+	But before wireshark could sniff, I needed to get thing thing connected to my laptop. That&#8217;s pretty straightforward. After having it running at <code>/dev/rfcomm0</code>, fire up Wireshark and keep it listening on Bluetooth interface.
+</p>
+<blockquote><p>
+	Okay, pause. Here&#8217;s the funny part. The above text was written some 4 months ago. Then I had to do a lot of physical work to take my laptop into Zacky and do all the research/coding from there. I remember going out at least 3 times, but for some weird reason, never bothered to finish writing this article. I&#8217;m putting this out right now so that I will remember to write the part-II for it during the next weekend. Stay tuned.
+</p></blockquote>
+			</section>
+
+			<hr class="stylish"/>
+
+			<aside class="featured-posts">
+  <h3>Unrelated</h3>
+  <ul>
+    <li><a href="../../2021/02/the-best-time-of-your-life-is-right-now.html">The Best Time Of Your Life Is Right Now</a></li>
+    <li><a href="../../2019/01/mumbai-to-berlin.html">Mumbai To Berlin</a></li>
+    <li><a href="../../2018/03/hum-devs-kab-banenge.html">Hum Developers Kab Banenge?</a></li>
+    <li><a href="../../2016/11/a-visit-to-the-taj-mahal.html">A Visit To The Taj Mahal</a></li>
+    <li><a href="../../2019/05/be-easy-on-yourself.html">Be Easy On Yourself</a></li>
+  </ul>
+</aside>
+
+			<hr class="stylish"/>
+
+			<section class="pagination">
+				
+					<a class="prev" href="../10/better-browsing.html">&laquo; Better Web Browsing</a>
+
+					
+					<a class="next" href="book-review-responsive-web-design-ethan-marcotte.html"> Book Review &#8211; Responsive Web Design By Ethan Marcotte &raquo;</a>
+
+								</section>
+
+		</article>
+
+	
+</main><!-- #main -->
+
+
+</div>
+
+<footer>
+  <hr class="stylish"/>
+  <nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about.html'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes.html'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags.html'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="https://nagekar.com/" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../indexd784.html?feed=rss2">RSS</a>,
+      <a href="../../index6e0a.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <div>
+    Theme: <a href="https://github.com/abhn/Elementary">Elementary</a>
+    <br/>
+    <a>Abhishek Nagekar</a> &copy; 2025  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/s\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+<!-- Koko Analytics v2.0.19 - https://www.kokoanalytics.com/ -->
+<script>
+!function(){var e=window,r="koko_analytics";function t(t){t.m=e[r].use_cookie?"c":e[r].method[0],navigator.sendBeacon(e[r].url,new URLSearchParams(t))}e[r].request=t,e[r].trackPageview=function(){if("prerender"!=document.visibilityState&&!/bot|crawl|spider|seo|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)){var i=0==document.referrer.indexOf(e[r].site_url)?"":document.referrer;t({pa:e[r].path,po:e[r].post_id,r:i})}},e.addEventListener("load",function(){e[r].trackPageview()})}();
+</script>
+
+<script src="../../wp-content/themes/s/build/index8a54.js?ver=1.0.0" id="elementary-script-js"></script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"dd6930e6eb8c44088fd6b2cf3e5a2dea","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from nagekar.com/2017/11/tinkering-with-odb2-port.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 10:27:27 GMT -->
+</html>

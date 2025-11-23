@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>socket &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/socket/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Wed, 03 Dec 2014 23:00:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>socket &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Simple group messenger/chat in Python</title>
+		<link>https://nagekar.com/2014/12/lan-group-messenger-in-python.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 03 Dec 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[python]]></category>
+		<category><![CDATA[socket]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/12/03/lan-group-messenger-in-python/</guid>
+
+					<description><![CDATA[Aaaaannd here is another post of mine on sockets, client/server models and stuff. I suppose you have started to get bored by the same stuff everyday right? Seems like I just can&#8217;t get enough of this thing. But trust me, I had no intention of doing this today, a friend of mine instigated me write [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Aaaaannd here is another post of mine on sockets, client/server models and stuff. I suppose you have started to get bored by the same stuff everyday right? Seems like I just can&#8217;t get enough of this thing. But trust me, I had no intention of doing this today, a friend of mine instigated me write a messenger for a project we were working on, and it turned out, writing this simple messaging program was more interesting than I thought.
+</p>
+<p>
+  So, instead of creating a straight forward chat program that was &#8216;actually&#8217; required by my friend, I created this &#8216;one-server-multiple-clients&#8217; program, which is more like the real world chat apps we use everyday.
+</p>
+<p>
+  To run the program, execute the &#8216;server.py&#8217; (after changing the <b>bind() </b>address to the address of the server on which it is supposed to run). Then, execute the &#8216;client.py&#8217; (guess what? same thing here. But you will have to add the <i>server address</i> in the <b>connect()</b> function here). Of course, you can have all of them running on the same system, but there ain&#8217;t any fun in it, right?
+</p>
+<p>
+  Last but not the least, I have commented as much as I could, unlike my last article, so I expect everyone reading this, with a bit of programming knowledge, will understand this straight forward code.
+</p>
+<h4>server.py</h4>
+<figure class="highlight">
+<pre><code class="language-python" data-lang="python"><span class="c1"># Import the necessary libraries
+</span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">select</span>
+<span class="c1"># Take message from an host and send it to all others
+</span><span class="k">def</span> <span class="nf">shout</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">socket</span> <span class="ow">in</span> <span class="n">LIST</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="c1"># Don't send it back to server and yourself!
+</span>      <span class="k">if</span> <span class="n">socket</span> <span class="o">!=</span> <span class="n">serv</span> <span class="ow">and</span> <span class="n">socket</span> <span class="o">!=</span> <span class="n">sock</span><span class="p">:</span>
+        <span class="n">socket</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="c1"># Assume client has got disconnected and remove it.
+</span>      <span class="n">socket</span><span class="p">.</span><span class="n">close</span>
+      <span class="n">LIST</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
+<span class="c1"># Declare variables required later.
+# To store list of sockets of clients as well as server itself.
+</span><span class="n">LIST</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Common buffer for all purposes
+</span><span class="n">buff</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="c1"># Declaration of Server socket.
+</span><span class="n">serv</span> <span class="o">=</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">serv</span><span class="p">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">serv</span><span class="p">.</span><span class="n">bind</span><span class="p">((</span><span class="s">"192.168.1.10"</span><span class="p">,</span> <span class="mi">1356</span><span class="p">))</span>
+<span class="c1"># Listen for upto 6 clients. Increase if you need more.
+</span><span class="n">serv</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># Add server socket to the LIST
+</span><span class="n">LIST</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">serv</span><span class="p">)</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+  <span class="c1"># Moniter clients all simultaneously
+</span>  <span class="n">reads</span><span class="p">,</span> <span class="n">writes</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">select</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">LIST</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[])</span>
+  <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">reads</span><span class="p">:</span>
+    <span class="c1"># A new client connected?
+</span>    <span class="k">if</span> <span class="n">sock</span> <span class="o">==</span> <span class="n">serv</span><span class="p">:</span>
+      <span class="n">sockfd</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">serv</span><span class="p">.</span><span class="n">accept</span><span class="p">()</span>
+      <span class="n">LIST</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sockfd</span><span class="p">)</span>
+    <span class="c1"># Naah, just a new message!
+</span>    <span class="k">else</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Get his shitty message.
+</span>        <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+          <span class="c1"># If he wrote something, send it to shout() function for broadcast.
+</span>          <span class="n">shout</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+      <span class="p"&gt;;</span><span class="k">except</span><span class="p">:</span>
+        <span class="c1"># Shit just got real. Client kicked by server :3
+</span>        <span class="n">sock</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">LIST</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>
+        <span class="c1"># Do this till the end of time.
+</span>        <span class="k">continue</span>
+<span class="n">serv</span><span class="p">.</span><span class="n">close</span><span class="p">()</span></code></pre>
+</figure>
+<h4>client.py </h4>
+<figure class="highlight">
+<pre><code class="language-python" data-lang="python"><span class="c1"># Import the nessary libraries
+</span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">select</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Socket variable declaration
+</span><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">s</span><span class="p">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Connect to server. Change this for remote servers.
+</span><span class="n">s</span><span class="p">.</span><span class="n">connect</span><span class="p">((</span><span class="s">"192.168.1.10"</span><span class="p">,</span> <span class="mi">1356</span><span class="p">))</span>
+
+<span class="c1"># A prompt asking client to enter something.
+</span><span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">)</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+  <span class="c1"># These are the possible events.
+</span>  <span class="c1"># sys.stdin --&gt; Client has typed something through keyboard.
+</span>  <span class="c1"># s --&gt; Server has send a new message by some other client you.
+</span>  <span class="n">streams</span> <span class="o">=</span> <span class="p">[</span><span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">,</span> <span class="n">s</span><span class="p">]</span>
+
+  <span class="c1"># Moniter both the streams simultaneously for inputs.
+</span>  <span class="n">readable</span><span class="p">,</span> <span class="n">writable</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">select</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">streams</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[])</span>
+
+  <span class="c1"># If server has sent something, readable will fill up.
+</span>  <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">readable</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sock</span> <span class="o">==</span> <span class="n">s</span><span class="p">:</span>
+
+      <span class="c1"># Receive data in our variable. Check if it is empty.
+</span>      <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">()</span>
+      <span class="k">else</span><span class="p">:</span>
+
+        <span class="c1"># Write data to stdout and give client prompt back.
+</span>        <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span>
+
+    <span class="c1"># No, its not the server. Our client has typed something in.
+</span>    <span class="k">else</span><span class="p">:</span>
+
+      <span class="c1"># Read message. Send it to server. Give prompt back to client.
+</span>      <span class="n">msg</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">()</span>
+      <span class="n">s</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+      <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">)</span>
+      <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span></code></pre>
+</figure>
+<p>
+  So that was the code. Here is a glimpse of the output. The server is running off my &#8216;raspberrypi&#8217; and all clients are running on my computer. Looks cool right?
+</p>
+<p><a href="https://www.nagekar.com/wp-content/uploads/2020/12/python_server.png"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/python_server.png"/></a></p>
+<p>
+  If you look closely, one of the clients missed a message sent by another client, LOL, so that is normal. Any suggestions or edits or corrections, drop them in the comments below. 🙂</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Python vs C &#8211; How simple is it to write a pair of communicating sockets?</title>
+		<link>https://nagekar.com/2014/12/python-vs-c-how-simple-is-it-to-write.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 02 Dec 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[socket]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/12/02/python-vs-c-how-simple-is-it-to-write/</guid>
+
+					<description><![CDATA[Lately I have been reading a lot of articles online written to compare Python to other languages. It is not a secret to anyone that the Python community is growing, and along with it, is the number of people who promote/recommend this language, of course. Let me not add up to the already large mass [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;" trbidi="on">Lately I have been reading a lot of articles online written to compare Python to other languages. It is not a secret to anyone that the Python community is growing, and along with it, is the number of people who promote/recommend this language, of course.</p>
+<p>Let me not add up to the already large mass of those articles by boasting about Python&#8217;s usability, speed and practicality, but rather, I will compare the two languages by writing a small socket client/server pair in each of those languages.</p>
+<p>But first, let me give you some of my personal opinions about both the languages since I know them well enough. C is very dear to me, not only because it was the first language I had ever learnt, but also because it runs most of the GNU, and GNU is well, very dear to me! C also happens to be my only second language of choice, after Python (although I know bits of Java, I prefer not to use it, not sure why, but I hate it). I have been programming in Python only from the last couple of months and I was really impressed. I solve HackerEarth and CodeChef problems as a pass time. Although I could do all of the problems I have done in C, doing them in Python took like 1/10th of the time (literally!) and 1/10th the typing effort. I would admit, C is much more fun to write than Python, simply because you &#8216;feel&#8217; the code is yours, and I love to code C whenever I am free, will I use it in an environment where time is the priority? Probably not. Maybe when C is the only way out, but most of the time, I am better off writing it in Python.</p>
+<p>That being said, the popularity of C doesn&#8217;t get any less, and it is going to stay that way as long as, maybe the Internet. Here&#8217;s something I found.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.tiobe.com/index.php/content/paperinfo/tpci/index.html" target="_blank"><img fetchpriority="high" decoding="async" alt="https://www.tiobe.com/index.php/content/paperinfo/tpci/index.html" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/prolan.png" height="340" title="Click to follow link to source" width="640" /></a> </div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<div class="separator" style="clear: both; text-align: left;">You see the thing on top there? Yes, it is there for a reason. To make it short, C is powerful, very powerful. C gives you access to things you can not really imagine in other languages. On the other hand, Python is practical, flexible, and easy to learn. Web apps, sockets, Raspberry Pi, Arduino, Android or anything else you can imagine, there has to be a library made for it by someone, somewhere.</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h3 class="separator" style="clear: both; text-align: left;">The code part.</h3>
+<div class="separator" style="clear: both; text-align: left;">I am giving the client and server code in both the languages here as is. No explanation and stuff, because that&#8217;s not the topic here. Note that all the source codes are tested running OK on Kali 1.0.6, gcc and all stock stuff, so it should be not much trouble to get it running. Windows guy, search for gcc directory and run it over the command prompt. It won&#8217;t run from any IDE. </div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h4>Python</h4>
+<div style="text-align: left;">Writing a pair of communicating TCP sockets require around 30 minutes along with the understanding part, if you have got some background in networking. Python does most of the stuff for you, and you just create a socket variable, supply host and port and that&#8217;s it. Rest is left to your imagination (or not, I got too carried away!). Here comes the code:</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;"><b>client.py</b></p>
+<pre class="brush: cpp">import socket<br />s = socket.socket()<br />host = socket.gethostname()<br />port = 1356&nbsp;<br />s.connect((host, port))<br />shit = s.recv(1024)<br />print shit<br />s.close()<br /></pre>
+</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;"><b>server.py</b></p>
+<pre class="brush: python">s = socket.socket()<br />host = socket.gethostname()<br />s.bind((host, 1356))<br />s.listen(5)<br />while True:<br />&nbsp;&nbsp;&nbsp; c, addr = s.accept()<br />&nbsp; &nbsp; c.send("Message from server")<br />&nbsp;&nbsp;&nbsp; c.close()</pre>
+</div>
+<p>And that is it. Even if it looks lame (which it is), it is the maybe the simplest thing that qualifies to be called a server/client.</p>
+<h4 style="text-align: left;">C</h4>
+<div style="text-align: left;">Now lets write the same in C. This is around 4 times the size of Python code, and much of the stuff are done by hand (nothing new for C, I suppose). This code is the shortest I could cut it to, and just does one simple task. Sends the &#8220;Client talking loud!\n&#8221; message to server over port 1356 on localhost. The parameters can be edited as per convenience to suit any inter network testing, but that&#8217;s the most this code will do. Nevertheless, this is a TCP client/server model.</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;"><b>client.c</b></p>
+<pre class="brush: cpp">#include &lt;stdio.h&gt;<br />#include &lt;stdlib.h&gt;<br />#include &lt;string.h&gt;<br />#include &lt;sys/types.h&gt;<br />#include &lt;sys/socket.h&gt;<br />#include &lt;netinet/in.h&gt;<br />#include &lt;netdb.h&gt;<br />#include &lt;unistd.h&gt;<br /><br />int main(int argc, char **argv) {<br />    int sock, port, n;<br />    struct sockaddr_in serv_addr;<br />    struct hostent *server;<br />    char buffer[256];<br />    port = atoi("1356");<br />    sock = socket(AF_INET, SOCK_STREAM, 0);<br />    server = gethostbyname("127.0.0.1");<br />    bzero((char *)&amp;serv_addr, sizeof(serv_addr));<br />    serv_addr.sin_family = AF_INET;<br />    bcopy((char *)server-&gt;h_addr, (char *)&amp;serv_addr.sin_addr.s_addr, server-&gt;h_length);<br />    serv_addr.sin_port = htons(port);<br />    connect(sock, (struct sockaddr *)&amp;serv_addr, sizeof(serv_addr));<br />    bzero(buffer, 256);<br />    strcpy(buffer, "Client talking loud!\n");<br />    write(sock, buffer, strlen(buffer));<br />    close(sock);<br />} </pre>
+<p><b>server.c</b></p>
+<pre class="brush: cpp">#include &lt;stdio.h&gt; <br />#include &lt;strings.h&gt; <br />#include &lt;stdlib.h&gt; <br />#include &lt;sys/types.h&gt; <br />#include &lt;sys/socket.h&gt; <br />#include &lt;netinet/in.h&gt; <br /><br /><br />int main(int argc, char **argv) {<br /> int sock, nsock, port;<br /> socklen_t clilen;<br /> char buffer[256];<br /> struct sockaddr_in serv_addr, cli_addr;<br /> sock = socket(AF_INET, SOCK_STREAM, 0);<br /> bzero((char*)&amp;serv_addr, sizeof(serv_addr));<br /> port = atoi("1356");<br /> serv_addr.sin_family = AF_INET;<br /> serv_addr.sin_addr.s_addr = INADDR_ANY;<br /> serv_addr.sin_port = htons(port);<br /> bind(sock, (struct sockaddr *)&amp;serv_addr, sizeof(serv_addr));<br /> listen(sock, 2);<br /> clilen = sizeof(cli_addr);<br /> nsock = accept(sock, (struct sockaddr *)&amp;cli_addr, &amp;clilen);<br /> bzero(buffer, 256);<br /> read(nsock, buffer, 255);<br /> printf("%s\n", buffer);<br /> close(sock);<br /> close(nsock);<br />}</pre>
+<p>Here is the expected output:</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.nagekar.com/wp-content/uploads/2020/12/Screenshotfrom2014-12-03000238.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img decoding="async" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/Screenshotfrom2014-12-03000238.png" height="433" width="640" /></a></div>
+<p>Sorry, there is no commenting in the above code, and it really needs some explanation. I would&#8217;ve written them, but then, the code would have grown three folds (LOL)! It will need another nice article to explain all the stuff from that client.c and server.c code. I will conclude here. Thank you for reading 🙂</p>
+<p><i>Update: If you happen to run any of the above code, make sure you run server first! </i></div>
+<div style="text-align: left;"></div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Simple TCP banner grabber in C</title>
+		<link>https://nagekar.com/2014/11/simple-tcp-banner-grabber-in-c.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 29 Nov 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<category><![CDATA[socket]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/11/29/simple-tcp-banner-grabber-in-c/</guid>
+
+					<description><![CDATA[Hello folks, Its been a great week. I got the book called Expert C Programming &#8211; Deep C Secrets, by Peter van der Linden. I read about 100 pages in a couple of days, and I had never gained so much confidence reading any other book. Many concepts got sharper, doubts cleared and confidence boasted. [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;" trbidi="on">Hello folks, Its been a great week. I got the book called Expert C Programming &#8211; Deep C Secrets, by Peter van der Linden. I read about 100 pages in a couple of days, and I had never gained so much confidence reading any other book. Many concepts got sharper, doubts cleared and confidence boasted. A must read book if you know some C and want to understand the nuts and bolts of it.</p>
+<p>In the same wave, I decided to write a small utility with sockets later today. It went great. Lots of coding, googling (I just can&#8217;t code without Google, maybe a sign of newbie) and debuging. Finally I ended up having a program that was partially correct. It works, but it doesn&#8217;t. It actually does more than what is told, and I couldn&#8217;t find out why. Still, I am posting it here, for those interested. Please correct it, as I didn&#8217;t really get what is wrong with it. Looks like some of the array locations are interpreted as ports, in the &#8216;ports&#8217; array.</p>
+<p>usage example: ./scanner 192.168.1.2 22,80,443</p>
+<blockquote class="tr_bq"><p>&nbsp;root@kali:~/Desktop/C/socket# ./client 192.168.1.10 22,80</p></blockquote>
+<blockquote class="tr_bq"><p>[+]Testing port: 22<br />[*]SSH-2.0-OpenSSH_6.0p1 Debian-4</p>
+<p>[+]Testing port: 80<br />[*]&lt;!DOCTYPE HTML PUBLIC &#8220;-//IETF//DTD H</p></blockquote>
+<blockquote><p>TML 2.0//EN&#8221;&gt;<br />&lt;html&gt;&lt;head&gt;<br />&lt;title&gt;501 Method Not Implemented&lt;/title&gt;<br />&lt;/head&gt;&lt;body&gt;<br />&lt;h1&gt;Method Not Implemented&lt;/h1&gt;<br />&lt;p&gt;garbage to /index.html not supported.&lt;br /&gt;<br />&lt;/p&gt;<br />&lt;hr&gt;<br />&lt;address&gt;Apache/2.2.22 (Debian) Server at 127.0.1.1 Port 80&lt;/address&gt;<br />&lt;/body&gt;&lt;/html&gt;</p>
+<p>[+]Testing port: 4195840<br />[-]Error Connecting to port</p>
+<p>[+]Testing port: 0<br />[-]Error Connecting to port</p>
+<p>[+]Testing port: 1476291006<br />[-]Error Connecting to port</p>
+<p>[+]Testing port: 32767<br />[-]Error Connecting to port</p></blockquote>
+<p>I am not sure what that is, the part after the actual banner I mean. I will update this article as soon I get things sorted. Here is the code, if anyone wants to have a look.</p>
+<pre class="brush: cpp">#include &lt;stdio.h&gt;<br />#include &lt;stdlib.h&gt;<br />#include &lt;unistd.h&gt;<br />#include &lt;string.h&gt;<br />#include &lt;sys/types.h&gt;<br />#include &lt;sys/socket.h&gt;<br />#include &lt;netinet/in.h&gt;<br />#include &lt;netdb.h&gt;<br /> <br />void scanner(int port, char host[]);<br /> <br />int main(int argc, char **argv) {<br /> char host[100];<br /> char *p;<br /> int ports[10];<br /> int i = 0;<br /> int var;<br /> char tok[] = " ,";<br />  <br /> if (argc &lt; 2) {<br />       fprintf(stderr,"[+]usage: %s &lt;hostname&gt; &lt;port,port,port...&gt;n", argv[0]);<br />       exit(0);<br />    }<br />     <br />    p = strtok(argv[2], tok);<br />    strcpy(host, argv[1]);<br /> while(p != NULL) {<br />  sscanf(p, "%d", &amp;var);<br />  ports[i++] = var;<br />  p = strtok(NULL, tok);<br /> }<br />  <br /> for(i=0; i&lt;(sizeof(ports)/sizeof(ports[0])); i++) {<br />  fprintf(stdout, "n[+]Testing port: %dn", ports[i]);<br />  scanner(ports[i], host);<br /> }<br /> return 0;<br />}<br /> <br />void scanner(int port, char host[]) {<br /> <br /> int sock, n;<br />    struct hostent *server;<br />    struct sockaddr_in serv_addr;<br />     <br />    char buffer[4096];<br />  <br />    server = gethostbyname(host);<br />     <br /> sock = socket(AF_INET, SOCK_STREAM, 0);<br /> /* Edit the params of socket to scan UDP ports,<br />  * should be pretty straight forward I suppose.<br />  */<br />   <br /> if(sock &lt; 0) {<br />  fprintf(stderr, "[-]Error creating socket");<br />  return;<br /> }<br />  <br /> bzero((char *) &amp;serv_addr, sizeof(serv_addr));<br /> serv_addr.sin_family = AF_INET;<br /> // AF_UNIX for Unix style socket<br />  <br /> bcopy((char *)server-&gt;h_addr, (char *)&amp;serv_addr.sin_addr.s_addr, server-&gt;h_length);<br /> serv_addr.sin_port = htons(port);<br />  <br /> n = connect(sock, (struct sockaddr *)&amp;serv_addr, sizeof(serv_addr));<br /> sleep(2);<br /> if(n &lt; 0) {<br />  fprintf(stderr, "[-]Error Connecting to portn");<br />  return;<br /> }<br />  <br /> memset(buffer, 0, sizeof(buffer));<br /> strcpy(buffer, "garbagern");<br />  <br /> n = write(sock, buffer, strlen(buffer));<br /> if(n &lt; 0) {<br />  fprintf(stderr, "[-]Error writing (Port closed maybe?!)n");<br />  return;<br /> }<br />  <br /> bzero(buffer, 4096);<br /> n = read(sock, buffer, 4096);<br /> if(n &lt; 0) {<br />  fprintf(stderr, "[-]Error reading (Port closed maybe?!)n");<br />  return;<br /> }<br />  <br /> fprintf(stdout,"[*]%sn", buffer);<br /> close(sock);<br />     <br />}<br /></pre>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

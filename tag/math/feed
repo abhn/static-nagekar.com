@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>math &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/math/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Mon, 14 Aug 2023 08:11:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>math &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Puzzle Time &#8211; Rate Of Growth Of Shadow</title>
+		<link>https://nagekar.com/2023/08/puzzle-time-rate-of-growth-of-shadow.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 06 Aug 2023 19:36:46 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[puzzle]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1511</guid>
+
+					<description><![CDATA[Note: The draft of this article had been staring back at me since April 2022. I&#8217;m only now getting around to publishing it. Consistent, timely and regular publishing is a natural skill of mine. Have you ever walked at night on a street that’s lit with street lights? As you pass the lamp post, you [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p><em>Note: The draft of this article had been staring back at me since April 2022. I&#8217;m only now getting around to publishing it. Consistent, timely and regular publishing is a natural skill of mine.</em></p>
+
+
+
+<p>Have you ever walked at night on a street that’s lit with street lights? As you pass the lamp post, you start to see a small shadow in front of you. Slowly, as you walk further, the shadow grows, and it keeps growing until it fades to the point where you can’t see it, the next lamp post’s illumination overpowers it or both.</p>
+
+
+
+<p>I had this question pop in my mind about the rate at which such a shadow grows, and if is a constant speed or somehow accelerating as the person goes further and further away from the pole. To find it for myself, I spent some time figuring it out today; a lazy rainy Sunday afternoon.</p>
+
+
+
+<p>Assuming that</p>
+
+
+
+<ul class="wp-block-list">
+<li>A person 1.8m tall</li>
+
+
+
+<li>Walks at 2m/s</li>
+
+
+
+<li>Past a lamppost 9m tall</li>
+</ul>
+
+
+
+<p>We&#8217;re asking, </p>
+
+
+
+<ol class="wp-block-list">
+<li>How fast is the head of the shadow moving away from the lamppost and </li>
+
+
+
+<li>How fast is the head of the shadow moving away from the person</li>
+</ol>
+
+
+
+<p>Let&#8217;s draw some figures to better visualize the question.</p>
+
+
+
+<figure class="wp-block-image size-full"><img fetchpriority="high" decoding="async" width="2560" height="2560" src="http://nagekar.com/wp-content/uploads/2023/08/visualize-scaled.jpg" alt="" class="wp-image-1969" srcset="https://nagekar.com/wp-content/uploads/2023/08/visualize-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2023/08/visualize-300x300.jpg 300w, https://nagekar.com/wp-content/uploads/2023/08/visualize-250x250.jpg 250w" sizes="(max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<p>To solve this problem, the first piece of information that we note is that the top of the pole, the bottom of the pole and the head of the shadow form a right angled triangle.</p>
+
+
+
+<p>The top of the person&#8217;s head, their feet and the head of the shadow also form a right angled triangle.</p>
+
+
+
+<p>Since we drew a line from the lamp to the person&#8217;s head extending all the way to the head of the shadow, the angles thus formed at the lamp and the person (θ) are the same. We conclude here that the smaller triangle is <em>similar</em> to the larger triangle.</p>
+
+
+
+<p>Using the property of <a href="https://en.wikipedia.org/wiki/Similarity_(geometry)#Similar_triangles">similar triangles</a>, we get an equation of x in terms of y.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="2560" height="864" src="http://nagekar.com/wp-content/uploads/2023/08/similartrianges-scaled.jpg" alt="" class="wp-image-1972" srcset="https://nagekar.com/wp-content/uploads/2023/08/similartrianges-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2023/08/similartrianges-300x101.jpg 300w, https://nagekar.com/wp-content/uploads/2023/08/similartrianges-250x84.jpg 250w, https://nagekar.com/wp-content/uploads/2023/08/similartrianges-768x259.jpg 768w, https://nagekar.com/wp-content/uploads/2023/08/similartrianges-1536x519.jpg 1536w, https://nagekar.com/wp-content/uploads/2023/08/similartrianges-2048x691.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<p>or <code>x = 4y</code></p>
+
+
+
+<p>Since we already know the rate of change of <code>x</code>, which is just the walking speed of the person, we can take derivative on both sides to get the rate of change of <code>y</code>.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="2471" height="1634" src="http://nagekar.com/wp-content/uploads/2023/08/dybydt.jpg" alt="" class="wp-image-1970" srcset="https://nagekar.com/wp-content/uploads/2023/08/dybydt.jpg 2471w, https://nagekar.com/wp-content/uploads/2023/08/dybydt-300x198.jpg 300w, https://nagekar.com/wp-content/uploads/2023/08/dybydt-250x165.jpg 250w, https://nagekar.com/wp-content/uploads/2023/08/dybydt-768x508.jpg 768w, https://nagekar.com/wp-content/uploads/2023/08/dybydt-1536x1016.jpg 1536w, https://nagekar.com/wp-content/uploads/2023/08/dybydt-2048x1354.jpg 2048w" sizes="(max-width: 2471px) 100vw, 2471px" /></figure>
+
+
+
+<p>So the shadow is growing at 0.5m/s relative to the walking person. Or, if we want to get rate at which the head of the shadow is moving away from the lamppost, we express <code>z</code> in terms of <code>y</code> and then apply derivative on both sides.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="2560" height="1390" src="http://nagekar.com/wp-content/uploads/2023/08/dzbydt-scaled.jpg" alt="" class="wp-image-1971" srcset="https://nagekar.com/wp-content/uploads/2023/08/dzbydt-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2023/08/dzbydt-300x163.jpg 300w, https://nagekar.com/wp-content/uploads/2023/08/dzbydt-250x136.jpg 250w, https://nagekar.com/wp-content/uploads/2023/08/dzbydt-768x417.jpg 768w, https://nagekar.com/wp-content/uploads/2023/08/dzbydt-1536x834.jpg 1536w, https://nagekar.com/wp-content/uploads/2023/08/dzbydt-2048x1112.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<p>2.5m/s away from the lamppost or 0.5m/s faster than the person walking, which it why it seems to grow in length away from us the further we go from the lamppost.</p>
+
+
+
+<h2 class="wp-block-heading">In closing</h2>
+
+
+
+<p>Hope you enjoyed reading this silly thought, and perhaps even learned something. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Recover the cost of a BVG ticket via the USB charging port inside the bus</title>
+		<link>https://nagekar.com/2023/07/recover-the-cost-of-a-bvg-ticket-via-the-usb-charging-port-inside-the-bus.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 30 Jul 2023 11:14:33 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[life]]></category>
+		<category><![CDATA[math]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=1877</guid>
+
+					<description><![CDATA[So I was merrily riding a bus yesterday on my way to Potsdamer Platz for a Dosa lunch when I noticed this: And a couple of thoughts hit me: What&#8217;s up with the piss stains? 🤷 And something I could actually answer: How long would I need to use this USB port to make up [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>So I was merrily riding a bus yesterday on my way to Potsdamer Platz for a Dosa lunch when I noticed this:</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="2062" height="2748" src="http://nagekar.com/wp-content/uploads/2023/07/image.png" alt="Image of a usb port inside of the buses in Berlin" class="wp-image-1878" srcset="https://nagekar.com/wp-content/uploads/2023/07/image.png 2062w, https://nagekar.com/wp-content/uploads/2023/07/image-225x300.png 225w, https://nagekar.com/wp-content/uploads/2023/07/image-188x250.png 188w, https://nagekar.com/wp-content/uploads/2023/07/image-768x1024.png 768w, https://nagekar.com/wp-content/uploads/2023/07/image-1153x1536.png 1153w, https://nagekar.com/wp-content/uploads/2023/07/image-1537x2048.png 1537w" sizes="auto, (max-width: 2062px) 100vw, 2062px" /></figure>
+
+
+
+<p>And a couple of thoughts hit me: What&#8217;s up with the piss stains? 🤷 </p>
+
+
+
+<p>And something I could actually answer: How long would I need to use this USB port to make up for the <a href="https://www.bvg.de/de/abos-und-tickets/alle-tickets"><strong>€</strong>3.20 that I paid for this ticket</a>. </p>
+
+
+
+<p>Now, a day later, I have a calm Sunday morning to ponder all of life&#8217;s most urgent questions so let&#8217;s get back to the thought from yesterday.</p>
+
+
+
+
+
+<h2 class="wp-block-heading">Power draw from a USB port</h2>
+
+
+
+<p>The best way to know exactly how much power I can draw from that port would have been to test it. </p>
+
+
+
+<p>The next best thing is to try and guess based on some indicators. From the <a href="https://en.wikipedia.org/wiki/USB_hardware#Colors">color of the port</a>, it is safe to conclude it is a USB 2.0 port, and not a USB 3.0 port. <a href="https://en.wikipedia.org/wiki/USB_hardware#Power">From Wikipedia</a>, we see that a USB 2.0 port intended for high power devices allows for a current draw of a<strong> minimum</strong> of 0.5 amps. The voltage is also standardized to 5 volts. </p>
+
+
+
+<p>Amperes times Voltage gives us the power output of the port, which is 0.5 amps x 5 volts which is 2.5 watts (again, <strong>at a minimum</strong>).</p>
+
+
+
+<h2 class="wp-block-heading">Measuring power consumption</h2>
+
+
+
+<p>2.5 watts is the power that can be drawn from the port. To calculate how much energy can be consumed over a given time period, we need to simply multiple the watt number by the time number. Typically, it is measured in watt-hours. </p>
+
+
+
+<p>My electricity company bills me for the kilowatt-hours I consume. If I use my TV that&#8217;s rated at 100 watts for 10 hours, it will be billed as 1000Wh, or 1kWh of energy consumption.</p>
+
+
+
+<h2 class="wp-block-heading">Price of electricity in my area</h2>
+
+
+
+<p>Electricity does not cost the same everywhere, and not even in the same area. Even the same provider might use different prices depending on the time of consumption and a whole list of other factors. </p>
+
+
+
+<p><a href="https://www.vattenfall.de/stromtarife?plz=10179&amp;consumption=1100&amp;place=Berlin&amp;energyTypeSelected=electricity">Looking at Vattenfall&#8217;s website</a> (an electricity provider here in Berlin), I can see prices range between 25.07 cents / kWh and 33.37 cents / kWh. To make it easy for calculations, I&#8217;m going to go with 30 cents / kWh (all <strong>€</strong> cents).</p>
+
+
+
+<h2 class="wp-block-heading">How much electricity can I buy for the cost of a BVG ticket?</h2>
+
+
+
+<p>For €3.20, the price of a single BVG ticket at the time of writing, I can consume (3.20 / 0.30) kWh, which is 10.667 kWh (or 10,667 Wh) of energy with my current electricity provide. </p>
+
+
+
+<h2 class="wp-block-heading">How long do I need to use the USB port to cover the cost of the ticket?</h2>
+
+
+
+<p>To find the time duration in which our 2.5W port will output 10,667Wh of energy, we simply need to divide the target consumption number by our consumption rate:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>10,667 (Wh) / 2.5 (W) = 4,266.8 hours (the Watt unit nicely cancels out giving us the number of hours)</p>
+</blockquote>
+
+
+
+<p><strong>Which is roughly 177.8 days, or just under 6 months.</strong> </p>
+
+
+
+<p>This time can roughly be cut by half if BVG changes the USB ports to 3.0 guaranteeing a minimum current draw of 900mA but I&#8217;m not holding my breath.</p>
+
+
+
+<h2 class="wp-block-heading">How much will a ticket effectively cost if I make full use of my ticket&#8217;s validity to charge a device?</h2>
+
+
+
+<p>Now of course being in a bus for 6 months is going to cost more money for season ticket and I might never recover my full ticket. </p>
+
+
+
+<p>But what about the journey that I&#8217;ve already paid for? <a href="https://www.bvg.de/de/abos-und-tickets/alle-tickets/einzelfahrscheine/einzelfahrausweis">A BVG single ticket is valid for 2 hours</a>. If I make 100% use of the time a ticket is valid for to charge my device, what&#8217;s the effective cost of my ticket?</p>
+
+
+
+<p>At a minimum of 2.5W for 2 hours, I&#8217;ll consume at least 5Wh. At 30 cents / kWh, that&#8217;s 0.15 cents worth of electricity. </p>
+
+
+
+<p>That&#8217;s 0.15 cents or €0.0015 that I can immediately recover from my ticket price, <strong>effectively making my single journey BVG ticket cost not €3.20, but a jaw dropping €3.1985</strong> 😎🫡</p>
+
+
+
+<h2 class="wp-block-heading">In conclusion</h2>
+
+
+
+<p>So there you have it. Go grab your 0.047% discount on BVG tickets! Subscribe for more financial tips. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Puzzle Time &#8211; Distance To Horizon</title>
+		<link>https://nagekar.com/2022/08/puzzle-time-distance-to-horizon.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 31 Aug 2022 14:54:52 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[puzzle]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1473</guid>
+
+					<description><![CDATA[A couple of months ago I was on a flight and had a thought: How far is the horizon at this very moment? I got my notebook and pen out and tried to solve this using only the knowledge I had, since there was no internet anyway. Of course, many assumptions were made as were [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>A couple of months ago I was on a flight and had a thought: How far is the horizon at this very moment?</p>
+
+
+
+<p>I got my notebook and pen out and tried to solve this using only the knowledge I had, since there was no internet anyway. Of course, many assumptions were made as were convenient for the calculation. </p>
+
+
+
+<p>I planned on checking my answer once I landed. If you want to attempt it, stop reading here and come back later when you have a solution. Unfortunately for me, I made a little error subtracting between two big numbers and got a completely wrong answer.</p>
+
+
+
+<h2 class="wp-block-heading">Assumptions</h2>
+
+
+
+<p>I assumed the following</p>
+
+
+
+<ul class="wp-block-list"><li>Perfect visibility, no degradation due to atmosphere</li><li>Earth is a perfect sphere with a radius of 6400km</li><li>Aeroplane flying at an altitude of 10km</li></ul>
+
+
+
+<h2 class="wp-block-heading">Solution</h2>
+
+
+
+<p>Thanks to the assumptions, the problem reduces to primary school geometry problem and is trivial to solve once visualized clearly on a piece of paper.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="838" src="https://www.nagekar.com/wp-content/uploads/2022/08/image.png" alt="" class="wp-image-1576" srcset="https://nagekar.com/wp-content/uploads/2022/08/image.png 1024w, https://nagekar.com/wp-content/uploads/2022/08/image-300x246.png 300w, https://nagekar.com/wp-content/uploads/2022/08/image-768x629.png 768w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Using <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">Pythagoras Theorem</a> we know how to calculate the third side of a right angled triangle give the first two. We also know that a <a href="https://en.wikipedia.org/wiki/Tangent_lines_to_circles">tangent to a circle</a> (the line of sight from an aeroplane) meets the circle in a way that it is perpendicular to the radius drawn from the point of contact.</p>
+
+
+
+<p>Combining the two pieces of knowledge, the problem can be trivially arranged as follows</p>
+
+
+
+<p>(R + r)² = R² + Dh²</p>
+
+
+
+<p>Where</p>
+
+
+
+<ul class="wp-block-list"><li>R is the radius of the earth (in Kilometers)</li><li>r is the distance of the aeroplane from the surface of the earth (in Kilometers)</li><li>Dh is the distance to the horizon</li></ul>
+
+
+
+<p>Rearranging, we get</p>
+
+
+
+<p>Dh² = (R + r)² &#8211; R²</p>
+
+
+
+<p>Expanding the (a + b)² equation</p>
+
+
+
+<p>Dh² = R² + 2Rr + r² &#8211; R²</p>
+
+
+
+<p>Dh² = 2Rr + r²</p>
+
+
+
+<p>Taking square root on both sides</p>
+
+
+
+<p>Dh = √(2Rr + r²)</p>
+
+
+
+<p>Substituting the values</p>
+
+
+
+<p>Dh = √(2*6400*10 + 10²)</p>
+
+
+
+<p>Dh = √(128000 + 100)</p>
+
+
+
+<p>Dh = √(128100)</p>
+
+
+
+<p>Dh = 357.9</p>
+
+
+
+<p>Distance to horizon is about 358 kilometers when the aeroplane is at an altitude of 10 kilometers. Now looking at the map while sitting in a flying aeroplane is a lot more insightful as I can guess which cities I&#8217;m looking at outside the window.</p>
+
+
+
+<p>That&#8217;s it for this little post. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

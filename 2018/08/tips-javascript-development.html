@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en-US">
+
+<!-- Mirrored from nagekar.com/2018/08/tips-javascript-development.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 10:25:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../indexd784.html?feed=rss2" />
+  <link rel="alternate" type="application/atom+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../index6e0a.html?feed=atom" />
+
+	<title>17 Tips After A Year In Javascript Development &#8211; Abhishek Nagekar</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<script>
+window.koko_analytics = {"url":"https:\/\/nagekar.com\/koko-analytics-collect.php","site_url":"https:\/\/nagekar.com","post_id":1065,"path":"\/2018\/08\/tips-javascript-development.html","method":"none","use_cookie":false};
+</script>
+<link rel="alternate" type="application/rss+xml" title="Abhishek Nagekar &raquo; Feed" href="../../feed" />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='elementary-style-css' href='../../wp-content/themes/s/style8a54.css?ver=1.0.0' media='all' />
+<link rel="https://api.w.org/" href="../../wp-json/index.html" /><link rel="alternate" title="JSON" type="application/json" href="../../wp-json/wp/v2/posts/1065.json" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.html?rsd" />
+
+<link rel="canonical" href="tips-javascript-development.html" />
+<link rel='shortlink' href='../../index6421.html?p=1065' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="../../wp-json/oembed/1.0/embedbb5c.json?url=https%3A%2F%2Fnagekar.com%2F2018%2F08%2Ftips-javascript-development.html" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="../../wp-json/oembed/1.0/embedfcb1?url=https%3A%2F%2Fnagekar.com%2F2018%2F08%2Ftips-javascript-development.html&amp;format=xml" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-270x270.png" />
+		<style id="wp-custom-css">
+			
+.quotes-ol-container {
+	display: flex;
+  flex-direction: column-reverse;
+}
+
+.quotes-ol-container li {
+	flex: 0 0 auto;
+}		</style>
+		</head>
+
+<body class="wp-singular post-template-default single single-post postid-1065 single-format-standard wp-theme-s">
+<div class="container">
+	<nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about.html'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes.html'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags.html'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="https://nagekar.com/" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../indexd784.html?feed=rss2">RSS</a>,
+      <a href="../../index6e0a.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <hr class="stylish"/>
+
+<div class="_progress-wrapper">
+  <div id="_progress"></div>
+</div>
+
+<header>
+	<h1>17 Tips After A Year In Javascript Development</h1>
+	<header class="title-tags">
+		<time>20 August, 2018. It was a Monday</time>
+		<div class="tags-container">
+			Posted under <span>
+										<a class="tags" href="../../tags.html#javascript">javascript</a>
+							</span>
+			&nbsp;
+		</div>
+	</header>
+</header>
+
+<hr class="stylish" />
+
+<main role="main">
+
+	
+		<article>
+			<section class="content">
+				<p>
+  <i>Long time no see, Javascript. Where had you been, my old friend?</i>
+</p>
+<p>
+  Well, not really. I have been writing Javascript more than ever since my <a href="../../2016/04/websockets.html">last post about the language</a> on this blog, some 26 months ago. As some of you already know, writing Javascript has become my day job and it is honestly one of the better things that could&#8217;ve happened to me. I&#8217;ve learned a lot of the nitty-gritties of the language and surrounding environments (and the web) and gained invaluable insights about software development in general.
+</p>
+<p>
+	In this post, I aim to cover some of things I wish I knew as a Javascript newbie (no offense to anyone. I&#8217;m a newbie myself in most ways). These aren&#8217;t supposed to be comprehensive or even correct, for that matter. No particular order is followed. These are just things I feel I could&#8217;ve helped myself with while learning the language and building some initial projects and wish to share with you guys here.
+</p>
+<p>
+  It will be most helpful if you&#8217;re just finishing learning the core language and want to find out what exists in the world of web development. Feel free to contradict and correct me.
+</p>
+<h3>1. All Theory And No Practice</h3>
+<p>
+	Get over with that college student attitude of reading chapter upon chapter of dull text and not writing a single line of code. And by code, I don&#8217;t mean the example code snippets. Go out there on Github and Reddit and search for beginner problems statements. Creating a simple TODO list or displaying the top posts on Reddit frontpage via their API doesn&#8217;t require any deep knowledge.
+</p>
+<p>
+	The essential skill to learn here is to be able to use a search engine, find relevant documentation, getting passive help from online communities (See <a href="https://stackoverflow.com/questions/tagged/javascript">stackoverflow</a> or Reddit; r/javascript, r/webdev, r/frontend are good places to start looking). You cannot learn cycling by just reading about cycling. You learn cycling by riding a bicycle, by talking to your friends about the dangerous stunt you pulled off, by going offroad on the weekends, by watching the pros ride and then trying those things. That&#8217;s what makes it fun. Don&#8217;t make it a job. More often than not, you&#8217;ll suck at the end of it.
+</p>
+<h3>2. Build Tools</h3>
+<p>
+	I made the mistake of assuming I knew everything about the language once I finished my guidebook. The reality was far from it. Language is just one little part of the puzzle of mastering any programming stack. There are many support tools that I didn&#8217;t care to explore back then. For example, there&#8217;s something called as a build tool.
+</p>
+<p>
+	In an organizational setting, you don&#8217;t start a project by creating an <code>index.html</code> and then linking it with your <code>main.js</code>. Instead, you make use of build tools (See Webpack or Grunt) to compile your code into a form understood by new and old browsers alike, bundle all of your code together and make it production ready. A basic understanding of build tools will go a long way and come in handy when making your next hobby project shine.
+</p>
+<h3>3. Modularization</h3>
+<p>
+	Modularization, in simple English, means separating parts of your code that work similarly. Just like we sleep in our bedroom, bath in our bathroom and cook food in the kitchen, code the does similar things should be separated into different files and functions/classes. <code>fetch()</code> API calls in one file, little utility functions/hacks in another, DOM manipulation functions in another and event listeners separately. This is one of the many ways of doing it. See what works best for you. Remember that your frustration level two weeks later while finding a bug in your code is inversely proportional to the number of files and functions you separated your source code in.
+</p>
+<p>
+  The importance of modularization strikes only when you feel the pain in your back scrolling up and down and sideways finding a particular section of a function responsible for something. You&#8217;ll have to take a leap of faith here to learn this lesson the easy way.
+</p>
+<h3>4. Consistency</h3>
+<p>
+	You don&#8217;t have to be collaborating with other humans to follow this. Just pick up a code style and stick to it religiously (see <a href="https://github.com/airbnb/javascript">Airbnb&#8217;s Javascript style guideline</a> for a starting point). You&#8217;d hate yourself if you open your code editor and find things like <code>varNames</code> and <code>var_names</code> mixed all over the place. This is not limited to just syntax or micro stuff. On a broader level, follow the same style for everything. If you return a Promise from an API service function, then stick to that style. Don&#8217;t interchangeably return promises and data, for example. And don&#8217;t mix imperative, object-oriented and functional coding styles randomly. Make conscious calls on what is right for the situation, and document appropriately.
+</p>
+<p>
+	The less you think about the language semantics, the more you can think about the problem you&#8217;re trying to solve. And consistency will definitely reduce a lot of the unnecessary load of deciphering your own code.
+</p>
+<h3>5. Documentation</h3>
+<p>
+  Another task deserted of any love in the realms of software engineering. No one likes to document code, take it from me. But the difference between a rookie and a master is knowing when and why something must be done irrespective of his affection towards the job. Write comments, doc strings. Decorate your projects with nice READMEs and fancy &#8220;build passing&#8221; and &#8220;codecov&#8221; badges. No, you&#8217;re not doing it for others. You&#8217;re doing for yourself because you know it is right. You want to know your thought process two months later when you read the code to make some changes. It is like an <i>&#8220;enable time machine access to this point in time?&#8221;</i> button in your code, which you reply with a &#8220;deny&#8221; if you decide to not document your code.
+</p>
+<h3>6. Think, Think, Think And Then Write Code</h3>
+<p>
+	This is one of my personal favorites. I&#8217;ll start coding 0.006 seconds  (number might be slightly inaccurate) after hearing the problem statement. Don&#8217;t do this mistake. Don&#8217;t fall for your heart saying it has understood it all. Your heart is wrong. Think about the problem. Confirm that you have understood the requirements correctly. Formalize the requirements in your mind, or better yet, in a Github issue or something. Come up with a naive approach to do it. See if you can optimize the code, think about space-time tradeoffs, think if you can use something like a hashmap etc. You&#8217;ll be surprised how many better solutions you&#8217;ll come up with after thinking about it for 10 minutes as opposed to jumping right into the code.
+</p>
+<h3>7. Tracking Your Project&#8217;s Progress &amp; Version Control</h3>
+<p>
+	Use git, Github (or any other Git hosting). Use issues to write down what you plan to do for the next iteration. Use PR (pull request) feature to <i>fix</i> that issue. Write down if there were any caveats in the comments below the PR requests. Yes, do it even if you&#8217;re the only person working on the project. It might seem unnecessary and tedious, but once you get the hang of it, your time will be much better utilized and progress much better tracked.
+</p>
+<h3>8. Automate Your Deployment</h3>
+<p>
+	I remember my workflow before starting work. Keep committing to the master branch and testing things out locally. And when things look decent enough, spin up a digital ocean droplet, clone the repository and start the development server there. That was my &#8216;deployment&#8217;. If any changes need to be done, commit to master and push from local. Pull them on the server and restart development server.
+</p>
+<p>
+	Now that I know better, I not only make separate branches for each feature, I set up auto deployment on Heroku on particular branches (mostly master and staging/development). It&#8217;s a one-click affair (assuming you followed the build tools part) and takes away a lot of hassles (and is free as well). Knowing the right tools can make a huge difference, as you just saw.
+</p>
+<h3>9. Unit Tests</h3>
+<p>
+	If you&#8217;ve ever worked on a non-trivial project (say around a thousand lines of code), you will recognize the tragedy when you modify your code while adding a new feature and accidentally break a lot of the old code which you realize later when things start going south at which point a lot of git-fu is required to get back to a safe point and not lose any newer work. Let me tell you something. It is all avoidable with simple unit and integration tests. Think of tests as employing a bunch of robots to look over your old code and point out when you&#8217;re about to break your own (or someone else&#8217;s) code.
+</p>
+<p>
+	It is very hard to convince yourself to write tests even after knowing the pluses, let alone without knowing them. But again, you&#8217;ll have to take a leap of faith here. Or you can wait until someday while casually refactoring some code you mess something up which you realize only after three days with hours of debugging which could&#8217;ve been avoided by writing a simple test.
+</p>
+<h3>10. Use ES6</h3>
+<p>
+	This might be a no-brainer to most of you, but I still find people writing older Javascript syntax even though they know and understand the newer spec. With modern build tools and polyfills, most of the times not writing the latest spec syntax is just laziness. If you find yourself writing things the old way, force yourself to use the newer ways. They are there for a reason.
+</p>
+<p>
+  Let&#8217;s be honest guys, Javascript is not the most <a href="https://www.destroyallsoftware.com/talks/wat">elegant language</a>. The older versions are riddled with bugs in the spec itself (see function scoping of <b>var</b>, the <b>this</b> keyword, double equals (==) comparison and automatic type coercion). The newer versions of the language are an attempt at fixing things and we should respect that, even if that means going out of your way to follow the newer semantics.
+</p>
+<h3>12. Understand What JS Is And What It Isn&#8217;t</h3>
+<p>
+	Javascript, the core language, is actually a subset of the things we&#8217;re used to of using in our everyday development on the frontend. The core language is relatively small and simple, but add DOM APIs to it, and suddenly it becomes something slightly bigger and a bit more complex. Javascript is single threaded but DOM APIs like fetch (or xhr) and setTimeout are asynchronous because of the <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">browser&#8217;s magic</a>. Learn to consciously differentiate between them as that will come in handy. As a general rule, DOM is very slow as compared to the Javascript language engine.
+</p>
+<h3>13. You Probably Don&#8217;t Need That Framework</h3>
+<p>
+	This has been repeated enough that I could&#8217;ve skipped it, but I&#8217;ll still put it out here. If you find yourself importing Lodash or Underscore for simple things like mapping, iterating over objects, filtering objects and things like that, consider looking for equivalent core Javascript alternatives. The latest ECMA spec adds a lot of helpful data structures and utility functions that make writing functional code very easy and pleasant.
+</p>
+<p>
+  Similarly, if you are planning to use ReactJS or Vue just because everyone seems to be talking about it, don&#8217;t. Go read up their introduction and documentation and judge if your project fits the use case that particular framework is build for and the problem it is trying to solve. For learning purposes, you can consider using the frameworks for trivial apps, but for anything else, make decisions on a strictly use case basis.
+</p>
+<h3>14. Learn Basics Of CSS</h3>
+<p>
+	While the popular opinion still says that CSS is a pain in the back to master, I&#8217;d suggest learning almost 60-80% of it with maybe 20% of the efforts. No need to remember which browser supports what niche attribute. Just the important very-handy-in-real-life parts like flexbox, grids, box model, margins, paddings, positioning related, display related, floating related and so on. You will cover a lot with just these, and they come in super handy for personal projects. (Again) trust me.
+</p>
+<h3>15. Explore Web Workers/Service Workers</h3>
+<p>
+	What if I tell you, you can hijack API requests from your webapp and service them without making a roundtrip to the server? You&#8217;ll say, if the request is serviceable on the frontend itself, why bother making an API call in the first place, and I make a poker face to that. Jokes aside, service workers enable you to handle network connectivity drops and provide a much smoother experience. You can save the data that a client wanted to send the server in the browser while offline and then replay those requests again when network connectivity is recovered.
+</p>
+<p>
+	Web workers allow your code to delegate work to another processing thread. This can be any type of work that you would want to unload off the main thread like heavy calculations etc.
+</p>
+<h3>16. Explore Browser-Side Databases</h3>
+<p>
+	There&#8217;s localstorage, there&#8217;s cache, there&#8217;s indexDB. This is apart from the cookies and session headers. Basically, there is no shortage of storage options on the client side. Try and use these to cache and store data that need not be sent to the server, or maybe cache in case of uncertain network availability. With service workers and Cache, you can fine tune what gets cached and the behavior when a cache is hit or miss. You can even set up caching strategies with plain Javascript code logic.
+</p>
+<p>
+	There are wrappers such as PouchDB that can sync with the server side CouchDB and provide nice real-time syncing capabilities. Speaking of real-time, you might also want to check out <a href="https://firebase.google.com/">Firebase by Google</a>. I used to use it in the past and it was very easy to set up and work with.
+</p>
+<h3>17. Explore Progressive Web Apps</h3>
+<p>
+	Now you can make your website work offline too. Ever seen that &#8220;Add to homescreen&#8221; button on certain websites? When you add those websites to your homescreen, you can then open them like regular Android apps and if they&#8217;re built that way, even use them offline (further reading: <a href="https://developers.google.com/web/progressive-web-apps/">developers.google.com/web/progressive-web-apps</a>).
+</p>
+<h3>In Closing</h3>
+<p>
+	I hope this article was useful. If you&#8217;re a beginner with web engineering and have just finished learning the Javascript language, you might want to explore some of the above points in detail. I&#8217;m sure you&#8217;ll have fun building your next awesome project using these guidelines.
+</p>
+<p>
+	Thank you for reading.</p>
+			</section>
+
+			<hr class="stylish"/>
+
+			<aside class="featured-posts">
+  <h3>Unrelated</h3>
+  <ul>
+    <li><a href="../../2021/02/the-best-time-of-your-life-is-right-now.html">The Best Time Of Your Life Is Right Now</a></li>
+    <li><a href="../../2019/01/mumbai-to-berlin.html">Mumbai To Berlin</a></li>
+    <li><a href="../03/hum-devs-kab-banenge.html">Hum Developers Kab Banenge?</a></li>
+    <li><a href="../../2016/11/a-visit-to-the-taj-mahal.html">A Visit To The Taj Mahal</a></li>
+    <li><a href="../../2019/05/be-easy-on-yourself.html">Be Easy On Yourself</a></li>
+  </ul>
+</aside>
+
+			<hr class="stylish"/>
+
+			<section class="pagination">
+				
+					<a class="prev" href="overthewire-bandit-27-33.html">&laquo; OverTheWire Bandit 27-33 Write-up</a>
+
+					
+					<a class="next" href="on-the-importance-of-iteration.html"> On The Importance Of Iterations In (Product) Development &raquo;</a>
+
+								</section>
+
+		</article>
+
+	
+</main><!-- #main -->
+
+
+</div>
+
+<footer>
+  <hr class="stylish"/>
+  <nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about.html'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes.html'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags.html'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="https://nagekar.com/" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../indexd784.html?feed=rss2">RSS</a>,
+      <a href="../../index6e0a.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <div>
+    Theme: <a href="https://github.com/abhn/Elementary">Elementary</a>
+    <br/>
+    <a>Abhishek Nagekar</a> &copy; 2025  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/s\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+<!-- Koko Analytics v2.0.19 - https://www.kokoanalytics.com/ -->
+<script>
+!function(){var e=window,r="koko_analytics";function t(t){t.m=e[r].use_cookie?"c":e[r].method[0],navigator.sendBeacon(e[r].url,new URLSearchParams(t))}e[r].request=t,e[r].trackPageview=function(){if("prerender"!=document.visibilityState&&!/bot|crawl|spider|seo|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)){var i=0==document.referrer.indexOf(e[r].site_url)?"":document.referrer;t({pa:e[r].path,po:e[r].post_id,r:i})}},e.addEventListener("load",function(){e[r].trackPageview()})}();
+</script>
+
+<script src="../../wp-content/themes/s/build/index8a54.js?ver=1.0.0" id="elementary-script-js"></script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"dd6930e6eb8c44088fd6b2cf3e5a2dea","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from nagekar.com/2018/08/tips-javascript-development.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 10:25:42 GMT -->
+</html>

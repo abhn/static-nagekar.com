@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en-US">
+
+<!-- Mirrored from nagekar.com/2014/12/lan-group-messenger-in-python.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 10:31:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../indexd784.html?feed=rss2" />
+  <link rel="alternate" type="application/atom+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../index6e0a.html?feed=atom" />
+
+	<title>Simple group messenger/chat in Python &#8211; Abhishek Nagekar</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<script>
+window.koko_analytics = {"url":"https:\/\/nagekar.com\/koko-analytics-collect.php","site_url":"https:\/\/nagekar.com","post_id":1167,"path":"\/2014\/12\/lan-group-messenger-in-python.html","method":"none","use_cookie":false};
+</script>
+<link rel="alternate" type="application/rss+xml" title="Abhishek Nagekar &raquo; Feed" href="../../feed" />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='elementary-style-css' href='../../wp-content/themes/s/style8a54.css?ver=1.0.0' media='all' />
+<link rel="https://api.w.org/" href="../../wp-json/index.html" /><link rel="alternate" title="JSON" type="application/json" href="../../wp-json/wp/v2/posts/1167.json" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.html?rsd" />
+
+<link rel="canonical" href="lan-group-messenger-in-python.html" />
+<link rel='shortlink' href='../../indexeab1.html?p=1167' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="../../wp-json/oembed/1.0/embed24d2.json?url=https%3A%2F%2Fnagekar.com%2F2014%2F12%2Flan-group-messenger-in-python.html" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="../../wp-json/oembed/1.0/embed43ca?url=https%3A%2F%2Fnagekar.com%2F2014%2F12%2Flan-group-messenger-in-python.html&amp;format=xml" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-270x270.png" />
+		<style id="wp-custom-css">
+			
+.quotes-ol-container {
+	display: flex;
+  flex-direction: column-reverse;
+}
+
+.quotes-ol-container li {
+	flex: 0 0 auto;
+}		</style>
+		</head>
+
+<body class="wp-singular post-template-default single single-post postid-1167 single-format-standard wp-theme-s">
+<div class="container">
+	<nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about.html'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes.html'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags.html'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="https://nagekar.com/" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../indexd784.html?feed=rss2">RSS</a>,
+      <a href="../../index6e0a.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <hr class="stylish"/>
+
+<div class="_progress-wrapper">
+  <div id="_progress"></div>
+</div>
+
+<header>
+	<h1>Simple group messenger/chat in Python</h1>
+	<header class="title-tags">
+		<time>3 December, 2014. It was a Wednesday</time>
+		<div class="tags-container">
+			Posted under <span>
+										<a class="tags" href="../../tags.html#python">python</a>
+										<a class="tags" href="../../tags.html#socket">socket</a>
+							</span>
+			&nbsp;
+		</div>
+	</header>
+</header>
+
+<hr class="stylish" />
+
+<main role="main">
+
+	
+		<article>
+			<section class="content">
+				<p>
+  Aaaaannd here is another post of mine on sockets, client/server models and stuff. I suppose you have started to get bored by the same stuff everyday right? Seems like I just can&#8217;t get enough of this thing. But trust me, I had no intention of doing this today, a friend of mine instigated me write a messenger for a project we were working on, and it turned out, writing this simple messaging program was more interesting than I thought.
+</p>
+<p>
+  So, instead of creating a straight forward chat program that was &#8216;actually&#8217; required by my friend, I created this &#8216;one-server-multiple-clients&#8217; program, which is more like the real world chat apps we use everyday.
+</p>
+<p>
+  To run the program, execute the &#8216;server.py&#8217; (after changing the <b>bind() </b>address to the address of the server on which it is supposed to run). Then, execute the &#8216;client.py&#8217; (guess what? same thing here. But you will have to add the <i>server address</i> in the <b>connect()</b> function here). Of course, you can have all of them running on the same system, but there ain&#8217;t any fun in it, right?
+</p>
+<p>
+  Last but not the least, I have commented as much as I could, unlike my last article, so I expect everyone reading this, with a bit of programming knowledge, will understand this straight forward code.
+</p>
+<h4>server.py</h4>
+<figure class="highlight">
+<pre><code class="language-python" data-lang="python"><span class="c1"># Import the necessary libraries
+</span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">select</span>
+<span class="c1"># Take message from an host and send it to all others
+</span><span class="k">def</span> <span class="nf">shout</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">socket</span> <span class="ow">in</span> <span class="n">LIST</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="c1"># Don't send it back to server and yourself!
+</span>      <span class="k">if</span> <span class="n">socket</span> <span class="o">!=</span> <span class="n">serv</span> <span class="ow">and</span> <span class="n">socket</span> <span class="o">!=</span> <span class="n">sock</span><span class="p">:</span>
+        <span class="n">socket</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="c1"># Assume client has got disconnected and remove it.
+</span>      <span class="n">socket</span><span class="p">.</span><span class="n">close</span>
+      <span class="n">LIST</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
+<span class="c1"># Declare variables required later.
+# To store list of sockets of clients as well as server itself.
+</span><span class="n">LIST</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Common buffer for all purposes
+</span><span class="n">buff</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="c1"># Declaration of Server socket.
+</span><span class="n">serv</span> <span class="o">=</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">serv</span><span class="p">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">serv</span><span class="p">.</span><span class="n">bind</span><span class="p">((</span><span class="s">"192.168.1.10"</span><span class="p">,</span> <span class="mi">1356</span><span class="p">))</span>
+<span class="c1"># Listen for upto 6 clients. Increase if you need more.
+</span><span class="n">serv</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># Add server socket to the LIST
+</span><span class="n">LIST</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">serv</span><span class="p">)</span>
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+  <span class="c1"># Moniter clients all simultaneously
+</span>  <span class="n">reads</span><span class="p">,</span> <span class="n">writes</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">select</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">LIST</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[])</span>
+  <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">reads</span><span class="p">:</span>
+    <span class="c1"># A new client connected?
+</span>    <span class="k">if</span> <span class="n">sock</span> <span class="o">==</span> <span class="n">serv</span><span class="p">:</span>
+      <span class="n">sockfd</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">serv</span><span class="p">.</span><span class="n">accept</span><span class="p">()</span>
+      <span class="n">LIST</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sockfd</span><span class="p">)</span>
+    <span class="c1"># Naah, just a new message!
+</span>    <span class="k">else</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Get his shitty message.
+</span>        <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="n">buff</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+          <span class="c1"># If he wrote something, send it to shout() function for broadcast.
+</span>          <span class="n">shout</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+      <span class="p"&gt;;</span><span class="k">except</span><span class="p">:</span>
+        <span class="c1"># Shit just got real. Client kicked by server :3
+</span>        <span class="n">sock</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">LIST</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>
+        <span class="c1"># Do this till the end of time.
+</span>        <span class="k">continue</span>
+<span class="n">serv</span><span class="p">.</span><span class="n">close</span><span class="p">()</span></code></pre>
+</figure>
+<h4>client.py </h4>
+<figure class="highlight">
+<pre><code class="language-python" data-lang="python"><span class="c1"># Import the nessary libraries
+</span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">select</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Socket variable declaration
+</span><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">s</span><span class="p">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Connect to server. Change this for remote servers.
+</span><span class="n">s</span><span class="p">.</span><span class="n">connect</span><span class="p">((</span><span class="s">"192.168.1.10"</span><span class="p">,</span> <span class="mi">1356</span><span class="p">))</span>
+
+<span class="c1"># A prompt asking client to enter something.
+</span><span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">)</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+  <span class="c1"># These are the possible events.
+</span>  <span class="c1"># sys.stdin --&gt; Client has typed something through keyboard.
+</span>  <span class="c1"># s --&gt; Server has send a new message by some other client you.
+</span>  <span class="n">streams</span> <span class="o">=</span> <span class="p">[</span><span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">,</span> <span class="n">s</span><span class="p">]</span>
+
+  <span class="c1"># Moniter both the streams simultaneously for inputs.
+</span>  <span class="n">readable</span><span class="p">,</span> <span class="n">writable</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">select</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">streams</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[])</span>
+
+  <span class="c1"># If server has sent something, readable will fill up.
+</span>  <span class="k">for</span> <span class="n">sock</span> <span class="ow">in</span> <span class="n">readable</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sock</span> <span class="o">==</span> <span class="n">s</span><span class="p">:</span>
+
+      <span class="c1"># Receive data in our variable. Check if it is empty.
+</span>      <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">()</span>
+      <span class="k">else</span><span class="p">:</span>
+
+        <span class="c1"># Write data to stdout and give client prompt back.
+</span>        <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span>
+
+    <span class="c1"># No, its not the server. Our client has typed something in.
+</span>    <span class="k">else</span><span class="p">:</span>
+
+      <span class="c1"># Read message. Send it to server. Give prompt back to client.
+</span>      <span class="n">msg</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">()</span>
+      <span class="n">s</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+      <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">)</span>
+      <span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span></code></pre>
+</figure>
+<p>
+  So that was the code. Here is a glimpse of the output. The server is running off my &#8216;raspberrypi&#8217; and all clients are running on my computer. Looks cool right?
+</p>
+<p><a href="https://www.nagekar.com/wp-content/uploads/2020/12/python_server.png"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/python_server.png"/></a></p>
+<p>
+  If you look closely, one of the clients missed a message sent by another client, LOL, so that is normal. Any suggestions or edits or corrections, drop them in the comments below. 🙂</p>
+			</section>
+
+			<hr class="stylish"/>
+
+			<aside class="featured-posts">
+  <h3>Unrelated</h3>
+  <ul>
+    <li><a href="../../2021/02/the-best-time-of-your-life-is-right-now.html">The Best Time Of Your Life Is Right Now</a></li>
+    <li><a href="../../2019/01/mumbai-to-berlin.html">Mumbai To Berlin</a></li>
+    <li><a href="../../2018/03/hum-devs-kab-banenge.html">Hum Developers Kab Banenge?</a></li>
+    <li><a href="../../2016/11/a-visit-to-the-taj-mahal.html">A Visit To The Taj Mahal</a></li>
+    <li><a href="../../2019/05/be-easy-on-yourself.html">Be Easy On Yourself</a></li>
+  </ul>
+</aside>
+
+			<hr class="stylish"/>
+
+			<section class="pagination">
+				
+					<a class="prev" href="python-vs-c-how-simple-is-it-to-write.html">&laquo; Python vs C &#8211; How simple is it to write a pair of communicating sockets?</a>
+
+					
+					<a class="next" href="creating-autocomplete-field-with-ajax.html"> Creating an autocomplete field | Setting up the backend | Part 1 &raquo;</a>
+
+								</section>
+
+		</article>
+
+	
+</main><!-- #main -->
+
+
+</div>
+
+<footer>
+  <hr class="stylish"/>
+  <nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about.html'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes.html'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags.html'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="https://nagekar.com/" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../indexd784.html?feed=rss2">RSS</a>,
+      <a href="../../index6e0a.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <div>
+    Theme: <a href="https://github.com/abhn/Elementary">Elementary</a>
+    <br/>
+    <a>Abhishek Nagekar</a> &copy; 2025  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/s\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+<!-- Koko Analytics v2.0.19 - https://www.kokoanalytics.com/ -->
+<script>
+!function(){var e=window,r="koko_analytics";function t(t){t.m=e[r].use_cookie?"c":e[r].method[0],navigator.sendBeacon(e[r].url,new URLSearchParams(t))}e[r].request=t,e[r].trackPageview=function(){if("prerender"!=document.visibilityState&&!/bot|crawl|spider|seo|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)){var i=0==document.referrer.indexOf(e[r].site_url)?"":document.referrer;t({pa:e[r].path,po:e[r].post_id,r:i})}},e.addEventListener("load",function(){e[r].trackPageview()})}();
+</script>
+
+<script src="../../wp-content/themes/s/build/index8a54.js?ver=1.0.0" id="elementary-script-js"></script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"dd6930e6eb8c44088fd6b2cf3e5a2dea","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from nagekar.com/2014/12/lan-group-messenger-in-python.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 10:31:12 GMT -->
+</html>

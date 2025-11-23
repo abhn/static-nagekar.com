@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>diy &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/diy/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Sat, 07 Jun 2025 23:57:18 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>diy &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Building vs Buying a NAS &#8211; A non-hardware nerd&#8217;s perspective</title>
+		<link>https://nagekar.com/2024/01/building-vs-buying-a-nas-a-non-hardware-nerds-perspective.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 14 Jan 2024 14:26:28 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<category><![CDATA[home-server]]></category>
+		<category><![CDATA[pc-build]]></category>
+		<category><![CDATA[synology]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=2088</guid>
+
+					<description><![CDATA[After years of contemplating on making or buying myself a NAS, I finally decided to bite and got a Synology DS223j two-bay NAS as a present for myself for Christmas along with two refurbished 16TB Seagate Exos hard drives. Rewinding a bit For most of my life, the only &#8220;backup&#8221; I had was a 500gb [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>After years of contemplating on making or buying myself a NAS, I finally decided to bite and got a Synology DS223j two-bay NAS as a present for myself for Christmas along with two refurbished 16TB Seagate Exos hard drives. </p>
+
+
+
+<h2 class="wp-block-heading">Rewinding a bit</h2>
+
+
+
+<p>For most of my life, the only &#8220;backup&#8221; I had was a 500gb hard disk that came preinstalled in the <a href="http://nagekar.com/2015/11/fujitsu-lifebook-a514-review.html">Fujitsu A514</a>, my first laptop. I had also bought a 120gb solid-state disk at the time and immediately replaced the hard disk with it. The hard disk went into an enclosure and I used it to back up any important data as my laptop went through frequent cycles of OS reinstalls during my distro-hopping era.</p>
+
+
+
+<p>Any time I&#8217;d want to back up my photos, it would become a folder on the hard disk and then cleared from phone storage as phones came with much smaller storage back then. I remember having 16gb internal storage on my Galaxy Note and thinking I&#8217;d never fill it up no matter how many pictures I take.</p>
+
+
+
+<p>I used Gmail and the 15gb storage the free account comes with was enough for email and the occasional document sharing via Google Drive. Life was good.</p>
+
+
+
+<p>At some point I hooked this 500gb drive to my <a href="http://nagekar.com/2016/01/how-to-private-local-cloud-using-raspberrypi.html">Raspberry Pi running Nextcloud</a> and even had my very first &#8220;NAS&#8221; setup.</p>
+
+
+
+<p>In 2018, I had some INR 300 of Google Play credits that I used to get some of the apps that I wanted to support and use pro versions of, like Nova launcher, Tasker etc. Along with those, I got the 100gb Google storage plan (at INR 130 a month) and started backing up photos to Google Drive. It was an okay cost as I was already working by then and had some money to spare for subscriptions. </p>
+
+
+
+<p>Since then, I had kept that subscription and even upgraded it to 200gb after <a href="http://nagekar.com/2019/01/mumbai-to-berlin.html">moving to Berlin</a>. </p>
+
+
+
+<h2 class="wp-block-heading">Problem statement</h2>
+
+
+
+<p>The problem I set out to solve was to get rid of some of the cloud storage subscription fees I&#8217;m paying each month. I was paying duplicate fees for cloud between two Google accounts (and an iCloud account), so the plan would help get rid of two of the three subscriptions resulting in some 50 euros saved each year while providing me to actually follow the 3-2-1 backup strategy for some important data that I wouldn&#8217;t want to lose. </p>
+
+
+
+<h2 class="wp-block-heading">Requirements</h2>
+
+
+
+<p>Late last December I got a bit obsessed with watching computer build videos. It was fun to learn something new, and to be honest it also was entertaining. From the videos, I learned some important considerations that I&#8217;ll have to think for myself before spending my first Euro on this new project.</p>
+
+
+
+<ol class="wp-block-list">
+<li>Number of drive bays: While a NAS can just be a single drive attached to the network, generally they also offer redundancy (using RAID configurations) for NAS with two or more drive bays. I knew I&#8217;d want a RAID 1 so I&#8217;d need at least two drives.</li>
+
+
+
+<li>Idle power consumption: Power is expensive in Germany and I&#8217;d want to stay away from any old hardware that&#8217;s cheap to buy but very expensive to run. The last thing I&#8217;d want to do is invest in a NAS that I&#8217;m going to not keep running all the time.</li>
+
+
+
+<li>NAS application / operating system: Ideally, I&#8217;d like some bells and whistles like automatic backups to make my life a little easier and not having to do that manually. The popular NAS applications come with add-ons that allow more specific usecases. <a href="https://www.truenas.com/apps/">TrueNAS</a>, <a href="https://www.synology.com/de-de/dsm/packages">Synology</a> and others have public pages where one can see if the application they&#8217;d need is available on the platform they&#8217;re choosing for the NAS. </li>
+
+
+
+<li>Gigabit access speeds: I wanted to NAS to be accessible at the same speeds as the rest of my home network, which is currently at a Gigabit. Fortunately, that seems like the minimum one gets in 2023.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Non-requirements</h2>
+
+
+
+<p>I also learned about what other people prioritize in their NAS, but it didn&#8217;t resonate with me. More specifically, I couldn&#8217;t justify the price overhead that acquiring those features needed. Namely,</p>
+
+
+
+<ol class="wp-block-list">
+<li>SSD Cache: While there are many strategies to use an SSD for read and write caching, it primarily makes read/write operations feel faster for some use cases. I thought this was over-optimizing for my modest use case.</li>
+
+
+
+<li>CPU / RAM to run containers / VMs: I also found that folks like to run Docker containers / VMs on their NAS and need more powerful CPU and added RAM. This hadn&#8217;t even crossed my mind, and as such, I stayed true to the &#8220;if I didn&#8217;t know it exists, I probably don&#8217;t need it yet&#8221; principle. </li>
+
+
+
+<li>Multi-gigabit or multiple LAN ports: Folks opt for 2.5 or even 10gig LAN ports on their NAS for faster transfer speeds. Now while I&#8217;d looove to have transfer rates more than 120 MB/s, I&#8217;d need to upgrade my entire home network to multi-gigabit LAN and WLAN, and that&#8217;s expensive. That also would mean having a beefier CPU to handle the transfers which would increase the cost of NAS hardware itself.</li>
+
+
+
+<li>Four or more drive bays: This was the one I was most unsure about; Most if not everyone one reddit suggested to get at least a 4 bay NAS and then just using a couple of the bays until the requirement arises. It sounds reasonable, but I have a feeling that the requirement for 4 bays would never arise and 16TB in RAID-1 is going to be enough for a very long time.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Building vs buying</h2>
+
+
+
+<p>The nerd in me wanted to really go down the route of buying all the parts and assembling everything myself. The videos I had watched made me confident enough that I could pull it off. Building a PC is fun, and truth be told, I&#8217;ve never actually built one for myself.</p>
+
+
+
+<p>Having said that, I also recognized that I&#8217;m mixing two things together; my requirement for a secure and reliable NAS for my critical data and my desire to build a PC that I can experiment on. I&#8217;ve lost important data in the past and I didn&#8217;t want to risk it. Especially not after having just watched a bunch of videos and never actually having built a decent PC myself. </p>
+
+
+
+<p>I decided to pick up a Synology 2 bay NAS DS223j with 1gb RAM and a relatively weak but does-the-job quad-core Realtek CPU. The cost of the NAS was 180 euros. To do with it, I got a couple of refurbished <a href="https://www.seagate.com/files/www-content/datasheets/pdfs/exos-x16-DS2011-1-1904US-en_US.pdf">16TB Seagate Exos</a> drives, each of which was 180 euros, for a total cost of 540 euros. </p>
+
+
+
+<p>My rationale behind going down this path was as follows:</p>
+
+
+
+<ol class="wp-block-list">
+<li>I don&#8217;t trust my PC building and setting up skills enough to offload all of my data to the built-NAS and then cancel a couple of cloud subscriptions.</li>
+
+
+
+<li>At 4-5 watts of idle (hibernation) and 16 watts of under-load power consumption, it is comparable to a relatively efficient Mini PC.</li>
+
+
+
+<li>Hardware isn&#8217;t cheap in Germany, and actually saving money on hardware would require sourcing parts off Aliexpress which takes time and is often less than reliable.</li>
+
+
+
+<li>Building a PC and setting up the necessary software takes time. I could use this time on another project (home server blog post coming soon :D). </li>
+
+
+
+<li>Synology&#8217;s DSM (their proprietary operating system) comes out of the box with remote access via QuickConnect. </li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Tradeoffs I&#8217;ve ((sub)consciously) made</h2>
+
+
+
+<p>I feel like I&#8217;ve given up on some of my preferences when going down the Synology NAS route. And while some of these are conscious, there are some that will only show up once enough time has passed. In any case, I&#8217;m still documenting some of them here.</p>
+
+
+
+<ol class="wp-block-list">
+<li>Open source and free software: Synology DSM only runs on Synology hardware, at least officially. It means I&#8217;m stuck to using Synology software for as long as I&#8217;m using this hardware.</li>
+
+
+
+<li>Synology tax: Like I mentioned, using these off the shelf NAS&#8217;s requires paying the software and marketing budget of the companies in addition to the cost of the actual hardware. That&#8217;s fair, of course. Just something to be aware of.</li>
+
+
+
+<li>NAS hardware: I&#8217;m sure my &#8220;16TB ought to be enough for me&#8221; might not age very well. I also faced some situations where the NAS really slowed down and made me realize that it is running a very under-powered CPU after all. Again, tradeoffs.</li>
+
+
+
+<li>Noise: Seagate Exos drives aren&#8217;t the most silent hard drives. My wooden floor made it much worse and I ended up putting the NAS on a softer raised surface to absorb some of the vibrations. I believe this problem would&#8217;ve not completely vanished had I chose to get non-enterprise drives like the Seagate IronWolf, but it would&#8217;ve been better.</li>
+
+
+
+<li>Electricity costs: While my Synology NAS is efficient, and consumes single digit Watt power most of the times idling, it will still add 30-40 euros of additional power consumption to my yearly electricity bills (at 10w average power consumption 24x7x365 and 40 cents per kWh). </li>
+
+
+
+<li>Breakeven cost: From a purely utility perspective, it will take some years of not using Google Drive and iCloud before the cost of investing in a personal NAS is broken even. This is especially true if I do not fill up the 16TB that I have and then have regular need to access those files. This isn&#8217;t factoring in the added electricity cost, nor can I effectively compare the reliability of Google Drive to a NAS set up at home. Overall, for most people without the need to store TBs of data, Cloud is a very logical option.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">In closing</h2>
+
+
+
+<p>I hope that was informative in some way. I am looking forward to seeing how my investment turns out and if the list of tradeoffs grows further. I&#8217;ll leave you with some pictures of the NAS.</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="2560" height="1920" src="http://nagekar.com/wp-content/uploads/2024/01/IMG_6806-scaled.jpg" alt="" class="wp-image-2097" style="width:840px;height:auto" srcset="https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-2048x1536.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /><figcaption class="wp-element-caption">Fresh out of the box with its accessories</figcaption></figure>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="2560" height="1440" src="http://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-scaled.jpg" alt="" class="wp-image-2098" style="width:840px;height:auto" srcset="https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-300x169.jpg 300w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-250x141.jpg 250w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-768x432.jpg 768w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-1536x864.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-2048x1152.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /><figcaption class="wp-element-caption">Initial setup in my &#8220;Lack rack&#8221;. It has since been replaced but wait for an update on that.</figcaption></figure>
+
+
+
+<p>Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Tesla Coil Speaker</title>
+		<link>https://nagekar.com/2020/01/tesla-coil-speaker.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 05 Jan 2020 23:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2020/01/05/tesla-coil-speaker/</guid>
+
+					<description><![CDATA[A long, long time ago I ordered a tesla coil speaker from Banggood out of sheer impulsive buying habits. I thought it would be a good DIY project to work on and was less than 4 euros at that time. But since I don&#8217;t have something like the India Direct Mail shipping here in Germany, [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  A long, long time ago I ordered a <a href="https://www.banggood.com/Geekcreit-DIY-Mini-Tesla-Coil-Module-Unassembled-15W-DC-15-24V-2A-Plasma-Speaker-Electronic-Kit-p-1326817.html">tesla coil speaker from Banggood</a> out of sheer impulsive buying habits. I thought it would be a good DIY project to work on and was less than 4 euros at that time. But since I don&#8217;t have something like the <a href="/2018/05/banggoods-india-direct-mail-shipping.html">India Direct Mail</a> shipping here in Germany, the delivery took a month. I was very skeptic if it will ever make it, given that it was a super-cheap, super-fragile little DIY kit. But it did.
+</p>
+<p>
+  Upon receiving it, I soldered the kit together with the soldering station that I received as a birthday present, and headed out to a hobby electronics store to get a variable power supply. Turned out, even the simplest of them cost more than EUR40 in the brick and mortar stores here in Berlin. I wasn&#8217;t willing to spend that much to power this little kit. I had to go back to Banggood.
+</p>
+<p>
+  Not wasting any more time, I ordered a <a href="https://www.banggood.com/Minleaf-96W-12V-24V-Regulated-Output-Power-Supply-Adapter-AC-DC-Power-Adapter-Charger-p-981672.html">12-24V 4.5A supply from Banggood</a> for less than EUR10. Knowing well that this time it would take more than a month on account of the holidays in the middle, I forgot about it. That was until today, when it arrived at my work. Full of excitement, I got home and powered this project up! Here&#8217;s a glimpse from during the testing.
+</p>
+<style>
+.videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+.videowrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+<div class="videowrapper">
+  <iframe src="https://www.youtube-nocookie.com/embed/C1zDznzVQwQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p>
+  To go along with this project, I have a <a href="https://www.banggood.com/DSP-PLL-Digital-Stereo-FM-Radio-Receiver-Module-87-108MHz-With-Serial-Control-p-1004778.html?rmmds=myorder">FM radio module</a> that I&#8217;ll hook up with this Tesla Coil speaker. Hopefully, after figuring out a way to cool the speaker, I&#8217;ll be able to use it for extended durations of time.
+</p>
+<p>
+  Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Reusing An Old Laptop&#8217;s LCD Panel</title>
+		<link>https://nagekar.com/2018/05/reusing-old-laptop-lcd-panel.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Fri, 25 May 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/05/25/reusing-old-laptop-lcd-panel/</guid>
+
+					<description><![CDATA[A month ago, my manager from LaughGuru gave me his old non-functional laptop. It was a six year old Dell Inspiron 15R 5520 notebook computer with 2GB ram, third-gen Intel i5 and a 500GB hard disk and weighted almost as much as Misty and my new Thinkpad combined. I couldn&#8217;t get the motherboard to boot [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  A month ago, my manager from LaughGuru gave me his old non-functional laptop. It was a six year old Dell Inspiron 15R 5520 notebook computer with 2GB ram, third-gen Intel i5 and a 500GB hard disk and weighted almost as much as <a href="https://www.nagekar.com/2018/04/fujitsu-lifebook-a514-review-2.html">Misty</a> and my new <a href="https://www.nagekar.com/2018/05/lenovo-thinkpad-t440-ebay-refurbished-laptop-review.html">Thinkpad</a> combined. I couldn&#8217;t get the motherboard to boot up so I decided to take it apart (and given the condition of the laptop it made little sense to repair it).
+</p>
+<p>
+  I&#8217;ve found some really useful things inside the laptop. The two gig ram chip and the 500 gigs hard disk now sits on another water damaged laptop that my friend gave me a week ago and powers it flawlessly. The CD drive will come in handy someday as an external disk drive. I planned to use the display as an external monitor for my laptop, and that turned out to be a DIY project in itself.
+</p>
+<h3>Enter LVDS Connectors</h3>
+<p>
+  So I isolated the LCD and looked very carefully for any hints on what sort of connector was that dangling from behind the panel. It had the word LVDS on it. Some Internet research later, things became clear. As alien as it sounds, LVDS or <a href="https://en.wikipedia.org/wiki/Low-voltage_differential_signaling">Low-voltage differential signaling</a> is a standard that is used for high-speed transfers using very low power. For me, it simply meant that there&#8217;s no straightforward way of plugging the HDMI or VGA cable from my laptop into the bare LCD panel and start using it.
+</p>
+<p>
+  Unfortunately, there&#8217;s also no easy way of using the laptop&#8217;s motherboard logic to make the LCD panel work. Searching for a solution made it clear that LCD controller kit is what needs to be used. It is important that the exact spec of the LCD panel is known, as the kits are only compatible with a small range of panels. It might be difficult if the LCD was never working in your possession, as in my case, but this nice website called <a href="https://www.panelook.com/index.php">Panelook</a> makes it easy to get the detailed spec of the panel from just the <a href="https://www.panelook.com/LP156WH4-TLN1_LG%20Display_15.6_LCM_overview_15254.html">serial number</a>. Things to look at are the resolution and the backlight type. The resolution needs to be an exact match and the backlight type is needed to judge if you&#8217;ll need an inverter with your controller kit. Mine was a WLED panel so no external power source or inverter needed. The next step is searching the serial number on ebay and other local hobby sites. I found a nice kit on <a href="https://www.nagekar.com/2018/05/banggoods-india-direct-mail-shipping.html">Banggood</a> and decided to order it.
+</p>
+<h3>Putting It All Together</h3>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/3.jpg"/></p>
+<p>
+    Interfacing was simple, and there are nice videos on the topic on youtube. There&#8217;s the LVDS connector that goes into your LCD panel. Then there&#8217;s the controls board that needs to be plugged into the main board. The controls board also has an IR receiver for remote control and can be used to control brightness, contrast, sharpness etc of the panel.
+</p>
+<p>
+  The board itself supported inputs through AV connector, HDMI, and VGA. It operates on 12 volts and 4 amps and luckily I had a 5 amps supply with me, so no extra expenditure there. I had to borrow VGA cable from a friend though as my laptop only has VGA and no HDMI.
+</p>
+<p>
+  I used an old Tupperware tiffin box as the LCD&#8217;s stand to keep the delicate LVDS cables safe and away from physical contact with anything. To avoid physical damage to the panel, I&#8217;ve used the stock display cover of the laptop (the top half) as it was. The added benefit of using the stock plastic cover was that I could drill holes and fix the controller board on the back of the panel like an all in one PC (I could&#8217;ve literally made it an all-in-one PC by docking my raspberry pi back there as well, haha). Overall, I was very happy with the result, and as I write this, I have my editor on my primary screen and the browser on the extended display. <b>Dual monitors at home</b> achievement unlocked!
+</p>
+<style>
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+</style>
+<div class="image-gird">
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/4.jpg"/><br />
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/5.jpg"/><br />
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/6.jpg"/><br />
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/1.jpg"/>
+</div>
+<p>
+  Hope you found this article useful. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Banggood&#8217;s India Direct Mail Shipping</title>
+		<link>https://nagekar.com/2018/05/banggoods-india-direct-mail-shipping.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 24 May 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/05/24/banggoods-india-direct-mail-shipping/</guid>
+
+					<description><![CDATA[Here&#8217;s some great news for all you hobby electronics enthusiasts who drool at the sight of cheap stuff on Banggood and AliExpress, but upon rethinking about the time it takes them to ship something, give up on the prospect of buying it. I&#8217;m not a hobby electronics person, but after shopping some three-four times in [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Here&#8217;s some great news for all you hobby electronics enthusiasts who drool at the sight of cheap stuff on Banggood and AliExpress, but upon rethinking about the time it takes them to ship something, give up on the prospect of buying it. I&#8217;m not a hobby electronics person, but after shopping some three-four times in the past year through sites like AliExpress and Banggood, I was convinced that the wait is definitely not worth the discount that you get, because the shipping time is usually around 40-50 days. Yes, nearly two months it took for my speaker amplifier to reach me. And then some others that never reached.
+</p>
+<p>
+  But it seems like those are the days of the past because two weeks ago when I reluctantly surfed Banggood for a <a href="https://www.banggood.com/LCD-Controller-Board-DIY-Assembly-Kit-For-1366x768-15_6-Inch-LP156WH4TLA1-LED-Screen-p-1163322.html?rmmds=myorder">LCD controller board</a> that I couldn&#8217;t find on Ebay or other Indian sites, I saw a new method of shipping called &#8216;India Direct Mail&#8217; (not really new, it has been around since the last quarter of 2017), and it promised to ship in 8-16 days at almost no additional cost.
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/banggood.png"/></p>
+<p>
+  I really found it hard to believe but decided to take risk and order as I didn&#8217;t have much to lose (except for some 1200 rupees). It turned out to be true. Today, I received my LCD controller board, just 12 days after ordering. I feel this is reasonable, especially given that you won&#8217;t get it for at least double that here in India, if at all you do get it. This is great stuff and I&#8217;ll definitely be using this more in the future.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Encrypted Backups Using Duplicity &#038; Google Cloud Storage</title>
+		<link>https://nagekar.com/2018/05/encrypted-backup-with-duplicity.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Fri, 18 May 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[linux]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/05/18/encrypted-backup-with-duplicity/</guid>
+
+					<description><![CDATA[I came across this utility called Duplicity couple of days ago and found it to be very useful. I&#8217;ll use this little post to write about what it is and how can it be used to create encrypted backups of not so frequently accessed data on servers that you do not trust. If you only [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  I came across this utility called <a href="https://duplicity.nongnu.org/">Duplicity</a> couple of days ago and found it to be very useful. I&#8217;ll use this little post to write about what it is and how can it be used to create encrypted backups of not so frequently accessed data on servers that you do not trust. If you only care about the tool, jump to the <a href="#usage">Usage</a> section.
+</p>
+<h3>Use Case</h3>
+<p>
+  I was working on a little project that involved setting RAID 1 using some spare 500 gig drives and Raspberry Pi as the raid controller. My problem was that I only had two drives, say A and B, and I needed to backup the data on one of the drives (say A) before setting up the raid in case something breaks. I tried to use a friend&#8217;s external hard disk but didn&#8217;t succeed getting it to work. Finally, I did find another hard disk (say C) in the &#8216;trash&#8217; laptop a friend of mine gave me. So now I could get the data off the primary disk (A) onto this new disk (C), and I did manage to succeed in that. But this exposed a deeper question of how am I supposed to take care of around 400 GB of backup data, and is having a single copy of it even safe. Of course not.
+</p>
+<p>
+  If you remember my <a href="https://www.nagekar.com/2017/08/private-cloud-part-2.html">NextCloud solution on DigitalOcean</a>, that worked great as a lightweight cloud, for easy backups of current set of camera pictures and maybe contacts and such. But when it comes to archiving data, DigitalOcean would get a bit too expensive (~USD 10 for 100GB and so on with their <a href="https://www.nagekar.com/2017/08/private-cloud-part-2.html">block storage</a>). However, their object store was relatively cheap and costed around USD 5 for 250GB of data per month. I needed something like this.
+</p>
+<p>
+  The second problem was speed of upload. I own a modest 2.5Mbps connection, so uploading data off my Internet was out of question. Since I had <a href="https://peering.google.com/">Google Peering</a>, I could make use of that. I looked up Google Cloud&#8217;s solutions and found Google Cloud Storage, which was AWS S3 like object store. They also offered USD 300 free credits to begin with for a year, so I decided to test it out. It worked great, and I got transfer speeds in excess of 24Mbps, which is what Google Peering does.
+</p>
+<p>
+  The last hurdle was finding an automated script to manage sync. I was already a huge fan of rsync and was searching for a way of doing incremental backups (although not strictly required for archiving data) while doing some sort of encryption as well. That is where Duplicity came in.
+</p>
+<h3>Enter Duplicity</h3>
+<p>
+  Duplicity is a tool that uses rsync algorithm for incremental bandwidth efficient backups that are compressed into tarballs and encrypted with GPG. The tool supports a wide range of servers and protocols, and will work with anything from AWS S3, Google Drive/Cloud to WebDAV or plain SSH. In the typical *nix fashion, it does a little thing well and the use cases are only limited to your creativity.
+</p>
+<h3><a name="usage">Usage</a></h3>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/duplicity.png"/></p>
+<p>
+  The setup requires you to install <a href="https://cloud.google.com/sdk/docs/quickstart-linux">Google Cloud SDK</a> and <a href="https://github.com/boto/boto">Python 2&#8217;s Boto</a> that will serve as an interface to Google Cloud Storage. Then go ahead, sign up with Google Cloud if you haven&#8217;t already and set up a new cloud storage project (say <code>my_backup</code>). Make sure you enable <b>Interoperable Access</b> in <code>/project/settings/interoperability</code> and create a new <i>access-key/secret-key</i> pair. You&#8217;ll need to copy these into the <code>~/.boto</code> config file under <i>gs_access_key_id</i> and <i>gs_secret_access_key</i> respectively.
+</p>
+<p>
+  The last step is to test drive the entire setup. Create a directory with a couple of sample files (probably a slightly large video file as well), and run duplicity with the following command.
+</p>
+<p><code>$ duplicity ~/backup_directory gs://my_backup</code></p>
+<p>
+  Enter the password when prompted. If all goes well, you&#8217;ll see some transfer stats after the command finishes execution (time taken depending on your transfer speed etc), and in your GC console under your storage project&#8217;s browser, you&#8217;ll see something like in the following image (of course, not a hundred difftars like mine. I&#8217;m in the process of backing up my archive).
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/google-cloud-storage.png"/></p>
+<p>
+  If you do, then congrats! Those are the encrypted tar volumes of your data. Now just to be sure, make a little change in one of the files and run that command again. You&#8217;ll see that this time it takes almost no time, and if you refresh the GC storage&#8217;s browser, you&#8217;ll see couple of new files over there. Those are I believe the diff files.
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/duplicity-create.png"/><br />
+<img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/duplicity-update.png"/><br />
+<img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/gcs-browser.png"/></p>
+<p>
+  To recover the archived files, just do a reverse of the command above and you&#8217;ll all your files magically in the <code>~/backup_directory</code> (after you enter the correct password, that is).
+</p>
+<p><code>$ duplicity gs://my_backup ~/backup_directory</code></p>
+<p>
+  The next step after the initial backup would to be to run this command every hour or so, so that regular backups of our directory keeps happening. I haven&#8217;t tested it yet but something like </p>
+<pre>0 * * * *  duplicity /home/abhishek/backup_dir gs://backup_dir >> /dev/null</pre>
+<p> should do the trick.
+</p>
+<p>If you found this article interesting, make sure you read up more about Duplicity on their <a href="https://duplicity.nongnu.org/docs.html">webpage</a> and in the man pages. There are tonnes of config options. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Tinkering With OBD-II Port</title>
+		<link>https://nagekar.com/2017/11/tinkering-with-odb2-port.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 06 Nov 2017 23:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/11/06/tinkering-with-odb2-port/</guid>
+
+					<description><![CDATA[I&#8217;ve been seeing people hook up their computers to their cars from quite some time. It is a common sight if you watch any motorsport event on television, where technicians are seen working on their laptops that is connected via a cable to the car or bike. I found it quite fascinating. &#8220;What interesting tweaks [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	I&#8217;ve been seeing people hook up their computers to their cars from quite some time. It is a common sight if you watch any motorsport event on television, where technicians are seen working on their laptops that is connected via a cable to the car or bike. I found it quite fascinating. <i>&#8220;What interesting tweaks must they be making to that machine with that computer!&#8221;</i> I thought. The idea of tweaking a machine to improve it&#8217;s characteristics wasn&#8217;t new to me. Overclocking is nothing new. But obviously, since I saw all those professionals do it, I assumed there was no way for such an interface to exist on our everyday road vehicles.
+</p>
+<p>
+	And I was wrong. I discovered that, by law, it was necessary for all cars to have a diagnostics port, called the On-Board Diagnostics port. The latest revision for that port is v2 or <a href="https://en.wikipedia.org/wiki/On-board_diagnostics#OBD-II">OBD-II</a>, and all cars manufactured after 1996 should have one. Also, sometimes, the automotive Youtubers I followed showed <a href="https://youtu.be/Srnlrs1-dN0?t=227">various stats</a> on the screens such a the engine rpm, throttle position, boost pressure etc. So that implied there exists a way to extract those stats out of the vehicle&#8217;s <a href="https://en.wikipedia.org/wiki/Engine_control_unit">ECU</a>. Interesting. A quick Google search for &#8220;odb scanners&#8221; revealed that they&#8217;re not very expensive either (with cheap clones available for as low as INR 300, USD 5 or <a href="https://www.ebay.com/itm/Bluetooth-Mini-ELM327-OBD2-II-Auto-Car-OBD2-Diagnostic-Interface-Scanner-Tool/332333712008?hash=item4d60a20288:m:mOtAb_xAzblz2wSDE8bRn_Q">even lower</a>). After researching a bit, I learned that there was loads of data that came out of that little adapter, and that great Android applications (like Torque and DashCommand) exist which spit out the data into beautiful dials and graphs (like the ones on the <a href="https://st.motortrend.com/uploads/sites/5/2013/05/2014-Nissan-GT-R-Track-Edition-gauges.jpg">Nissan GTR</a> &hearts;) I was awestruck. What more can a nerd ask for!
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/elm327.jpg"/></p>
+<p>
+	All this happened a couple of months ago. I knew I needed to get one of those. I waited a couple of months and finally ordered it earlier this month. The first challenge was to find the OBD port. Unlike some other cars, Zacky&#8217;s OBD port was hidden behind the fuse box cover, the adapter had to go inside there. I managed to access the port without opening the fuse box and problem solved! Plugged in the adapter, paired with with my phone and it started sending data. That was one of the best feelings ever!
+</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/YPkad5i2y2E" frameborder="0" allowfullscreen></iframe></p>
+<p>
+	Some of the data it sent that I found particularly interesting to read was</p>
+<ol>
+<li>Boost pressure from the turbocharger</li>
+<li>Engine RPM</li>
+<li>Coolant temperature</li>
+<li>Engine load</li>
+<li>Error codes and provision to reset them</li>
+<li>Horse power, torque, acceleration and other such &#8220;calculated&#8221; data by combining sensor data with phone&#8217;s sensors like GPS and accelerometer and known parameters (like vehicle weight, engine displacement etc)</li>
+<li>and loads of other cool stuff</li>
+</ol>
+<p>	Note that the available sensor list varies from manufacturer to manufacturer, so keep that in mind. But even with the most basic, the experience is fun. It&#8217;s like opening task manager on your computer for the first time. <i>Wow, so I can actually run this h4ck3r stuff, right?</i>
+</p>
+<h3>Interesting Learnings</h3>
+<p>
+	<b>&#8211; Negative boost pressure</b> When you start the car and drive it normally, you&#8217;ll notice that the boost pressure gauge will read negative (technically, not pressure but vacuum). Only when driving hard (shifting late, for example), will you notice the boost pressure rising. I thought it was some erroneous data from the sensor so I <a href="https://www.google.co.in/search?q=boost+gauge+negative">read up a bit</a>. Turns out, at high rpm, the turbo forces the air fuel mixture into the cylinders. But what happens when the turbo is running too slow for compressing air? It simply works as a naturally aspirated engine and sucks in air during the <a href="https://en.wikipedia.org/wiki/Four-stroke_engine">intake stroke</a>. THAT sucking part explains the vacuum. Cool!
+</p>
+<p>
+	<b>&#8211; Driving modes</b> So Zacky featured this thing called driving modes. Putting her on &#8220;Sports&#8221; made the throttle more responsive but reduced fuel economy while putting her in &#8220;Eco&#8221; did the exact opposite. Now I could&#8217;ve told you that this isn&#8217;t just marketing and if you test it out, you can even feel a noticeable difference, but that was all I knew. Now, after driving for a while with the boost pressure gauge in front, I made this little observation. When in normal drive mode, the turbo does not spool over 4-6psi boost. But as soon as I go &#8216;sport&#8217;, the turbo goes well over 10psi, even 12 if the sensor is to be believed, which is pretty fantastic.
+</p>
+<p>
+	&#8211; A better understanding of the relationship between torque and horsepower, and what each number actually implies. Yes, power is work done per unit time, but what exactly does that feel like. Why do diesels have same horsepower figures even after having loads of torque. It gets really clear once you see the torque, the rpm and the (thus calculated) horsepower figures side-by-side.
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/1412427d1441794044-race-dynamics-dyno-database-stock-cars-tata-zest.png"/></p>
+<p>
+	&#8211; <b>Torque curve</b> So there&#8217;s this thing called a torque curve of an engine, which is just a curve with torque on one axis and RPM on the other. For an IC engine, the torque is not linear (as with electric motors), but a curve with a peak at some specific RPM (or RPM range, which is why a torque (or horsepower) figure is always accompanied by a RPM range), and tapering off at both the ends. To get the maximum acceleration, you have to keep this curve in mind when changing gears.
+</p>
+<h3>Now show me some kode!</h3>
+<p>
+	Yeah, right. So while I was on all of that, I thought, why not study the protocol itself and try writing a little script to pull the raw data from the sensors out, just for fun. Right, but how? This thing is running on Bluetooth, and how do you sniff that. Is there something like Wireshark for bluetooth? Googling &#8220;Wireshark for bluetooth&#8221; reveals that Wireshark is the &#8220;Wireshark for bluetooth&#8221;. Damn!
+</p>
+<p>
+	But before wireshark could sniff, I needed to get thing thing connected to my laptop. That&#8217;s pretty straightforward. After having it running at <code>/dev/rfcomm0</code>, fire up Wireshark and keep it listening on Bluetooth interface.
+</p>
+<blockquote><p>
+	Okay, pause. Here&#8217;s the funny part. The above text was written some 4 months ago. Then I had to do a lot of physical work to take my laptop into Zacky and do all the research/coding from there. I remember going out at least 3 times, but for some weird reason, never bothered to finish writing this article. I&#8217;m putting this out right now so that I will remember to write the part-II for it during the next weekend. Stay tuned.
+</p></blockquote>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Private Cloud Part 2 &#124; Encrypted Storage With NextCloud</title>
+		<link>https://nagekar.com/2017/08/private-cloud-part-2.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 30 Aug 2017 22:00:00 +0000</pubDate>
+				<category><![CDATA[cryptography]]></category>
+		<category><![CDATA[diy]]></category>
+		<category><![CDATA[privacy]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2017/08/30/private-cloud-part-2/</guid>
+
+					<description><![CDATA[New cloud setup. YAAY! Self hosted, encrypted and scalable. Plus comes with a nice web interface, native Linux and Android clients and its very own app store. I&#8217;ll first write about the setup itself, and then some of my personal thoughts over the entire private cloud exercise. Features Overview The major components of the setup [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	New cloud setup. YAAY! Self hosted, encrypted and scalable. Plus comes with a nice web interface, native Linux and Android clients and its very own <a href="https://apps.nextcloud.com/">app store</a>. I&#8217;ll first write about the setup itself, and then some of my personal thoughts over the entire private cloud exercise.
+</p>
+<h3>Features Overview</h3>
+<p>
+	The major components of the setup include the following</p>
+<ul>
+<li>NextCloud 11 on Ubuntu using Digital Ocean&#8217;s <a href="https://www.digitalocean.com/products/one-click-apps/nextcloud/">one click installer</a> on a 5 USD cloud vps</li>
+<li>Digital Ocean&#8217;s flexible <a href="https://www.digitalocean.com/products/storage/">block storage</a></li>
+<li><a href="https://letsencrypt.org/">Let&#8217;s Encrypt</a> for free TLS</li>
+<li>NextCloud sync client for Arch and Android on desktop and phone respectively for data sync</li>
+<li>DavDroid for contacts and calender sync on Android (uses <a href="https://webdav.org/">WebDAV</a>)</li>
+<li>Optional redundant backup and client side encryption using GnuPG (see below)</li>
+</ul>
+<h3>Pros Vs Cons</h3>
+<p>
+	So I now have a <i>proper</i> private cloud, self hosted, synced across mobile and desktop (including contacts, messages and calender), optional client-side encryption and scalable (&hearts;DigitalOcean&hearts;). What&#8217;s amazing is that I never had a native Google Drive client on desktop, but now I have a native NextCloud client, and it just works. And yes, it isn&#8217;t all sunshine and rainbow. There are some serious trade-offs which I should mention at this point, to make this fair.</p>
+<ul>
+<li>No Google Peering, hence backing up media is going to be a struggle on slow connections</li>
+<li>Google&#8217;s cloud is without a doubt more securely managed and reliable than my vps.</li>
+<li>Integration with Android is not as seamless as it was with Google apps, sync is almost always delayed (By 10 minutes. Yes, I&#8217;m an impatient (read &#8216;spoiled&#8217;) Google user)</li>
+<li>Server maintenance is now my responsibility. Not a huge deal, but just something to keep in mind</li>
+</ul>
+<p>	Having said that, most of it is just a matter of getting familiar with the new set of tools in the arsenal. I&#8217;ve tried to keep most things minimal. Using few widely adopted technologies and keeping them regularly updated, sticking to the best practices and disabling any unwanted, potentially dangerous defaults and with that the server is secure from most adversaries. Let&#8217;s first define what &#8220;secure&#8221; means in the current context using a threat model.
+</p>
+<h3>Threat Model</h3>
+<blockquote><p>
+	The only thing worse than no security, is a false sense of security
+</p></blockquote>
+<p>
+	Instead of securing everything in an ad hoc fashion, I&#8217;m using this explicitly defined threat model, which will help me prioritize what assets to secure and the degree of security, and more importantly, what threats I&#8217;m NOT secure against.</p>
+<ul>
+<li>
+			<b>Compromised end device (Laptop):</b> Since data is present unencrypted on my end, an adversary having access to my computer via say a ssh backdoor can easily get access to all of my (unencrypted) data. Private keys cannot be compromised as they are password protected. A keylogger might be able to sniff out my password which can then be used to decrypt any encrypted data.
+		</li>
+<li>
+			<b>Compromised end device (Mobile phone):</b> Since data cannot be decrypted on the mobile, all encrypted data would remain secure. Only the unencrypted files will get compromised. However, if an adversary gets access to my unlocked cell phone, securing cloud data would be the least of my worries.
+		</li>
+<li>
+			<b>Man In The Middle (MITM):</b> As long as Let&#8217;s Encrypt does it&#8217;s job, TLS used should be enough to secure the data against most adversaries eavesdropping on my network. It would not protect me if Let&#8217;s Encrypt (or any other CA) gets compromised and an adversary makes duplicate certificates against my domain and uses it to eavesdrop the traffic, the possibility of which is rare.
+		</li>
+<li>
+			<b>Server Compromise:</b> If the server is compromised through any server side vulnerability (assume root access) and an attacker gets access to everything on the server, all unencrypted files are compromised, which would include contacts/calender lists. Since the decryption key is never transmitted to the server, encrypted files won&#8217;t be compromised.
+		</li>
+</ul>
+<h3>Why Client Side Encryption</h3>
+<p>
+	The entire exercise would look pretty pointless if I just took all my data from G Drive and pushed it to NextCloud. And from the <a href="https://www.nagekar.com/2016/01/how-to-private-local-cloud-using-raspberrypi.html">previous cloud server attempt</a>, I know how uncomfortable it is to have your data accessible from the network all the time. Those reasons were more than enough for me to go for an encrypted cloud solution. Although it would still look pointless if you were to ask me why didn&#8217;t I just encrypt the data and upload it to G Drive again. The answer is simply because I didn&#8217;t want to.
+</p>
+<p>
+	After some research (being a novice with security, that was a must), I came up with a list of guidelines that I had to write my solution on.</p>
+<ul>
+<li>Use of symmetric key cryptography for file encryption, particularly <a href="https://security.stackexchange.com/questions/14068/why-most-people-use-256-bit-encryption-instead-of-128-bit">AES-128</a></li>
+<li>Memorizing the AES key or using public key cryptography to store the key of file en/decryption on disk. (Not sure which is the proper way of doing it, although I&#8217;ve <a href="https://security.stackexchange.com/questions/168677/securely-storing-aes-key-with-public-key-cryptography">asked the experts for help</a>)</li>
+</ul>
+<h3>Encryption</h3>
+<p>
+	There are a lot of tools one can use for data encryption. I used Gnu&#8217;s Privacy Guard (GnuPG or simply GPG). It is anything but easy to use. But the nice part is that it just works, is extensively reviewed by experts and has been around since I was 4 years old. So in theory,</p>
+<ul>
+<li><a href="https://www.gnupg.org/gph/en/manual.html#AEN26">Generate a public/private key pair</a> in GPG</li>
+<li>Generate a strong passphrase for the encryption, and encrypt it using the public key you just generated. Store it locally someplace secure</li>
+<li>Get a list of all files and directories from a specific folder using <code>find</code> (for one time backups), or use <code>rsync</code> with a local sync copy (for incremental backups)</li>
+<li>Iterate the list (of all or changed files). If item is a directory, create that directory, if item is a file, encrypt the file and push it to that directory.</li>
+<li>After encryption, you&#8217;re left with either two or three directories, <code>/original-dir</code>, <code>/remote-encrypted</code> and optionally, <code>/local-unencrypted-sync</code></li>
+<li>The additional (local sync) directory is useful when incremental backups are required and rsync uses this directory to keep track of changes, and only (re)encrypts those files that have been added/changed since last sync. Useful to setup a cron job. At this point, you can delete the files in your <code>/original-dir</code> safely</li>
+<li>Decryption is just the opposite of this. You supply the location of your <code>/remote-encrypted</code> directory and the script generates a new directory with unencrypted content.</li>
+</ul>
+<p>	<img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/unenc.png"><br />
+	<center><i>Original directory</i></center><br />
+	<img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/enc.png"><br />
+	<center><i>Encrypted backup directory</i></center><br />
+	This does the job for now. Here&#8217;s the script that I&#8217;m currently using. I wanted to enable sync without the need for a helper directory, just like Git does (it stores the changes in the same directory in a .git/ directory). Will update it if I manage to get that done.
+</p>
+<p><script src="https://gist.github.com/abhn/032d94b998bbaace5aa3cd2f1be2423d.js"></script></p>
+<h3>In Closing</h3>
+<p>
+	Eighteen months ago, I wrote on <a href="https://www.nagekar.com/2016/01/how-to-private-local-cloud-using-raspberrypi.html">how to create a &#8216;cloud&#8217; storage</a> solution with the Raspberry Pi and half a terabyte hard disk that I had with me. Although it worked well (now that I think about it, it wasn&#8217;t really a cloud. Just storage attached to a computer accessible over the network. Wait, isn&#8217;t that a cloud? Damn these terms.), I was reluctant to keep my primary backup disk connected to the network all the time, powered by the tiny Pi, and hence I didn&#8217;t use it as much I had expected. So what I did then was what any sane person would&#8217;ve anyway done in the first place, connect the disk with a usb cable to the computer for file transfers and backups.
+</p>
+<p>
+	Earlier this year, I switched ISPs and got this new thing called Google Peering, which enabled me to efficiently backup all my data to the real &#8216;cloud&#8217; (Google Drive). That worked, and it was effortless and maintenance free. And although Google doesn&#8217;t have a native Linux client yet, the web client was good enough for most things.
+</p>
+<p>
+	And that was the hardest thing to let go. Sync and automatic backups were, for me, the most useful feature of having Google around. And while everything else was easy to replace, the convenience of Drive is something that I&#8217;m still looking for in other open source solutions, something I even mentioned in my <a href="https://www.nagekar.com/2017/08/privacy.html">previous post on privacy</a>.
+</p>
+<p>
+	So although I now have this good enough cloud solution, it definitely isn&#8217;t for everyone. The logical solution for most people (and me) would be to encrypt the data and back it up to Google Drive, Dropbox or others. I haven&#8217;t tried, but Mega.nz gives 50GB of free tier end to end encrypted storage. Ultimately, it makes much more sense to use a third party provider than doing it all yourself, but then again, where&#8217;s the fun in that! Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Fun With Infrared Motion Sensor</title>
+		<link>https://nagekar.com/2016/09/fun-with-infrared-motion-sensor.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 08 Sep 2016 22:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/09/08/fun-with-infrared-motion-sensor/</guid>
+
+					<description><![CDATA[Very few of the projects I&#8217;ve done actually had any real life purpose. The rest were just Can I do it? projects. Here&#8217;s one more to that little list. So last year, the fan switch in my room changed its position, from the spot where it was in a one arm distance behind my desktop [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>Very few of the projects I&#8217;ve done actually had any real life purpose. The rest were just <i>Can I do it?</i> projects. Here&#8217;s one more to that little list. So last year, the fan switch in my room changed its position, from the spot where it was in a one arm distance behind my desktop computer table, to a spot where I had to walk three steps, climb my bed and walk another three steps to reach. Too much effort for something that is required to be done tens of times in a day. Naturally, I didn&#8217;t bother to turn it off whenever I left the room, and at times, the fan used to stay running long after I had left, until mom or dad noticed it and turned it off again, just before giving me a nice stare. Something had to be done.</p>
+<p>I had this <a href="https://www.amazon.in/REES52-PIR-Motion-Sensor/dp/B01HOP1V0Q">PIR module</a> that I had bought a couple of years ago with a friend. PIR [for Passive Infrared] sensor triggers when a hot body comes in its range, like a human being. I had to make use of it somehow to control the fan in the room. I had to Google just about everything about this project, and slowly I discovered that you cannot just put the AC mains and DC circuits on the same breadboard, and expect them to be nice to each other. As a result, <a href="https://www.amazon.in/Channel-Arduino-Raspberry-Silicon-TechnoLabs/dp/B0181W7QSW">relay</a> was discovered. [The <a href="https://www.sparkfun.com/products/100">one I have used</a> is a more compact, cheaper version].</p>
+<p>So a relay to act as a switch to turn the fan on and off, a PIR sensor to detect me entering the room and something in between to interface the two. <i>Arduino should do it</i>. So next is to code the arduino such that on receiving a <code>True</code>from the PIR, the arduino would close the switch, activating the relay to close the switch of the fan, and stay like that for a couple of minutes. I didn&#8217;t want it to go on-off every 3 seconds, hence the timeout.</p>
+<p>Next was mounting all of it together. A breadboard would&#8217;ve been unsafe, <a href="https://electronics.stackexchange.com/questions/19813/can-you-put-a-120vac-positive-line-into-a-breadboard">as per the Internet</a>, hence I bought a perfboard for the purpose. I soldered everything to its place, and the final result was something like the following. Oh but first, some code.</p>
+<h3>The code which was shamelessly ripped off Arduino.cc</h3>
+<p><script src="https://gist.github.com/abhn/800a4cbc44150d9e777936edde912680.js"></script></p>
+<h3>Here is how it looked [Heavy images. Patience!]</h3>
+<p><img loading="lazy" decoding="async" width="2560" height="1440" class="alignnone size-large wp-image-2643" src="http://nagekar.com/wp-content/uploads/2016/09/pir2-scaled.jpg" alt="" srcset="https://nagekar.com/wp-content/uploads/2016/09/pir2-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2016/09/pir2-300x169.jpg 300w, https://nagekar.com/wp-content/uploads/2016/09/pir2-250x141.jpg 250w, https://nagekar.com/wp-content/uploads/2016/09/pir2-768x432.jpg 768w, https://nagekar.com/wp-content/uploads/2016/09/pir2-1536x864.jpg 1536w, https://nagekar.com/wp-content/uploads/2016/09/pir2-2048x1152.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /> <img loading="lazy" decoding="async" width="2560" height="1440" class="alignnone size-large wp-image-2644" src="http://nagekar.com/wp-content/uploads/2016/09/pir4-scaled.jpeg" alt="" srcset="https://nagekar.com/wp-content/uploads/2016/09/pir4-scaled.jpeg 2560w, https://nagekar.com/wp-content/uploads/2016/09/pir4-300x169.jpeg 300w, https://nagekar.com/wp-content/uploads/2016/09/pir4-250x141.jpeg 250w, https://nagekar.com/wp-content/uploads/2016/09/pir4-768x432.jpeg 768w, https://nagekar.com/wp-content/uploads/2016/09/pir4-1536x864.jpeg 1536w, https://nagekar.com/wp-content/uploads/2016/09/pir4-2048x1152.jpeg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /> <img loading="lazy" decoding="async" width="1440" height="2560" class="alignnone size-full wp-image-2645" src="http://nagekar.com/wp-content/uploads/2016/09/pir5-scaled.jpeg" alt="" srcset="https://nagekar.com/wp-content/uploads/2016/09/pir5-scaled.jpeg 1440w, https://nagekar.com/wp-content/uploads/2016/09/pir5-169x300.jpeg 169w, https://nagekar.com/wp-content/uploads/2016/09/pir5-141x250.jpeg 141w, https://nagekar.com/wp-content/uploads/2016/09/pir5-768x1365.jpeg 768w, https://nagekar.com/wp-content/uploads/2016/09/pir5-864x1536.jpeg 864w, https://nagekar.com/wp-content/uploads/2016/09/pir5-1152x2048.jpeg 1152w" sizes="auto, (max-width: 1440px) 100vw, 1440px" /></p>
+<h3>My desk that beautiful day!</h3>
+<p><img loading="lazy" decoding="async" width="2560" height="1440" class="alignnone size-full wp-image-2642" src="http://nagekar.com/wp-content/uploads/2016/09/pir1-scaled.jpg" alt="" srcset="https://nagekar.com/wp-content/uploads/2016/09/pir1-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2016/09/pir1-300x169.jpg 300w, https://nagekar.com/wp-content/uploads/2016/09/pir1-250x141.jpg 250w, https://nagekar.com/wp-content/uploads/2016/09/pir1-768x432.jpg 768w, https://nagekar.com/wp-content/uploads/2016/09/pir1-1536x864.jpg 1536w, https://nagekar.com/wp-content/uploads/2016/09/pir1-2048x1152.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></p>
+<p>Now <a href="https://github.com/Adirockzz95/TARS">Aditya</a> would&#8217;ve told you that this project is what electronics people do when they&#8217;re like 5. Nevertheless, I was too proud of this. Not just because I could do it, but because I needed it.</p>
+<p>So did it work? No. The range of the PIR sensor was a bit too small for the entire room, and I had to literally dance in front of it to trigger it. Solution? Multiple PIRs to cover the entire room. Also, I realized how easily I could just add the tubelight to the same circuit. Just add another relay and connect it to the <a href="https://www.amazon.in/LDR-Light-Dependent-Register-resistor/dp/B018LJPI76">LDR</a> sensor and set it to trigger when the daylight fell below a certain threshold.</p>
+<p>Suddenly, automating stuff in the room seemed a bit too simple, and it really is, even for an electronics novice like myself. The Internet gives you that power. As always, thank you for reading, and pardon any silly technical mistakes that I must&#8217;ve made in the post (even better, correct me ;).</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Private Local Cloud Storage Using Raspberrypi &#8211; How To</title>
+		<link>https://nagekar.com/2016/01/how-to-private-local-cloud-using-raspberrypi.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 10 Jan 2016 23:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[privacy]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/01/10/how-to-private-local-cloud-using-raspberrypi/</guid>
+
+					<description><![CDATA[Today we&#8217;ll see how you can home brew a cloud (in the local sense) storage solution that would be free to use, quite faster than an Internet based one, secure enough from any outside the network intrusion and customizable. But why do you need to go to such lengths when you can easily create an [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+	Today we&#8217;ll see how you can home brew a cloud (in the local sense) storage solution that would be free to use, quite faster than an Internet based one, secure enough from any outside the network intrusion and customizable.
+</p>
+<p>
+	But why do you need to go to such lengths when you can easily create an account on Google and get 15 gigs of free storage. Well, first of all, data that we generate is increasing significantly each day. We have multiple devices with us, most of them with ~16-64 GB storage, which is not at all good enough. Then while our notebooks are getting faster with solid state drives, they are still costly to use for all of our needs like storing tonnes of movies and music videos, that is, if you are still left with space after cramming up your disk with camera pictures. If you opt for a premium account at Dropbox or Google Drive, it will easily cost you ~$100 a year recurring, the cost which can get you a 2 TB WD external hard disk.
+</p>
+<p>
+	Then there is the speed issue. At least here in India, we are deprived Internet connection faster than 2-4 mbps. Most of the times even less than that. Even if we considered the option of backing to an online cloud storage, the bandwidth prevents us from efficiently using what already exists for free. When using an local cloud, the bandwidth is only throttled by your equipments, and most of the times you can easily get ~40-60 mbps, which is fine.
+</p>
+<p>
+	The last issue, depending on how you see it, is the most and the least important. Security. If the files are going to be random movies and music videos, you might not be much worried about some hacker breaking into your cloud storage provider and downloading them, but on the other hand, if the files contain any kind of sensitive personally identifiable information, then you would worry. But having said that, I would always choose a secure storage solution from insecure ones if given an option, even if the data was not at all sensitive.
+</p>
+<h3>Things you&#8217;ll need</h3>
+<p>
+	Now that we&#8217;ve discussed some merits and demerits, lets talk about building the thing. The things you&#8217;ll need are,</p>
+<ul>
+<li>Raspberry Pi (with all it&#8217;s setup accessories), with Ethernet port</li>
+<li>Hard disk, any capacity, with SATA to USB converter</li>
+<li>Wireless router</li>
+<li>Ethernet cable or Wifi adapter</li>
+<li>USB power hub [in some cases]</li>
+</ul>
+<h3>Setting up the hardware</h3>
+<ol>
+<li>Connect the hard disk to the Raspberrypi</li>
+<li>Boot it up and login via ssh</li>
+<li>Run <i>sudo fdisk -l</i> and make sure the hard disk is shown. Note the device name (/dev/sdb or similar)</li>
+<li>If not, try usb power adapter</li>
+<li>If it is showing, we&#8217;ll have to make sure it mounts to the same location each time we boot up.</li>
+<li>Create a folder for the mount point. I&#8217;ll be using
+<pre>/var/www</pre>
+</li>
+<li>It would be advisable to use a separate low privileged user for the process, since we will be changing the user home later on.</li>
+<li>
+<pre>sudo chmod 775 /var/www</pre>
+<p> and </p>
+<pre>sudo chown your_username /var/www</pre>
+<p> to set the permissions for reading, writing and executing.</li>
+<li>
+<pre>sudo blkid</pre>
+<p> and note the uuid for the external hard disk. Copy it.</li>
+<li>Now we need to make the mounting occur each time we boot the pi up. Open the fstab file by
+<pre>sudo nano /etc/fstab</pre>
+<p> and add the following line </p>
+<pre>UUID="3b28d90f-8805-4ec4-978d-c53ee397a924" /var/www ext4 defaults,errors=remount-ro 0 1</pre>
+<p> by editing the UUID, mount location and file system and keeping other things constant.</li>
+<li>Reboot the pi, and your /var/www should now be pointing to the external hard disk. If so, you are done with this part of the tutorial. If not, check what did you miss. Also make sure you are able to read and write files to that directory from your user account. If not, recheck the steps, Google for solutions or comment for help.</li>
+</ol>
+<h3>Setting up the FTP server</h3>
+<ol>
+<li>
+<pre>sudo apt-get install vsftpd</pre>
+<p> to install the vsFTP server.</li>
+<li>Open the vsftp configuration file by
+<pre>sudo nano /etc/vsftpd.conf</pre>
+</li>
+<li>
+			The would be a lot of options. Just go through and make sure the following lines are there and not commented. If not, add them.</p>
+<pre>
+	anonymous_enable=NO
+	local_enable=YES
+	write_enable=YES
+	chroot_local_user=YES
+	force_dot_files=YES
+	local_root=/var/www
+	allow_writable_chroot=YES
+</pre>
+</li>
+<li>After saving (Ctrl + x and then y) and exiting, restart vsftpd by
+<pre>sudo service vsftpd restart</pre>
+</li>
+<li>Lastly, change the user home to the FTP root, so that you&#8217;ll directly get into the FTP server&#8217;s root on logging into the FTP client.
+<pre>sudo usermod --home /var/www/ your_username</pre>
+</li>
+</ol>
+<p>
+	If all went well, we have a 100% working local cloud storage running off our pi. Now, since not everyone would like to login with terminal each time they wish to access the cloud, I make some customizations to make it easy for even my Mom and Dad to use the cloud.
+</p>
+<p>
+	On the desktop, download and install filezilla. </p>
+<pre>sudo apt-get install filezilla</pre>
+<p> should do it on deb derivatives. Create a launcher icon that triggers the command </p>
+<pre>filezilla sftp://myUsername:myPassword@myIP:myPort/my/root</pre>
+<p> which in my case became </p>
+<pre>filezilla sftp://abhishek:password@192.168.1.10:22/var/www</pre>
+<p>.
+</p>
+<p><center><img loading="lazy" decoding="async" src="https://www.nagekar.com/assets/images/desktop_icon.png" width="800" height="600"/></center><br />
+<center><img loading="lazy" decoding="async" src="https://www.nagekar.com/assets/images/filezillapi.png" width="800" height="600"/></center></p>
+<p>
+	On the mobile phones (we have droids, three of us), I used the &#8216;add ftp server&#8217; option in the <a href="https://play.google.com/store/apps/details?id=com.estrongs.android.pop&#038;hl=en" target="_blank">ES File Explorer</a> and created a shortcut on the home screen with the widgets menu. Hence, accessing the cloud was nothing more troublesome than accessing a local folder on the phone.
+</p>
+<p><center><img loading="lazy" decoding="async" src="https://www.nagekar.com/assets/images/es1.png" width="270" height="480"></center><br />
+<center><img loading="lazy" decoding="async" src="https://www.nagekar.com/assets/images/es2.png" width="270" height="480"></center><br />
+<center><img loading="lazy" decoding="async" src="https://www.nagekar.com/assets/images/es3.png" width="270" height="480"></center></p>
+<p>
+	Now I have my very own, secure, high speed cloud storage solution for all my devices and also for the family. It is really convenient and building a custom case for the thing, it looks pretty badass.
+</p>
+<p><center><img loading="lazy" decoding="async" src="https://www.nagekar.com/assets/images/pisetup.jpg" width="480" height="270"></center></p>
+<p>
+	What do you think?</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Fastboot Horror</title>
+		<link>https://nagekar.com/2016/01/fastboot-horror.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 07 Jan 2016 23:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/01/07/fastboot-horror/</guid>
+
+					<description><![CDATA[This was the second day entirely wasted to get my external hard drive to work with the USB 3 ports on my laptop. It just refused to get detected. It worked fine on the USB 2 port, but just didn&#8217;t read on the 3. Initially thought it was a Thunar issue on XFCE, but there [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>This was the second day entirely wasted to get my external hard drive to work with the USB 3 ports on my laptop. It just refused to get detected. It worked fine on the USB 2 port, but just didn&#8217;t read on the 3. Initially thought it was a Thunar issue on XFCE, but there simply wasn&#8217;t any drive in the output of fdisk -l. Read up dmesg multiple times and there was this line consistently,
+</p>
+<p><code>[sdb] Synchronize Cache(10) failed: Result: hostbyte=DID_ERROR driverbyte=DRIVER_OK</code></p>
+<p>Googled it and read every thread on the first page of the search results, literally. I had started to doubt the USB 3 ports on the notebook now. I am on Debian testing, and thought something has broken down at the kernel level. I immediately started to download openSUSE, to see if it really is a kernel bug, because I am not brave enough to switch kernels. Anyways, I thought, let me look if the BIOS is reading the drive, and boy, what do I see. The BIOS is just not recognizing the drive. Now I began to panic. It really looks like a hardware issue.</p>
+<p>In between my googling, I came across a page that provided some information. Some good guy had asked it for his Windows 8.1 laptop. There was an accepted answer. There were these simple steps, go to BIOS, find Fastboot, disable it. Aha! I said. How did I not think about that myself. Did it, and it was working again, like it should have. Fastboot does save a second each time I turn on my notebook, but this time, it costed me 2 full days. Lesson learnt. When the guys at elite forums say fastboot will prevent some hardware from being read and tested on boot, they aren&#8217;t just putting a nominal warning on the door, that thing is real. &#8220;Want to make your PC boot faster? Enable fastboot&#8221;. No thanks.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

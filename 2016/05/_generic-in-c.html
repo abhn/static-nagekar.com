@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en-US">
+
+<!-- Mirrored from nagekar.com/2016/05/_generic-in-c.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 10:28:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../indexd784.html?feed=rss2" />
+  <link rel="alternate" type="application/atom+xml" title="Subscribe to Abhishek Nagekar's Blog" href="../../index6e0a.html?feed=atom" />
+
+	<title>_Generic in C And Generic LinkedList Implementation &#8211; Abhishek Nagekar</title>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<script>
+window.koko_analytics = {"url":"https:\/\/nagekar.com\/koko-analytics-collect.php","site_url":"https:\/\/nagekar.com","post_id":1118,"path":"\/2016\/05\/_generic-in-c.html","method":"none","use_cookie":false};
+</script>
+<link rel="alternate" type="application/rss+xml" title="Abhishek Nagekar &raquo; Feed" href="../../feed" />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='elementary-style-css' href='../../wp-content/themes/s/style8a54.css?ver=1.0.0' media='all' />
+<link rel="https://api.w.org/" href="../../wp-json/index.html" /><link rel="alternate" title="JSON" type="application/json" href="../../wp-json/wp/v2/posts/1118.json" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.html?rsd" />
+
+<link rel="canonical" href="_generic-in-c.html" />
+<link rel='shortlink' href='../../index576e.html?p=1118' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="../../wp-json/oembed/1.0/embedff13.json?url=https%3A%2F%2Fnagekar.com%2F2016%2F05%2F_generic-in-c.html" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="../../wp-json/oembed/1.0/embed42fb?url=https%3A%2F%2Fnagekar.com%2F2016%2F05%2F_generic-in-c.html&amp;format=xml" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../../wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-270x270.png" />
+		<style id="wp-custom-css">
+			
+.quotes-ol-container {
+	display: flex;
+  flex-direction: column-reverse;
+}
+
+.quotes-ol-container li {
+	flex: 0 0 auto;
+}		</style>
+		</head>
+
+<body class="wp-singular post-template-default single single-post postid-1118 single-format-standard wp-theme-s">
+<div class="container">
+	<nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about.html'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes.html'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags.html'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="https://nagekar.com/" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../indexd784.html?feed=rss2">RSS</a>,
+      <a href="../../index6e0a.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <hr class="stylish"/>
+
+<div class="_progress-wrapper">
+  <div id="_progress"></div>
+</div>
+
+<header>
+	<h1>_Generic in C And Generic LinkedList Implementation</h1>
+	<header class="title-tags">
+		<time>2 May, 2016. It was a Monday</time>
+		<div class="tags-container">
+			Posted under <span>
+										<a class="tags" href="../../tags.html#C">C</a>
+										<a class="tags" href="../../tags.html#programming">programming</a>
+							</span>
+			&nbsp;
+		</div>
+	</header>
+</header>
+
+<hr class="stylish" />
+
+<main role="main">
+
+	
+		<article>
+			<section class="content">
+				<p>
+  Tada! Finally a non-Javascript post for those of you who stopped visiting my blog because of my sick Js addiction. So my lost friend Aditya is back, and while talking to him, I got to read a piece of code that he wrote when we were in third semester, last year. The aim was to build a generic container to store different datatypes, in C. So yes, literally storing [21, &#8220;abhishek&#8221;, 3.142, &#8216;z&#8217;] in a single dynamically allocated linkedlist. That was pretty bold for us then.
+</p>
+<p>
+  For making that happen, he made use of the <a href="https://en.wikipedia.org/wiki/C11_(C_standard_revision)#Changes_from_C99_">_Generic</a> macro that C11 introducted for generic type selection. For those unfamiliar with it, I&#8217;ll begin with explaining the basics of the macro. For those of you interested in the linkedlist code, scroll down to the bottom of this article. You can always check out the <a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf">C11 draft [section 6.5.1.1 Generic selection pg #96]</a> (the standard costs around $60 but is essentially the same thing).
+</p>
+<p>
+	 The _Generic macro follows the format <code>_Generic(controlling-expression, association-list)</code> where <i>controlling-expression</i> is the expression whose type is to be detected, and <i>association-list</i> is the dictionary of type-expression pairs where type can be any object type and the expression can be any expression, constant or a pointer to any function, pretty much anything that can be evaluated.
+</p>
+<p>
+	To put it simply, compare it to the switch statement for type detection. For example,
+</p>
+<figure class="highlight">
+<pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">teststring</span> <span class="o">=</span> <span class="s">"my char array"</span><span class="p"&gt;;</span> <span class="c1">// target object</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">type</span> <span class="o">=</span> <span class="k">_Generic</span><span class="p">(</span>
+    <span class="n">teststring</span><span class="p">,</span>
+    <span class="nl">int:</span> <span class="s">"int"</span><span class="p">,</span>
+    <span class="kt">int</span><span class="o">*:</span> <span class="s">"int *"</span><span class="p">,</span>
+    <span class="nl">char:</span> <span class="s">"char"</span><span class="p">,</span>
+    <span class="kt">char</span><span class="o">*:</span> <span class="s">"char *"</span><span class="p">,</span>
+    <span class="nl">float:</span> <span class="s">"float"</span><span class="p">,</span>
+    <span class="nl">default:</span> <span class="s">"default"</span>
+  <span class="p"&gt;);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">type</span><span class="p"&gt;);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p></p>
+<figure class="highlight">
+<pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gcc main.c
+<span class="nv">$ </span>./a.out
+char <span class="k">*</span></code></pre>
+</figure>
+<p>
+	The _Generic macro can be wrapped around in a nice looking function call, say detect_type(). Compare this to a (pseudo) switch statement which evaluates the case that matches the switch params
+</p>
+<figure class="highlight">
+<pre><code class="language-c" data-lang="c"><span class="c1">// Pseudocode may resemble Javascript. Reader discretion advised</span>
+<span class="n">var</span> <span class="n">someobj</span> <span class="o">=</span> <span class="s">"text here"</span><span class="p"&gt;;</span> <span class="c1">// target object</span>
+<span class="n">var</span> <span class="n">type</span><span class="p"&gt;;</span> <span class="c1">// to store the typename</span>
+<span class="n">type_switch</span><span class="p">(</span><span class="n">someobj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"int"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">int</span><span class="o">*</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"int*"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">char</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"char"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">char</span><span class="o">*</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"char*"</span><span class="p"&gt;;</span>
+  <span class="nl">default:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"default"</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="n">print</span><span class="p">(</span><span class="n">type</span><span class="p">)</span></code></pre>
+</figure>
+<p>
+	So that is it. A compile time type identification in C with a simple macro. We can do pretty amazing stuff with it using pointers to functions. For example, a generic print function, that can take in any type of argument and print it. I have added cases for integers, characters and string, but others can be added just as easily.
+</p>
+<p><script src="https://gist.github.com/abhn/3887df927f2d913c03704cac3ddaa9fc.js"></script></p>
+<p>
+	That was neat, wasn&#8217;t it. Now back to Aditya. He used the same macro to create a dynamically allocated linkedlist. I am pasting the gist here so that you can read his beautiful code.<br />
+  <button id="btn">Show Code</button>
+</p>
+<div id="vector">
+<h4>File <b>linkedlist.c</b></h4>
+<p>    <script src="https://gist.github.com/abhn/0699d92bb972320e33b3cee8f81abc23.js"></script></p>
+<h4>File <b>linkedlist.h</b></h4>
+<p>    <script src="https://gist.github.com/abhn/6175447dd928d4c46bdc7f51b90c8b33.js"></script></p>
+<h4>File <b>main.c</b></h4>
+<p>    <script src="https://gist.github.com/abhn/cacf3b03483759c02e997afe13aa3373.js"></script>
+  </div>
+</p>
+<p>
+	To compile it, run <code>~$ gcc main.c linkedlist.c -o linkedlist</code> on any machine with GCC installed (I&#8217;ve tested it on version &gt;4.9). Run it with <code>~$ ./linkedlist</code> and you should see the different elements that we&#8217;ve added printed on the standard out. You may also pack the linkedlist into a statically linked library, by running.
+</p>
+<figure class="highlight">
+<pre><code class="language-bash" data-lang="bash">~<span class="nv">$ </span>gcc <span class="nt">-c</span> linkedlist.c <span class="nt">-o</span> linkedlist.o
+~<span class="nv">$ </span>ar rcs linkedlist.a linkedlist.o
+~<span class="nv">$ </span>gcc main.c linkedlist.a</code></pre>
+</figure>
+<p>
+  Interesting, isn&#8217;t it? Want to thank him, or have any comments or improvements? Drop them into the comment box. Thank you for reading.
+</p>
+<h3>External Links</h3>
+<ul>
+<li>
+    <a href="https://www.ibm.com/support/knowledgecenter/SSGH2K_13.1.0/com.ibm.xlc131.aix.doc/language_ref/genericselection.html">IBM KB article on generic selector</a>
+  </li>
+<li>
+    <a href="https://www.robertgamble.net/2012/01/c11-generic-selections.html?m=1">Robert Gamble&#8217;s blog post: c11 generic selections</a>
+  </li>
+<li>
+    <a href="https://stackoverflow.com/questions/9804371/syntax-and-sample-usage-of-generic-in-c11">Stackoverflow question: syntax and sample usage of generic in c11</a>
+  </li>
+</ul>
+<p><script>
+  document.getElementById('vector').style.display = 'none';
+  document.getElementById('btn').addEventListener('click', function showVec() {
+    document.getElementById('vector').style.display = 'block';
+  });
+</script></p>
+			</section>
+
+			<hr class="stylish"/>
+
+			<aside class="featured-posts">
+  <h3>Unrelated</h3>
+  <ul>
+    <li><a href="../../2021/02/the-best-time-of-your-life-is-right-now.html">The Best Time Of Your Life Is Right Now</a></li>
+    <li><a href="../../2019/01/mumbai-to-berlin.html">Mumbai To Berlin</a></li>
+    <li><a href="../../2018/03/hum-devs-kab-banenge.html">Hum Developers Kab Banenge?</a></li>
+    <li><a href="../11/a-visit-to-the-taj-mahal.html">A Visit To The Taj Mahal</a></li>
+    <li><a href="../../2019/05/be-easy-on-yourself.html">Be Easy On Yourself</a></li>
+  </ul>
+</aside>
+
+			<hr class="stylish"/>
+
+			<section class="pagination">
+				
+					<a class="prev" href="../04/being-stupid.html">&laquo; Being Stupid</a>
+
+					
+					<a class="next" href="../06/sixth-semester-and-then.html"> Sixth Semester And Then &raquo;</a>
+
+								</section>
+
+		</article>
+
+	
+</main><!-- #main -->
+
+
+</div>
+
+<footer>
+  <hr class="stylish"/>
+  <nav class="top-nav">
+  <details class="nav-details-wrapper">
+    <summary>
+      <a class="nav-item" href='../../index.html'>Home</a> |
+      <a class="nav-item" title="About this blog and me" href='../../about.html'>About</a> |
+      <a class="nav-item" title="Handpicked word art" href='../../quotes.html'>Quotes</a> |
+      <a class="nav-item" title="Buckets of my writing" href='../../tags.html'>Tags</a> |
+      <a class="nav-item" href='https://github.com/abhn'>Github</a> |
+      <span class="nav-item" id="nav-details-toggle">More ✨</span>
+    </summary>
+
+    <form action="https://nagekar.com/" method="get" target="_blank">
+  <label for="search-input">➡️ Search for a specific term: </label>
+  <input id="search-input" name="s" type="text" placeholder="search term" name="" required>
+  <input type="submit" value="Search">
+</form>
+
+    <p><label for="dark-mode-toggle">➡️ Toggle dark mode 🌗</label>&nbsp;
+    <input id="dark-mode-toggle" type="checkbox"/></p>
+
+    <p>➡️ Subscribe via a <a href="https://en.wikipedia.org/wiki/Web_feed">feeds</a> reader: 
+      <a href="../../indexd784.html?feed=rss2">RSS</a>,
+      <a href="../../index6e0a.html?feed=atom">Atom</a></p>
+
+  </details>
+</nav>
+  <div>
+    Theme: <a href="https://github.com/abhn/Elementary">Elementary</a>
+    <br/>
+    <a>Abhishek Nagekar</a> &copy; 2025  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/s\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+<!-- Koko Analytics v2.0.19 - https://www.kokoanalytics.com/ -->
+<script>
+!function(){var e=window,r="koko_analytics";function t(t){t.m=e[r].use_cookie?"c":e[r].method[0],navigator.sendBeacon(e[r].url,new URLSearchParams(t))}e[r].request=t,e[r].trackPageview=function(){if("prerender"!=document.visibilityState&&!/bot|crawl|spider|seo|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)){var i=0==document.referrer.indexOf(e[r].site_url)?"":document.referrer;t({pa:e[r].path,po:e[r].post_id,r:i})}},e.addEventListener("load",function(){e[r].trackPageview()})}();
+</script>
+
+<script src="../../wp-content/themes/s/build/index8a54.js?ver=1.0.0" id="elementary-script-js"></script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"dd6930e6eb8c44088fd6b2cf3e5a2dea","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from nagekar.com/2016/05/_generic-in-c.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 10:28:34 GMT -->
+</html>

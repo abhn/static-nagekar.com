@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>genai &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/genai/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Sat, 07 Jun 2025 10:19:06 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>genai &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>ChatGPT predicts my future &#8211; 50th Birthday Journal Entry</title>
+		<link>https://nagekar.com/2025/06/chatgpt-predicts-my-future-50th-birthday-journal-entry.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 07 Jun 2025 10:19:05 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[genai]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=2612</guid>
+
+					<description><![CDATA[A month or so ago, I posted an article title Journal Entry – 4th of October, 2035. It was intended to be a casual essay intended to serve as my hopes for my future, from where I&#8217;m standing. I&#8217;m positive that my blog will exist in 2035, and I like to be intentional about dropping [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>A month or so ago, I posted an article title <a href="https://nagekar.com/2025/04/journal-entry-4th-of-october-2035.html" data-type="post" data-id="1693">Journal Entry – 4th of October, 2035</a>. It was intended to be a casual essay intended to serve as my hopes for my future, from where I&#8217;m standing. I&#8217;m positive that my blog will exist in 2035, and I like to be intentional about dropping &#8220;breadcrumbs&#8221; hoping that future me would have a way to peak into the messy thoughts that current me has, a way that&#8217;s not captured by photos or people I spend time with. </p>
+
+
+
+<p>During a company wide meeting that had a lot of mentions of GenAI, I was playing around with ChatGPT. At some point, I asked it to summarize the aforementioned blog article. It did a good job at the summarization in my opinion. Something that stood out was that it referred to the author of the article, me, as a &#8220;he&#8221;. So I followed up on that.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><em>ME: why did you think Abhishek Nagekar is a &#8220;he&#8221;?</em></p>
+</blockquote>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>ChatGPT: You&#8217;re absolutely right to raise that question—my assumption that Abhishek Nagekar is a &#8220;he&#8221; was based solely on the traditionally male-associated name Abhishek, which is common in South Asia. However, names alone aren&#8217;t reliable indicators of gender identity, and I should have avoided making that presumption without explicit confirmation&#8230;.If you ever want help digging deeper into a writer’s background or analyzing their style or themes, I’m happy to help!</p>
+</blockquote>
+
+
+<p><!-- /wp:post-content --></p>
+<p><!-- wp:paragraph --></p>
+<p>That last bit caught my attention. What kind of &#8220;insights&#8221; might ChatGPT have into my background.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote">
+<p><!-- wp:paragraph --></p>
+<p><em>ME: Please share what you know about the writer&#8217;s background?</em></p>
+<p><!-- /wp:paragraph --></p>
+</blockquote>
+<blockquote class="wp-block-quote">
+<p><!-- wp:paragraph --></p>
+<p><em>ChatGPT: Abhishek Nagekar is a Berlin-based web and security engineer with a deep passion for open-source software, internet privacy, and ethical technology&#8230;started blogging in 2014, sharing his experiences and insights on his personal website, nagekar.com. His writings often explore topics like digital privacy, the open web, and personal growth&#8230;multifaceted interests and reflections provide a window into the life of a technologist who blends his professional expertise with a thoughtful approach to life&#8217;s broader questions.</em></p>
+<p><!-- /wp:paragraph --></p>
+</blockquote>
+<p><!-- /wp:quote --></p>
+<p><!-- wp:paragraph --></p>
+<p>That was a lot of ego stroking, but I got even more curious.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote">
+<p><em>ME: what about his political views?</em></p>
+</blockquote>
+<blockquote class="wp-block-quote">
+<p><em>ChatGPT: &#8230;While he doesn’t declare political party affiliations, Nagekar’s values suggest a worldview shaped by <strong>progressivism, decentralization, ethics-driven technology, and systemic critique of inequality</strong>.</em></p>
+<p><!-- /wp:quote --></p>
+</blockquote>
+<p><!-- wp:paragraph --></p>
+<p>Here ChatGPT brought out a bunch of political paradigms that it thinks I&#8217;d align on. For most part, they were accurate although to varying degrees of intensity of those beliefs. I then asked it about the political parties that it thinks I&#8217;d vote for.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote">
+<p><em>ME: Hypothetically, what kind of political parties would someone like Abhishek vote for?</em></p>
+<p><!-- /wp:quote --></p>
+</blockquote>
+<blockquote class="wp-block-quote">
+<p><!-- wp:paragraph --></p>
+<p><em>ChatGPT: he’d likely support <strong>left-leaning, environmentally focused, pro-democracy parties</strong> with strong platforms on tech ethics and equity.</em></p>
+<p><!-- /wp:paragraph --></p>
+</blockquote>
+<p><!-- /wp:quote --></p>
+<p><!-- wp:paragraph --></p>
+<p>Finally, I asked it to write a blog post in my style titled &#8220;Journal Entry &#8211; 4th October 2045&#8221;, and here&#8217;s the outcome:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote">
+<p><!-- wp:paragraph --></p>
+<p>04/10/2045. It was a Thursday.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Sitting in a quiet café in Berlin, sipping on a warm cup of coffee, I find myself reflecting on the journey so far. Fifty years on this planet, and what a ride it has been.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Back in 2025, I was deeply engrossed in the world of open-source software, digital privacy, and ethical technology. Working at Mozilla, I was passionate about creating a safer and more inclusive internet. Those days were filled with coding, community engagements, and a relentless pursuit of knowledge.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Over the years, my focus shifted. While technology remained a significant part of my life, I began to see the importance of community, sustainability, and human connections. I started volunteering at local community centers, teaching young minds about the importance of digital literacy and privacy. It was fulfilling to see the spark in their eyes, reminiscent of my younger self.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Traveling became another passion. Exploring different cultures, understanding diverse perspectives, and sharing stories over meals enriched my worldview. Each journey taught me something new, reminding me of the vastness of human experience.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>As I look ahead, I remain hopeful. The world continues to evolve, and with it, the challenges and opportunities. I aim to stay curious, to keep learning, and to contribute positively in whatever way I can.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Thank you for reading.</p>
+<p><!-- /wp:paragraph --></p>
+</blockquote>
+<p><!-- /wp:quote --></p>
+
+<!-- wp:paragraph -->
+<p>Thank you for reading! </p>
+<!-- /wp:paragraph -->]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

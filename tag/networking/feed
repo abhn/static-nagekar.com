@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>networking &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/networking/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Wed, 27 Dec 2023 23:31:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>networking &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Wifi Router Keeps Disconnecting Exactly When Speed Testing</title>
+		<link>https://nagekar.com/2023/12/wifi-router-keeps-disconnecting-exactly-when-speed-testing.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 27 Dec 2023 23:31:54 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[home-server]]></category>
+		<category><![CDATA[networking]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=2081</guid>
+
+					<description><![CDATA[I got a cheap Huawei Wifi 6 Router (AX2 Pro) which was the only sub-20 Euro router I could find on the market that supported Wifi 6. It is a used one of course, and the person I got it from got it from their previous tenants, who I assume got it from China (or [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>I got a cheap Huawei Wifi 6 Router (AX2 Pro) which was the only sub-20 Euro router I could find on the market that supported Wifi 6. It is a used one of course, and the person I got it from got it from their previous tenants, who I assume got it from China (or Aliexpress?) because the product doesn&#8217;t support any language other than Chinese. </p>
+
+
+
+<p>I knew that before buying, but I thought it was an okay tradeoff given the Wifi 6 capabilities at the price. So after an hour of Google Translating every item in the UI and setting everything up, I was very excited to run an internet speed test.</p>
+
+
+
+<p>To my surprise, the Wifi connection just dropped as soon as the speed hit 100Mbps, crashing with a &#8220;socket broken&#8221; error. It was as if someone pulled the plug exactly when I ran the speed test. I tried again with the same result. I could surf the internet, watch youtube and do other things just fine. Just not run a speed test.</p>
+
+
+
+<p>Connecting my laptop with the Ethernet cable gave me the full 1Gbps, what I was expecting. Interestingly, I could replicate the behavior of the router restarting via any device and exactly while speed testing.</p>
+
+
+
+<p>I was a bit disappointed, but not a lot. After all, blindly buying cheap imported routers off kleinanzeigen ought to have its risks. I sat down to write the seller (who probably had never once tried to run the router, just passed it on from her tenants to me) that the product they sold was <a href="https://de.pons.com/%C3%BCbersetzung/deutsch-englisch/kaputt"><em>kaputt</em></a>, simultaneously trying to come up with a search query that&#8217;d probably match someone else&#8217;s description of this problem.</p>
+
+
+
+<h2 class="wp-block-heading">Eureka! </h2>
+
+
+
+<p>As I was writing my seller a message (not exactly expecting a refund, as these things are sold with zero guarantees), it occurred to me that benchmarking an electronic device ought to push its power utilization. It would make sense why the device would operate normally otherwise. I immediately checked the output of the power supply and the required input from the router. TADAA! </p>
+
+
+
+<p>The seller gave me a TP-Link power supply that supplied 9V at 0.6A but the Huawei router was expecting 12V at 1A. I fanatically searched my box of cables and adapters to find a power supply and found a variable power supply that could help with the case.</p>
+
+
+
+<p>As expected, that was it. As soon as the router got the right juice, it started pushing 900mbps+. I find that very impressive, given I picked it up for just 20 euros! Welcome to your new home little guy.</p>
+
+
+
+<p>Thank you for reading!</p>
+
+
+
+<p> </p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

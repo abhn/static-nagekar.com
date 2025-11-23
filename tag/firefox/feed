@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>firefox &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/firefox/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Mon, 18 Mar 2024 21:30:51 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>firefox &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>I made it to Firefox about:credits page!</title>
+		<link>https://nagekar.com/2024/03/i-made-it-to-firefox-aboutcredits-page.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 18 Mar 2024 21:30:27 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[firefox]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=2108</guid>
+
+					<description><![CDATA[This will sound extremely silly but I absolutely adore the about:credits page. This page lists the folks who have spent time of their life to make Firefox and Mozilla products better in some way. Many of them are volunteers and have contributed to Firefox&#8217;s success in their free time. There are perhaps as many motivations [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>This will sound extremely silly but I absolutely adore the <code>about:credits</code> page. This page lists the folks who have spent time of their life to make Firefox and Mozilla products better in some way. Many of them are volunteers and have contributed to Firefox&#8217;s success in their free time. There are perhaps as many motivations as there are contributors; some do it for fun, while others because they align with the <a href="https://www.mozilla.org/en-US/mission/">Mozilla&#8217;s mission</a>.</p>
+
+
+
+<p>It won&#8217;t be an exaggeration to say I wanted to be on that page for a while. To be fair, desire doesn&#8217;t necessarily translate to regular contributions, which is why I didn&#8217;t make it to that page for the longest time. But getting employed by Mozilla helps, and after working on the Add-ons team for a little over a year, I applied to be on the page. And I was accepted!</p>
+
+
+
+<p>If you&#8217;re using Firefox, type <code>about:credits</code> in your URL page and you will find me there, forever. For the non-Firefox users, you can directly navigate to <a href="https://www.mozilla.org/credits/">https://www.mozilla.org/credits/</a> </p>
+
+
+
+<p>That&#8217;s really it. It was a bit showoff-y but I thought this achievement deserved a blog post. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Top Reasons To Use Mozilla Firefox 🔥🦊 Right Now – Part 2</title>
+		<link>https://nagekar.com/2022/11/top-reasons-to-use-mozilla-firefox-right-now-part-2.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 24 Nov 2022 11:34:19 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[browsers]]></category>
+		<category><![CDATA[firefox]]></category>
+		<category><![CDATA[mozilla]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=1620</guid>
+
+					<description><![CDATA[Like many of my friends during the late 2000s, I embarked on my internet journey with Firefox. It started with Firefox being the only browser that could reliably resume downloads in the event of a power outage, which were frequent in my part of India, and that was very useful with a slow internet connection [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Like many of my friends during the late 2000s, I embarked on my internet journey with Firefox. It started with Firefox being the only browser that could reliably resume downloads in the event of a power outage, which were frequent in my part of India, and that was <em>very</em> useful with a slow internet connection that gave me <a href="http://nagekar.com/2020/08/a-tale-of-internet-speeds.html">10KB/s on a good day</a>.</p>
+
+
+
+<p>A few years later I learned about free and open source software, and started thinking of the internet as a public resource and a great equalizer of access to knowledge and opportunity. Firefox was a very natural fit in this newly discovered world of mine.</p>
+
+
+
+<p>Around 8 years ago, I published <a href="http://nagekar.com/2014/12/top-reasons-why-you-should-start-using.html" data-type="URL" data-id="http://nagekar.com/2014/12/top-reasons-why-you-should-start-using.html">top reasons why you should start using Mozilla Firefox right now</a> documenting the various reasons why Firefox should be the browser of choice for anyone who desires a safe, private and customizable web browsing experience.</p>
+
+
+
+<p>Since I&#8217;m now part of the organization that I&#8217;ve so long revered, I thought an update to the original post is appropriate, and started listing some reasons why Firefox is still my browser of choice today.</p>
+
+
+
+<p>I am slightly biased towards Firefox, but in my defense that&#8217;s hardly ever changed.</p>
+
+
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<h2 class="wp-block-heading">Features that enhance your web experience</h2>
+
+
+
+<p>One of the reasons people love Firefox is its customizability. The functionality can be extended using <a href="https://addons.mozilla.org/en-US/firefox/">Addons</a> and for the truly adventurous, Firefox&#8217;s UI is customizable using a <a href="https://www.userchrome.org/how-create-userchrome-css.html">bit of custom CSS</a>. Given how personal web browsing is and how much time we spend using a browser, a bit of customization can go a long way.</p>
+
+
+
+<h3 class="wp-block-heading">Powerful Adblocking with uBlock Origin</h3>
+
+
+
+<p>TL;DR from <a href="https://www.ghostery.com/blog/manifest-v3-the-ghostery-perspective">Ghostery</a></p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>With enforcement of Manifest V3, Google dramatically limits capabilities of browser extensions. It removes access to powerful APIs that allowed us to provide innovation in privacy protection. Being subjected to those constraints, we have to re-invent the way our extensions operate. Intended or not, Manifest V3 takes choice away from users, exposing them to new threats. Manifest V3 is ultimately user hostile.</p>
+<cite><a href="https://www.ghostery.com/blog/manifest-v3-the-ghostery-perspective">https://www.ghostery.com/blog/manifest-v3-the-ghostery-perspective</a></cite></blockquote>
+
+
+
+<p>Ads are the de facto way of monetization on the internet, and many creators rely on it for making a living on the internet. However, since there&#8217;s so much money to be made through harvesting data for targeting ads, internet ad companies try to &#8220;spy&#8221; on people across the internet learning more and more about their browsing habits to show them the most relevant ads.</p>
+
+
+
+<p>Many people face a dilemma of having to choose between giving back to the content creators they&#8217;ve come to love and depend upon, and not being okay with third party companies looking at their browsing habits all over the internet.</p>
+
+
+
+<p>Tools like uBlock Origin prevent “cross site tracking” and block ads and other annoyances from loading on webpages saving bandwidth and energy, and <a href="https://www.reddit.com/r/ProgrammerHumor/comments/8mglb7/forget_about_gzipping_minification_ahead_of_time/">enabling a fast and pleasant web experience</a>.</p>
+
+
+
+<p>uBlock Origin also allows enabling ads on certain websites, which is something we should definitely do to support digital creators we rely upon for news, knowledge and entertainment.</p>
+
+
+
+<p>Note that online advertising can be both effective and useful, without being creepy as <a href="https://help.duckduckgo.com/duckduckgo-help-pages/company/advertising-and-affiliates/">this page from DuckDuckGo describes</a>.</p>
+
+
+
+<p>Further reading:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.eff.org/deeplinks/2021/12/googles-manifest-v3-still-hurts-privacy-security-innovation">Google’s Manifest V3 Still Hurts Privacy, Security, and Innovation </a>&#8211; EFF.org</li>
+
+
+
+<li><a href="https://www.eff.org/deeplinks/2021/12/chrome-users-beware-manifest-v3-deceitful-and-threatening">Chrome Users Beware: Manifest V3 is Deceitful and Threatening</a> &#8211; EFF.org</li>
+
+
+
+<li><a href="https://www.ghostery.com/blog/manifest-v3-the-ghostery-perspective">Manifest V3: The Ghostery perspective</a> &#8211; Ghostery.com</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Picture-in-Picture</h3>
+
+
+
+<p>Picture-in-picture mode detaches the currently playing video on many video streaming websites like YouTube, enabling you to watch a football game while reading an article on Wikipedia all in a resizable little window that can be moved around. </p>
+
+
+
+<figure class="wp-block-video"><video controls src="http://nagekar.com/wp-content/uploads/2022/11/picture-in-picture.mov"></video></figure>
+
+
+
+<h3 class="wp-block-heading">Multi-Account Containers</h3>
+
+
+
+<p>Want to keep work, social media and finance related websites all separate but don’t want to bother having two browsers or separate web history? <a href="https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/">Multi-Account containers</a> help you do exactly that.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" src="http://nagekar.com/wp-content/uploads/2022/11/image-1.png" alt="" class="wp-image-1627" width="278" height="398" srcset="https://nagekar.com/wp-content/uploads/2022/11/image-1.png 698w, https://nagekar.com/wp-content/uploads/2022/11/image-1-209x300.png 209w" sizes="(max-width: 278px) 100vw, 278px" /></figure></div>
+
+
+<p>Now you can browse Facebook in one “container”, access your banking apps on another and keep your work and personal email logged into a third and fourth container. Yes, logged into two Google accounts from the same browser.</p>
+
+
+
+<p>None of the websites in one container “see” the websites open in another, either directly or with third party cookie based tracking.</p>
+
+
+
+<h3 class="wp-block-heading">Tree Style Tabs</h3>
+
+
+
+<p>You’d have to pay me to have me move back to the old way of using browser tabs and you’d fail. They’re that good. Seriously.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" src="http://nagekar.com/wp-content/uploads/2022/11/image-2.png" alt="" class="wp-image-1628" width="296" height="421" srcset="https://nagekar.com/wp-content/uploads/2022/11/image-2.png 454w, https://nagekar.com/wp-content/uploads/2022/11/image-2-211x300.png 211w" sizes="(max-width: 296px) 100vw, 296px" /><figcaption class="wp-element-caption">Tabs arranged in a &#8220;tree&#8221; shape</figcaption></figure></div>
+
+
+<p></p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><a href="http://nagekar.com/wp-content/uploads/2022/11/image-9.png"><img decoding="async" src="http://nagekar.com/wp-content/uploads/2022/11/image-9-1006x1024.png" alt="" class="wp-image-1642" width="282" height="287" srcset="https://nagekar.com/wp-content/uploads/2022/11/image-9-1006x1024.png 1006w, https://nagekar.com/wp-content/uploads/2022/11/image-9-295x300.png 295w, https://nagekar.com/wp-content/uploads/2022/11/image-9-768x782.png 768w, https://nagekar.com/wp-content/uploads/2022/11/image-9-1509x1536.png 1509w, https://nagekar.com/wp-content/uploads/2022/11/image-9.png 1580w" sizes="(max-width: 282px) 100vw, 282px" /></a><figcaption class="wp-element-caption">Look maa, no Tabs bar!</figcaption></figure></div>
+
+
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/">Tree Style Tabs</a> give you a quick way to visually see the which tab something came out of, essentially answering the question of &#8220;how did I even reach here?&#8221; when you are 6 levels down in a Wikipedia rabbit hole about deep sea internet cables or something.</p>
+
+
+
+<p><blockquote class="twitter-tweet"><p dir="ltr" lang="en">did you show them possibly the greatest tiktok to exist <a href="https://t.co/v4JAbQjFk0">pic.twitter.com/v4JAbQjFk0</a></p>— gabe (citation needed) (@GabeHockett) <a href="https://twitter.com/GabeHockett/status/1581854113360646145?ref_src=twsrc%5Etfw">October 17, 2022</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+
+
+<p class="has-small-font-size">P.S. Annie is one of my favorite creators on the internet. Go follow her page <a href="https://www.instagram.com/depthsofwikipedia/?hl=en">@depthsofwikipedia</a> on Instagram for weird Wikipedia content.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<h2 class="wp-block-heading">Better privacy controls for all</h2>
+
+
+
+<p>Because privacy is a fundamental right and most people prefer not having third parties snooping over their shoulders as they browse the internet.</p>
+
+
+
+<h3 class="wp-block-heading">Total Cookie Protection</h3>
+
+
+
+<p>Firefox rolled out <a href="https://techcrunch.com/2022/06/14/firefox-gets-a-privacy-boost-as-total-cookie-protection-becomes-the-default-for-all-users">total cookie protection</a> earlier this year which creates separate &#8220;cookie jars&#8221; for websites preventing cross domain tracking using shared cookies. </p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><a href="http://nagekar.com/wp-content/uploads/2022/11/image-3.png"><img loading="lazy" decoding="async" src="http://nagekar.com/wp-content/uploads/2022/11/image-3.png" alt="" class="wp-image-1630" width="354" height="177" srcset="https://nagekar.com/wp-content/uploads/2022/11/image-3.png 1024w, https://nagekar.com/wp-content/uploads/2022/11/image-3-300x150.png 300w, https://nagekar.com/wp-content/uploads/2022/11/image-3-768x384.png 768w" sizes="auto, (max-width: 354px) 100vw, 354px" /></a><figcaption class="wp-element-caption">Image from <a href="https://blog.mozilla.org/en/products/firefox/extensions-addons/how-firefoxs-total-cookie-protection-and-container-extensions-work-together/">Mozilla</a></figcaption></figure></div>
+
+
+<h3 class="wp-block-heading">Enhanced Tracking Protection &amp; Breach Monitoring</h3>
+
+
+
+<p>Firefox protects you from malice on the internet. It also does a good job at reporting the protections.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><a href="http://nagekar.com/wp-content/uploads/2022/11/image-6.png"><img loading="lazy" decoding="async" src="http://nagekar.com/wp-content/uploads/2022/11/image-6-1024x821.png" alt="" class="wp-image-1633" width="338" height="270" srcset="https://nagekar.com/wp-content/uploads/2022/11/image-6-1024x821.png 1024w, https://nagekar.com/wp-content/uploads/2022/11/image-6-300x240.png 300w, https://nagekar.com/wp-content/uploads/2022/11/image-6-768x615.png 768w, https://nagekar.com/wp-content/uploads/2022/11/image-6.png 1228w" sizes="auto, (max-width: 338px) 100vw, 338px" /></a><figcaption class="wp-element-caption">Enhanced Tracking Protection dashboard</figcaption></figure></div>
+
+
+<p>Breach monitoring alerts you if your email address was involved in any data leaks across the internet.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><a href="http://nagekar.com/wp-content/uploads/2022/11/image-7.png"><img loading="lazy" decoding="async" src="http://nagekar.com/wp-content/uploads/2022/11/image-7-1024x684.png" alt="" class="wp-image-1634" width="346" height="231" srcset="https://nagekar.com/wp-content/uploads/2022/11/image-7-1024x684.png 1024w, https://nagekar.com/wp-content/uploads/2022/11/image-7-300x200.png 300w, https://nagekar.com/wp-content/uploads/2022/11/image-7-768x513.png 768w, https://nagekar.com/wp-content/uploads/2022/11/image-7.png 1030w" sizes="auto, (max-width: 346px) 100vw, 346px" /></a><figcaption class="wp-element-caption">Breach Monitor dashboard</figcaption></figure></div>
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<h2 class="wp-block-heading">Bonus section</h2>
+
+
+
+<p>This section will have weird things by design.</p>
+
+
+
+<h3 class="wp-block-heading">Custom CSS</h3>
+
+
+
+<p>As mentioned earlier, Firefox&#8217;s UI elements are made with web technologies like CSS. A bit of custom CSS goes a long way into making the Browser look exactly the way you want. A popular workflow is <a href="https://medium.com/@Aenon/firefox-hide-native-tabs-and-titlebar-f0b00bdbb88b">hiding the Tabs bar</a> and relying on Tree Style Tabs for inter-Tab navigation.</p>
+
+
+
+<h3 class="wp-block-heading">Logo 🦊</h3>
+
+
+
+<p>This is very personal (that is, even more than the rest of this article), but I&#8217;m very fond of the Firefox logo. And as we&#8217;ve seen in the past, many people <a href="https://blog.mozilla.org/en/firefox/the-fox-is-still-in-the-firefox-logo/">feel very strongly about the Fox</a> in the logo so I&#8217;m not alone in feeling that way.</p>
+
+
+
+<h3 class="wp-block-heading">Firefox Developer Edition</h3>
+
+
+
+<p>I use the <a href="https://www.mozilla.org/en-US/firefox/developer/">Firefox Developer Edition</a> as my work browser. It is really good if you work with frontend web technologies like CSS or JavaScript. Debugging CSS or JavaScript on the Developer Edition is a joy, and I was especially impressed at how good it was with <a href="https://mozilladevelopers.github.io/playground/css-grid">Grids</a>.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<h2 class="wp-block-heading">In closing</h2>
+
+
+
+<p>If you had asked me 8 years ago why I recommend Firefox, I&#8217;d have gone on a long rant about how Firefox is one of the only two major non-Chromium based browsers, and the only one <a href="https://www.mozilla.org/en-US/about/manifesto/">supported by a non-profit</a> that fights to keep the web open and inclusive; That Firefox is <a href="https://www.mozilla.org/en-US/credits/">built and maintained with the help of thousands of volunteers</a> and open web enthusiasts and so on.</p>
+
+
+
+<p>Today I would just say I recommend it because it is a great browser. It is also all of the above if you care, but if all you care about is the best web experience, Firefox will serve you just fine. </p>
+
+
+
+<p><a href="https://www.mozilla.org/en-US/firefox/new/">Go give the Fox a try</a>! Thank you for reading.</p>
+
+
+
+<p>Featured image credits: <a href="https://unsplash.com/photos/ZHS3j0_Y_KM" data-type="URL">https://unsplash.com/photos/ZHS3j0_Y_KM</a></p>
+]]></content:encoded>
+					
+		
+		<enclosure url="http://3.79.57.119/wp-content/uploads/2022/11/picture-in-picture.mov" length="13457281" type="video/quicktime" />
+
+			</item>
+		<item>
+		<title>Top reasons why you should start using Mozilla Firefox right now</title>
+		<link>https://nagekar.com/2014/12/top-reasons-why-you-should-start-using.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 02 Dec 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[browsers]]></category>
+		<category><![CDATA[chrome]]></category>
+		<category><![CDATA[firefox]]></category>
+		<category><![CDATA[google]]></category>
+		<category><![CDATA[mozilla]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/12/02/top-reasons-why-you-should-start-using/</guid>
+
+					<description><![CDATA[If you have visited my blog a couple of times, it must be clear to you by now that I am a Mozillian. I love their way and goals and in this world dominated by corporate giants, they are like a candle in the darkness. I promote Mozilla everywhere, at college and in my friends&#8217; [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;">
+<div class="separator" style="clear: both; text-align: center;"><a style="margin-left: 1em; margin-right: 1em;" href="https://www.nagekar.com/wp-content/uploads/2020/12/mozilla.png"><img loading="lazy" decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/mozilla.png" width="320" height="167" border="0" /></a></div>
+<p>If you have visited my blog a couple of times, it must be clear to you by now that I am a Mozillian. I love their way and goals and in this world dominated by corporate giants, they are like a candle in the darkness. I promote Mozilla everywhere, at college and in my friends&#8217; circle. See that little banner at the right hand bottom corner, yes, its an affiliate banner from Mozilla, the only affiliated thing on my blog.</p>
+<p>I am sure most of you have heard or even used Firefox, the browser by <a href="https://www.mozilla.org/" target="_blank" rel="noopener">Mozilla Foundation</a>. The 1.0 version was released just more than 10 years from now (In fact, they just celebrated their <a href="https://www.nagekar.com/2014/11/celebrating-10th-birthday-of-mozilla.html">10th birthday</a>) and they are getting better with each release.</p>
+<p>But then, you might ask, why do you have to care about all this? All you wanted to do was browse websites. That&#8217;s it. Why care about the company which creates it and all those mess. Why try to be a hero by downloading another browser, when it is just a piece of software, right? No. Not so much. Talking, not from the point of view of a Mozillian, but someone who stopped using IE and Chrome way back and has been using Firefox on all his devices from atleast 3 years, I will try to focus on the most significant reasons to drop your existing browser and start with Firefox.</p>
+<h2 style="text-align: left;">Add-ons</h2>
+<p style="text-align: left;">Does anybody remembers that there was a time when people used to use browsers just for the sake of browsing, and nothing else was even expected from a browser. That all changed with Firefox. You had this thing called <a href="https://addons.mozilla.org/en-US/firefox/" target="_blank" rel="noopener">add-on</a> and plugins that can be easily downloaded to do little tasks to make your browsing experience better. They have one for all your needs (or most of them, if you question that!) plus you get to install third party add-ons too.</p>
+<p style="text-align: left;">To be honest, Chrome has a market place of their own. Their add-ons (or extensions, as they are called) are generally considered more secure than their Firefox counterparts. Also, Chrome has more extensions than Firefox. But then, no third-party installs, sandboxing makes them so. In turn you don&#8217;t get powerful add-ons in Chrome, for example No-Script and AdBlock. <i>In short, Firefox&#8217;s add-ons are much more capable to do a particular task, than any of its competitors&#8217;.</i></p>
+<h2 style="text-align: left;"><b>Customization</b></h2>
+<p style="text-align: left;">Most of the browsers available right now are too closed to get any close to Firefox in terms of customization. Chrome looks clean and feels fast and responsive. Opera is great too, but you don&#8217;t get stuff like <a href="config" target="_blank" rel="noopener">about:config </a>in any browser. With some days of experience, you can literally make the browser work for you. Everything&#8217;s under your control. It feels good to have control, trust me.</p>
+<p>If core customization was not enough for you, then themes will do the rest. Free and open, feel free to give the browser your own look and feel. Don&#8217;t like an icon at a place? Move it. No, seriously move that icon to a place you are comfortable with.</p>
+<blockquote class="tr_bq"><p>Every installation of Firefox is different, users make it. Each one is using his or her version of Firefox.</p></blockquote>
+<div style="text-align: left;">
+<h2 style="text-align: left;">NPAPI Depreciated? We use Firefox</h2>
+<p style="text-align: left;">NPAPI is the interface developers use to develop plugins for our browsers (the Java, Flash and Adobe Reader types) and Google has decided to remove them completely, unless it approved by Google. Now why should you care about this? Yeah, actually you should not. You will still be able to watch Youtube videos and read ebooks online, but it would be like, someone giving you all the comforts of life, at the cost of your individual freedom and preference. Are you okay with it? I&#8217;m not. Thank you.</p>
+</div>
+<h2 style="text-align: left;">Privacy</h2>
+<p style="text-align: left;">Now who won&#8217;t agree. Companies have started to revise their privacy policies to match their personal gains. Almost all the browsers collect information about the sites you visit, sell them to other corporates to give you targeted ads. No, I&#8217;m not saying this. It&#8217;s written there, right in their privacy policy. Now-a-days most of the popular browser have a DO NOT TRACK feature to prevent sites to give you your &#8216;tailored ads&#8217;. No one likes random sites, that you are visiting for the first time, know as much about you as, say your mail provider knows. Not me atleast. An important thing to know here is that<a href="https://support.google.com/chrome/answer/2790761?hl=en" target="_blank" rel="noopener"> Google Chrome has still NOT implemented the DO NOT TRACK policy</a>, as of the time of writing this article. So now you know it is time to switch, right?</p>
+<h2 style="text-align: left;">Sync</h2>
+<p style="text-align: left;">So, it is really convenient to have all our bookmarks and stuff from our mobiles to computer and vice versa. Firefox now makes it possible, securely. For power users, who work on the web all day, this comes as a great addon. Although some other browsers have had this feature before Firefox, we know well whom to trust with our information, looking at their individual policies.</p>
+<h2 style="text-align: left;">Security</h2>
+<p style="text-align: left;">Out of the box, maybe Firefox is just second in security to Chrome, thanks to Chrome&#8217;s sandboxing techniques that Firefox has not implemented yet. That said, a little customization with use of proper addons (No Scripts and Adblock, mentioned earlier make a good example here), can make Firefox way more secure than Chrome, let alone other browsers.</p>
+<h2 style="text-align: left;">Speed</h2>
+<p style="text-align: left;">Apparently Firefox appears to be a bit sluggish, especially on Windows. But here is a thing I noticed. That speed is constant, regardless of the number of tabs you have open. Compared to this, I have used other browsers that seem faster and more responsive at first, but just cannot take the load of heavy use (like I have my Iceweasel running for about 15hours at a stretch, with an average of 10 tabs open at all the times, and it runs flawlessly. Crash? Yes, sometimes, but I certainly get my session back each and every single time). Next time some friend of yours shows you the quickness of any browser, ask him to try the same with 15 tabs of heavy multimedia filled sites open and see how they perform (and yes, horizontal tab scrolling! Tabs on Firefox don&#8217;t shrink in size as you add them ;).</p>
+<h2 style="text-align: left;">Final words</h2>
+<p style="text-align: left;">You see, I tried my best to keep this article going into another &#8216;Firefox vs Chrome&#8217; battle, but it slowly slipped into it. The reason being the competition between these two browser. Technically, Internet Explorer comes in second most widely used browser, but had Microsoft not shipped it (forcefully!) with every MS operating system, I doubt the fact had been the same. Chrome is taking the lead, head on, and others are falling back. I got no personal problem with it, of course, but I hate monoculture. There was a time when 95% browser share was of IE, and Mozilla brought us out of it, made us see the web the way it was meant to be, not the way some corporations wanted us to see. I will promote Mozilla till they stand with what they say, &#8216;power in the hands of user&#8217; and I will promote them or anyone else who stands up to make the web better, give power to the individual users who actually run the web and let them take control of what they want the world to see, and what not.</p>
+<p style="text-align: left;">Although the title suggests that this was an article about &#8216;Mozilla Firefox&#8217; as a browser, it clearly isn&#8217;t limited to it. It looks at a much bigger picture of the web. Tell me, what you feel about it, even if you are cool with handing over your data to companies. I would really like to know.</p>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Celebrating 10th birthday of Mozilla Firefox</title>
+		<link>https://nagekar.com/2014/11/celebrating-10th-birthday-of-mozilla.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 11 Nov 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[firefox]]></category>
+		<category><![CDATA[mozilla]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/11/11/celebrating-10th-birthday-of-mozilla/</guid>
+
+					<description><![CDATA[Around 10 years from now, in a small room, a bunch of wizards created something that later went on to change the entire web. It was called Firefox 1.0 At that time, Internet Explorer had around 95% browser market share in client side desktops. If you didn&#8217;t catch, read it again, yes 95%. Microsoft pretty [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;" trbidi="on">
+<div class="separator" style="clear: both; text-align: center;"></div>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://3.bp.blogspot.com/-EZRQxxA3UZw/VGOj5XSoQbI/AAAAAAAAHsk/tC2nI34Db4Q/s1600/FxWpTrue.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img loading="lazy" decoding="async" border="0" height="240" src="https://www.nagekar.com/wp-content/uploads/2020/12/FxWpTrue.png" width="320" /></a></div>
+<p>Around 10 years from now, in a small room, a bunch of wizards created something that later went on to change the entire web. It was called Firefox 1.0</p>
+<p>At that time, Internet Explorer had around 95% browser market share in client side desktops. If you didn&#8217;t catch, read it again, yes 95%. Microsoft pretty much owned the Internet, but then, Firefox came in, and the web was never the same again.</p>
+<p>Never before did a company kept the user in front of all, give the user the ultimate power, without any expectations for profits. Yes, these people are the true non-profits you will see. They got their values and they stick to it. They are programmers, coders, technical writers or just plain office workers who want to make a change in this world. It doesn&#8217;t take a college degree or loads of cash to be one of them, just go out and start contributing (or from your computer, your choice).</p>
+<p>I am a 19 year old. I started to use the Internet recently, like 5 years ago. The Internet Explorer was my first browser (actually didn&#8217;t know what a browser was then, it just came with the copy of Windows). Later, as I grew, I realized the software that I use to surf the web can actually be changed. It was when I found Firefox, my second and last browser. It was awesome, and I used to boast how my downloads resumed after a power cut without any kind of download manager. I didn&#8217;t know anything about Mozilla or its mission then, still, the piece of software I was using was great.</p>
+<p>An important transition in my life too place when I switched to Linux. I had realized that if I want to follow my dream of becoming a computer wizard someday, I need to master Linux. With Linux, I experienced the true power of Firefox. I got to know what are plugins and add ons. I got to know more about Mozilla and their aim, how they started and who are its core members. I was even lucky to attend a seminar of Asa Dotzler in India, which cleared all the remaining doubts I had, if any. I knew this is the organization I want to see myself working at in the next 10 years. I knew this was it.</p>
+<p>Today, I am writing this article as a thank you. I didn&#8217;t want to get all technical with the facts about Mozilla, because there are loads of articles on the web for that. I just wanted to let people know, what impact Mozilla had, on my life and the way I live it.</p>
+<p>A Mozillian 🙂</p></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

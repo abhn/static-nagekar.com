@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>security &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/security/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Mon, 25 Jul 2022 09:30:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>security &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Cross Site Scripting (XSS), Cross Site Request Forgery (CSRF) And Server Side Request Forgery (SSRF)</title>
+		<link>https://nagekar.com/2022/07/cross-site-scripting-xss-cross-site-request-forgery-csrf-and-server-side-request-forgery-ssrf.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 25 Jul 2022 09:29:42 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[security]]></category>
+		<category><![CDATA[web]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1565</guid>
+
+					<description><![CDATA[XSS, CSRF (or XSRF) and SSRF are common vulnerability in modern web applications where an attacker tries to imitates either a legitimate client to an unsuspecting server or a legitimate server to another unsuspecting server. The basic underlying principle behind each of these attack remains the same; performing action on behalf of a legitimate entity. [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>XSS, CSRF (or XSRF) and SSRF are common vulnerability in modern web applications where an attacker tries to imitates either a legitimate client to an unsuspecting server or a legitimate server to another unsuspecting server. The basic underlying principle behind each of these attack remains the same; performing action on behalf of a legitimate entity. Let&#8217;s look at each of them in a bit more detail and learn about how to protect our web applications against each of them.</p>
+
+
+
+<h2 class="wp-block-heading">XSS (Cross Site Scripting) </h2>
+
+
+
+<p>XSS or Cross Site Scripting occurs when an attacker manages to execute malicious script code in a victim&#8217;s browser as the victim. Browsers store a lot of sensitive information in them. Some of this information is used to identify a user on a website. </p>
+
+
+
+<p>A script loaded from a website can access information stored on your browser through that website, which is how sessions work in your browser. That&#8217;s how Facebook or any other website knows to show you your personalized information and not someone else&#8217;s.</p>
+
+
+
+<p>XSS occurs if an attacker gets control over the scripts running in your browser. If they can execute code, they can steal your login credentials and trick you into installing malware on your computer.</p>
+
+
+
+<p>There are different kinds of XSS attacks and they depend on where the payload is stored.</p>
+
+
+
+<h3 class="wp-block-heading">Reflected XSS</h3>
+
+
+
+<p>A reflected XSS vulnerability occurs when a piece of data from a URL is reflected back into the website code unsanitized and can be injected into. This can be a result of a GET or a POST request, and it is especially severe as an unauthenticated GET request as that URL can be shared on social media and anyone clicking on it gets compromised.</p>
+
+
+
+<p><strong>Remediation of reflected XSS</strong> &#8211; Sanitization of all user inputs before passing it back into the view</p>
+
+
+
+<h3 class="wp-block-heading">Stored XSS</h3>
+
+
+
+<p>A stored XSS vulnerability occurs when a web application stores an XSS attack payload without sanitizing it and then displays it back to the same user or a different user. A notable recent example is <a href="https://blog.hubspot.com/website/cross-site-scripting">British Airways website getting compromised</a> and exposing sensitive data including credit card information of 380,000 transactions.</p>
+
+
+
+<p><strong>Remediation of stored XSS</strong> &#8211; It is the same as with reflected XSS: Sanitization of all user inputs before storing the data in the database.</p>
+
+
+
+<h3 class="wp-block-heading">DOM based XSS</h3>
+
+
+
+<p>Unlike reflected/stored XSS, a DOM based XSS occurs only on the client&#8217;s side. This can be a result of a user typing in a string into an input field that gets parsed and executed as code. An attacker can trick a user to paste a string into their browser which will execute due to insecure parsing and compromise a user&#8217;s credentials.</p>
+
+
+
+<p>Remediation against DOM based XSS &#8211; Display text as text, and nothing else. Instead of <code>element.innerHtml</code> use <code>element.innerText</code> or <code>element.textContext</code> to ensure the data displayed back to a user is purely text.</p>
+
+
+
+<h2 class="wp-block-heading">CSRF (Cross Side Request Forgery)</h2>
+
+
+
+<p>CSRF occurs when a malicious website makes a request to a legitimate server through an unsuspecting victim. </p>
+
+
+
+<p>Web applications communicate with clients through HTTP requests. When a request is made, the browser attacks all information that it knows about the website along with the request, including login/authentication credentials (called cookies).</p>
+
+
+
+<p>If the web server doesn&#8217;t have protective measures, a request made through a legitimate website and an attacker&#8217;s website look exactly the same (or they can be forged to look the same). As a result, an attacker can make a request telling the victim&#8217;s bank to transfer $100 to the attacker&#8217;s account, and since the request is made through the attacker&#8217;s browser, the bank&#8217;s server will process it as a legitimate request.</p>
+
+
+
+<p><strong>Remediation of CSRF </strong>&#8211; CSRF can be easily prevented by requiring any unsafe request to validate itself using a valid CSRF token that can only be found in the website&#8217;s code and changes on every use. Additionally, authentication/login cookies can be marked as sameSite only, such that any third party website making the request doesn&#8217;t contain the sensitive authentication cookies. </p>
+
+
+
+<h2 class="wp-block-heading">SSRF (Server Side Request Forgery)</h2>
+
+
+
+<p>SSRF is similar to CSRF, but instead of an compromised client making a request to an unsuspecting server, here a compromised server makes a request to itself or another unsuspecting server.</p>
+
+
+
+<p>Since a server might be a privileged node in the network, the attacker can make the server access and return sensitive information or perform privileged actions that the attacker&#8217;s account wouldn&#8217;t allow. </p>
+
+
+
+<p>SSRF can also be used to trigger code execution in servers where the vulnerability can be exploited using the privileges of the server itself.</p>
+
+
+
+<p><strong>Remediation of SSRF</strong> &#8211; Any outgoing request needs to be explicitly allowed from the application by maintaining an allowlist of domains and servers a given server can connect to. The scope of these requests should be made as narrow as possible. </p>
+
+
+
+<h2 class="wp-block-heading">In conclusion</h2>
+
+
+
+<p>I hope that was an interesting quick read on one of the most common vulnerabilities in modern web application. Injection and SSRF are two of OWASP&#8217;s top 10 for 2021, so it is definitely worth looking into them and protecting our web applications from potential vulnerabilities.</p>
+
+
+
+<p>Read more on OWASP top 10 here: <a href="https://owasp.org/www-project-top-ten/">https://owasp.org/www-project-top-ten/</a></p>
+
+
+
+<p>Thank you for reading</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Setting Up ModSecurity + OWASP Core Rule Set + Nginx On AWS EC2</title>
+		<link>https://nagekar.com/2022/07/setting-modsecurity-core-rule-set.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 10 Jul 2022 15:35:08 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[security]]></category>
+		<category><![CDATA[web]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1460</guid>
+
+					<description><![CDATA[ModSecurity is a web application firewall. It can protect your web application from preying eyes of vulnerability scanners and attackers. It is extremely customizable, and when paired with OWASP&#8217;s Core Rule Set, covers quite a lot of web technologies and frameworks. In this article, we&#8217;ll set up ModSecurity on an AWS EC2 Server running Nginx [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>ModSecurity is a web application firewall. It can protect your web application from preying eyes of vulnerability scanners and attackers. It is extremely customizable, and when paired with OWASP&#8217;s Core Rule Set, covers quite a lot of web technologies and frameworks.</p>
+<p>In this article, we&#8217;ll set up ModSecurity on an AWS EC2 Server running Nginx web server.</p>
+
+
+<p>Table of contents</p>
+
+
+
+<ul class="wp-block-list"><li><a href="#set-up-nginx" data-type="internal" data-id="#set-up-nginx">Set up Nginx on Ubuntu server</a></li><li><a href="#set-up-modsecurity">Set up ModSecurity</a></li><li><a href="#set-up-connector">Set up ModSecurity &lt;-> Nginx connector</a></li><li><a href="#load-modsecurity">Loading ModSecurity module in Nginx</a></li><li><a href="#set-up-crs">Set up OWASP Core Rule Set</a></li><li><a href="#turn-on-live">Turn on ModSecurity in live mode and test XSS payload</a></li></ul>
+
+
+
+<h2 class="wp-block-heading" id="set-up-nginx">Set up Nginx on Ubuntu server</h2>
+
+
+
+<p>For this tutorial, we&#8217;re using AWS LightSail&#8217;s Ubuntu image. Choose any instance size depending on your requirements. I&#8217;ll choose a 40$ / Month instance with 8GB RAM and 2vCPUs just so that the compilation of ModSecurity is faster.</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="616" height="1024" src="https://www.nagekar.com/wp-content/uploads/2022/06/image-1-616x1024.png" alt="" class="wp-image-1550" srcset="https://nagekar.com/wp-content/uploads/2022/06/image-1-616x1024.png 616w, https://nagekar.com/wp-content/uploads/2022/06/image-1-181x300.png 181w, https://nagekar.com/wp-content/uploads/2022/06/image-1.png 754w" sizes="(max-width: 616px) 100vw, 616px" /></figure>
+
+
+
+<p>Once the instance is created, log into the instance with SSH and update packages</p>
+
+
+
+<pre class="wp-block-code"><code>$ apt update &amp;&amp; apt upgrade -y</code></pre>
+
+
+
+<p>Install Nginx</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo apt install nginx</code></pre>
+
+
+
+<p>Check what version of Nginx did we get from our package manager. This will be used when compiling Nginx later.</p>
+
+
+
+<pre class="wp-block-code"><code>$ nginx -v</code></pre>
+
+
+
+<p>I got the following output:</p>
+
+
+
+<pre class="wp-block-code"><code>nginx version: nginx/1.18.0 (Ubuntu)</code></pre>
+
+
+
+<p>To make sure the webserver is successfully installed and running, simply visit the IP address of the server. It should look something similar to this:</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="648" height="230" src="https://www.nagekar.com/wp-content/uploads/2022/06/image-2.png" alt="" class="wp-image-1551" srcset="https://nagekar.com/wp-content/uploads/2022/06/image-2.png 648w, https://nagekar.com/wp-content/uploads/2022/06/image-2-300x106.png 300w" sizes="(max-width: 648px) 100vw, 648px" /></figure>
+
+
+
+<h2 class="wp-block-heading" id="set-up-modsecurity">Set up ModSecurity</h2>
+
+
+
+<p>First we&#8217;ll need to install compilation and other dependencies.</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo apt-get install -y apt-utils autoconf automake build-essential git libcurl4-openssl-dev libgeoip-dev liblmdb-dev libpcre++-dev libtool libxml2-dev libyajl-dev pkgconf wget zlib1g-dev git</code></pre>
+
+
+
+<p>Next we&#8217;ll clone the ModSecurity repository into the /opt directory</p>
+
+
+
+<pre class="wp-block-code"><code>$ cd /opt &amp;&amp; sudo git clone --recursive https://github.com/SpiderLabs/ModSecurity &amp;&amp; cd ModSecurity</code></pre>
+
+
+
+<p>Next we run the build script</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo ./build.sh</code></pre>
+
+
+
+<p>Next we&#8217;ll run the compile script that will fetch all the dependencies for the compilation</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo ./configure</code></pre>
+
+
+
+<p>It is possible that this command fails and reports you of any dependencies that are still missing. You can simply google them with &#8220;install XYZ on Ubuntu&#8221; and run the configure command again. Ideally it will just exit without any errors.<br>Next we start with the actual compilation of ModSecurity</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo make</code></pre>
+
+
+
+<p>A reason why I didn&#8217;t go with the smallest server was that this step is resource intensive and could take 15 minutes or more depending on your server&#8217;s CPU and memory.</p>
+
+
+
+<p>If all went through, we can now install ModSecurity</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo make install</code></pre>
+
+
+
+<p>If all went through without any errors, we have ModSecurity installed. </p>
+
+
+
+<h2 class="wp-block-heading" id="set-up-connector">Set up ModSecurity &lt;-&gt; Nginx connector</h2>
+
+
+
+<p>We start off by downloading ModSecurity-Nginx and Nginx source code. <strong>Note that the version of Nginx in the next command must match the version installed on our system</strong>. For me, that&#8217;s  1.18.0 but it could be different for you.</p>
+
+
+
+<pre class="wp-block-code"><code>$ cd /opt &amp;&amp; git clone https://github.com/SpiderLabs/ModSecurity-nginx.git
+$ cd /opt &amp;&amp; sudo wget http://nginx.org/download/nginx-1.18.0.tar.gz</code></pre>
+
+
+
+<p>Untar the Nginx source. Replace the Nginx version in the next command if needed.</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo tar -xvf nginx-1.18.0.tar.gz</code></pre>
+
+
+
+<p>Next, we need to grab configure arguments. For that, run the nginx command with a capital &#8216;V&#8217; flag.</p>
+
+
+
+<pre class="wp-block-code"><code>$ nginx -V
+nginx version: nginx/1.18.0 (Ubuntu)
+built with OpenSSL 1.1.1f  31 Mar 2020
+TLS SNI support enabled
+<strong>configure arguments: --with-cc-opt='-g -O2 -fdebug-prefix-map=/build/nginx-7KvRN5/nginx-1.18.0=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC -Wdate-time -D_FORTIFY_SOURCE=2' --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fPIC' --prefix=/usr/share/nginx --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log --lock-path=/var/lock/nginx.lock --pid-path=/run/nginx.pid --modules-path=/usr/lib/nginx/modules --http-client-body-temp-path=/var/lib/nginx/body --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --http-proxy-temp-path=/var/lib/nginx/proxy --http-scgi-temp-path=/var/lib/nginx/scgi --http-uwsgi-temp-path=/var/lib/nginx/uwsgi --with-debug --with-compat --with-pcre-jit --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_auth_request_module --with-http_v2_module --with-http_dav_module --with-http_slice_module --with-threads --with-http_addition_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_image_filter_module=dynamic --with-http_sub_module --with-http_xslt_module=dynamic --with-stream=dynamic --with-stream_ssl_module --with-mail=dynamic --with-mail_ssl_module</strong></code></pre>
+
+
+
+<p>Note the &#8220;configure arguments&#8221; in the command&#8217;s output. We need to build modsecurity with these arguments.</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo ./configure --add-dynamic-module=../ModSecurity-nginx &lt;paste configure args here&gt;</code></pre>
+
+
+
+<p>For example, here&#8217;s what I&#8217;ll run:</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo ./configure --add-dynamic-module=../ModSecurity-nginx --with-cc-opt='-g -O2 -fdebug-prefix-map=/build/nginx-7KvRN5/nginx-1.18.0=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC -Wdate-time -D_FORTIFY_SOURCE=2' --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fPIC' --prefix=/usr/share/nginx --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log --lock-path=/var/lock/nginx.lock --pid-path=/run/nginx.pid --modules-path=/usr/lib/nginx/modules --http-client-body-temp-path=/var/lib/nginx/body --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --http-proxy-temp-path=/var/lib/nginx/proxy --http-scgi-temp-path=/var/lib/nginx/scgi --http-uwsgi-temp-path=/var/lib/nginx/uwsgi --with-debug --with-compat --with-pcre-jit --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_auth_request_module --with-http_v2_module --with-http_dav_module --with-http_slice_module --with-threads --with-http_addition_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_image_filter_module=dynamic --with-http_sub_module --with-http_xslt_module=dynamic --with-stream=dynamic --with-stream_ssl_module --with-mail=dynamic --with-mail_ssl_module</code></pre>
+
+
+
+<p>Don&#8217;t copy the above command. You must use the configure arguments supplied by your installation of Nginx.</p>
+
+
+
+<p>Next we build the modules</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo make modules</code></pre>
+
+
+
+<p>This is a compilation step and may take a little while (a minute or so) to complete. The final step here is to copy the compiled modules to a place from where we can reference them from our Nginx config.</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo mkdir /etc/nginx/modules
+$ sudo cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules</code></pre>
+
+
+
+<h2 class="wp-block-heading" id="load-modsecurity">Loading ModSecurity module in Nginx</h2>
+
+
+
+<p>Simply add the following line to the nginx config file at <code>/etc/nginx/nginx.conf</code> outside any block.</p>
+
+
+
+<pre class="wp-block-code"><code>load_module /etc/nginx/modules/ngx_http_modsecurity_module.so;</code></pre>
+
+
+
+<h2 class="wp-block-heading" id="set-up-crs"><br>Set up OWASP Core Rule Set</h2>
+
+
+
+<p>OWASP&#8217;s Core Rule Set is a set of rules that cover most common frameworks and technologies as well as cover signatures for common web application attack payload. It is a good place to start if you don&#8217;t want to write custom rules for many common attacks.</p>
+
+
+
+<p>First, we&#8217;ll clone the modsecurity-crs repository</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo git clone https://github.com/coreruleset/coreruleset /opt/coreruleset</code></pre>
+
+
+
+<p>Then we&#8217;ll rename the crs-setup config file</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo mv /opt/coreruleset/crs-setup.conf.example /opt/coreruleset/crs-setup.conf</code></pre>
+
+
+
+<p>Activate the default exclusion rule file.</p>
+
+
+
+<pre class="wp-block-code"><code>sudo mv /opt/coreruleset/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example /opt/coreruleset/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf</code></pre>
+
+
+
+<p>Next we create a place for coreruleset to live within <code>/etc/nginx</code> and copy some additional config files.</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo mkdir -p /etc/nginx/modsec
+$ sudo cp /opt/ModSecurity/unicode.mapping /etc/nginx/modsec
+$ sudo cp /opt/ModSecurity/modsecurity.conf-recommended /etc/nginx/modsec/modsecurity.conf</code></pre>
+
+
+
+<p>Next we create a config file that will include our main ModSecurity config file and CRS setup files.</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo touch /etc/nginx/modsec/main.conf</code></pre>
+
+
+
+<p>And add the following lines to the config file.</p>
+
+
+
+<pre class="wp-block-code"><code>Include /etc/nginx/modsec/modsecurity.conf
+Include /opt/coreruleset/crs-setup.conf
+Include /opt/coreruleset/rules/*.conf</code></pre>
+
+
+
+<p>Finally, we reference this main.conf file from our Nginx config.</p>
+
+
+
+<pre class="wp-block-code"><code>$ sudo vim /etc/nginx/sites-available/default</code></pre>
+
+
+
+<p>And add the following line within the server block.</p>
+
+
+
+<pre class="wp-block-code"><code>modsecurity on;
+modsecurity_rules_file /etc/nginx/modsec/main.conf;</code></pre>
+
+
+
+<h2 class="wp-block-heading" id="turn-on-modsecurity"><br>Turn ModSecurity &#8220;on&#8221; and test XSS payload</h2>
+
+
+
+<p>So far, we&#8217;ve configured everything but if we restart Nginx now, it won&#8217;t filter attacks but only detect them since the default operating mode of ModSecurity is to only log malicious requests. To change that, let&#8217;s open the file <code>/etc/nginx/modsec/modsecurity.conf</code> and change the line</p>
+
+
+
+<pre class="wp-block-code"><code>SecRuleEngine DetectionOnly</code></pre>
+
+
+
+<p>to</p>
+
+
+
+<pre class="wp-block-code"><code>SecRuleEngine On</code></pre>
+
+
+
+<p>For our changes to go live, we&#8217;ll need to restart Nginx.</p>
+
+
+
+<pre id="block-688d1141-18c0-45f4-8bf1-c008cd8526f1" class="wp-block-code"><code>$ sudo systemctl restart nginx</code></pre>
+
+
+
+<p>Let&#8217;s test our ModSecurity installation. Open your browser and send a sample payload in the GET parameter. It doesn&#8217;t have to be a real parameter, but just something that can trigger an XSS filter.</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;&#91;server-ip]/index.html?xss-payload=&lt;script&gt;alert(1)&lt;/script&gt;</code></pre>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="934" height="206" src="https://www.nagekar.com/wp-content/uploads/2022/06/image-3.png" alt="" class="wp-image-1552" srcset="https://nagekar.com/wp-content/uploads/2022/06/image-3.png 934w, https://nagekar.com/wp-content/uploads/2022/06/image-3-300x66.png 300w, https://nagekar.com/wp-content/uploads/2022/06/image-3-768x169.png 768w" sizes="(max-width: 934px) 100vw, 934px" /></figure>
+
+
+
+<p>That&#8217;s ideal. ModSecurity is working and blocking seemingly malicious requests to our web server. Now any application that sits behind our web server will be protected against many generic web application attacks, even OWASP Top 10 thanks to OWASP&#8217;s CoreRuleSet. </p>
+
+
+
+<h2 class="wp-block-heading">In conclusion</h2>
+
+
+
+<p>It isn&#8217;t the most straightforward of installations, but it isn&#8217;t very difficult either. The hard part, however, starts here and it is to get rid of all false positives and tweak the installation such that it fits the needs of your specific web application. Depending on how complex an application you&#8217;re trying to protect, it can be fairly time consuming.</p>
+
+
+
+<p>I&#8217;ll write an article on how to tweak the parameters of ModSecurity and make it fit our needs in the future in a separate article. </p>
+
+
+
+<p>That&#8217;s it for this article, thank you for reading! </p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>WordPress Security Checklist: How To Secure Your WordPress Website</title>
+		<link>https://nagekar.com/2022/04/wordpress-security-checklist.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 18 Apr 2022 14:40:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[security]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1387</guid>
+
+					<description><![CDATA[WordPress has been powering my blog since the start of last year. In fact, migrating my Jekyll template to WordPress was one of the highlights of my new year 2021 and I&#8217;m very happy that I did, although I didn&#8217;t publish as much as I had hoped for. Fortunately, I&#8217;ve learned a lot more about [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>WordPress has been powering my blog <a href="https://www.nagekar.com/2021/01/life-goes-full-circle-blog-back-to-wordpress.html">since the start of last year</a>. In fact, migrating my Jekyll template to WordPress was one of the highlights of my new year 2021 and I&#8217;m very happy that I did, although I didn&#8217;t publish as much as I had hoped for. Fortunately, I&#8217;ve learned a lot more about WordPress over the course of a year than when I started. In this short primer, I hope to go into a bit more depth on how to securely run a self hosted WordPress website.</p>
+
+
+
+<h2 class="wp-block-heading">Prerequisites</h2>
+
+
+
+<p>Before we get started, there are a few things that we need to make sure we have to</p>
+
+
+
+<ul class="wp-block-list"><li>Self hosted WordPress installation with SSH access</li><li>Administrator account to set up plugins</li></ul>
+
+
+
+<h2 class="wp-block-heading">Table of contents</h2>
+
+
+
+<ol class="wp-block-list"><li><a href="#plugins" data-type="internal" data-id="#plugins">Keep plugins to the minimum and up to date</a></li><li><a href="#file-permissions">Fix file permissions</a></li><li><a href="http://tfa">Two-Factor Authentication</a></li><li><a href="#failed-logins">Set up auto banning of failed logins</a></li><li><a href="#regular-backups">Enable regular backups</a></li><li><a href="http://xml-rpc">Disable XML-RPC</a></li><li><a href="#file-editing">Disable file editing in WordPress admin</a></li><li><a href="#waf">Use a Web Application Firewall</a></li><li><a href="http://general-security">Don&#8217;t forget the usual web security measures</a></li></ol>
+
+
+
+<h2 class="wp-block-heading" id="plugins">1. Keep plugins to the minimum and up to date</h2>
+
+
+
+<p>I wish I could just sticky something like this on top of most of my articles, but most people trying to attack our websites don&#8217;t have the time or resources to develop and use 0days. They use existing exploits out in the wild and some of these exploits can be months old, if not more. WordPress core and plugin authors can only do so much more than promptly releasing patches for security vulnerabilities that they find.</p>
+
+
+
+<p>So then it is up to us as site admins to make sure we patch as soon as is feasible. Having worked on many large codebases, I know automatic updating isn&#8217;t always possible or even desirable, but having an eye on the changelog can definitely help not get compromised.</p>
+
+
+
+<p>I&#8217;d also recommend a web security helper plugin that sends alert emails when it detects outdated plugins / themes / core.</p>
+
+
+
+<h2 class="wp-block-heading" id="file-permissions">2. Fix file permissions</h2>
+
+
+
+<p>During development, many files and directories permissions are way too open to make it easy to set up the website and all plugins. In production, however, the permissions can be dialed down a notch to prevent anyone with any access on the server to take over the whole website.</p>
+
+
+
+<p>Similarly, attackers typically upload shell code using the uploads functionality, and if code execution is disabled in the directory, we make it harder for this attack to succeed.</p>
+
+
+
+<p>A detailed guide on setting file permissions can be found on official WordPress documentation: <a href="https://wordpress.org/support/article/changing-file-permissions/">https://wordpress.org/support/article/changing-file-permissions/</a></p>
+
+
+
+<h2 class="wp-block-heading" id="tfa">3. Two-Factor Authentication</h2>
+
+
+
+<p>Administrator accounts have many powers on a WordPress website, and a compromised administrator account can lead to uploading of <a href="https://en.wikipedia.org/wiki/Shellcode">PHP shell code</a> leading to command execution and server compromise.</p>
+
+
+
+<p>To make sure admin accounts are extra secure, enforce 2FA on all administrator accounts. This can be done by any <a href="https://wordpress.org/plugins/search/2fa/">2FA or login security plugin</a> on the WordPress plugin store.</p>
+
+
+
+<h2 class="wp-block-heading" id="failed-logins">4. Set up auto banning of failed logins</h2>
+
+
+
+<p>Since WordPress doesn&#8217;t ship with any builtin way of auto-banning failed login attempts, we have to rely on plugins like WordFence. WordFence will need to be configured with options to block login attempts after a certain number of failed attempts.</p>
+
+
+
+<figure class="wp-block-image"><img loading="lazy" decoding="async" width="1024" height="362" src="https://www.nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08-1024x362.png" alt="" class="wp-image-1519" srcset="https://nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08-1024x362.png 1024w, https://nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08-300x106.png 300w, https://nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08-768x272.png 768w, https://nagekar.com/wp-content/uploads/2022/02/2022-04-12_09-08.png 1450w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>WordFence can also help you disable execution in upload directories, block IP addresses making malicious requests and much more.</p>
+
+
+
+<h2 class="wp-block-heading" id="regular-backups">5. Enable regular backups</h2>
+
+
+
+<p>While we can take preventive measures against mishaps, we can never be sure. Hence it is imperative that the website is backed up regularly. Backing up can be done at multiple places. The database can be backed up separately from the static assets and files. There are many plugins, like WPVivid, that help you fine tune what gets backed up and where it gets stored. It is always nice if you can afford an external backup location, like AWS S3.</p>
+
+
+
+<p>The hosting provider might also have ways of backing up the website. For example, AWS Lightsail has daily instance snapshots which backs up the entire disk.</p>
+
+
+
+<h2 class="wp-block-heading" id="xml-rpc">6. Disable XML-RPC</h2>
+
+
+
+<p>If you don&#8217;t use plugins that rely on XML-RPC or using the WordPress mobile app, it is wise to disable XML-RPC which removes another widely used attack surface by attackers. Many plugins allow the disabling of XML-RPC, including the aforementioned WordFence.</p>
+
+
+
+<h2 class="wp-block-heading" id="file-editing">7. Disable file editing in WordPress admin</h2>
+
+
+
+<p>Disable editing of files from WordPress admin as that&#8217;s almost never a good idea, especially if you can achieve the same using more secure methods like SSH. To disable file editor, simply add </p>
+
+
+
+<p><code>define( 'DISALLOW_FILE_EDIT', true );</code></p>
+
+
+
+<p>to your <code>wp-config.php</code> file.</p>
+
+
+
+<h2 class="wp-block-heading" id="waf">8. Use a Web Application Firewall</h2>
+
+
+
+<p>A firewall plugin like <a href="https://sucuri.net/">Sucuri</a> or <a href="https://www.wordfence.com">WordFence</a> can identify attack signatures and block malicious requests. Many also include IP address block lists that prevent known malicious IP addresses from reaching your WordPress website.</p>
+
+
+
+<p>For more control, there&#8217;s <a href="https://github.com/SpiderLabs/ModSecurity">ModSecurity</a>. ModSecurity needs to be installed alongside the web server and it can detect and block known attack signatures for not just WordPress but just about any popular web framework. It does require a deeper technical know how to setup and maintain ModSecurity, and a plugin might work be a better approach for most people.</p>
+
+
+
+<h2 class="wp-block-heading" id="general-security">9. Don&#8217;t forget the usual web security measures</h2>
+
+
+
+<p>A WordPress website is, at the end of it all, a website. While there are WordPress specific ways of hardening a WordPress installation, there is also a whole plethora of best practices that apply to every website, including the WordPress ones. </p>
+
+
+
+<ol class="wp-block-list"><li><strong>Use HTTPS</strong> &#8211; SSL/TLS certificates are free, and usually come by default with many hosting providers and CDNs. Don&#8217;t forget to turn it on and enforce it in strict mode.</li><li> <strong>Use appropriate security headers </strong>&#8211; Headers tell the browser how to handle your website&#8217;s content. Many client side attacks can be mitigated by using the right set of headers. A detailed list of useful headers can be found on OWASP&#8217;s website: <a href="https://owasp.org/www-project-secure-headers" target="_blank" rel="noreferrer noopener">https://owasp.org/www-project-secure-headers</a></li><li><strong>Use CAPTCHA on login page</strong> &#8211; to prevent bot submissions and more sophisticated bruteforce attacks, enforce a CAPTCHA like reCaptcha on login page. WordFence supports this out of the box (needs an API key from Google). </li><li><strong>Handle user input with care when using a custom theme</strong> &#8211; when using a custom theme that accepts user input in the form of query parameters to show filtered content, the regular best practices around user generated input has to be followed. Embedding user input in output can lead to Cross Site Scripting, while passing it straight to the database can lead to SQL Injection.</li></ol>
+
+
+
+<h2 class="wp-block-heading">In conclusion</h2>
+
+
+
+<p>I hope that was useful. If you have any questions around WordPress or suggestions to improve this article, feel free to reach out to me via email. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

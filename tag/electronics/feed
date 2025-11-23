@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>electronics &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/electronics/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Thu, 03 Oct 2024 07:57:07 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>electronics &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Using Zotac Zbox CI327 Mini PC as Router (feat. Pfsense)</title>
+		<link>https://nagekar.com/2024/05/using-zotac-zbox-ci327-mini-pc-as-router-feat-pfsense.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 18 May 2024 12:13:39 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[electronics]]></category>
+		<category><![CDATA[home-server]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=2084</guid>
+
+					<description><![CDATA[This past Christmas, I tasked myself to build my very own home server / lab. The goal was to do so at as little an upfront and running cost as possible. One of the components of a home server is a good customizable router. My requirements were modest but power efficient hardware, dual Ethernet ports [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>This past Christmas, I tasked myself to build my very own home server / lab. The goal was to do so at as little an upfront and running cost as possible. One of the components of a home server is a good customizable router. My requirements were modest but power efficient hardware, dual Ethernet ports (for WAN/LAN separation) and intel network adapter, fanless design for quiet operation, and ideally not more than 50 euros.</p>
+
+
+
+<p>On the christmas eve, a Zotac Zbox CI327 on local classified ads caught my attention. It checked all the boxes except for an intel network card. After some reading, I decided to bite and went to pick it up. Since it was the evening of 24th December, it really felt like a Christmas present for myself!</p>
+
+
+
+<h2 class="wp-block-heading">Design</h2>
+
+
+
+<p>CI327 has a fanless design and it depends on its sturdy metallic body for cooling. Which means when I first picked it up, I was pleasantly surprised at how heavy and sturdy it felt, despite the plastic-y looking frame (not that that would&#8217;ve been a bad thing at 35 euros either).</p>
+
+
+
+<p>Don&#8217;t you love it when you set your expectations based on what you&#8217;ll be paying for something and then it turns out to be something you&#8217;d have paid 3x for and still would&#8217;ve felt good?</p>
+
+
+
+<p>The rubber foot double as screws to open the box, and can be opened without a screwdriver so that is cool.</p>
+
+
+
+<h2 class="wp-block-heading">Realtek NIC woes</h2>
+
+
+
+<p>If there&#8217;s one thing that&#8217;s not ideal about the CI327, it is that it comes with a Realtek NIC. I knew people recommended against buying anything with Realtek NICs, but I went with it given the price. Soon I found myself debugging very strange network issues involving the internet capping at 100mbps and sometimes the entire LAN interface refusing to route any traffic. </p>
+
+
+
+<p>Upon analyzing the dmesg output, I realized it was a <a href="https://www.google.com/search?q=zotac+ci327+ethernet+port+issue">very common issue for this device</a>. I tried to follow any advice that I found and it turns out it had to do with outdated drivers which upon updating resolved the issue. </p>
+
+
+
+<h2 class="wp-block-heading">Pfsense</h2>
+
+
+
+<p>My main motivation of buying the CI327 was to use it as a router for my home network. I was obsessed with setting up a real home server, and the first step towards it (at least how I envisioned everything) was to have a really powerful router that pulls internet from the ISP provided modem and connects everything.</p>
+
+
+
+<p>Pfsense was very easy to set up, with the only challenge being finding a display and keyboard to run the setup script.</p>
+
+
+
+<figure class="wp-block-image size-full"><img fetchpriority="high" decoding="async" width="1920" height="2560" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_6834-scaled.jpg" alt="" class="wp-image-2166" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_6834-scaled.jpg 1920w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6834-225x300.jpg 225w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6834-188x250.jpg 188w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6834-768x1024.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6834-1152x1536.jpg 1152w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6834-1536x2048.jpg 1536w" sizes="(max-width: 1920px) 100vw, 1920px" /></figure>
+
+
+
+<h2 class="wp-block-heading">Performance</h2>
+
+
+
+<p>While I had really no idea what I exactly I wanted from Pfsense, all I could really do was run some speedtests off the LAN port and make sure nothing&#8217;s getting bottlenecked with a quick internet speed test. </p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="2560" height="1920" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_6844-scaled.jpg" alt="" class="wp-image-2167" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_6844-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6844-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6844-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6844-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6844-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6844-2048x1536.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<p>And it seemed to work. I was getting the full throughput of the bandwidth provided to me by my ISP. All that I had to do now was to hook up a switch and a Wireless AP to this LAN network and connect all of my local devices to this network. </p>
+
+
+
+<h2 class="wp-block-heading">TP-SG608E Network Switch + Huawei AX2 Pro Wifi 6 Access Point</h2>
+
+
+
+<p>I went with the TP-Link TP-SG608E as my managed network switch. The LAN port of the CI327 is now connected to the WAN of the TP link switch, and from here the <a href="http://nagekar.com/2024/01/building-vs-buying-a-nas-a-non-hardware-nerds-perspective.html" data-type="link" data-id="http://nagekar.com/2024/01/building-vs-buying-a-nas-a-non-hardware-nerds-perspective.html">Synology NAS</a>, Dell Optiplex homeserver, Huawei AX2 Pro Wifi 6 access point and a Raspberry Pi are connected. </p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1920" height="2560" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_6902-scaled.jpg" alt="" class="wp-image-2172" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_6902-scaled.jpg 1920w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6902-225x300.jpg 225w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6902-188x250.jpg 188w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6902-768x1024.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6902-1152x1536.jpg 1152w, https://nagekar.com/wp-content/uploads/2024/05/IMG_6902-1536x2048.jpg 1536w" sizes="(max-width: 1920px) 100vw, 1920px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1440" height="2560" src="http://nagekar.com/wp-content/uploads/2024/05/A212FE9C-E207-4C3E-8DE7-FC9568440ACA-scaled.jpg" alt="" class="wp-image-2173" srcset="https://nagekar.com/wp-content/uploads/2024/05/A212FE9C-E207-4C3E-8DE7-FC9568440ACA-scaled.jpg 1440w, https://nagekar.com/wp-content/uploads/2024/05/A212FE9C-E207-4C3E-8DE7-FC9568440ACA-169x300.jpg 169w, https://nagekar.com/wp-content/uploads/2024/05/A212FE9C-E207-4C3E-8DE7-FC9568440ACA-141x250.jpg 141w, https://nagekar.com/wp-content/uploads/2024/05/A212FE9C-E207-4C3E-8DE7-FC9568440ACA-768x1365.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/A212FE9C-E207-4C3E-8DE7-FC9568440ACA-864x1536.jpg 864w, https://nagekar.com/wp-content/uploads/2024/05/A212FE9C-E207-4C3E-8DE7-FC9568440ACA-1152x2048.jpg 1152w" sizes="auto, (max-width: 1440px) 100vw, 1440px" /></figure>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>In conclusion, the setup is working good enough that I sometimes forget that I have all of these <em>moving parts</em> powering my home network. There&#8217;s some interesting software running on both the Dell Optiplex and the Raspberry Pi which I might write a post about in the future. As far as the Zotac Zbox CI327 goes, it is probably one of the most value for money tech purchase I&#8217;ve made and I&#8217;ve very pleased with it in spite of the little Realtek woes.</p>
+
+
+
+<p>Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>10.5 &gt; 12.5 &gt; 14 &gt; 15.6 (Maybe) &#8211; Chuwi Minibook X N100 Review</title>
+		<link>https://nagekar.com/2024/05/10-5-12-5-14-15-6-maybe-chuwi-minibook-x-n100-review.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 14 May 2024 21:28:46 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=2115</guid>
+
+					<description><![CDATA[In my quest to find the perfect laptop, I&#8217;ve made yet another stride (or slide, we&#8217;ll see about that). A week ago (actually a month and a half ago, as I&#8217;m publishing this), I bought myself a Chuwi Minibook X, Intel N100 edition. Chu-what?! You might ask. I&#8217;m glad you asked. Motivation for a new [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>In my quest to find the perfect laptop, I&#8217;ve made yet another stride (or slide, we&#8217;ll see about that). A week ago (actually a month and a half ago, as I&#8217;m publishing this), I bought myself a Chuwi Minibook X, Intel N100 edition. Chu-what?! You might ask. I&#8217;m glad you asked.</p>
+
+
+
+<h3 class="wp-block-heading">Motivation for a new laptop</h3>
+
+
+
+<p>I have a sling bag that I really like. It is tiny but fits everything that I&#8217;d generally carry when stepping out for a few hours; headphones, portable power bank, some cables etc. A couple of months ago I got myself a 7in screen that latches to a Raspberry Pi and looks like a cool &#8220;cyberdeck&#8221;. I thought it would be very cool to be able to carry it everywhere; to have a device with a full desktop operating system running with me that isn&#8217;t as bulky as a regular laptop.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="2560" height="1920" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_8432-scaled.jpg" alt="" class="wp-image-2157" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_8432-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_8432-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_8432-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_8432-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_8432-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_8432-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<p>I have a <a href="/2020/04/thinkpad-x230-in-2020.html" data-type="link" data-id="/2020/04/thinkpad-x230-in-2020.html">Thinkpad X230</a> as my personal laptop. It is small compared to most laptops, and features a 12.5in screen. Overall it is probably a bit bulkier than a modern 13in laptop like the Dell XPS 13 and cannot be carried in my tiny sling bag. Upon looking for a portable device with a 7-10in screen on the internet that&#8217;d fit in my sling bag (around 25cms in length), all I found were tablets and few laptops running Android, iPadOS or ChromeOS.</p>
+
+
+
+<p>But I really wanted a device to run my favorite Linux distros on.</p>
+
+
+
+<h3 class="wp-block-heading">Requirements</h3>
+
+
+
+<p>A device to run a desktop operating system on (ideally a Linux distro) that&#8217;s no bigger than 25cms across and 16cms wide. For reference, the generally accepted small footprint laptops like the Dell XPS 13 or the Lenovo X13 Yoga are 30x20cms and 31x22cms respectively, which feels noticeably bigger than a 10in tablet device with a keyboard, the size I&#8217;m going for. </p>
+
+
+
+<p>The internal specs weren&#8217;t as important, but anything that&#8217;s relatively power efficient so that I don&#8217;t have to then use it with a charger at all times. </p>
+
+
+
+<h3 class="wp-block-heading">Contenders</h3>
+
+
+
+<p>Given the size constraints, there aren&#8217;t very many devices to choose from. In the traditional brands, there is the <a href="https://www.microsoft.com/de-de/d/surface-go-3/904h27d0cbwn">Microsoft Surface Go 3</a> and the Surface Laptop Go 3. Outside of traditional brands, there&#8217;s <a href="https://dragonbox.de/de/netbooks-umpcs/gpd-pocket-3-intel-core-i7-1195g7.html">GPD Pocket 3</a> and a <a href="https://www.aliexpress.us/item/3256806536929677.html">whole bunch of 7-8in laptops</a> that all look suspiciously similar to one another. One of the brands I stumbled upon during this search was Chuwi. They had a laptop that checked all of the requirement checkboxes I had, and unlike the other options, wasn&#8217;t nearly as expensive. </p>
+
+
+
+<p>Upon some reading on Reddit, I realized it was a real company (the experience with their support seems to be mixed; I&#8217;ve not had any complaints so far) and the product was reviewed by youtubers and redditors alike. Good signs. I decided to bite and placed an order during their spring sale to effectively get the laptop for EUR 317 (down from the regular &gt;360). It had it in my hands 2-3 days later.</p>
+
+
+
+<h3 class="wp-block-heading">Initial build quality impressions</h3>
+
+
+
+<p>The build quality is a solid 6/10 in my book. Of course, it isn&#8217;t as good as my XPS 17 or M1 Pro Macbook Pro, but it isn&#8217;t as cheap as an off the shelf HP or Dell laptop worth a couple of hundred Euros. The hinge feels solid, and the display part of the laptop is solid metal, but the keyboard half is plastic-y. It is hard to tell, thanks to the good color blend.</p>
+
+
+
+<p>The packaging is okay. The laptop comes with a 36W USB-C charger out of the box, and it is of okay quality.</p>
+
+
+
+<p>The keys on the keyboard are a bit oddly placed and requires some getting used to. The power button doesn&#8217;t always register a click, and also takes some getting used to. The indicator LEDs for charging and power feel cheap and are hard to see at steeper angles. The USB-C ports aren&#8217;t the highest quality either, and there&#8217;s a slight amount of misalignment in the ports, at least on my particular unit&#8217;s case. This doesn&#8217;t affect its functionality, but is definitely indicative of sub-par QA. </p>
+
+
+
+<h3 class="wp-block-heading">Pictures</h3>
+
+
+
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex">
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1920" height="2560" data-id="2125" src="http://nagekar.com/wp-content/uploads/2024/04/IMG_7670-scaled.jpg" alt="" class="wp-image-2125"/></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="2560" height="1920" data-id="2143" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7668-EDIT-scaled.jpg" alt="" class="wp-image-2143" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7668-EDIT-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7668-EDIT-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7668-EDIT-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7668-EDIT-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7668-EDIT-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7668-EDIT-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1920" height="2560" data-id="2144" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7669-scaled.jpg" alt="" class="wp-image-2144" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7669-scaled.jpg 1920w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7669-225x300.jpg 225w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7669-188x250.jpg 188w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7669-768x1024.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7669-1152x1536.jpg 1152w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="2560" height="1920" data-id="2146" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7671-scaled.jpg" alt="" class="wp-image-2146" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7671-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7671-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7671-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7671-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7671-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7671-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="2560" height="1920" data-id="2147" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7672-scaled.jpg" alt="" class="wp-image-2147" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7672-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7672-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7672-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7672-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7672-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7672-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1920" height="2560" data-id="2148" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7673-scaled.jpg" alt="" class="wp-image-2148" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7673-scaled.jpg 1920w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7673-225x300.jpg 225w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7673-188x250.jpg 188w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7673-768x1024.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7673-1152x1536.jpg 1152w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7673-1536x2048.jpg 1536w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1920" height="2560" data-id="2149" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7674-scaled.jpg" alt="" class="wp-image-2149" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7674-scaled.jpg 1920w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7674-225x300.jpg 225w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7674-188x250.jpg 188w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7674-768x1024.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7674-1152x1536.jpg 1152w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7674-1536x2048.jpg 1536w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="2560" height="1920" data-id="2150" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7676-scaled.jpg" alt="" class="wp-image-2150" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7676-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7676-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7676-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7676-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7676-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7676-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="2560" height="1920" data-id="2151" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7677-scaled.jpg" alt="" class="wp-image-2151" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7677-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7677-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7677-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7677-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7677-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7677-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="2560" height="1920" data-id="2152" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7678-scaled.jpg" alt="" class="wp-image-2152" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7678-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7678-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7678-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7678-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7678-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7678-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="2560" height="1920" data-id="2156" src="http://nagekar.com/wp-content/uploads/2024/05/IMG_7679-scaled.jpg" alt="" class="wp-image-2156" srcset="https://nagekar.com/wp-content/uploads/2024/05/IMG_7679-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7679-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7679-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7679-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7679-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/05/IMG_7679-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+</figure>
+
+
+
+<p>Note that the Windows 11 license issue resolved itself automatically. I had already created a support ticket with Chuwi who provided me with another license key which I didn&#8217;t need after the issue went away by itself.</p>
+
+
+
+<h3 class="wp-block-heading">Rome trip</h3>
+
+
+
+<p>A huge motivation for buying this laptop was to be able to use it in tight places, like on an economy seat of my flight from Frankfurt to Mumbai where the person in front has their seat fully reclined (oddly specific, but honest).</p>
+
+
+
+<p>I got to use it in an airplane for the first time (for the intended use case, that is) during my Rome trip in the last week of March, and on my way to India in the first week of April. It works well, like 7/10 well. The size of the device and thus the keyboard does become a productivity bottleneck and it strained my wrists typing on it for more than a couple of minutes without breaks. For its intended use case of surfing the web and light documentation, it works well nevertheless.</p>
+
+
+
+<h3 class="wp-block-heading">Linux support is sparse and makes the device unreliable</h3>
+
+
+
+<p>Of course, the first thing I did after unboxing the laptop and making sure it isn&#8217;t completely dead is try and flash Linux on it. I started with Fedora, and upon seeing a lot of hiccups, installed Ubuntu.</p>
+
+
+
+<p>A major hassle is the default orientation of the screen, which is portrait. So the splash screen and many of the startup options show up in portrait, and only upon logging in successfully does the custom orientation (landscape) kicks in.</p>
+
+
+
+<p>There are ways to make it work better, but I wasn&#8217;t very patient. Then there was the problem with resuming from a sleep where the screen would be all messed up (think half of the display is black, the other half has strange colored lines across it) and required a reboot. It almost feels like a hardware problem, but it most likely is a driver issue. </p>
+
+
+
+<p>The list of issues with Ubuntu installed went on and on, and while a younger me would&#8217;ve taken it up as a challenge, I decided to stick to Windows for the moment as my life is pretty busy lately due to work. If I do come back to Linux on this device, I&#8217;ll try to make a guide for making the device usable with Linux.</p>
+
+
+
+<h3 class="wp-block-heading">Charging seems slow</h3>
+
+
+
+<p>The laptop comes with a charger out of the box that charges at 12V 3A (36W). I usually don&#8217;t use that charger and stick to my Macbook Pro&#8217;s charger. I also use my Anker PowerCore power bank. In either of those cases, the charging speed is fairly low, and the laptop takes a while to fully charge. Chuwi&#8217;s website claims 45W PD 2.0 fast charging, but the most I&#8217;ve managed out of this device is around 22W (even when charging from a depleted state). </p>
+
+
+
+<h3 class="wp-block-heading">Laptop body prone to decoloration</h3>
+
+
+
+<p>Sometime during the Rome trip, I carelessly threw around the laptop. For example, I just dumped the device in the carry-on luggage space during takeoff without a sleeve. I noticed a part of the bottom half got bruised and the silver color wore off, exposing white plastic underneath. Now I knew that the bottom half was made from plastic, but I somehow didn&#8217;t expect it to decolor after a little throwing around.</p>
+
+
+
+<p>I tried to take a picture of the defect, but it is too faint and the light isn&#8217;t good enough in my room to actually help you see it. Just trust me it shows in real life.</p>
+
+
+
+<p>To be clear, it isn&#8217;t a deal breaker. Given the price it is made available at, I probably cannot complain. It is just something to be aware if you decide to get one.</p>
+
+
+
+<h3 class="wp-block-heading">Accessories I bought</h3>
+
+
+
+<p>I couldn&#8217;t find a screen guard or sleeve officially presented so I ended up spending a lot of time measuring the device (and the screen) and finding accessories that fit. </p>
+
+
+
+<p>For the screen protector, I went with Samsung Galaxy Tab A8&#8217;s screen protector. It doesn&#8217;t fit perfectly, but gets the job done for most part.</p>
+
+
+
+<p>For the sleeve, I ended up with two sleeves; one is too large and the other too small. Of course these are tablet sleeves, so you have to measure and guess and hope something fits. I for one was too impatient before my trip to India and ended up with two sleeves that don&#8217;t fit.</p>
+
+
+
+<h3 class="wp-block-heading">Screen can be overclocked</h3>
+
+
+
+<p>By default, the laptop&#8217;s display is set to 50hz. But some folks on the Chuwi forums posted that they&#8217;re running the panel at 90hz and it works just fine. I tried using the <a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a> to set the display to be 90hz and it worked well. </p>
+
+
+
+<iframe width="315" height="560"
+src="https://www.youtube.com/embed/i_rHPWyJkAk"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+<iframe width="315" height="560"
+src="https://www.youtube.com/embed/zTYzD1MqDT4"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+
+
+
+<h3 class="wp-block-heading">Wishlist</h3>
+
+
+
+<p>If I could make a list of wishes I&#8217;d like to see in this laptop (practically, in a future version of this device), it would be as follows</p>
+
+
+
+<ul class="wp-block-list">
+<li>5G SIM slot to have internet on the go, just like a tablet</li>
+
+
+
+<li>SD Card reader</li>
+
+
+
+<li>Fully metallic body, and not just the screen-half. </li>
+
+
+
+<li>Better Linux support</li>
+</ul>
+
+
+
+<p>Many of my wishes would likely raise the device&#8217;s price. Spending any more than a couple of hundred euros on a lesser-known brand is risky in my book and I don&#8217;t know if I&#8217;d have bought a laptop that fitted all of those wishes but then retailed at 500+ euros or more myself so there&#8217;s that.</p>
+
+
+
+<h3 class="wp-block-heading">Conclusion</h3>
+
+
+
+<p>It isn&#8217;t all sunshine and rainbows with the Chuwi Minibook X, but it is a good device. I intend to make it my daily driver and see how life feels like carrying a small device running a full operating system around. I also intend on not taking too much care of it and using it like a rugged device. I&#8217;m allowing myself this luxury after carrying around my Macbook Pro for a long time and having to take extreme care of it (I&#8217;ve already managed to break an older Macbook Pro&#8217;s screen, and given the price of this current one, I&#8217;d rather not risk much).</p>
+
+
+
+<p>So that&#8217;s it for this laptop review. I really hope a 10.5in laptop works out for me. I&#8217;ll post updates if there&#8217;s anything interesting to share. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Building vs Buying a NAS &#8211; A non-hardware nerd&#8217;s perspective</title>
+		<link>https://nagekar.com/2024/01/building-vs-buying-a-nas-a-non-hardware-nerds-perspective.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 14 Jan 2024 14:26:28 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<category><![CDATA[home-server]]></category>
+		<category><![CDATA[pc-build]]></category>
+		<category><![CDATA[synology]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=2088</guid>
+
+					<description><![CDATA[After years of contemplating on making or buying myself a NAS, I finally decided to bite and got a Synology DS223j two-bay NAS as a present for myself for Christmas along with two refurbished 16TB Seagate Exos hard drives. Rewinding a bit For most of my life, the only &#8220;backup&#8221; I had was a 500gb [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>After years of contemplating on making or buying myself a NAS, I finally decided to bite and got a Synology DS223j two-bay NAS as a present for myself for Christmas along with two refurbished 16TB Seagate Exos hard drives. </p>
+
+
+
+<h2 class="wp-block-heading">Rewinding a bit</h2>
+
+
+
+<p>For most of my life, the only &#8220;backup&#8221; I had was a 500gb hard disk that came preinstalled in the <a href="http://nagekar.com/2015/11/fujitsu-lifebook-a514-review.html">Fujitsu A514</a>, my first laptop. I had also bought a 120gb solid-state disk at the time and immediately replaced the hard disk with it. The hard disk went into an enclosure and I used it to back up any important data as my laptop went through frequent cycles of OS reinstalls during my distro-hopping era.</p>
+
+
+
+<p>Any time I&#8217;d want to back up my photos, it would become a folder on the hard disk and then cleared from phone storage as phones came with much smaller storage back then. I remember having 16gb internal storage on my Galaxy Note and thinking I&#8217;d never fill it up no matter how many pictures I take.</p>
+
+
+
+<p>I used Gmail and the 15gb storage the free account comes with was enough for email and the occasional document sharing via Google Drive. Life was good.</p>
+
+
+
+<p>At some point I hooked this 500gb drive to my <a href="http://nagekar.com/2016/01/how-to-private-local-cloud-using-raspberrypi.html">Raspberry Pi running Nextcloud</a> and even had my very first &#8220;NAS&#8221; setup.</p>
+
+
+
+<p>In 2018, I had some INR 300 of Google Play credits that I used to get some of the apps that I wanted to support and use pro versions of, like Nova launcher, Tasker etc. Along with those, I got the 100gb Google storage plan (at INR 130 a month) and started backing up photos to Google Drive. It was an okay cost as I was already working by then and had some money to spare for subscriptions. </p>
+
+
+
+<p>Since then, I had kept that subscription and even upgraded it to 200gb after <a href="http://nagekar.com/2019/01/mumbai-to-berlin.html">moving to Berlin</a>. </p>
+
+
+
+<h2 class="wp-block-heading">Problem statement</h2>
+
+
+
+<p>The problem I set out to solve was to get rid of some of the cloud storage subscription fees I&#8217;m paying each month. I was paying duplicate fees for cloud between two Google accounts (and an iCloud account), so the plan would help get rid of two of the three subscriptions resulting in some 50 euros saved each year while providing me to actually follow the 3-2-1 backup strategy for some important data that I wouldn&#8217;t want to lose. </p>
+
+
+
+<h2 class="wp-block-heading">Requirements</h2>
+
+
+
+<p>Late last December I got a bit obsessed with watching computer build videos. It was fun to learn something new, and to be honest it also was entertaining. From the videos, I learned some important considerations that I&#8217;ll have to think for myself before spending my first Euro on this new project.</p>
+
+
+
+<ol class="wp-block-list">
+<li>Number of drive bays: While a NAS can just be a single drive attached to the network, generally they also offer redundancy (using RAID configurations) for NAS with two or more drive bays. I knew I&#8217;d want a RAID 1 so I&#8217;d need at least two drives.</li>
+
+
+
+<li>Idle power consumption: Power is expensive in Germany and I&#8217;d want to stay away from any old hardware that&#8217;s cheap to buy but very expensive to run. The last thing I&#8217;d want to do is invest in a NAS that I&#8217;m going to not keep running all the time.</li>
+
+
+
+<li>NAS application / operating system: Ideally, I&#8217;d like some bells and whistles like automatic backups to make my life a little easier and not having to do that manually. The popular NAS applications come with add-ons that allow more specific usecases. <a href="https://www.truenas.com/apps/">TrueNAS</a>, <a href="https://www.synology.com/de-de/dsm/packages">Synology</a> and others have public pages where one can see if the application they&#8217;d need is available on the platform they&#8217;re choosing for the NAS. </li>
+
+
+
+<li>Gigabit access speeds: I wanted to NAS to be accessible at the same speeds as the rest of my home network, which is currently at a Gigabit. Fortunately, that seems like the minimum one gets in 2023.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Non-requirements</h2>
+
+
+
+<p>I also learned about what other people prioritize in their NAS, but it didn&#8217;t resonate with me. More specifically, I couldn&#8217;t justify the price overhead that acquiring those features needed. Namely,</p>
+
+
+
+<ol class="wp-block-list">
+<li>SSD Cache: While there are many strategies to use an SSD for read and write caching, it primarily makes read/write operations feel faster for some use cases. I thought this was over-optimizing for my modest use case.</li>
+
+
+
+<li>CPU / RAM to run containers / VMs: I also found that folks like to run Docker containers / VMs on their NAS and need more powerful CPU and added RAM. This hadn&#8217;t even crossed my mind, and as such, I stayed true to the &#8220;if I didn&#8217;t know it exists, I probably don&#8217;t need it yet&#8221; principle. </li>
+
+
+
+<li>Multi-gigabit or multiple LAN ports: Folks opt for 2.5 or even 10gig LAN ports on their NAS for faster transfer speeds. Now while I&#8217;d looove to have transfer rates more than 120 MB/s, I&#8217;d need to upgrade my entire home network to multi-gigabit LAN and WLAN, and that&#8217;s expensive. That also would mean having a beefier CPU to handle the transfers which would increase the cost of NAS hardware itself.</li>
+
+
+
+<li>Four or more drive bays: This was the one I was most unsure about; Most if not everyone one reddit suggested to get at least a 4 bay NAS and then just using a couple of the bays until the requirement arises. It sounds reasonable, but I have a feeling that the requirement for 4 bays would never arise and 16TB in RAID-1 is going to be enough for a very long time.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Building vs buying</h2>
+
+
+
+<p>The nerd in me wanted to really go down the route of buying all the parts and assembling everything myself. The videos I had watched made me confident enough that I could pull it off. Building a PC is fun, and truth be told, I&#8217;ve never actually built one for myself.</p>
+
+
+
+<p>Having said that, I also recognized that I&#8217;m mixing two things together; my requirement for a secure and reliable NAS for my critical data and my desire to build a PC that I can experiment on. I&#8217;ve lost important data in the past and I didn&#8217;t want to risk it. Especially not after having just watched a bunch of videos and never actually having built a decent PC myself. </p>
+
+
+
+<p>I decided to pick up a Synology 2 bay NAS DS223j with 1gb RAM and a relatively weak but does-the-job quad-core Realtek CPU. The cost of the NAS was 180 euros. To do with it, I got a couple of refurbished <a href="https://www.seagate.com/files/www-content/datasheets/pdfs/exos-x16-DS2011-1-1904US-en_US.pdf">16TB Seagate Exos</a> drives, each of which was 180 euros, for a total cost of 540 euros. </p>
+
+
+
+<p>My rationale behind going down this path was as follows:</p>
+
+
+
+<ol class="wp-block-list">
+<li>I don&#8217;t trust my PC building and setting up skills enough to offload all of my data to the built-NAS and then cancel a couple of cloud subscriptions.</li>
+
+
+
+<li>At 4-5 watts of idle (hibernation) and 16 watts of under-load power consumption, it is comparable to a relatively efficient Mini PC.</li>
+
+
+
+<li>Hardware isn&#8217;t cheap in Germany, and actually saving money on hardware would require sourcing parts off Aliexpress which takes time and is often less than reliable.</li>
+
+
+
+<li>Building a PC and setting up the necessary software takes time. I could use this time on another project (home server blog post coming soon :D). </li>
+
+
+
+<li>Synology&#8217;s DSM (their proprietary operating system) comes out of the box with remote access via QuickConnect. </li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Tradeoffs I&#8217;ve ((sub)consciously) made</h2>
+
+
+
+<p>I feel like I&#8217;ve given up on some of my preferences when going down the Synology NAS route. And while some of these are conscious, there are some that will only show up once enough time has passed. In any case, I&#8217;m still documenting some of them here.</p>
+
+
+
+<ol class="wp-block-list">
+<li>Open source and free software: Synology DSM only runs on Synology hardware, at least officially. It means I&#8217;m stuck to using Synology software for as long as I&#8217;m using this hardware.</li>
+
+
+
+<li>Synology tax: Like I mentioned, using these off the shelf NAS&#8217;s requires paying the software and marketing budget of the companies in addition to the cost of the actual hardware. That&#8217;s fair, of course. Just something to be aware of.</li>
+
+
+
+<li>NAS hardware: I&#8217;m sure my &#8220;16TB ought to be enough for me&#8221; might not age very well. I also faced some situations where the NAS really slowed down and made me realize that it is running a very under-powered CPU after all. Again, tradeoffs.</li>
+
+
+
+<li>Noise: Seagate Exos drives aren&#8217;t the most silent hard drives. My wooden floor made it much worse and I ended up putting the NAS on a softer raised surface to absorb some of the vibrations. I believe this problem would&#8217;ve not completely vanished had I chose to get non-enterprise drives like the Seagate IronWolf, but it would&#8217;ve been better.</li>
+
+
+
+<li>Electricity costs: While my Synology NAS is efficient, and consumes single digit Watt power most of the times idling, it will still add 30-40 euros of additional power consumption to my yearly electricity bills (at 10w average power consumption 24x7x365 and 40 cents per kWh). </li>
+
+
+
+<li>Breakeven cost: From a purely utility perspective, it will take some years of not using Google Drive and iCloud before the cost of investing in a personal NAS is broken even. This is especially true if I do not fill up the 16TB that I have and then have regular need to access those files. This isn&#8217;t factoring in the added electricity cost, nor can I effectively compare the reliability of Google Drive to a NAS set up at home. Overall, for most people without the need to store TBs of data, Cloud is a very logical option.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">In closing</h2>
+
+
+
+<p>I hope that was informative in some way. I am looking forward to seeing how my investment turns out and if the list of tradeoffs grows further. I&#8217;ll leave you with some pictures of the NAS.</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="2560" height="1920" src="http://nagekar.com/wp-content/uploads/2024/01/IMG_6806-scaled.jpg" alt="" class="wp-image-2097" style="width:840px;height:auto" srcset="https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-300x225.jpg 300w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-250x188.jpg 250w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-768x576.jpg 768w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-1536x1152.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/01/IMG_6806-2048x1536.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /><figcaption class="wp-element-caption">Fresh out of the box with its accessories</figcaption></figure>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="2560" height="1440" src="http://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-scaled.jpg" alt="" class="wp-image-2098" style="width:840px;height:auto" srcset="https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-scaled.jpg 2560w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-300x169.jpg 300w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-250x141.jpg 250w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-768x432.jpg 768w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-1536x864.jpg 1536w, https://nagekar.com/wp-content/uploads/2024/01/FD697044-A0B3-4216-9DE8-C50F50F6BCE7-2048x1152.jpg 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /><figcaption class="wp-element-caption">Initial setup in my &#8220;Lack rack&#8221;. It has since been replaced but wait for an update on that.</figcaption></figure>
+
+
+
+<p>Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Let&#8217;s talk about Radio Clocks</title>
+		<link>https://nagekar.com/2023/01/lets-talk-about-radio-clocks.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 29 Jan 2023 20:52:14 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[casio]]></category>
+		<category><![CDATA[electronics]]></category>
+		<category><![CDATA[time]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=1824</guid>
+
+					<description><![CDATA[After arriving in Berlin in January of 2019, I treated myself to a Casio F-91W. It was my first (non-essential) purchase in Germany, and for less than 10 Euros, it was a steal. Plus, a colleague of mine wore it and it looked cool. Easy decision! Little did I know that this watch had a [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>After <a href="http://nagekar.com/2019/01/mumbai-to-berlin.html" data-type="post" data-id="1055">arriving in Berlin</a> in January of 2019, I treated myself to a <a href="https://en.wikipedia.org/wiki/Casio_F-91W">Casio F-91W</a>. It was my first (non-essential) purchase in Germany, and for less than 10 Euros, it was a steal. Plus, a colleague of mine wore it and it looked cool. Easy decision!</p>
+
+
+
+<p>Little did I know that this watch had a <a href="https://www.reddit.com/r/casio/">cult following on the internet</a>. People collected all versions and variants of it and wore it with pride. I got pulled into the hype surrounding the F-91W and eventually more of the Casio retro digital watches. </p>
+
+
+
+<p>It was an easy &#8220;hobby&#8221; to pursue given it is basically just buying more stuff. Nevertheless, it isn&#8217;t all that bad given how cheap these retro watches are. It is all relative of course, but given I&#8217;m also into <a href="http://nagekar.com/2022/01/learning-photography.html" data-type="post" data-id="1438">photography</a>, acquiring Casio watches is easier on my wallet.</p>
+
+
+
+<p>Today, I own a couple more and I&#8217;m low-key proud of my collection.</p>
+
+
+
+<blockquote class="instagram-media" data-instgrm-captioned="" data-instgrm-permalink="https://www.instagram.com/reel/CnIacemJsu8/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/CnIacemJsu8/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank" rel="noopener"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/CnIacemJsu8/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank" rel="noopener">A post shared by Abhi (@horsebatterystaple)</a></p></div></blockquote> <script async="" src="//www.instagram.com/embed.js"></script>
+
+
+
+<h2 class="wp-block-heading">Learning about Radio Clocks</h2>
+
+
+
+<p>Like with anything I get obsessed with, I spent a lot of time reading and watching YouTube videos about Casios. At some point I stumbled upon the <a href="https://www.casio.com/de/watches/casio/waveceptor/">Casio Wave-Ceptor</a> series of watches. It struck me as something different: This fairly low tech wrist watch could set and correct its time automatically!</p>
+
+
+
+<p>&#8220;But wait, it isn&#8217;t a smart watch&#8221; I thought. How does it do that?</p>
+
+
+
+<p>That sent me down the rabbit hole which I&#8217;m still on my way down right now. Turns out, the watch can receive signals transmitted by a time signal transmitter and correct its local time.</p>
+
+
+
+<p>In Germany, there&#8217;s <a href="https://en.wikipedia.org/wiki/Mainflingen_longwave_transmitter">Mainflingen longwave transmitter</a> transmitting <a href="https://en.wikipedia.org/wiki/DCF77">DCF77</a> time signal. The carrier signal has a 77.5 kHz frequency and the time signal is generated from the local atomic clock which syncs with the main atomic clock in Braunschweig. It is operated by the <a href="https://www.ptb.de/cms/">Physikalisch-Technische Bundesanstalt</a> which also hosts four public <a href="https://en.wikipedia.org/wiki/Network_Time_Protocol">NTP servers</a>:</p>
+
+
+
+<pre class="wp-block-code"><code>
+ptbtime1.ptb.de
+
+ptbtime2.ptb.de
+
+ptbtime3.ptb.de
+
+ptbtime4.ptb.de</code></pre>
+
+
+
+<p>Querying the time using the commandline utility <code>sntp</code> and watching the network activity in Wireshark gives us some interesting data.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1286" height="510" src="http://nagekar.com/wp-content/uploads/2023/01/Screenshot-2023-01-29-at-20.23.46.png" alt="" class="wp-image-1827" srcset="https://nagekar.com/wp-content/uploads/2023/01/Screenshot-2023-01-29-at-20.23.46.png 1286w, https://nagekar.com/wp-content/uploads/2023/01/Screenshot-2023-01-29-at-20.23.46-300x119.png 300w, https://nagekar.com/wp-content/uploads/2023/01/Screenshot-2023-01-29-at-20.23.46-250x99.png 250w, https://nagekar.com/wp-content/uploads/2023/01/Screenshot-2023-01-29-at-20.23.46-768x305.png 768w" sizes="auto, (max-width: 1286px) 100vw, 1286px" /><figcaption class="wp-element-caption">Wireshark</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading">What&#8217;s next?</h2>
+
+
+
+<p>I&#8217;ve ordered a <a href="https://www.amazon.de/dp/B0BBB45R6Z">cheap radio receiver</a> to play around with the radio time signal. On the watch side, I&#8217;ll look for cheap used radio Casio watches on the <a href="https://www.ebay-kleinanzeigen.de/s-casio-wave-ceptor/k0">local Ebay</a> here and try to acquire. I hope this new obsession ends up teaching me a thing or three about analog signals. </p>
+
+
+
+<p>That is it for this side-quest post. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Buying A Lenovo Thinkpad X230 In 2020</title>
+		<link>https://nagekar.com/2020/04/thinkpad-x230-in-2020.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Fri, 24 Apr 2020 22:00:00 +0000</pubDate>
+				<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2020/04/24/thinkpad-x230-in-2020/</guid>
+
+					<description><![CDATA[I upgraded from my Lenovo Thinkpad T440 to a Lenovo Thinkpad X230. That sounds more like a downgrade, you might say, but it isn&#8217;t. Well, not in most cases for me, that is. Hopefully. We&#8217;ll see. In this little article I&#8217;d like to outline why an X230 in 2020 and if it could be your [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  I upgraded from my <a href="/2018/05/lenovo-thinkpad-t440-ebay-refurbished-laptop-review.html">Lenovo Thinkpad T440</a> to a Lenovo Thinkpad X230. That sounds more like a downgrade, you might say, but it isn&#8217;t. Well, not in most cases for me, that is.
+</p>
+<p>Hopefully. We&#8217;ll see.</p>
+<p>
+  In this little article I&#8217;d like to outline why an X230 in 2020 and if it could be your next daily driver.
+</p>
+<h3>First, enjoy the pictures and specifications</h3>
+<p><center></p>
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/mDunzIb"><p><a href="//imgur.com/a/mDunzIb">X230</a></p></blockquote>
+<p><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script><br />
+</center></p>
+<h3>So why buy an X230 in 2020?</h3>
+<p>
+  Let&#8217;s dive straight into the meat of this article. Why buy an 8 year old laptop and not something new? There are a bunch of reasons that I can think of, not all as important but worth mentioning nevertheless, so let&#8217;s look at each of them in brief.
+</p>
+<ul>
+<li>
+<p><strong>Cheap:</strong> I don&#8217;t mind paying for quality, but ironically, some of the best quality laptops out there are in the refurbished market. I really like the new X1 carbon and the Dell XPS 13 but I feel like the price premium is a bit disproportionate given what you get in return.</p>
+</li>
+<li>
+<p><strong>Upgradable:</strong> A user replaceable screen, keyboard, trackpad, RAM, storage, PCIe WWAN (cellular 3G/LTE), battery and god knows what else. RAM tops out at 16GB at 1600Mhz, SSDs upto 2TB at SATAIII supported, X220 classic keyboard and trackpad swap, IPS screen replacements available for EUR 60-70 and the list goes on. Since my Macbook Pro&#8217;s screen broke recently and was given a EUR 569 quote for the replacement, you can tell I appreciate cheap, user serviceable spare parts.</p>
+</li>
+<li>
+<p><strong>Practical:</strong> This isn&#8217;t one of those enthusiast laptops that you buy out of sheer impulse and idealization, and then find very inadequate for normal computing. With 16GB RAM and a 35 Watt i5-3320m processor, I have absolutely no problem running tens of tabs on Firefox, a Webstorm instance, dev server, Slack and Spotify simultaneously. It also has a Display Port and projects to my Dell Ultrasharp display at native 2560&#215;1440 QHD resolution. If you&#8217;re into gaming, you could do that with an external GPU via the Express card slot.</p>
+<figure>
+      <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/benchmark_cpu.png"/><figcaption>X230 (i5-3320m) vs T440 (i5-4300u) vs Macbook Pro 2017 (i5-7360u) &#8212; As you can see, the processor isn&#8217;t much slower than a much more modern machine, and actually faster than the T440, which is a generation newer than the X230. <a href="https://www.cpubenchmark.net/compare/Intel-i5-3320M-vs-Intel-i5-4300U-vs-Intel-i5-7360U/817vs2054vs3036">Source</a></figcaption></figure>
+</li>
+<li>
+<p><strong>Driver support:</strong> With an old machine like this one, drivers support is usually very good. I installed Ubuntu, and every thing worked out of the box from simple things like Wifi and Bluetooth to fingerprint sensor, and mobile broadband.</p>
+</li>
+<li>
+<p><strong>Build quality:</strong> Something we just expect from the Thinkpad lineup, especially the old Thinkpads. If this machine has survived 8 years of use, it&#8217;ll probably survive a few more. Unfortunately, you can&#8217;t say the same about many laptops in the same EUR 150-350 price segment.</p>
+</li>
+<li>
+<p><strong>Hardware &amp; I/O:</strong> Thinkpad keyboards are usually good with ample key travel. You could opt for an X220 keyboard swap for the classic 7 row keyboard layout. What&#8217;s also great is the wide array of I/O option you get on board; Two USB 3.0s and one USB 2.0, mini display port, VGA port, Express card, ethernet port, SD card reader, combo headphone jack, fingerprint reader, hardware wireless kill switch; I think I&#8217;d miss a full sized HDMI, but that&#8217;s asking for a bit too much at this point.</p>
+<p>    <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/left-scaled.jpeg"/><br />
+    <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/right-scaled.jpeg"/>
+  </li>
+<li>
+<p><strong>Community &amp; support:</strong> The Thinkpad community on <a href="https://www.reddit.com/r/thinkpad/">Reddit</a> is great for asking queries and upgrade suggestions. Having an old laptop means most issues are well documented and it is unlikely you&#8217;ll hit a novel roadblock if you don&#8217;t do anything fancy with your computer. I&#8217;ve been a lurker on this sub ever since getting the T440, and I knew one cannot go wrong with the X230.</p>
+<p>    <a href="https://www.reddit.com/r/thinkpad/"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/r_thinkpad.png"/></a>
+  </li>
+</ul>
+<h3>Why not to buy a Thinkpad X230?</h3>
+<p>
+  Of course, as you can imagine, I&#8217;d not recommend this laptop to everyone out there. Here are some of the reasons for that.
+</p>
+<ul>
+<li>
+<p><strong>No warranty:</strong> If the thought of buying a device without warranty makes you sweat, this isn&#8217;t for you. Yes, you could get seller&#8217;s warranty on Ebay, but it is still not a manufacturer&#8217;s warranty.</p>
+</li>
+<li>
+    <strong>Form factor:</strong> It is a small lightweight laptop, but not the smallest, lightest or thinnest. Most ultrabooks these days will be lighter and thinner, like the Dell XPS or Thinkpad X1 Carbon.<br />
+    <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/macbook-scaled.jpeg"/>
+  </li>
+<li>
+    <strong>Battery life:</strong> You could get a 9 cell battery with the X230, but it will still not match that of a modern ultrabook thanks to the improvements in energy efficiency.
+  </li>
+<li>
+    <strong>Need for tinkering</strong>: If you find this laptop for cheap, chances are you&#8217;ll have to do a few upgrades before it becomes usable (at least if you plan on making it your daily driver). If you aren&#8217;t comfortable with opening laptops and installing upgrades, it is better to buy either a fully upgraded machine or find a IT nerd friend who would do it for you.
+  </li>
+<li>
+    <strong>Limit to upgrades:</strong> There&#8217;s often a limit to what upgrades you can do, and given this isn&#8217;t a new laptop, that limit isn&#8217;t that high. And all these upgrades cost money, of course. You shouldn&#8217;t spend a lot of money upgrading only to find out this still isn&#8217;t the laptop for you, regretting not getting a new computer in the first place.
+  </li>
+<li>
+    <strong>Specialized usecases:</strong> Goes without saying, but if you definitely need a modern GPU for working or gaming, or a fast CPU for specialized needs, then this isn&#8217;t a laptop for you. But in that case you probably already know that.
+  </li>
+</ul>
+<h3>What&#8217;s wrong with the T440? Avoid these in your future laptops</h3>
+<p>
+  Okay, with that out of the way, let&#8217;s talk about the issues I had with my T440. My biggest complaint was the screen. It was a TN panel (a bad one in that), which has dull colors and bad viewing angles (as compared to an IPS). There was also only one RAM slot maxing out at 8GB, and I had the version with no soldered RAM. I missed the ability to expand the memory at times.</p>
+<p>
+  Then there was the trackpad, which I later learned was nothing like Thinkpad trackpads, and this had to be upgraded too. I could&#8217;ve done the upgrades, but I preferred going for a new laptop as it wasn&#8217;t much of an overhead in terms of price (factoring in T440&#8217;s resale value) and I was eyeing an X230 for some time now.
+</p>
+<h3>What I really liked about the T440?</h3>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/macbook-thinkpad-scaled.jpg"/><figcaption>Snap from my <a href="/2019/03/experiences-with-macbook-and-macos.html">other article</a></figcaption></figure>
+<p>
+  I absolutely loved how sturdy and rugged the laptop was. No flex in the keyboard or the screen whatsoever. My previous laptop, Fujitsu Lifebook A514, had to retire because of <a href="/2018/04/fujitsu-lifebook-a514-review-2.html">this exact problem</a>. The keyboard was a joy to type on, and while I later learned that this keyboard was a step back for many from the classical Thinkpad keyboard, I&#8217;d any day prefer the new Thinkpad&#8217;s keyboard over my <a href="/2019/03/experiences-with-macbook-and-macos.html">Macbook Pro&#8217;s</a> or Fujitsu Lifebook&#8217;s.
+</p>
+<h3>In closing</h3>
+<p>
+  Overall I&#8217;m very happy with my new X230. It seems like a laptop I could use for some years, hopefully without many issues. I&#8217;m also happy that I&#8217;m back to running GNU/Linux as my daily driver! Reach out to me if you are planning on going this route and have questions.
+</p>
+<p>
+  Cheers, thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Tesla Coil Speaker</title>
+		<link>https://nagekar.com/2020/01/tesla-coil-speaker.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 05 Jan 2020 23:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2020/01/05/tesla-coil-speaker/</guid>
+
+					<description><![CDATA[A long, long time ago I ordered a tesla coil speaker from Banggood out of sheer impulsive buying habits. I thought it would be a good DIY project to work on and was less than 4 euros at that time. But since I don&#8217;t have something like the India Direct Mail shipping here in Germany, [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  A long, long time ago I ordered a <a href="https://www.banggood.com/Geekcreit-DIY-Mini-Tesla-Coil-Module-Unassembled-15W-DC-15-24V-2A-Plasma-Speaker-Electronic-Kit-p-1326817.html">tesla coil speaker from Banggood</a> out of sheer impulsive buying habits. I thought it would be a good DIY project to work on and was less than 4 euros at that time. But since I don&#8217;t have something like the <a href="/2018/05/banggoods-india-direct-mail-shipping.html">India Direct Mail</a> shipping here in Germany, the delivery took a month. I was very skeptic if it will ever make it, given that it was a super-cheap, super-fragile little DIY kit. But it did.
+</p>
+<p>
+  Upon receiving it, I soldered the kit together with the soldering station that I received as a birthday present, and headed out to a hobby electronics store to get a variable power supply. Turned out, even the simplest of them cost more than EUR40 in the brick and mortar stores here in Berlin. I wasn&#8217;t willing to spend that much to power this little kit. I had to go back to Banggood.
+</p>
+<p>
+  Not wasting any more time, I ordered a <a href="https://www.banggood.com/Minleaf-96W-12V-24V-Regulated-Output-Power-Supply-Adapter-AC-DC-Power-Adapter-Charger-p-981672.html">12-24V 4.5A supply from Banggood</a> for less than EUR10. Knowing well that this time it would take more than a month on account of the holidays in the middle, I forgot about it. That was until today, when it arrived at my work. Full of excitement, I got home and powered this project up! Here&#8217;s a glimpse from during the testing.
+</p>
+<style>
+.videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+.videowrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+<div class="videowrapper">
+  <iframe src="https://www.youtube-nocookie.com/embed/C1zDznzVQwQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p>
+  To go along with this project, I have a <a href="https://www.banggood.com/DSP-PLL-Digital-Stereo-FM-Radio-Receiver-Module-87-108MHz-With-Serial-Control-p-1004778.html?rmmds=myorder">FM radio module</a> that I&#8217;ll hook up with this Tesla Coil speaker. Hopefully, after figuring out a way to cool the speaker, I&#8217;ll be able to use it for extended durations of time.
+</p>
+<p>
+  Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Xiaomi Pocophone F1 Review &#8211; MIUI And Stock Android</title>
+		<link>https://nagekar.com/2018/11/pocophone-f1-review.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 29 Nov 2018 23:00:00 +0000</pubDate>
+				<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/11/29/pocophone-f1-review/</guid>
+
+					<description><![CDATA[I bought the Xiaomi Pocofone F1 earlier this month. My previous phone, the Galaxy S5, was already four years old, although still usable. But calls on the S5, as I mentioned in my Nokia 105 review, were buggy because of a faulty microphone/speaker/whatever issue. Apart from that one (which I could&#8217;ve just repaired), the phone [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+    I bought the <a href="https://www.gsmarena.com/xiaomi_pocophone_f1-9293.php">Xiaomi Pocofone F1</a> earlier this month. My previous phone, the Galaxy S5, was already four years old, although still usable. But calls on the S5, as I mentioned in my <a href="https://www.nagekar.com/2018/03/phone-review-nokia-105.html">Nokia 105 review</a>, were buggy because of a faulty microphone/speaker/whatever issue. Apart from that one (which I could&#8217;ve just repaired), the phone was pretty okay.
+</p>
+<figure>
+    <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/pocos53.jpg"/><figcaption>Galaxy S5 and Xiaomi Pocophone F1 &#8211; about screen</figcaption></figure>
+<p>
+    I was running LineageOS 14 on my Galaxy S5 and very few apps so speed was not an issue in almost all cases. RAM management was pretty bad, but I wasn&#8217;t affected by it as much since I close my apps after use anyway. The camera had become quite crap after moving away from stock Samsung ROM, but that too wasn&#8217;t a big deal. The phone was 3G only, which was an issue. The bigger issue, however, was that it fixated on Edge most of the time. So I had stopped using mobile data (or relying on it) since at least a year.
+</p>
+<p>
+    And if you haven&#8217;t noticed, service providers don&#8217;t really care about 3G users anymore. Before Jio and the entire 4G revolution, the 3G speeds I used to get were easily more than 8-10 mbps. Now, 1-2 mpbs on a good day (which is probably because 3G is more of a fallback network these days than the flagship network it used to be). While not enough reasons to get a new phone, I still did as resisting didn&#8217;t make sense.
+</p>
+<figure>
+    <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/pocos52.jpg"/><figcaption>Front view &#8211; clean stock UI. Tempered glass on both for screen protection</figcaption></figure>
+<figure>
+    <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/pocos51.jpg"/><figcaption>Back view</figcaption></figure>
+<p>
+    The Poco F1 costed me around INR 19,800 in the Flipkart sale for the 6GB/128GB variant. I bought it after some extensive research (never trusted Xiaomi for some reason). But as it turned out, most of the Youtubers that I follow <a href="https://www.youtube.com/results?search_query=pocophone+f1">said good things</a> about this phone. I checked XDA to make sure modding was easy and stock ROMS were available (learned this the hard way after I bought the S5). There were some issues like limited DRM support, sub-par stock camera app and screen bleed, but I could live with those.
+</p>
+<h3>Initial Impressions</h3>
+<p>
+    I immediately noticed one thing. Moving from a feature phone (the Nokia ExpressMusic) to the Galaxy Note was a big jump. Everything was new with fancy options behind every menu. Moving from the Note to the S5 was like an update. Substantial but nothing fancy. I kind of knew what to expect: a slightly faster phone, a slightly better camera, slightly better battery life etc, which all turned out to be more or less true.
+</p>
+<p>
+    Moving from the S5 to Poco felt similar to that second upgrade, if not less than that. It was a step back in many aspects, like from Super AMOLED to IPS, IP67 to nothing and a comfortable one-hand-phone to a 6.2in phablet. But in most other cases, it was an improvement although not something that would make your jaw drop. Battery life is the biggest upgrade, from half a day to two full days. The camera is a decent upgrade (with all the fancy bokeh shots and slow-mo stuff). Theoretically, speed and memory management should&#8217;ve been a huge upgrade as well, but as I said, my S5 never felt slow thanks to the lean OS, so that was a minor improvement.
+</p>
+<p>
+    I can place cellular calls freely on this phone. No problem. Dual 4G support and hence I am able to use mobile data once again. The internal memory is more than what I&#8217;ll probably need (To be honest, my laptop has similar specs). Fingerprint scanner is very fast, and IR face unlock works in pitch dark. Cool stuff.
+</p>
+<h3>Software &#8211; MIUI</h3>
+<p>
+    I must confess here that I had a prejudice against MIUI since the Redmi 1S days. It felt like the old TouchWiz, bloated and slow. That all changed when I used Poco. It was snappy (although still bloated), and the first thing that I did was uninstall all the sponsored apps that came with the phone. Soon, I started liking the skin. It was snappy, and full-screen gesture-based navigation was quick. The notch on the top meant I could no longer see the notifications without sliding down, but I got used to that real quick. Soon, the MIUI Android Pie Beta ROM was released and I updated to it manually. It was even better. <a href="https://forum.xda-developers.com/poco-f1/themes/b-s-g-google-camera-port-developed-mi-8-t3843130">GCam mod</a> came to the Poco and many complaints about the camera quality vanished instantaneously. <a href="https://www.xda-developers.com/google-pixel-night-sight-google-camera-review/">Night Node</a> was included sometime later and it was magical.
+</p>
+<p>
+    The only problem I had with the MIUI skin, and this was kind of a deal breaker, were the ads. Everywhere. From file manager to browser, music player, themes. It is ugly, and feels dirty, to open a stock app and see ads. The unofficial Lineage OS for Poco was getting stable during this time, and I decided to give it a go.
+</p>
+<h3>Unlocking the Bootloader</h3>
+<p>
+    While reading on XDA, I learned that Xiaomi allows for official bootloader unlocks, and doesn&#8217;t void the warranty of the phone even if you flash custom ROMs to it provided you can get it back to stock before taking it to the service center to claim warranty. I remember Samsung was similar at one point (although they didn&#8217;t make it official by saying it out loud, like Xiaomi). You know the instant respect++ you feel for someone after learning something nice about them? I felt that way about Xiaomi at that moment. Unlocking requires their official tool, 72 hours of waiting time and a few clicks. A few more steps to flask TWRP recovery and you&#8217;re put in charge of your ship.
+</p>
+<h3>LineageOS 16</h3>
+<p>
+    I flashed the latest LineageOS and got back to stock Android. Honestly, it wasn&#8217;t a huge relief or improvement per se. I was kind of enjoying MIUI and it was fast enough. So getting to stock was just an assurance that I won&#8217;t see random ads popping up in the system apps, and that I&#8217;m running something that&#8217;s better for my privacy. I also installed AdAway for blocking ads in other apps and browser.
+</p>
+<h3>Overall Experience and Conclusion</h3>
+<p>
+    Buying a new phone used to be like a mini festival when I was young. It isn&#8217;t so much these days. For me, the smartphone (and the modding associated with it) has reduced from a hobby to just another utility, like the refrigerator or scooter. I&#8217;m sure innovation still happens in the smartphone industry. It may just be that it isn&#8217;t relevant to what I do anymore. And while that sounds depressing, it has freed up a lot of my time that I can use to&#8230;umm&#8230;do important work <i>**cough cough** memes **cough cough**</i>.
+</p>
+<p>
+    I hope this phone stands the test of time, just like my Galaxy S5 did. If you&#8217;re thinking about getting this phone, I hope my review gave you some perspective (although you might want to follow the advice of the pros out there). That&#8217;s it for this one. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Reusing An Old Laptop&#8217;s LCD Panel</title>
+		<link>https://nagekar.com/2018/05/reusing-old-laptop-lcd-panel.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Fri, 25 May 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/05/25/reusing-old-laptop-lcd-panel/</guid>
+
+					<description><![CDATA[A month ago, my manager from LaughGuru gave me his old non-functional laptop. It was a six year old Dell Inspiron 15R 5520 notebook computer with 2GB ram, third-gen Intel i5 and a 500GB hard disk and weighted almost as much as Misty and my new Thinkpad combined. I couldn&#8217;t get the motherboard to boot [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  A month ago, my manager from LaughGuru gave me his old non-functional laptop. It was a six year old Dell Inspiron 15R 5520 notebook computer with 2GB ram, third-gen Intel i5 and a 500GB hard disk and weighted almost as much as <a href="https://www.nagekar.com/2018/04/fujitsu-lifebook-a514-review-2.html">Misty</a> and my new <a href="https://www.nagekar.com/2018/05/lenovo-thinkpad-t440-ebay-refurbished-laptop-review.html">Thinkpad</a> combined. I couldn&#8217;t get the motherboard to boot up so I decided to take it apart (and given the condition of the laptop it made little sense to repair it).
+</p>
+<p>
+  I&#8217;ve found some really useful things inside the laptop. The two gig ram chip and the 500 gigs hard disk now sits on another water damaged laptop that my friend gave me a week ago and powers it flawlessly. The CD drive will come in handy someday as an external disk drive. I planned to use the display as an external monitor for my laptop, and that turned out to be a DIY project in itself.
+</p>
+<h3>Enter LVDS Connectors</h3>
+<p>
+  So I isolated the LCD and looked very carefully for any hints on what sort of connector was that dangling from behind the panel. It had the word LVDS on it. Some Internet research later, things became clear. As alien as it sounds, LVDS or <a href="https://en.wikipedia.org/wiki/Low-voltage_differential_signaling">Low-voltage differential signaling</a> is a standard that is used for high-speed transfers using very low power. For me, it simply meant that there&#8217;s no straightforward way of plugging the HDMI or VGA cable from my laptop into the bare LCD panel and start using it.
+</p>
+<p>
+  Unfortunately, there&#8217;s also no easy way of using the laptop&#8217;s motherboard logic to make the LCD panel work. Searching for a solution made it clear that LCD controller kit is what needs to be used. It is important that the exact spec of the LCD panel is known, as the kits are only compatible with a small range of panels. It might be difficult if the LCD was never working in your possession, as in my case, but this nice website called <a href="https://www.panelook.com/index.php">Panelook</a> makes it easy to get the detailed spec of the panel from just the <a href="https://www.panelook.com/LP156WH4-TLN1_LG%20Display_15.6_LCM_overview_15254.html">serial number</a>. Things to look at are the resolution and the backlight type. The resolution needs to be an exact match and the backlight type is needed to judge if you&#8217;ll need an inverter with your controller kit. Mine was a WLED panel so no external power source or inverter needed. The next step is searching the serial number on ebay and other local hobby sites. I found a nice kit on <a href="https://www.nagekar.com/2018/05/banggoods-india-direct-mail-shipping.html">Banggood</a> and decided to order it.
+</p>
+<h3>Putting It All Together</h3>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/3.jpg"/></p>
+<p>
+    Interfacing was simple, and there are nice videos on the topic on youtube. There&#8217;s the LVDS connector that goes into your LCD panel. Then there&#8217;s the controls board that needs to be plugged into the main board. The controls board also has an IR receiver for remote control and can be used to control brightness, contrast, sharpness etc of the panel.
+</p>
+<p>
+  The board itself supported inputs through AV connector, HDMI, and VGA. It operates on 12 volts and 4 amps and luckily I had a 5 amps supply with me, so no extra expenditure there. I had to borrow VGA cable from a friend though as my laptop only has VGA and no HDMI.
+</p>
+<p>
+  I used an old Tupperware tiffin box as the LCD&#8217;s stand to keep the delicate LVDS cables safe and away from physical contact with anything. To avoid physical damage to the panel, I&#8217;ve used the stock display cover of the laptop (the top half) as it was. The added benefit of using the stock plastic cover was that I could drill holes and fix the controller board on the back of the panel like an all in one PC (I could&#8217;ve literally made it an all-in-one PC by docking my raspberry pi back there as well, haha). Overall, I was very happy with the result, and as I write this, I have my editor on my primary screen and the browser on the extended display. <b>Dual monitors at home</b> achievement unlocked!
+</p>
+<style>
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+</style>
+<div class="image-gird">
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/4.jpg"/><br />
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/5.jpg"/><br />
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/6.jpg"/><br />
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/1.jpg"/>
+</div>
+<p>
+  Hope you found this article useful. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Banggood&#8217;s India Direct Mail Shipping</title>
+		<link>https://nagekar.com/2018/05/banggoods-india-direct-mail-shipping.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 24 May 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[diy]]></category>
+		<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/05/24/banggoods-india-direct-mail-shipping/</guid>
+
+					<description><![CDATA[Here&#8217;s some great news for all you hobby electronics enthusiasts who drool at the sight of cheap stuff on Banggood and AliExpress, but upon rethinking about the time it takes them to ship something, give up on the prospect of buying it. I&#8217;m not a hobby electronics person, but after shopping some three-four times in [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Here&#8217;s some great news for all you hobby electronics enthusiasts who drool at the sight of cheap stuff on Banggood and AliExpress, but upon rethinking about the time it takes them to ship something, give up on the prospect of buying it. I&#8217;m not a hobby electronics person, but after shopping some three-four times in the past year through sites like AliExpress and Banggood, I was convinced that the wait is definitely not worth the discount that you get, because the shipping time is usually around 40-50 days. Yes, nearly two months it took for my speaker amplifier to reach me. And then some others that never reached.
+</p>
+<p>
+  But it seems like those are the days of the past because two weeks ago when I reluctantly surfed Banggood for a <a href="https://www.banggood.com/LCD-Controller-Board-DIY-Assembly-Kit-For-1366x768-15_6-Inch-LP156WH4TLA1-LED-Screen-p-1163322.html?rmmds=myorder">LCD controller board</a> that I couldn&#8217;t find on Ebay or other Indian sites, I saw a new method of shipping called &#8216;India Direct Mail&#8217; (not really new, it has been around since the last quarter of 2017), and it promised to ship in 8-16 days at almost no additional cost.
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/banggood.png"/></p>
+<p>
+  I really found it hard to believe but decided to take risk and order as I didn&#8217;t have much to lose (except for some 1200 rupees). It turned out to be true. Today, I received my LCD controller board, just 12 days after ordering. I feel this is reasonable, especially given that you won&#8217;t get it for at least double that here in India, if at all you do get it. This is great stuff and I&#8217;ll definitely be using this more in the future.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Lenovo Thinkpad T440 &#8211; Ebay Refurbished Laptop Review</title>
+		<link>https://nagekar.com/2018/04/lenovo-thinkpad-t440-ebay-refurbished-laptop-review.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 30 Apr 2018 22:00:00 +0000</pubDate>
+				<category><![CDATA[electronics]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2018/04/30/lenovo-thinkpad-t440-ebay-refurbished-laptop-review/</guid>
+
+					<description><![CDATA[Refurbishment is the distribution of products usually electronics and electricals that have been previously returned to a manufacturer or vendor for various reasons. Refurbished products are normally tested for functionality and defects before they are sold. &#8211; Wikipedia I&#8217;ve not bought anything refurbished ever before, but then, I&#8217;d never needed to. It was after deciding [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+   <i>Refurbishment is the distribution of products usually electronics and electricals that have been previously returned to a manufacturer or vendor for various reasons. Refurbished products are normally tested for functionality and defects before they are sold. &#8211; Wikipedia</i>
+</p>
+<p>
+    I&#8217;ve not bought anything refurbished ever before, but then, I&#8217;d never needed to. It was after deciding to get myself a new laptop, given Misty&#8217;s faulty hinge, that I made a list of things to prioritize for in this upcoming purchase, and had to decide between a new machine and something used. That was when I learned refurbished was an option.
+</p>
+<h3>The Requirements</h3>
+<p>
+    My modest requirements for the new machine were a result of the learnings from my previous computer buying experience. After using Misty for about 30 months, I&#8217;ve learnt a few things about my own behavior regarding laptops, and I decided to make use of that experience while listing down my own requirements, in order of priority.</p>
+<ul>
+<li>Required: Sturdy built quality, something better than a flexing plastic body (Main problem with misty was the broken hinge that was plasticy)</li>
+<li>Required: 8GB RAM &#8211; anything more is overkill</li>
+<li>Required: SSD, SATA III or better, 128GB or more</li>
+<li>Required: i3, Good to have: i5, 4th gen or better</li>
+<li>Good to have: Total cost less than INR 25,000</li>
+<li>Dream: Something better than a TFT 1366&#215;768 display</li>
+<li>Dream: Backlight keyboard</li>
+</ul>
+<h3>The Search</h3>
+<p>
+    A quick search on Flipkart and Amazon made it clear that if I&#8217;m going to go for a new laptop, I&#8217;ll be paying at least INR 30,000 for something like a Dell or HP. Processor was the easiest to get, could squeeze in the 8GB ram part, SSD was out of sight for anything below 40k, and good quality display and backlight keyboard, I&#8217;m asking for a bit too much at the price point. That was that, and the search moved to Ebay, Olx and Quickr
+</p>
+<p>
+    Ebay was very welcoming for my requirements. There were a lot of sellers selling what they call &#8216;seller refurbished&#8217; laptops. Theses machines supposedly came from the big corporations which gave away their old laptops in bulk. My friends working for a few MNCs here made it clear that they weren&#8217;t bluffing. My friends said that their companies used these same laptops but newer models. That made sense.
+</p>
+<p>
+    Giving up on Olx and Quickr (most laptops looked quite old and still expensive, and it was difficult to differentiate the quality listings from the shit ones), I concentrated my search on Ebay, chatting with all the sellers that had good reviews and ratings. That helped me separate the big sellers from the ones with just a few laptops to sell. Shortlisting a couple of sellers (<a href="https://www.ebay.in/usr/infotechdivya?_trksid=p2047675.l2559">Infotech Divya</a> and <a href="https://www.ebay.in/usr/rentopc?_trksid=p2047675.l2559">Rent-O-PC</a> were both top rated sellers and good with communication and had laptops in my budget, recommended) and making sure they had multiple models and versions of a given laptop series, I asked the sellers about the condition of the machines, learned about a metric called &#8216;grade&#8217; of these laptops and that they were priced depending on the specs AND the grade, &#8216;A&#8217; being the best, almost new, to &#8216;C&#8217; with physical damage and major cracks.
+</p>
+<p>
+    Finally, talking to these sellers about my requirements also helped gather their opinion on what laptop was, in their opinion, the best for my needs. This process lasted for about a month (yes, I spent a good deal of time talking to these sellers, and then taking second opinions from my hardware nerd friends). The final list consisted of these following laptops with their major specs and approx price, all A grade.</p>
+<ol>
+<li>Lenovo T440 &#8211; i5, 8GB, 128GB, 14&#8243; TFT 768p &#8211; INR 24.5k</li>
+<li>Lenovo T440 &#8211; i5, 8GB, 256GB, 14&#8243; IPS HD+ Touch with backlight keyboard &#8211; INR 27.6k</li>
+<li>Lenovo X240 &#8211; i5, 8GB, 128GB, 12.5&#8243; TFT 768p with backlight keyboard &#8211; INR 23.5k</li>
+<li>HP Elitebook 820 &#8211; i7, 16GB, 512GB SSD, 14&#8243; Full HD Touch IPS with Backlight keyboard &#8211; INR 34.5k</li>
+<li>Lenovo X1 Carbon 2nd Gen &#8211; i7, 8GB, 240GB, 14&#8243; 1440p IPS touch with backlight keyboard &#8211; INR 33.5k</li>
+</ol>
+<p>    Except for the HP, all are 4th gen Intel Haswell processors. The HP is a 5th gen i7. Too good to be true at 34.5k, right? But that would&#8217;ve been the definition of overkill right there. Hence HP was out. X1 carbon was very close to my heart, but it being a proper 1.3kg Macbook Air like profiled ultrabook, I feared that I wouldn&#8217;t be able to afford the repairs, nor will I be able to find spares for it, plus at that price, I had stretched my budget by almost 8k. Hence I ditched it. I did consider the X240 strongly for its smaller profile, but then feared it would be a bit too small. Some 10 youtube videos later, I decided it was a bit too small for almost the same price, plus it wasn&#8217;t as much upgradable. Finally left with the two Thinkpad T440s. The cheaper one would&#8217;ve been fine, but the delta and the difference in the features (larger SSD, touch screen, HD display and backlight keyboard vs INR 3k saving) was too small.
+</p>
+<p>
+    All things considered, I ordered the T440 with a touchscreen.
+</p>
+<h3>The Laptop</h3>
+<ul>
+<li>i5 4th Gen, 1.9 Ghz with turbo boost upto 2.9 Ghz</li>
+<li>8GB DDR3 memory</li>
+<li>240GB SSD</li>
+<li>14&#8243; HD+ 1600&#215;900 IPS touch screen</li>
+<li>Backlight keyboard</li>
+<li>2 USB 3.0, VGA, mini Display, gigabit ethernet</li>
+<li>HD webcam, a weird trackpad that can be pressed and has nice multi finger gesture support, mini keyboard</li>
+<li>1.8 Kgs, around 2&#8243; thick</li>
+</ul>
+<style>
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+</style>
+<div class="image-grid">
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_172944.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_172944.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173204.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173204.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173342.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173342.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173343.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173343.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173406.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173406.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173518.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173518.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173615.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173615.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173707.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173707.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173748.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173748.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173926.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_173926.jpg" /></a><br />
+    <a href="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_174902.jpg"><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/IMG_20180423_174902.jpg" /></a></p>
+</div>
+<p>
+    The laptop came two days after ordering in a properly packed box, much smaller than what I had expected, with Ebay branding and all that. Removing all the tape, inside there was my laptop in 3 layers of bubble wrap and an unwrapped Lenovo charger. The laptop looked flawless, not a single scratch or color fade. If it&#8217;d came out of a branded box, I wouldn&#8217;t have been able to tell it from brand new. It was that new. My excitements knew no bounds, for the build quality was nothing I had ever seen on a laptop. It felt hard and stiff, like a sheet of metal, better than the Macbook Air of my manager that I had always adored. It was amazing.
+</p>
+<p>
+    Upon opening it, I tried the keyboard. It was good. Nice key travel, click click sounds, nice touchpad and that red mouse-like functioning button. Overall, I was extremely happy with the initial impressions. I looked at the screen, and could see some decoloration, but decided to ignore it. Turned it on, there was a licensed Windows 8.1 or something (does it make a difference?). The touch was good, responsive, screen brightness was good and text was crisper than what I was used to, thanks to the bump in resolution from my previous laptop. Text felt a bit too small to my liking though.
+</p>
+<p>
+    Here&#8217;s a discovery. I had never planned on using the touch feature, and just got it as something that came for free with the other benefits. But to my surprise, I found myself surfing the web with the touch screen, clicking on links, scrolling, pinching and all those gestures that we&#8217;re used to doing on our phones. It was amazing. The laptop was snappy, quiet and overall near perfection.
+</p>
+<p>
+    I switched off the laptop, and again noticed the white tint (see image 9). What is it, I wondered. I connected the charger and that made things clear. It was some white light leaking from the LCD panel from the bottom that was causing the problem. My heart sank. This thing was almost perfect, almost. I whatsapp&#8217;d the seller who asked for a video of the problem. Upon submitting, he concluded that it was an actual issue, and gave me two options; 1. Ignore the issue and get a compensation for the damaged component, or 2. Get a replacement. I took replacement.
+</p>
+<p>
+    The replacement came 36 hours later in a similar but branding less box. There was 2 layers of bubble wrap and the laptop was in a similar but more worn condition. It was very identical to the first laptop but on a closer inspection, you could tell it was used (which, while obvious, wasn&#8217;t the case with the first laptop). I had my Arch linux usb stick ready, so I flashed the computer with Arch and XFCE but XFCE refused to work. I settled for GNOME and discovered that using GNOME was a much better, much pleasant experience with high res display and touch. Nice!
+</p>
+<p>
+    Everything after this point was a positive experience. I missed my full sized numeric keypad at times, but got used to this mini sized keyboard layout. And man, typing on this keyboard is an experience in itself. The webcam is HD, which I&#8217;m not sure if it will ever help but a good to have anyway. The backlight of the keyboard has brightness levels (I&#8217;m sorry if that&#8217;s a standard feature, just new to it) which is useful, and this laptop has two batteries, one external and one internal. Combined, they offer a usage time of around 6 hours (used laptops usually have less than half of the original battery life) which is adequate. Overall, if nothing else breaks in the next few days and there are no new issues, I&#8217;m extremely happy with this purchase, and would definitely opt for a refurbished laptop over a new one again.
+</p>
+<h3>Conclusion</h3>
+<p>
+    I planned to make this more than a laptop review. This was a refurbished laptop review, which for many of you, like it was for me, is a very new thing. It was something I was very scared of, after all, 27,000 is a lot of money for anyone, and giving it to someone who has just promised you things is a risk to say the least. I hope to have given you some clarity regarding refurbished electronics, at least laptops. I&#8217;ve read some quite scary (to the extent of misleading) posts on Reddit about how sellers con people. While I&#8217;m sure there must&#8217;ve been cases of that, it is important to do your research and use some common sense. A seller who&#8217;s listing seems too good to be true is probably a lie. A seller who takes 24 hours to reply to your messages about enquiries will probably not bother replying at all after selling you the thing. A seller with just 10 review, all 5 stars and robotic feedback messages is probably a scam. Yes, it takes time to find the right sellers and the right product, but it is much better than buying the wrong or defective product. Spend that additional week researching your needs, talking to sellers and formally stating your requirements. You&#8217;ll save yourself a lot of money and time in the long run.
+</p>
+<p>
+    If all this seems too daunting, or if you think your time is worth more than the time spent on this (which is what I&#8217;m expecting half of you to be wondering at this point) then prefer buying the product new. It is perfectly reasonable to make that tradeoff plus you get a real warranty, absolutely new product, a branded box and peace of mind. In a parallel universe where I would&#8217;ve had a lot of money, a new laptop is what I&#8217;d have bought. On this one, I think refurbished is just fine. Thank you for reading!</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

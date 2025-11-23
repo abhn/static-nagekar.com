@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>C &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/c/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Mon, 02 May 2016 22:00:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>C &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>_Generic in C And Generic LinkedList Implementation</title>
+		<link>https://nagekar.com/2016/05/_generic-in-c.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Mon, 02 May 2016 22:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<category><![CDATA[programming]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2016/05/02/_generic-in-c/</guid>
+
+					<description><![CDATA[Tada! Finally a non-Javascript post for those of you who stopped visiting my blog because of my sick Js addiction. So my lost friend Aditya is back, and while talking to him, I got to read a piece of code that he wrote when we were in third semester, last year. The aim was to [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Tada! Finally a non-Javascript post for those of you who stopped visiting my blog because of my sick Js addiction. So my lost friend Aditya is back, and while talking to him, I got to read a piece of code that he wrote when we were in third semester, last year. The aim was to build a generic container to store different datatypes, in C. So yes, literally storing [21, &#8220;abhishek&#8221;, 3.142, &#8216;z&#8217;] in a single dynamically allocated linkedlist. That was pretty bold for us then.
+</p>
+<p>
+  For making that happen, he made use of the <a href="https://en.wikipedia.org/wiki/C11_(C_standard_revision)#Changes_from_C99_">_Generic</a> macro that C11 introducted for generic type selection. For those unfamiliar with it, I&#8217;ll begin with explaining the basics of the macro. For those of you interested in the linkedlist code, scroll down to the bottom of this article. You can always check out the <a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf">C11 draft [section 6.5.1.1 Generic selection pg #96]</a> (the standard costs around $60 but is essentially the same thing).
+</p>
+<p>
+	 The _Generic macro follows the format <code>_Generic(controlling-expression, association-list)</code> where <i>controlling-expression</i> is the expression whose type is to be detected, and <i>association-list</i> is the dictionary of type-expression pairs where type can be any object type and the expression can be any expression, constant or a pointer to any function, pretty much anything that can be evaluated.
+</p>
+<p>
+	To put it simply, compare it to the switch statement for type detection. For example,
+</p>
+<figure class="highlight">
+<pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">teststring</span> <span class="o">=</span> <span class="s">"my char array"</span><span class="p"&gt;;</span> <span class="c1">// target object</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">type</span> <span class="o">=</span> <span class="k">_Generic</span><span class="p">(</span>
+    <span class="n">teststring</span><span class="p">,</span>
+    <span class="nl">int:</span> <span class="s">"int"</span><span class="p">,</span>
+    <span class="kt">int</span><span class="o">*:</span> <span class="s">"int *"</span><span class="p">,</span>
+    <span class="nl">char:</span> <span class="s">"char"</span><span class="p">,</span>
+    <span class="kt">char</span><span class="o">*:</span> <span class="s">"char *"</span><span class="p">,</span>
+    <span class="nl">float:</span> <span class="s">"float"</span><span class="p">,</span>
+    <span class="nl">default:</span> <span class="s">"default"</span>
+  <span class="p"&gt;);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">type</span><span class="p"&gt;);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p"&gt;;</span>
+<span class="p">}</span></code></pre>
+</figure>
+<p></p>
+<figure class="highlight">
+<pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gcc main.c
+<span class="nv">$ </span>./a.out
+char <span class="k">*</span></code></pre>
+</figure>
+<p>
+	The _Generic macro can be wrapped around in a nice looking function call, say detect_type(). Compare this to a (pseudo) switch statement which evaluates the case that matches the switch params
+</p>
+<figure class="highlight">
+<pre><code class="language-c" data-lang="c"><span class="c1">// Pseudocode may resemble Javascript. Reader discretion advised</span>
+<span class="n">var</span> <span class="n">someobj</span> <span class="o">=</span> <span class="s">"text here"</span><span class="p"&gt;;</span> <span class="c1">// target object</span>
+<span class="n">var</span> <span class="n">type</span><span class="p"&gt;;</span> <span class="c1">// to store the typename</span>
+<span class="n">type_switch</span><span class="p">(</span><span class="n">someobj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"int"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">int</span><span class="o">*</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"int*"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">char</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"char"</span><span class="p"&gt;;</span>
+  <span class="k">case</span> <span class="kt">char</span><span class="o">*</span><span class="p">:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"char*"</span><span class="p"&gt;;</span>
+  <span class="nl">default:</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="s">"default"</span><span class="p"&gt;;</span>
+<span class="p">}</span>
+<span class="n">print</span><span class="p">(</span><span class="n">type</span><span class="p">)</span></code></pre>
+</figure>
+<p>
+	So that is it. A compile time type identification in C with a simple macro. We can do pretty amazing stuff with it using pointers to functions. For example, a generic print function, that can take in any type of argument and print it. I have added cases for integers, characters and string, but others can be added just as easily.
+</p>
+<p><script src="https://gist.github.com/abhn/3887df927f2d913c03704cac3ddaa9fc.js"></script></p>
+<p>
+	That was neat, wasn&#8217;t it. Now back to Aditya. He used the same macro to create a dynamically allocated linkedlist. I am pasting the gist here so that you can read his beautiful code.<br />
+  <button id="btn">Show Code</button>
+</p>
+<div id="vector">
+<h4>File <b>linkedlist.c</b></h4>
+<p>    <script src="https://gist.github.com/abhn/0699d92bb972320e33b3cee8f81abc23.js"></script></p>
+<h4>File <b>linkedlist.h</b></h4>
+<p>    <script src="https://gist.github.com/abhn/6175447dd928d4c46bdc7f51b90c8b33.js"></script></p>
+<h4>File <b>main.c</b></h4>
+<p>    <script src="https://gist.github.com/abhn/cacf3b03483759c02e997afe13aa3373.js"></script>
+  </div>
+</p>
+<p>
+	To compile it, run <code>~$ gcc main.c linkedlist.c -o linkedlist</code> on any machine with GCC installed (I&#8217;ve tested it on version &gt;4.9). Run it with <code>~$ ./linkedlist</code> and you should see the different elements that we&#8217;ve added printed on the standard out. You may also pack the linkedlist into a statically linked library, by running.
+</p>
+<figure class="highlight">
+<pre><code class="language-bash" data-lang="bash">~<span class="nv">$ </span>gcc <span class="nt">-c</span> linkedlist.c <span class="nt">-o</span> linkedlist.o
+~<span class="nv">$ </span>ar rcs linkedlist.a linkedlist.o
+~<span class="nv">$ </span>gcc main.c linkedlist.a</code></pre>
+</figure>
+<p>
+  Interesting, isn&#8217;t it? Want to thank him, or have any comments or improvements? Drop them into the comment box. Thank you for reading.
+</p>
+<h3>External Links</h3>
+<ul>
+<li>
+    <a href="https://www.ibm.com/support/knowledgecenter/SSGH2K_13.1.0/com.ibm.xlc131.aix.doc/language_ref/genericselection.html">IBM KB article on generic selector</a>
+  </li>
+<li>
+    <a href="https://www.robertgamble.net/2012/01/c11-generic-selections.html?m=1">Robert Gamble&#8217;s blog post: c11 generic selections</a>
+  </li>
+<li>
+    <a href="https://stackoverflow.com/questions/9804371/syntax-and-sample-usage-of-generic-in-c11">Stackoverflow question: syntax and sample usage of generic in c11</a>
+  </li>
+</ul>
+<p><script>
+  document.getElementById('vector').style.display = 'none';
+  document.getElementById('btn').addEventListener('click', function showVec() {
+    document.getElementById('vector').style.display = 'block';
+  });
+</script></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>A Day Of Struggle With Python IDEs</title>
+		<link>https://nagekar.com/2015/06/a-day-of-struggle-with-python-ides.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Wed, 03 Jun 2015 22:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<category><![CDATA[python]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/06/03/a-day-of-struggle-with-python-ides/</guid>
+
+					<description><![CDATA[Yesterday, I gave up on doing my next web application project with QT. I knew C++ was never meant to be a language of the web, but I really had some hopes with QT. It actually is good, and apparently it would have ran faster than any other platform or language for the web. The [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Yesterday, I gave up on doing my next web application project with QT. I knew C++ was never meant to be a language of the web, but I really had some hopes with QT. It actually is good, and apparently it would have ran faster than any other platform or language for the web. The problem is, it is a lot time consuming to develop anything in it, especially web apps. I really don&#8217;t have all that time. So I decided to do it in Python or Ruby. After reading some articles, it became clear, they are not much different, where python is a more general programming language, ruby is more towards the web, with it&#8217;s rails framework.
+</p>
+<p>
+  I choose Python, just because I know how to write code in python, beforehand. It was time to go shopping for some good frameworks to develop this thing. No doubt, finally I had to decide between <a href="https://wakatime.com/django-vs-flask-worksheet" target="_blank" rel="noopener">Django and Flask</a>. I choose flask. It was damn too simple, or at least it seemed like that. I tried the simple hello.py script which displays <i>&#8220;hello world&#8221;</i> on the localhost port 5000.
+</p>
+<p>
+  I tried that in emacs, but immediately felt the need for an IDE in this foreign land. I looked in my &#8216;Downloads&#8217; folder, and luckily there was Aptana Studio 3 still sitting there. I used to have it installed when I was into PHP last year. Since then, it got removed and thrown into a corner. I installed it. I really loved Aptana back then, for it&#8217;s usability. But now, it started to act like a stubborn child, refusing to detect Flask. I googled and googled, but alas, no way. Many people seemed to be having the same problem, and the only solution I saw didn&#8217;t work.
+</p>
+<p>
+  Seeing no way, I uninstalled Aptana, and <a href="https://stackoverflow.com/questions/81584/what-ide-to-use-for-python" target="_blank" rel="noopener">googled for other good IDEs</a>. PyCharm was what most were recommending. I decided to give it a try. Turned out, it was a memory hogger. Both my CPUs were doing a constant 100% and other windows turned sluggish too. About half a tonne of RAM was what it was utilizing, with a single .py file open with 4 lines of text in it. No way, again. Removed it, and went to eat some food. Damn.
+</p>
+<p>
+  I was not ready to go to the sluggish Eclipse again, nor Netbeans for the same reason. Finally I settled for Komodo Edit, free lite version of the commercial Komodo IDE. It lacks many things that you will ask for in an IDE, and it is a little better than using bare emacs or vim. Still, for now, I am using it. Configured it to execute python script right inside the window following this tutorial, <a href="https://stackoverflow.com/questions/21686395/how-to-run-the-first-python-program-in-komodo-edit-8-5">https://stackoverflow.com/questions/21686395/how-to-run-the-first-python-program-in-komodo-edit-8-5</a>
+</p>
+<p>Life&#8217;s good, but just hoping to learn flask for my next project as fast as I can.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Time</title>
+		<link>https://nagekar.com/2015/02/time.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 01 Feb 2015 23:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<category><![CDATA[science]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/02/01/time/</guid>
+
+					<description><![CDATA[Time is one of my favorite subjects. The reason being it&#8217;s highly mysterious and absolute nature. It give everything a reference frame. How else on earth would have you said when a thing actually occurred. It actually gives even the rest of the three dimensions a reference frame. Newton put forth the theory that nothing [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  Time is one of my favorite subjects. The reason being it&#8217;s highly mysterious and absolute nature. It give everything a reference frame. How else on earth would have you said when a thing actually occurred. It actually gives even the rest of the three dimensions a reference frame. Newton put forth the theory that nothing in the Universe is absolutely stationary, no not you standing still, because the earth is spinning, and not the earth since it is revolving around the sun. The sun goes round the Milky Way (our home galaxy) once in every <a href="https://en.wikipedia.org/wiki/Galactic_year" target="_blank">225 million years</a>. Not surprising now, the Milky Way is not stationary itself, but <a href="https://en.wikipedia.org/wiki/Andromeda%E2%80%93Milky_Way_collision" target="_blank">moving towards Andromeda</a> (our neighboring galaxy) at about 400,000 km/h. Point here is that, you cannot determine the absolute position of an object anywhere in the Universe by just giving the three physical dimensions. It simple doesn&#8217;t work where there is no frame of reference. Then how do you tell your position? You tell it in terms of space-time. The fourth dimension, that is of the time can be in any unit of time. We can actually convert the first three coordinates&nbsp; in terms of light-seconds which is distance in terms of time taken by the light to travel the same distance.
+</p>
+<p>
+  But well, time is in fact, only absolute to a person at a particular position. Time is well <a href="https://physics.stackexchange.com/questions/8940/how-can-gravitational-forces-influence-time" target="_blank">affected by gravity</a>, the same way light is. This is to simply say the time seems somewhat slower near a body of high mass, like the earth, or a black hole for some serious observations. We don&#8217;t actually see these differences in our routine life since they are too small in case of the Earth (Earth is not as dense as it should be for practical effects of delay in time to be observed by us). But there are applications on Earth that require precise measurement of time, and one such application is the Global Positioning System, the GPS in almost every phone these days. It relies on three geostationary satellites that measure the exact time taken for the receiver to reach them, creating a triangular plot, estimating the position of the receiver on the surface on the planet within a couple of meters accurately. These satellites are feed with the <a href="https://en.wikipedia.org/wiki/Error_analysis_for_the_Global_Positioning_System#Special_and_general_relativity" target="_blank">slightly wrong time</a> after some unspecified interval, just so that it can adjust with the &#8216;slower&#8217; time on the Earth&#8217;s surface (on account of the larger mass of Earth affecting the bodies near to it to a larger extent and also due to the relatively faster time on these satellites on account of their speeds due to special relativity).
+</p>
+<p>
+  There is another interesting thing to note here. How can you say if you are experiencing a slower version of time than you did some time in the past? You can&#8217;t. The reason is, &#8216;slower&#8217; and &#8216;faster&#8217; time are for the observers that are experiencing a relatively &#8216;faster&#8217; or &#8216;slower&#8217; time. So it is all relative. Talking about time in the context of speed of light, we come to an amazing theory by Einstein. Einstein proposed that the speed at which light travels is absolute and does not depend on the relative speed and position of the observer. To put it simply, imagine you are traveling on a highway at 60km/h. Another vehicle traveling at 70 overtakes you. For you, the relative speed of the other vehicle is 10km/h (which is, 70-60=10). This is how we expect things to behave right? Of course. But things change as one approaches the speed of light. See that light doesn&#8217;t behave the same way our highway example cars did. However fast you&#8217;re traveling, light will still be 300,000km/s faster than you, even if you are actually doing 290,000km/s (which is just about impossible for a body of large mass like us, but certain elementary particles can achieve those speeds). This can be considered the universal speed limits. So what happens when some particle tries to break this barrier?
+</p>
+<p>
+  For understanding this, let us consider the cone of light. When a particular event occurs, it sends out light (or radiations) in all possible directions. This is like throwing a pebble in a pond of water. It spreads in all possible directions and it&#8217;s size increases every instant. The outermost wave is the wave initially created by the pebble itself. Now think of this as light. An event occurs and light from that event spreads in all possible direction. Considering time on y axis and space on x, we can imagine a cone getting created.
+</p>
+<figure>
+  <img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/World_line.png" /><figcaption>https://upload.wikimedia.org/wikipedia/commons/9/9a/World_line.png</figcaption></figure>
+<p>
+  Now when something occurs, you don&#8217;t see it immediately, until the light from that event hits your retina. Consider the sun, for example. It is at a distance of about 149 million kilometers from the earth. Light takes about 8 minutes and 20 seconds to travel this distance. This is the reason the sunlight you&#8217;re seeing now is about 8 minutes and 20 seconds old. Which means that it takes the cone of light from sun, 8 minutes and 20 seconds to reach us, and make us aware of it. Still, considering the distances of other planetary objects, sun is quite close to us. Our nearest star, Alpha Centauri is at a distance of 4.3 light years from us, that is, the cone of light takes 4.3 years from Alpha Centauri to reach us. Since it is the cone of light, not surprisingly, it travels outwards at the speed of light.
+</p>
+<p>
+  Back to our original question, what if some particle tries to break the barrier of speed of light? If that happens, it will move from inside the cone of light of one event to outside of it, effectively seeing the time from the past, hence &#8216;traveling in the past&#8217;. But is that possible? No, according to the special theory of relativity. Since speed of light is absolute to the reference frame it is measured in, nothing can reach it (the mass of an object goes on increasing with increasing velocity. Close to the speed of light, the mass of the object is infinity and pushing an object of mass infinity is not possible). This was even proved by an experiment (<a href="https://en.wikipedia.org/wiki/Michelson%E2%80%93Morley_experiment" target="_blank">Michelson-Morley</a> experiment). This theory was consistent with the observations and most other theories, but Newton&#8217;s gravitation theory. If everything travels at speeds less than or equal to the speed of light, how do we explain the effects of gravitation on distant planets and stars instantaneously. Does <a href="https://math.ucr.edu/home/baez/physics/Relativity/GR/grav_speed.html" target="_blank">gravity travel at infinite speeds</a>, as opposed to relativity, which states that gravity travels at speed of light, which is again, not in accordance with solar system observations? Maybe.
+</p>
+<p>
+  Einstein spent a great deal of time trying to find a theory that would be consistent with both, the theory of relativity and the theory of gravitation. Finally he came up with something called the general theory of relativity. This theory suggested that the force of gravity doesn&#8217;t act like normal forces but it acts on the &#8216;space-time&#8217; fabric, bending it in proportion with the relative energy and mass of the body. This suggested that the bodies revolving other bodies like the moon and earth are not traveling round the other body, but actually taking a straight path in the space time fabric which is 4 dimensional, and they only &#8216;appear&#8217; to travel in elliptical orbits as we see them in 3 dimensions. This was a revolutionary suggestion. It implied that time, light all traveled curved path near objects of high mass or energy. That did, infact explained why time appeared slow near the surface of earth and faster from space, and also, how are we able to see stars that are just behind the sun even if a straight path to them would not be possible for light to take.
+</p>
+<p>
+  Now as we look at where this article started, yes, I was all wrong. I knew there was nothing as absolute space, but as it turned out, there is nothing as absolute time as well. Interesting though, isn&#8217;t it?
+</p>
+<h4>Time in the world of computers!</h4>
+<p>
+  Computers happen to be my most favorite subject after astrophysics, so how can I let this special opportunity go without playing around with time functions in C++. To be honest, I had been on this time thing from about 2 weeks. I needed to calculate time precisely for looking at the efficiency of sorting algorithms. Not surprisingly, computers are way too fast for calculating time in seconds or milliseconds. To see the difference in time taken by two algorithms for sorting a set of 50 random numbers, you need to measure time in nanoseconds, at the least microseconds. Although I had trouble (a lot of trouble, in fact) in getting the time functions to work for me, I finally succeeded in getting nanosecond level precision without any extra props, just my PC and g++ compiler.</p>
+<p>Starting from the first thought that came to my mind, get some C++ reference for built in functions. time() from &lt;ctime&gt; does a great job to fetch the number of seconds since 1st Jan, 1970,
+</p>
+<p><script src="https://gist.github.com/abhn/45da0ea982ab68adaa2c.js"></script></p>
+<p>
+  but not good enough for me here. I knew that the bash command &#8216;date&#8217; can be used for my purpose, but I couldn&#8217;t see a way to get the output of the command to my program back. I did some over smartness here. I executed the <span style="color: #674ea7;">system(&#8220;date +%s%N &gt; text&#8221;)</span> which wrote the current timestamp upto the nanosecond to &#8216;text&#8217; file. Then copy that time by reading the file into an unsigned long long int (since it is 19 digits long). Then after the calculations, repeat it again and subtract the initial time from the final one. A bit long cut, but I hoped it to work.
+</p>
+<p><script src="https://gist.github.com/abhn/1c9dbbf003b74a730a1e.js"></script></p>
+<p>
+  When I ran this code, it took, surprisingly 18+ milliseconds, or in particular 18649390 nanoseconds. And to be clear, I haven&#8217;t even included any code whose performance benchmarks I had to measure. This is the base time, LOL. Thinking about it for a second, algorithms store variables in cache, because RAM is not fast enough and I tried to write and read from the hard drive. That is so damn clever of me!
+</p>
+<p>
+  Pun aside, Now it was time to get help. Many stackoverflow posts and a good guy&#8217;s guidance later, I finally got the <span style="color: #674ea7;">clock_gettime()</span> from &lt;sys/time.h&gt; to work. Yes, now I was getting some pretty good numbers and I could see the difference when I added more stuff to the code.
+</p>
+<p><script src="https://gist.github.com/abhn/e7e41567d518c22b4f38.js"></script></p>
+<p>
+  Executing the raw code without any load gave some results I was hoping to see.
+</p>
+<p><img decoding="async" src="https://www.nagekar.com/wp-content/uploads/2020/12/Screenshotfrom2015-02-01230947.png"  /></p>
+<p>
+  210 nanoseconds which is fine for a code that does nothing. This will serve all of my purposes, and should do most of anyone&#8217;s who is up with sorting algorithms.
+</p>
+<p>
+  PS &#8211; I tried hard to find good sources for information on the first part of this article, still if there is any mistake, don&#8217;t hesitate to notify me.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Handling large numbers with C/C++</title>
+		<link>https://nagekar.com/2015/01/handling-large-numbers-with-cc.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sun, 18 Jan 2015 23:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/01/18/handling-large-numbers-with-cc/</guid>
+
+					<description><![CDATA[I will tell you what this is about. I saw a simple looking problem on HackerEarth about finding factorial of given numbers. It looks easy, but another look at the constraints (1&#60;=N&#60;=100) changes everything. Well, not everything, especially if you are going to write it in languages like Python (&#8220;dynamically typed&#8221;) which has built-in capabilities [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>
+  I will tell you what this is about. I saw a simple looking problem on <a href="https://www.hackerearth.com/problem/algorithm/small-factorials/" target="_blank" rel="noopener">HackerEarth</a> about finding factorial of given numbers. It looks easy, but another look at the constraints (1&lt;=N&lt;=100) changes everything. Well, not everything, especially if you are going to write it in languages like Python (&#8220;dynamically typed&#8221;) which has built-in capabilities to handle big numbers, but it is really a trouble to do it in C or any such statically typed language.
+</p>
+<p>
+  So first of all, what exactly is the difference between statically and dynamically typed languages. Dynamically typed languages require their interpreters to detect the type of the variable from the value that is assigned to it. On the other hand, in statically typed languages, the type of the variables must be known at compile time.
+</p>
+<p>
+  Some believe the latter has advantages over the former. As we explicitly state the type, run time errors are reduced and run time performance increases. We won&#8217;t get into that discussion here.
+</p>
+<h3>So our problem</h4>
+<p>
+  Before getting into it, I will first write the Python code that worked flawlessly and gave answers to factorials of over 100.
+</p>
+<p><script src="https://gist.github.com/abhn/a7a894bee916cf2910e2.js"></script></p>
+<p>
+  As you can see, it doesn&#8217;t get any easier for anybody, no matter how novice he is with programming. But how does one solve the same problem with languages with no native support for big (of order &gt;10^100) numbers? Simple. We make use of algorithms. The first thing that pops in one&#8217;s mind when dealing with numbers this large is the use of arrays. Yes, that is the right way to go, or at least the one that worked for me.
+</p>
+<p>
+  So here is the plan. We create an array of integers which will hold a digit in each index, starting with the least significant bit. For example, if we were to store the number 12345 in the array, we would do it like this:
+</p>
+<style type="text/css">.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 15px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 15px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;} .tg .tg-xueg{font-weight:bold;background-color:#ffffc7;color:#333333} .tg .tg-2ks1{font-weight:bold;font-size:100%;background-color:#ffffc7;color:#333333} </style>
+<p><center></p>
+<table class="tg">
+<tbody>
+<tr>
+<th class="tg-xueg">5</th>
+<th class="tg-xueg">4</th>
+<th class="tg-xueg">3</th>
+<th class="tg-xueg">2</th>
+<th class="tg-2ks1">1</th>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>
+  That is, <span style="background-color: #d9d2e9;"><i>array[0]</i></span> stores &#8216;5&#8217;, <span style="background-color: #d9d2e9;"><i>array[1]</i></span> stores &#8216;4&#8217; and so on. We have reversed the number for a specific reason. For knowing that reason, you have to go back to your 2nd grade class where you were taught to multiply two two-digit numbers. How did you do that?
+</p>
+<style type="text/css">.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 11px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 11px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;} .tg .tg-bsv2{background-color:#efefef} .tg .tg-cxkv{background-color:#ffffff} .tg .tg-c7d0{background-color:#bbdaff} .tg .tg-fqpo{background-color:#cbcefb} .tg .tg-8o5d{background-color:#34ff34} </style>
+<p><center></p>
+<table class="tg" style="table-layout: fixed; width: 86px;">
+<colgroup>
+<col style="width: 21px;"></col>
+<col style="width: 21px;"></col>
+<col style="width: 22px;"></col>
+<col style="width: 22px;"></col>
+</colgroup>
+<tbody>
+<tr>
+<th class="tg-031e">
+                  
+              </th>
+<th class="tg-031e">
+                  
+              </th>
+<th class="tg-bsv2">4</th>
+<th class="tg-031e">
+                  
+              </th>
+</tr>
+<tr>
+<td class="tg-031e">
+                  
+              </td>
+<td class="tg-031e">
+                  
+              </td>
+<td class="tg-bsv2">2</td>
+<td class="tg-031e">
+                  
+              </td>
+</tr>
+<tr>
+<td class="tg-031e">
+                  
+              </td>
+<td class="tg-cxkv">
+                  
+              </td>
+<td class="tg-c7d0">3</td>
+<td class="tg-c7d0">7</td>
+</tr>
+<tr>
+<td class="tg-031e">
+                  
+              </td>
+<td class="tg-cxkv">x</td>
+<td class="tg-c7d0">6</td>
+<td class="tg-c7d0">3</td>
+</tr>
+<tr>
+<td class="tg-fqpo">
+                  
+              </td>
+<td class="tg-fqpo">1</td>
+<td class="tg-fqpo">1</td>
+<td class="tg-fqpo">1</td>
+</tr>
+<tr>
+<td class="tg-fqpo">2</td>
+<td class="tg-fqpo">2</td>
+<td class="tg-fqpo">2</td>
+<td class="tg-fqpo">0</td>
+</tr>
+<tr>
+<td class="tg-8o5d">2</td>
+<td class="tg-8o5d">3</td>
+<td class="tg-8o5d">3</td>
+<td class="tg-8o5d">1</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>
+  Got the memory back? Although it may seem a trivial thing now, notice that you never do a multiplication whose result is more than 81, that is, 9&#215;9 which is the product of largest two single digit numbers. So can you somehow make the computer follow the same method to calculate the factorial, such that it never does a &gt;81 digit addition in the entire process, which is well inside the size of the shortest numeric data type in C <i>(unsigned short: 65,535)</i>? Yes, of course. We are coders, right? 😉
+</p>
+<p>
+  To start off, we will need variables. We will use <span style="background-color: #d9d2e9;"><i>num</i></span> to accept the input number whose factorial is to be found out. <span style="background-color: #d9d2e9;"><i>cur</i></span> stores the result of the calculation<i> <span style="background-color: #d9d2e9;">i * arr[j] + temp</span></i>. The least significant digit from <span style="background-color: #d9d2e9;"><i>cur</i></span> (for example <i>3</i>, in case of <i>123</i>) goes into <span style="background-color: #d9d2e9;"><i>arr[j]</i></span> while the remaining digits get stored in the <span style="background-color: #d9d2e9;"><i>temp</i></span> variable. Follow the above step till the end of the array which we initially denote by <i><span style="background-color: #d9d2e9;">pos</span> </i>variable. <span style="background-color: #d9d2e9;"><i>pos</i></span> is initialized and assigned 1, as we initialize our <span style="background-color: #d9d2e9;"><i>arr[]</i></span> with <i><span style="background-color: #d9d2e9;">arr[0]=1</span> (since we will be using this value to multiply subsequent 2,3,4&#8230;<span style="background-color: #d9d2e9;">num</span>, we don&#8217;t want our answer to evaluate to 0).</i>
+</p>
+<p>
+  After this loop, we will need to empty out the carry forward integer in our <span style="background-color: #d9d2e9;"><i>temp</i></span> variable. It will be done in the reverse order as well, but here, we will increment <span style="background-color: #d9d2e9;"><i>pos</i></span> to make it always point to the number of digits in <span style="background-color: #d9d2e9;"><i>arr[]</i></span>.
+</p>
+<p>
+  Finally you can print our the <span style="background-color: #d9d2e9;"><i>arr[]</i></span> in the reverse order to get the expected answer and this should not surprise you since we have been doing storing of the numbers in reverse order in our <span style="background-color: #d9d2e9;"><i>arr[]</i></span>. Here is the C++ code that I wrote. I didn&#8217;t cross check the results for larger values of <span style="background-color: #d9d2e9;"><i>num</i></span>, so take care with that.
+</p>
+<p><script src="https://gist.github.com/abhn/34824e2918e86fcf2576.js"></script></p>
+<p>
+  So that was it for this short article. I am reading more on GMP (<a href="https://gmplib.org/" target="_blank" rel="noopener"><i>GNU Multiple Precision Arithmetic Library</i></a>) that is written exactly for this purpose. Nevertheless, it is always good to know how to do it by hand. Thank you.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Jumping over multiple programming languages</title>
+		<link>https://nagekar.com/2015/01/jumping-over-multiple-programming.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 08 Jan 2015 23:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2015/01/08/jumping-over-multiple-programming/</guid>
+
+					<description><![CDATA[I just happened to take a look at my own blog. Starting with some posts about python, I went to C, then PHP-MySQL and then Javascript. All of this in around 3 months. Now, it is great to know multiple languages, but the thing I feel is, you must &#8216;know&#8217; them. Knowing in the sense, [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;" trbidi="on">I just happened to take a look at my own blog. Starting with some posts about python, I went to C, then PHP-MySQL and then Javascript. All of this in around 3 months. Now, it is great to know multiple languages, but the thing I feel is, you must &#8216;know&#8217; them. Knowing in the sense, the underlying philosophy, best practices and such. I have started with at least 10 languages this year. I can code little bits in all of them, namely C, Java, Python, PHP, Javascript and some other like database, HTML/CSS which are not-so-much-programming languages. Problem is, I cannot code fluently in any of the above listed languages. I just tend to get bored by doing a language after some time and then jump to something else. Something needs to be done, right?</p>
+<p>Actually, I didn&#8217;t notice this myself. Friends, with whom I hangout, told me that I needed to concentrate on one thing, until I master it, before moving to something else. I couldn&#8217;t agree more, but also couldn&#8217;t decide what needs to be done. So kept trying different things till I get something that would keep me distracted for long enough.</p>
+<p>I started with web development. I hate PHP, although I also tend to code in it the most because it is efficient for quick dirty works. Python happens to be one of my favorite languages, because of the neatness and power. But at the same time, coming from C, I don&#8217;t feel the depth in other languages that I got in C.</p>
+<p>Web programming is great for some quick compliments. LOL. Just after a week, I could write great pieces of code that would amaze everyone. But deep down somewhere, I didn&#8217;t feel good about myself. Its like, choosing the easy path rather than the challenging one. So I thought again, about some other stream. Yes, software programming is pretty good.</p>
+<p>So I started with Java. I did learn all the basics and some intermediate stuff. Java is great, but still, I missed C. I needed something close to the OS. I needed a language that I could use to interact with my Arduino. I needed something like C. So why not C again, perfecting it?</p>
+<blockquote class="tr_bq"><p>Yes, I felt, getting back to C seemed to be the best way to go.</p></blockquote>
+<p>Then, out of nowhere, I got to attend <a href="https://en.wikipedia.org/wiki/Bjarne_Stroustrup">Bjarne Stroustrup</a>&#8216;s lecture at IIT-Bombay. Although I never got to get into the actual seminar, his mere presence was enough to push me into C++. I read about it, and even watch some online videos about C++ and opinion from experts about it. Seemed perfect. The control and power of C, the flexibility of Java and the usability of (almost) Python.</p>
+<p>I have now been doing C++ for about 2 weeks. Not much really, basic syntax and stuff. Important thing is, I am enjoying it. I really hope I stick to it for some time now till I master it. I don&#8217;t want to be an example of</p>
+<blockquote class="tr_bq"><p>jack of all trades and master of none</p></blockquote>
+<p>Let&#8217;s hope my next post here has some serious C++ in it.&nbsp; </p></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Python vs C &#8211; How simple is it to write a pair of communicating sockets?</title>
+		<link>https://nagekar.com/2014/12/python-vs-c-how-simple-is-it-to-write.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Tue, 02 Dec 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[socket]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/12/02/python-vs-c-how-simple-is-it-to-write/</guid>
+
+					<description><![CDATA[Lately I have been reading a lot of articles online written to compare Python to other languages. It is not a secret to anyone that the Python community is growing, and along with it, is the number of people who promote/recommend this language, of course. Let me not add up to the already large mass [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;" trbidi="on">Lately I have been reading a lot of articles online written to compare Python to other languages. It is not a secret to anyone that the Python community is growing, and along with it, is the number of people who promote/recommend this language, of course.</p>
+<p>Let me not add up to the already large mass of those articles by boasting about Python&#8217;s usability, speed and practicality, but rather, I will compare the two languages by writing a small socket client/server pair in each of those languages.</p>
+<p>But first, let me give you some of my personal opinions about both the languages since I know them well enough. C is very dear to me, not only because it was the first language I had ever learnt, but also because it runs most of the GNU, and GNU is well, very dear to me! C also happens to be my only second language of choice, after Python (although I know bits of Java, I prefer not to use it, not sure why, but I hate it). I have been programming in Python only from the last couple of months and I was really impressed. I solve HackerEarth and CodeChef problems as a pass time. Although I could do all of the problems I have done in C, doing them in Python took like 1/10th of the time (literally!) and 1/10th the typing effort. I would admit, C is much more fun to write than Python, simply because you &#8216;feel&#8217; the code is yours, and I love to code C whenever I am free, will I use it in an environment where time is the priority? Probably not. Maybe when C is the only way out, but most of the time, I am better off writing it in Python.</p>
+<p>That being said, the popularity of C doesn&#8217;t get any less, and it is going to stay that way as long as, maybe the Internet. Here&#8217;s something I found.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.tiobe.com/index.php/content/paperinfo/tpci/index.html" target="_blank"><img fetchpriority="high" decoding="async" alt="https://www.tiobe.com/index.php/content/paperinfo/tpci/index.html" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/prolan.png" height="340" title="Click to follow link to source" width="640" /></a> </div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<div class="separator" style="clear: both; text-align: left;">You see the thing on top there? Yes, it is there for a reason. To make it short, C is powerful, very powerful. C gives you access to things you can not really imagine in other languages. On the other hand, Python is practical, flexible, and easy to learn. Web apps, sockets, Raspberry Pi, Arduino, Android or anything else you can imagine, there has to be a library made for it by someone, somewhere.</div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h3 class="separator" style="clear: both; text-align: left;">The code part.</h3>
+<div class="separator" style="clear: both; text-align: left;">I am giving the client and server code in both the languages here as is. No explanation and stuff, because that&#8217;s not the topic here. Note that all the source codes are tested running OK on Kali 1.0.6, gcc and all stock stuff, so it should be not much trouble to get it running. Windows guy, search for gcc directory and run it over the command prompt. It won&#8217;t run from any IDE. </div>
+<div class="separator" style="clear: both; text-align: left;"></div>
+<h4>Python</h4>
+<div style="text-align: left;">Writing a pair of communicating TCP sockets require around 30 minutes along with the understanding part, if you have got some background in networking. Python does most of the stuff for you, and you just create a socket variable, supply host and port and that&#8217;s it. Rest is left to your imagination (or not, I got too carried away!). Here comes the code:</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;"><b>client.py</b></p>
+<pre class="brush: cpp">import socket<br />s = socket.socket()<br />host = socket.gethostname()<br />port = 1356&nbsp;<br />s.connect((host, port))<br />shit = s.recv(1024)<br />print shit<br />s.close()<br /></pre>
+</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;"><b>server.py</b></p>
+<pre class="brush: python">s = socket.socket()<br />host = socket.gethostname()<br />s.bind((host, 1356))<br />s.listen(5)<br />while True:<br />&nbsp;&nbsp;&nbsp; c, addr = s.accept()<br />&nbsp; &nbsp; c.send("Message from server")<br />&nbsp;&nbsp;&nbsp; c.close()</pre>
+</div>
+<p>And that is it. Even if it looks lame (which it is), it is the maybe the simplest thing that qualifies to be called a server/client.</p>
+<h4 style="text-align: left;">C</h4>
+<div style="text-align: left;">Now lets write the same in C. This is around 4 times the size of Python code, and much of the stuff are done by hand (nothing new for C, I suppose). This code is the shortest I could cut it to, and just does one simple task. Sends the &#8220;Client talking loud!\n&#8221; message to server over port 1356 on localhost. The parameters can be edited as per convenience to suit any inter network testing, but that&#8217;s the most this code will do. Nevertheless, this is a TCP client/server model.</div>
+<div style="text-align: left;"></div>
+<div style="text-align: left;"><b>client.c</b></p>
+<pre class="brush: cpp">#include &lt;stdio.h&gt;<br />#include &lt;stdlib.h&gt;<br />#include &lt;string.h&gt;<br />#include &lt;sys/types.h&gt;<br />#include &lt;sys/socket.h&gt;<br />#include &lt;netinet/in.h&gt;<br />#include &lt;netdb.h&gt;<br />#include &lt;unistd.h&gt;<br /><br />int main(int argc, char **argv) {<br />    int sock, port, n;<br />    struct sockaddr_in serv_addr;<br />    struct hostent *server;<br />    char buffer[256];<br />    port = atoi("1356");<br />    sock = socket(AF_INET, SOCK_STREAM, 0);<br />    server = gethostbyname("127.0.0.1");<br />    bzero((char *)&amp;serv_addr, sizeof(serv_addr));<br />    serv_addr.sin_family = AF_INET;<br />    bcopy((char *)server-&gt;h_addr, (char *)&amp;serv_addr.sin_addr.s_addr, server-&gt;h_length);<br />    serv_addr.sin_port = htons(port);<br />    connect(sock, (struct sockaddr *)&amp;serv_addr, sizeof(serv_addr));<br />    bzero(buffer, 256);<br />    strcpy(buffer, "Client talking loud!\n");<br />    write(sock, buffer, strlen(buffer));<br />    close(sock);<br />} </pre>
+<p><b>server.c</b></p>
+<pre class="brush: cpp">#include &lt;stdio.h&gt; <br />#include &lt;strings.h&gt; <br />#include &lt;stdlib.h&gt; <br />#include &lt;sys/types.h&gt; <br />#include &lt;sys/socket.h&gt; <br />#include &lt;netinet/in.h&gt; <br /><br /><br />int main(int argc, char **argv) {<br /> int sock, nsock, port;<br /> socklen_t clilen;<br /> char buffer[256];<br /> struct sockaddr_in serv_addr, cli_addr;<br /> sock = socket(AF_INET, SOCK_STREAM, 0);<br /> bzero((char*)&amp;serv_addr, sizeof(serv_addr));<br /> port = atoi("1356");<br /> serv_addr.sin_family = AF_INET;<br /> serv_addr.sin_addr.s_addr = INADDR_ANY;<br /> serv_addr.sin_port = htons(port);<br /> bind(sock, (struct sockaddr *)&amp;serv_addr, sizeof(serv_addr));<br /> listen(sock, 2);<br /> clilen = sizeof(cli_addr);<br /> nsock = accept(sock, (struct sockaddr *)&amp;cli_addr, &amp;clilen);<br /> bzero(buffer, 256);<br /> read(nsock, buffer, 255);<br /> printf("%s\n", buffer);<br /> close(sock);<br /> close(nsock);<br />}</pre>
+<p>Here is the expected output:</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="https://www.nagekar.com/wp-content/uploads/2020/12/Screenshotfrom2014-12-03000238.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img decoding="async" border="0" src="https://www.nagekar.com/wp-content/uploads/2020/12/Screenshotfrom2014-12-03000238.png" height="433" width="640" /></a></div>
+<p>Sorry, there is no commenting in the above code, and it really needs some explanation. I would&#8217;ve written them, but then, the code would have grown three folds (LOL)! It will need another nice article to explain all the stuff from that client.c and server.c code. I will conclude here. Thank you for reading 🙂</p>
+<p><i>Update: If you happen to run any of the above code, make sure you run server first! </i></div>
+<div style="text-align: left;"></div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Simple TCP banner grabber in C</title>
+		<link>https://nagekar.com/2014/11/simple-tcp-banner-grabber-in-c.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 29 Nov 2014 23:00:00 +0000</pubDate>
+				<category><![CDATA[C]]></category>
+		<category><![CDATA[socket]]></category>
+		<guid isPermaLink="false">http://wp.nagekar.com/2014/11/29/simple-tcp-banner-grabber-in-c/</guid>
+
+					<description><![CDATA[Hello folks, Its been a great week. I got the book called Expert C Programming &#8211; Deep C Secrets, by Peter van der Linden. I read about 100 pages in a couple of days, and I had never gained so much confidence reading any other book. Many concepts got sharper, doubts cleared and confidence boasted. [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div dir="ltr" style="text-align: left;" trbidi="on">Hello folks, Its been a great week. I got the book called Expert C Programming &#8211; Deep C Secrets, by Peter van der Linden. I read about 100 pages in a couple of days, and I had never gained so much confidence reading any other book. Many concepts got sharper, doubts cleared and confidence boasted. A must read book if you know some C and want to understand the nuts and bolts of it.</p>
+<p>In the same wave, I decided to write a small utility with sockets later today. It went great. Lots of coding, googling (I just can&#8217;t code without Google, maybe a sign of newbie) and debuging. Finally I ended up having a program that was partially correct. It works, but it doesn&#8217;t. It actually does more than what is told, and I couldn&#8217;t find out why. Still, I am posting it here, for those interested. Please correct it, as I didn&#8217;t really get what is wrong with it. Looks like some of the array locations are interpreted as ports, in the &#8216;ports&#8217; array.</p>
+<p>usage example: ./scanner 192.168.1.2 22,80,443</p>
+<blockquote class="tr_bq"><p>&nbsp;root@kali:~/Desktop/C/socket# ./client 192.168.1.10 22,80</p></blockquote>
+<blockquote class="tr_bq"><p>[+]Testing port: 22<br />[*]SSH-2.0-OpenSSH_6.0p1 Debian-4</p>
+<p>[+]Testing port: 80<br />[*]&lt;!DOCTYPE HTML PUBLIC &#8220;-//IETF//DTD H</p></blockquote>
+<blockquote><p>TML 2.0//EN&#8221;&gt;<br />&lt;html&gt;&lt;head&gt;<br />&lt;title&gt;501 Method Not Implemented&lt;/title&gt;<br />&lt;/head&gt;&lt;body&gt;<br />&lt;h1&gt;Method Not Implemented&lt;/h1&gt;<br />&lt;p&gt;garbage to /index.html not supported.&lt;br /&gt;<br />&lt;/p&gt;<br />&lt;hr&gt;<br />&lt;address&gt;Apache/2.2.22 (Debian) Server at 127.0.1.1 Port 80&lt;/address&gt;<br />&lt;/body&gt;&lt;/html&gt;</p>
+<p>[+]Testing port: 4195840<br />[-]Error Connecting to port</p>
+<p>[+]Testing port: 0<br />[-]Error Connecting to port</p>
+<p>[+]Testing port: 1476291006<br />[-]Error Connecting to port</p>
+<p>[+]Testing port: 32767<br />[-]Error Connecting to port</p></blockquote>
+<p>I am not sure what that is, the part after the actual banner I mean. I will update this article as soon I get things sorted. Here is the code, if anyone wants to have a look.</p>
+<pre class="brush: cpp">#include &lt;stdio.h&gt;<br />#include &lt;stdlib.h&gt;<br />#include &lt;unistd.h&gt;<br />#include &lt;string.h&gt;<br />#include &lt;sys/types.h&gt;<br />#include &lt;sys/socket.h&gt;<br />#include &lt;netinet/in.h&gt;<br />#include &lt;netdb.h&gt;<br /> <br />void scanner(int port, char host[]);<br /> <br />int main(int argc, char **argv) {<br /> char host[100];<br /> char *p;<br /> int ports[10];<br /> int i = 0;<br /> int var;<br /> char tok[] = " ,";<br />  <br /> if (argc &lt; 2) {<br />       fprintf(stderr,"[+]usage: %s &lt;hostname&gt; &lt;port,port,port...&gt;n", argv[0]);<br />       exit(0);<br />    }<br />     <br />    p = strtok(argv[2], tok);<br />    strcpy(host, argv[1]);<br /> while(p != NULL) {<br />  sscanf(p, "%d", &amp;var);<br />  ports[i++] = var;<br />  p = strtok(NULL, tok);<br /> }<br />  <br /> for(i=0; i&lt;(sizeof(ports)/sizeof(ports[0])); i++) {<br />  fprintf(stdout, "n[+]Testing port: %dn", ports[i]);<br />  scanner(ports[i], host);<br /> }<br /> return 0;<br />}<br /> <br />void scanner(int port, char host[]) {<br /> <br /> int sock, n;<br />    struct hostent *server;<br />    struct sockaddr_in serv_addr;<br />     <br />    char buffer[4096];<br />  <br />    server = gethostbyname(host);<br />     <br /> sock = socket(AF_INET, SOCK_STREAM, 0);<br /> /* Edit the params of socket to scan UDP ports,<br />  * should be pretty straight forward I suppose.<br />  */<br />   <br /> if(sock &lt; 0) {<br />  fprintf(stderr, "[-]Error creating socket");<br />  return;<br /> }<br />  <br /> bzero((char *) &amp;serv_addr, sizeof(serv_addr));<br /> serv_addr.sin_family = AF_INET;<br /> // AF_UNIX for Unix style socket<br />  <br /> bcopy((char *)server-&gt;h_addr, (char *)&amp;serv_addr.sin_addr.s_addr, server-&gt;h_length);<br /> serv_addr.sin_port = htons(port);<br />  <br /> n = connect(sock, (struct sockaddr *)&amp;serv_addr, sizeof(serv_addr));<br /> sleep(2);<br /> if(n &lt; 0) {<br />  fprintf(stderr, "[-]Error Connecting to portn");<br />  return;<br /> }<br />  <br /> memset(buffer, 0, sizeof(buffer));<br /> strcpy(buffer, "garbagern");<br />  <br /> n = write(sock, buffer, strlen(buffer));<br /> if(n &lt; 0) {<br />  fprintf(stderr, "[-]Error writing (Port closed maybe?!)n");<br />  return;<br /> }<br />  <br /> bzero(buffer, 4096);<br /> n = read(sock, buffer, 4096);<br /> if(n &lt; 0) {<br />  fprintf(stderr, "[-]Error reading (Port closed maybe?!)n");<br />  return;<br /> }<br />  <br /> fprintf(stdout,"[*]%sn", buffer);<br /> close(sock);<br />     <br />}<br /></pre>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

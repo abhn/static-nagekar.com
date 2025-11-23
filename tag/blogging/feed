@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>blogging &#8211; Abhishek Nagekar</title>
+	<atom:link href="https://nagekar.com/tag/blogging/feed" rel="self" type="application/rss+xml" />
+	<link>https://nagekar.com</link>
+	<description>hobbyist {x}</description>
+	<lastBuildDate>Sat, 07 Jun 2025 10:19:06 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://nagekar.com/wp-content/uploads/2020/12/cropped-cropped-cropped-favicon-32x32.png</url>
+	<title>blogging &#8211; Abhishek Nagekar</title>
+	<link>https://nagekar.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>ChatGPT predicts my future &#8211; 50th Birthday Journal Entry</title>
+		<link>https://nagekar.com/2025/06/chatgpt-predicts-my-future-50th-birthday-journal-entry.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Sat, 07 Jun 2025 10:19:05 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[genai]]></category>
+		<guid isPermaLink="false">https://nagekar.com/?p=2612</guid>
+
+					<description><![CDATA[A month or so ago, I posted an article title Journal Entry – 4th of October, 2035. It was intended to be a casual essay intended to serve as my hopes for my future, from where I&#8217;m standing. I&#8217;m positive that my blog will exist in 2035, and I like to be intentional about dropping [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>A month or so ago, I posted an article title <a href="https://nagekar.com/2025/04/journal-entry-4th-of-october-2035.html" data-type="post" data-id="1693">Journal Entry – 4th of October, 2035</a>. It was intended to be a casual essay intended to serve as my hopes for my future, from where I&#8217;m standing. I&#8217;m positive that my blog will exist in 2035, and I like to be intentional about dropping &#8220;breadcrumbs&#8221; hoping that future me would have a way to peak into the messy thoughts that current me has, a way that&#8217;s not captured by photos or people I spend time with. </p>
+
+
+
+<p>During a company wide meeting that had a lot of mentions of GenAI, I was playing around with ChatGPT. At some point, I asked it to summarize the aforementioned blog article. It did a good job at the summarization in my opinion. Something that stood out was that it referred to the author of the article, me, as a &#8220;he&#8221;. So I followed up on that.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><em>ME: why did you think Abhishek Nagekar is a &#8220;he&#8221;?</em></p>
+</blockquote>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>ChatGPT: You&#8217;re absolutely right to raise that question—my assumption that Abhishek Nagekar is a &#8220;he&#8221; was based solely on the traditionally male-associated name Abhishek, which is common in South Asia. However, names alone aren&#8217;t reliable indicators of gender identity, and I should have avoided making that presumption without explicit confirmation&#8230;.If you ever want help digging deeper into a writer’s background or analyzing their style or themes, I’m happy to help!</p>
+</blockquote>
+
+
+<p><!-- /wp:post-content --></p>
+<p><!-- wp:paragraph --></p>
+<p>That last bit caught my attention. What kind of &#8220;insights&#8221; might ChatGPT have into my background.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote">
+<p><!-- wp:paragraph --></p>
+<p><em>ME: Please share what you know about the writer&#8217;s background?</em></p>
+<p><!-- /wp:paragraph --></p>
+</blockquote>
+<blockquote class="wp-block-quote">
+<p><!-- wp:paragraph --></p>
+<p><em>ChatGPT: Abhishek Nagekar is a Berlin-based web and security engineer with a deep passion for open-source software, internet privacy, and ethical technology&#8230;started blogging in 2014, sharing his experiences and insights on his personal website, nagekar.com. His writings often explore topics like digital privacy, the open web, and personal growth&#8230;multifaceted interests and reflections provide a window into the life of a technologist who blends his professional expertise with a thoughtful approach to life&#8217;s broader questions.</em></p>
+<p><!-- /wp:paragraph --></p>
+</blockquote>
+<p><!-- /wp:quote --></p>
+<p><!-- wp:paragraph --></p>
+<p>That was a lot of ego stroking, but I got even more curious.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote">
+<p><em>ME: what about his political views?</em></p>
+</blockquote>
+<blockquote class="wp-block-quote">
+<p><em>ChatGPT: &#8230;While he doesn’t declare political party affiliations, Nagekar’s values suggest a worldview shaped by <strong>progressivism, decentralization, ethics-driven technology, and systemic critique of inequality</strong>.</em></p>
+<p><!-- /wp:quote --></p>
+</blockquote>
+<p><!-- wp:paragraph --></p>
+<p>Here ChatGPT brought out a bunch of political paradigms that it thinks I&#8217;d align on. For most part, they were accurate although to varying degrees of intensity of those beliefs. I then asked it about the political parties that it thinks I&#8217;d vote for.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote">
+<p><em>ME: Hypothetically, what kind of political parties would someone like Abhishek vote for?</em></p>
+<p><!-- /wp:quote --></p>
+</blockquote>
+<blockquote class="wp-block-quote">
+<p><!-- wp:paragraph --></p>
+<p><em>ChatGPT: he’d likely support <strong>left-leaning, environmentally focused, pro-democracy parties</strong> with strong platforms on tech ethics and equity.</em></p>
+<p><!-- /wp:paragraph --></p>
+</blockquote>
+<p><!-- /wp:quote --></p>
+<p><!-- wp:paragraph --></p>
+<p>Finally, I asked it to write a blog post in my style titled &#8220;Journal Entry &#8211; 4th October 2045&#8221;, and here&#8217;s the outcome:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:quote --></p>
+<blockquote class="wp-block-quote">
+<p><!-- wp:paragraph --></p>
+<p>04/10/2045. It was a Thursday.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Sitting in a quiet café in Berlin, sipping on a warm cup of coffee, I find myself reflecting on the journey so far. Fifty years on this planet, and what a ride it has been.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Back in 2025, I was deeply engrossed in the world of open-source software, digital privacy, and ethical technology. Working at Mozilla, I was passionate about creating a safer and more inclusive internet. Those days were filled with coding, community engagements, and a relentless pursuit of knowledge.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Over the years, my focus shifted. While technology remained a significant part of my life, I began to see the importance of community, sustainability, and human connections. I started volunteering at local community centers, teaching young minds about the importance of digital literacy and privacy. It was fulfilling to see the spark in their eyes, reminiscent of my younger self.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Traveling became another passion. Exploring different cultures, understanding diverse perspectives, and sharing stories over meals enriched my worldview. Each journey taught me something new, reminding me of the vastness of human experience.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>As I look ahead, I remain hopeful. The world continues to evolve, and with it, the challenges and opportunities. I aim to stay curious, to keep learning, and to contribute positively in whatever way I can.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Thank you for reading.</p>
+<p><!-- /wp:paragraph --></p>
+</blockquote>
+<p><!-- /wp:quote --></p>
+
+<!-- wp:paragraph -->
+<p>Thank you for reading! </p>
+<!-- /wp:paragraph -->]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Perfect 100/100 PageSpeed Score With WordPress</title>
+		<link>https://nagekar.com/2022/03/perfect-100-pagespeed-score-wordpress.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 31 Mar 2022 00:02:19 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[web]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1487</guid>
+
+					<description><![CDATA[A long time ago I worked on a theme called Elementary for my Jekyll blog. The goal was simple, to create a website that just works, and works fast. In fact, I&#8217;ll just paste the line from the readme of the GitHub repository. This is my personal blog&#8217;s Jekyll template that I&#8217;ve been optimizing for [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>A long time ago I worked on a theme called <a href="https://github.com/abhn/Elementary">Elementary</a> for my Jekyll blog. The goal was simple, to create a website that just works, and works fast. In fact, I&#8217;ll just paste the line from the readme of the GitHub repository.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"><p dir="auto">This is my personal blog&#8217;s Jekyll template that I&#8217;ve been optimizing for performance, accessibility, usability, readability and simplicity in general.</p><p dir="auto">I personally do not approve of personal blogs bloated with hundreds of kilobytes of trackers and analytics code, and hence, this is an attempt at creating something that I&#8217;d be comfortable with using on my website.</p></blockquote>
+
+
+
+<p>The goal was accomplished. I managed to get a perfect score on many of the pages. But I wanted to write more and while on the go, and plaintext editing on phones is a pain. Then the other problem was to add it to git and push it. In short, working with a static blog from an Android phone wasn&#8217;t easy.</p>
+
+
+
+<p>That&#8217;s when I moved to WordPress. I ported the theme to <a href="https://github.com/abhn/Elementary-Wordpress">Elementary-WordPress</a>, which is essentially the same theme but in a WordPress shell. It worked really well, but the problem was all the bloat that WordPress sends to the frontend. For a while I didn&#8217;t care enough. I was still serving a fast website, albeit with Jquery, emojis and other code that wasn&#8217;t getting used anywhere else.</p>
+
+
+
+<p>Today, that changed. I finally took some time to optimize the website and got back my perfect 100/100 PageSpeed score. Here&#8217;s how I did it.</p>
+
+
+
+<h2 class="wp-block-heading">Table of contents</h2>
+
+
+
+<ol class="wp-block-list"><li><a href="#jquery">Disable jQuery</a></li><li><a href="#wp-embed">Disable wp-embed</a></li><li><a href="#block-library-css">Disable block library CSS</a></li><li><a href="#emoji">Disable emoji</a></li><li><a href="#fonts">Serve fonts from same domain</a></li><li><a href="#font-display">Use font-display: optional property</a></li><li><a href="#memcached">Use an in-memory page cache like Memcached</a></li><li><a href="#conflicting-cache">Fix conflicting cache strategies</a></li><li><a href="#cdn">Use a CDN for asset delivery</a></li><li><a href="#inline-css-js">TODO: Inline all CSS and Javascript</a></li></ol>
+
+
+
+<h2 class="wp-block-heading" id="jquery">Disable jQuery</h2>
+
+
+
+<p>If your website isn&#8217;t ancient, there&#8217;s a good chance you&#8217;re not using it. If some plugin you&#8217;re using is using jQuery, consider alternatives. It will save you ~30KB and an HTTP request. Adding the following to the <code>functions.php</code> should do it.</p>
+
+
+
+<pre class="wp-block-preformatted">function jquery_dequeue() { <br>&nbsp;&nbsp;wp_deregister_script( 'jquery' ); <br>} <br>add_action( 'wp_enqueue_scripts', 'jquery_dequeue' );</pre>
+
+
+
+<h2 class="wp-block-heading" id="wp-embed">Disable wp-embed</h2>
+
+
+
+<p>The following snippet <a href="https://wordpress.stackexchange.com/questions/211701/what-does-wp-embed-min-js-do-in-wordpress-4-4">from this answer</a> needs to be added to <code>functions.php</code></p>
+
+
+
+<pre class="wp-block-preformatted">function wp_embed_dequeue() {<br>&nbsp; wp_deregister_script( 'wp-embed' );<br>}<br>add_action( 'wp_footer', 'wp_embed_dequeue' );</pre>
+
+
+
+<h2 class="wp-block-heading" id="block-library-css">Disable block library CSS</h2>
+
+
+
+<p>*Sigh* This goes into the <code>functions.php</code></p>
+
+
+
+<pre class="wp-block-preformatted">function remove_wp_block_library_css(){<br>&nbsp; wp_dequeue_style( 'wp-block-library' );<br>}<br>add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css' );</pre>
+
+
+
+<h2 class="wp-block-heading" id="emoji">Disable emoji</h2>
+
+
+
+<p>I found some nice code to disable a whole bunch of unnecessary actions from this guide here: <a href="https://kinsta.com/knowledgebase/disable-emojis-wordpress/#2-disable-emojis-in-wordpress-with-code">https://kinsta.com/knowledgebase/disable-emojis-wordpress/#2-disable-emojis-in-wordpress-with-code</a></p>
+
+
+
+<h2 class="wp-block-heading" id="fonts">Serve fonts from same domain</h2>
+
+
+
+<p>If you&#8217;re not super keen on using the smart browser detection functionality that Google Fonts offers and are happy only supporting modern browsers, simply downloading the font files and linking them with <code>@font-face</code> can save an additional DNS and HTTP request.</p>
+
+
+
+<h2 class="wp-block-heading" id="font-display">Use font-display: optional property</h2>
+
+
+
+<p>I&#8217;m using <code>font-display: optional;</code> CSS property on my @font-face and it pushed my PageSpeed score over the top. Essentially it prevents the CLS, or <a href="https://web.dev/cls/">Cumulative Layout Shift</a> metric of Core Web Vitals from getting affected due to page shifting due to slow loading of font files.</p>
+
+
+
+<p>Read more about it here: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display">https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display</a></p>
+
+
+
+<h2 class="wp-block-heading" id="memcached">Use an in-memory page cache like Memcached</h2>
+
+
+
+<p>Building pages to serve the users is expensive as it involves the database, but isn&#8217;t something that needs to be done for every visitor visiting the same page. A plugin like W3 Total Cache coupled with a Memcached instance (could be running on the same server as the website) could enable caching of pages among other resources in memory, reducing the load on the server and improving performance for cache-hit pages.</p>
+
+
+
+<figure class="wp-block-image"><img fetchpriority="high" decoding="async" width="1024" height="378" src="https://www.nagekar.com/wp-content/uploads/2022/03/2022-03-31_11-34-1024x378.png" alt="memcached" class="wp-image-1503" srcset="https://nagekar.com/wp-content/uploads/2022/03/2022-03-31_11-34-1024x378.png 1024w, https://nagekar.com/wp-content/uploads/2022/03/2022-03-31_11-34-300x111.png 300w, https://nagekar.com/wp-content/uploads/2022/03/2022-03-31_11-34-768x284.png 768w, https://nagekar.com/wp-content/uploads/2022/03/2022-03-31_11-34.png 1070w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading" id="conflicting-cache">Fix conflicting cache strategies</h2>
+
+
+
+<p>I&#8217;m using W3 Total Cache plugin that helps minify and cache CSS and JS files. But I wasn&#8217;t seeing any minification happening. Upon some reading, it turns out that CloudFlare&#8217;s minification conflicts with W3 Total Cache&#8217;s. Disabling it on CloudFlare&#8217;s side fixed the non-minification problem for me.</p>
+
+
+
+<h2 class="wp-block-heading" id="cdn">Use a CDN for asset delivery</h2>
+
+
+
+<p>Once the thing to deliver is optimized, it is a good idea to optimize the delivery pipeline as well. Since my server is in the same country as me, it is easy to make a mistake of thinking every visitor of the website is seeing a 50 milliseconds time to connect to the server. The further the user is from the origin server, the longer it could take.</p>
+
+
+
+<p>Hence, an global CDN like CloudFlare should be used which can serve static content from its edge node physically closest to the visitor.</p>
+
+
+
+<h2 class="wp-block-heading" id="inline-css-js">TODO: Inline all CSS and Javascript</h2>
+
+
+
+<p>It doesn&#8217;t go beyond 100, but I&#8217;d still like to improve it further. For one, the little bit of CSS and JS that does exist doesn&#8217;t have to need two additional HTTP requests. Inlining that bit will mean that blog posts without an image, which for me are most of them, will get served in only three HTTP requests; the document, the font file and the favicon. Pretty cool, huh?</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>I&#8217;m pretty pumped about the 100/100 score. WordPress has a reputation for being slow and bloated, but with some simple optimizations, it starts performing like how you&#8217;d expect some text on a page to perform like.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img decoding="async" width="1024" height="897" src="https://www.nagekar.com/wp-content/uploads/2022/03/ba8ec3f5-713a-45c6-b3bc-72c8bcf68b6d-1024x897.jpg" alt="" class="wp-image-1491" srcset="https://nagekar.com/wp-content/uploads/2022/03/ba8ec3f5-713a-45c6-b3bc-72c8bcf68b6d-1024x897.jpg 1024w, https://nagekar.com/wp-content/uploads/2022/03/ba8ec3f5-713a-45c6-b3bc-72c8bcf68b6d-300x263.jpg 300w, https://nagekar.com/wp-content/uploads/2022/03/ba8ec3f5-713a-45c6-b3bc-72c8bcf68b6d-768x672.jpg 768w, https://nagekar.com/wp-content/uploads/2022/03/ba8ec3f5-713a-45c6-b3bc-72c8bcf68b6d.jpg 1206w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img decoding="async" width="1024" height="862" src="https://www.nagekar.com/wp-content/uploads/2022/03/bfd494f4-9302-4993-8d24-945e76a7e6f3-1024x862.jpg" alt="" class="wp-image-1492" srcset="https://nagekar.com/wp-content/uploads/2022/03/bfd494f4-9302-4993-8d24-945e76a7e6f3-1024x862.jpg 1024w, https://nagekar.com/wp-content/uploads/2022/03/bfd494f4-9302-4993-8d24-945e76a7e6f3-300x253.jpg 300w, https://nagekar.com/wp-content/uploads/2022/03/bfd494f4-9302-4993-8d24-945e76a7e6f3-768x647.jpg 768w, https://nagekar.com/wp-content/uploads/2022/03/bfd494f4-9302-4993-8d24-945e76a7e6f3.jpg 1208w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+
+<p>Thank you for reading!</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Guide To A Sane WordPress Workflow</title>
+		<link>https://nagekar.com/2021/04/guide-to-a-sane-wordpress-workflow.html</link>
+		
+		<dc:creator><![CDATA[Abhishek Nagekar]]></dc:creator>
+		<pubDate>Thu, 01 Apr 2021 07:00:32 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://www.nagekar.com/?p=1294</guid>
+
+					<description><![CDATA[Like most things in life, WordPress isn&#8217;t perfect. But for a publishing platform, it is quite up there with the best in the business. For writing, I haven&#8217;t had any complaints so far, but when it came to customization or workflows around maintaining a theme, I was a little lost. To me it somehow felt [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>Like most things in life, WordPress isn&#8217;t perfect. But for a publishing platform, it is quite up there with the best in the business. For writing, I haven&#8217;t had any complaints so far, but when it came to customization or workflows around maintaining a theme, I was a little lost.</p>
+<p>To me it somehow felt very liberating and restricting at the same time. Liberating, because of the ecosystem; themes, plugins, hosting platforms, tons of helpful resources and support. Restricting, if and when you want to build a custom theme and don&#8217;t speak much PHP, general added complexity compared to a static site generator, having to deal with hosting providers, updates and added maintenance work.</p>
+<p>But depending on the requirements, WordPress might actually make a lot of sense as a publishing platform (well, of course. <a href="https://wordpress.org/about/features/">It powers 40% of the web</a>). My blog used to be hosted on Github Pages with Jekyll as the site generator until I made the <a href="https://www.nagekar.com/2021/01/life-goes-full-circle-blog-back-to-wordpress.html">switch to WordPress</a> a couple of months ago. What I did struggle with was finding a setup that offered a smooth workflow around managing a custom theme with self hosted WordPress instance.</p>
+<p>This article is an attempt at fixing that and aggregating some useful tips. I&#8217;ll try to cover the following:</p>
+<ul>
+<li>A <strong>self hosted WordPress</strong> website that&#8217;s affordable yet stable</li>
+<li><strong>Continuous deployment pipeline</strong> for custom themes</li>
+<li><strong>Backups</strong> that are reliable</li>
+<li><strong>CDN</strong> and <strong>caching</strong></li>
+<li><strong>Securing the website</strong></li>
+</ul>
+<p>Let&#8217;s get started.</p>
+<h2>Platform setup</h2>
+<p>I decided to go with <a href="https://aws.amazon.com/lightsail/projects/wordpress/">AWS Lightsail one click WordPress install</a>. You&#8217;ll find more information on the <a href="https://bitnami.com/stack/wordpress">Bitnami WordPress</a> page about the stack. It is lightweight and runs perfectly fine on a 512MB RAM / 1vCPU instance. Once behind a CDN and page cache, the website can handle a fair number of visitors.</p>
+<h2>Continuous Deployment (CD) pipeline (optional: Continuous Integration)</h2>
+<p>This step assumes you have a <a href="https://github.com/abhn/Elementary-Wordpress">custom WordPress theme</a> or source code of a theme available on a GitHub repository. You only need to follow this step if you think you&#8217;ll be making frequent changes to your theme files and would like to have a pipeline for the automatic deploy of the theme (say, for example, when you commit a change to the master branch of your repository). Alternatively, you can always create a zip file of the theme and upload it manually via the WordPress admin panel if you prefer to keep things simple.</p>
+<p>Assuming you have a theme hosted on GitHub, you&#8217;ll need to make use of Travis CI to build your code (if there&#8217;s any CSS or JS that needs to be transpiled), test it (if there are any checks) and then upload the files to the AWS LightSail instance using secure copy (scp). Following are some resources to help you get started.</p>
+<ul>
+<li>Underscore &#8211; Minimal WordPress starter template: <a href="https://underscores.me/">https://underscores.me/</a></li>
+<li>Tutorial for deploying from Travis using SSH and SCP: <a href="https://oncletom.io/2016/travis-ssh-deploy/">https://oncletom.io/2016/travis-ssh-deploy/</a></li>
+<li>Elementary WordPress template <a href="https://github.com/abhn/Elementary-Wordpress/blob/master/.travis.yml">Travis file</a>, <a href="https://github.com/abhn/Elementary-Wordpress/blob/master/package.json">package.json</a> and <a href="https://github.com/abhn/Elementary-Wordpress/blob/master/scripts/deploy.sh">deploy script</a> for reference.</li>
+</ul>
+<h2>Backups</h2>
+<p>For backups, I&#8217;m using a couple of strategies but I think either one should suffice for my usecase.</p>
+<h3>AWS Lightsail snapshots</h3>
+<p>I&#8217;d recommend enabling automatic daily snapshots of your instance in AWS Lightsail. So if things go very south, you will lose 1 day&#8217;s worth of data at most. Since my blog&#8217;s content is rarely updated, this means this works near perfectly.</p>
+<h3><a href="https://wpvivid.com/"><span style="text-decoration: underline;">WPVivid WordPress plugin</span></a></h3>
+<p>WPVivid is a nice plugin that offers more precise backups, meaning you can choose to backup just your database, or files, or both. It also has cron functionality and offer 12 hourly backups (more frequent if you&#8217;re a paying customer). WPVivid allows you to transfer the backups to Google Drive, AWS S3, Dropbox among many other third party providers.</p>
+<h2>Server health monitoring and alerts</h2>
+<p>I&#8217;m using New Relic to monitor the health of the WordPress instance. It isn&#8217;t necessary as AWS Lighsail already comes with basic dashboards for monitoring CPU performance and burst usage (giving a rough idea about whether the server is sweating under load), but if you&#8217;d like to go a bit fancy with the whole monitoring thing and set up alerts for throughput, error rate etc, New Relic is quite good.</p>
+<p>New Relic really shines at showing you the external services your instance is talking to, database operations and the CPU usage share per plugin that you have installed on your WordPress website. That information can help you debug any services / plugins that are slowing down your website or doing something strange behind your back.</p>
+<p><figure id="attachment_1299" aria-describedby="caption-attachment-1299" style="width: 640px" class="wp-caption alignnone"><img loading="lazy" decoding="async" class="wp-image-1299 size-large" src="https://www.nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44-809x1024.png" alt="AWS metrics" width="640" height="810" srcset="https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44-809x1024.png 809w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44-237x300.png 237w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44-768x972.png 768w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-44.png 820w" sizes="auto, (max-width: 640px) 100vw, 640px" /><figcaption id="caption-attachment-1299" class="wp-caption-text">Metrics in AWS Lightsail</figcaption></figure></p>
+<p><figure id="attachment_1300" aria-describedby="caption-attachment-1300" style="width: 751px" class="wp-caption alignnone"><img loading="lazy" decoding="async" class="wp-image-1300" src="https://www.nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-1024x578.png" alt="Metrics in New Relic" width="751" height="424" srcset="https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-1024x578.png 1024w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-300x169.png 300w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-768x434.png 768w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50-1536x867.png 1536w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-50.png 1861w" sizes="auto, (max-width: 751px) 100vw, 751px" /><figcaption id="caption-attachment-1300" class="wp-caption-text">Metrics in New Relic</figcaption></figure></p>
+<p>Both AWS Lightsail alerts and New Relic alerts support multiple channels, so feel free to use SMS, email, Slack or whatever your preferred way of getting alerted is.</p>
+<h2>CDN and Caching</h2>
+<p>My go-to CDN for any personal website is Cloudflare and that is what I&#8217;m using here. I didn&#8217;t have any problems with the admin interface behind the CDN and all seems to work very well. I have a page rule that overwrites cache control headers from WordPress and forces everything under <em>/wp-content/*</em> to be cached.</p>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-1313" src="https://www.nagekar.com/wp-content/uploads/2021/03/2021-03-31_23-50-300x124.png" alt="" width="500" height="207" srcset="https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_23-50-300x124.png 300w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_23-50-768x318.png 768w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_23-50.png 955w" sizes="auto, (max-width: 500px) 100vw, 500px" /></p>
+<p>For page caching, I&#8217;m using a plugin called <a href="https://wordpress.org/plugins/w3-total-cache/">WP Total Cache</a>. It was the most popular performance optimization plugin and was recommended to me. It has a &#8220;Page Cache&#8221; option which needs to be enabled and set to use disk as cache store.</p>
+<h2>Security</h2>
+<p>To secure the Lightsail instance, I&#8217;m following some basic good practices and a plugin to help me set up some blocking rules.</p>
+<ol>
+<li>Lightsail instance is as close to stock as possible making sure there are no random packages installed from my side on the instance.</li>
+<li>Disable port 80, and if you&#8217;re using a reverse proxy CDN like Cloudflare, only allow Cloudflare IPs to your origin server.<img loading="lazy" decoding="async" class="wp-image-1298 aligncenter" src="https://www.nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-36.png" alt="" width="355" height="212" srcset="https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-36.png 757w, https://nagekar.com/wp-content/uploads/2021/03/2021-03-31_18-36-300x179.png 300w" sizes="auto, (max-width: 355px) 100vw, 355px" /></li>
+<li>As with Lightsail, WordPress installation should be close to stock with minimal plugins.</li>
+<li><a href="https://www.wordfence.com/">Wordfence WordPress plugin</a> for
+<ol>
+<li>2FA authentication</li>
+<li>Banning incorrect login attempts, or login attempts using generic usernames like admin, administrator or root.</li>
+<li>reCAPTCHA on the login page (you&#8217;ll need API keys from Google)</li>
+<li>Disable xmlrpc if you&#8217;re not planning on using apps. Enable 2FA on it, or disable login via xmlrpc.</li>
+<li>Go through all the options that Wordfence has to offer and use whatever makes sense for your use case. I found them to be quite useful and intuitive.</li>
+</ol>
+</li>
+<li>In general, keep stuff up to date.</li>
+</ol>
+<h2>Conclusion</h2>
+<p>That&#8217;s it for this article. If you have any questions or suggestions, please feel free to write to me. Thank you for reading.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>
